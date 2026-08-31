@@ -543,7 +543,7 @@ const SV = {
       const dLo = Math.abs(v - this.s[c.lo]), dHi = Math.abs(v - this.s[c.hi]);
       dragState.key = key; dragState.end = (dLo < dHi || (dLo === dHi && v < this.s[c.lo])) ? 'lo' : 'hi';
       dragState.rect = r; dragState.active = true;
-      w.setPointerCapture && w.setPointerCapture(e.pointerId);
+      try { w.setPointerCapture && w.setPointerCapture(e.pointerId); } catch (err) { /* synthetic events have no active pointer */ }
       this.setSlider(key, dragState.end, v, true);
     });
     document.addEventListener('pointermove', e => {
