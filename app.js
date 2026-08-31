@@ -14,6 +14,7 @@ const VANS = DATA.vans.map((v, i) => {
   const lenN = v.length ? parseFloat(v.length.replace(/'/, '.').replace(/"/, '')) : 99;
   return Object.assign({}, v, {
     id: i, priceN: v.price, priceTxt: money(v.price), lenN: lenN,
+    code: (v.code || '').replace(' ()', '').trim(),
     lenIn: lenN === 99 ? null : Math.floor(lenN) * 12 + Math.round((lenN % 1) * 100),
     axle: lenN < 18 ? 'Single axle' : 'Tandem axle',
     status: v.used ? 'Pre-loved' : 'Stock van',
@@ -25,6 +26,13 @@ const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
 const LAYOUTS = ['Couples', 'Family'];
 const AXLES = ['Single axle', 'Tandem axle'];
+// Standard-spec inclusion chips per model, from the live range page spec tables.
+const INCL = {
+  XTR: ['Victron off-grid power', 'Cruisemaster ATX airbag suspension', '2 x 90-100L water tanks'],
+  Hornet: ['Redarc Alpha 75 off-grid power', 'Cruisemaster XT airbag suspension', '2 x 90-100L water tanks'],
+  Amaroo: ['Redarc Alpha 50 off-grid power', 'Cruisemaster coil suspension', '2 x 90-100L water tanks'],
+  Solara: ['Redarc Alpha 75 off-grid power', 'Frameless composite construction', '2 x 90-100L water tanks']
+};
 const PRICE_MIN = 105000, PRICE_MAX = 215000;
 const LEN_MIN = 204, LEN_MAX = 288; // whole inches: 17'00" to 24'00"
 const fmtLen = (v, unit) => {
@@ -113,14 +121,17 @@ const SV = {
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:8px">
           <span class="modelkick">${v.model} · ${v.year}</span>
-          <span style="font:400 10.5px/1 'Gordita';letter-spacing:.06em;color:var(--mut)">${v.chassis}</span>
+          <span style="font:400 10.5px/1 'Gordita';letter-spacing:.06em;color:var(--mut)">${v.code}</span>
         </div>
         <h3 class="av cardname" data-act="view" data-id="${v.id}">${v.name}</h3>
         <div class="cardspecs">
           <div><div class="speck">Length</div><div class="specv">${v.length || '—'}</div></div>
-          <div><div class="speck">Layout</div><div class="specv">${v.layout}</div></div>
-          <div><div class="speck">Location</div><div class="specv">${v.state}</div></div>
-          <div><div class="speck">Condition</div><div class="specv">${v.used ? 'Pre-loved' : 'New'}</div></div>
+          <div><div class="speck">Sleeps</div><div class="specv">${v.sleeps || '—'}</div></div>
+          <div><div class="speck">Tare</div><div class="specv">${v.tare ? kg(v.tare) : '—'}</div></div>
+          <div><div class="speck">ATM</div><div class="specv">${v.atm ? kg(v.atm) : '—'}</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px">
+          ${(INCL[v.model] || []).map(i => `<span style="font:400 10.5px/1 'Gordita';color:var(--body2,#2A3238);background:var(--cream);border:1px solid var(--line);padding:6px 9px;border-radius:2px">${i}</span>`).join('')}
         </div>
         <div style="margin-top:auto">
           <span class="av" style="font-size:23px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
@@ -219,7 +230,7 @@ const SV = {
     const sel = document.getElementById('vanselect');
     const keep = sel.value;
     put(sel, '<option value="">Which van are you asking about?</option>' +
-      VANS.map(v => `<option value="${v.chassis}">${v.chassis} · ${fullName(v)} (${v.state})</option>`).join('') +
+      VANS.map(v => `<option value="${v.chassis}">${v.model} ${v.code} · ${(v.name.startsWith(v.model) ? v.name.slice(v.model.length).trim() : v.name)} (${v.state})</option>`).join('') +
       '<option value="unsure">Not sure yet, help me choose</option>');
     sel.value = keep;
     this.renderIntents();
@@ -381,7 +392,7 @@ const SV = {
             ${similar.map(x => `<article class="simcard" data-act="view" data-id="${x.id}">
               <div style="aspect-ratio:16/10;background:var(--line)"><img src="${x.img}" alt="${x.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></div>
               <div style="padding:15px;pointer-events:none">
-                <div style="font:500 9.5px/1 'Gordita';letter-spacing:.24em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">${x.model} ${x.chassis}</div>
+                <div style="font:500 9.5px/1 'Gordita';letter-spacing:.24em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">${x.model} ${x.code}</div>
                 <div class="av" style="font-size:13px;line-height:1.25;letter-spacing:.03em;text-transform:uppercase;margin-bottom:10px">${x.name}</div>
                 <div style="font:500 14px/1 'Gordita'">${x.priceTxt}</div>
                 <div style="margin-top:8px;font:400 11px/1 'Gordita';color:var(--body)">${x.state}</div>
