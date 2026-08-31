@@ -28,8 +28,18 @@ const AXLES = ['Single axle', 'Tandem axle'];
 const PRICE_MIN = 105000, PRICE_MAX = 215000;
 const LEN_MIN = 204, LEN_MAX = 288; // whole inches: 17'00" to 24'00"
 const fmtLen = (v, unit) => {
-  if (unit === 'm') return (v / 12 * 0.3048).toFixed(1) + ' m';
+  if (unit === 'm') return (v / 12 * 0.3048).toFixed(2) + ' m';
   return Math.floor(v / 12) + "'" + String(v % 12).padStart(2, '0') + '"';
+};
+const kg = n => n.toLocaleString('en-AU') + ' kg';
+// Slider definitions. lo/hi are state keys; nulls in van data never exclude a van.
+const SLIDERS = {
+  price: { lo: 'minPrice', hi: 'maxPrice', min: PRICE_MIN, max: PRICE_MAX, step: 1000, title: 'Budget', fmt: (v) => money(v), field: 'priceN', icon: '' },
+  tare:  { lo: 'minTare', hi: 'maxTare', min: 2300, max: 3700, step: 10, title: 'Weight', fmt: (v) => kg(v), field: 'tare', icon: 'M6.2 7.2h7.6l1.6 8.6H4.6L6.2 7.2z M10 6.6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' },
+  atm:   { lo: 'minAtm', hi: 'maxAtm', min: 2950, max: 4500, step: 50, title: 'Weight', fmt: (v) => kg(v), field: 'atm', icon: 'M6.2 7.2h7.6l1.6 8.6H4.6L6.2 7.2z M10 6.6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' },
+  ball:  { lo: 'minBall', hi: 'maxBall', min: 150, max: 450, step: 5, title: 'Weight', fmt: (v) => kg(v), field: 'ball', icon: 'M6.2 7.2h7.6l1.6 8.6H4.6L6.2 7.2z M10 6.6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z' },
+  sleeps:{ lo: 'minSleeps', hi: 'maxSleeps', min: 2, max: 6, step: 1, title: 'Sleeps', fmt: (v) => String(v), field: 'sleeps', icon: 'M7 9.4a2.1 2.1 0 1 0 0-4.2 2.1 2.1 0 0 0 0 4.2z M2.8 15.6c0-2.3 1.9-4.2 4.2-4.2s4.2 1.9 4.2 4.2 M13.6 9.2a1.8 1.8 0 1 0 0-3.6 M13.6 11.4c1.9 0 3.5 1.6 3.5 3.5' },
+  len:   { lo: 'minLen', hi: 'maxLen', min: LEN_MIN, max: LEN_MAX, step: 1, title: 'Length', fmt: null, field: 'lenIn', icon: 'M2.5 7.5h15v5h-15v-5z M6 7.5v2.2 M9 7.5v3 M12 7.5v2.2 M15 7.5v3' }
 };
 
 const SAN = { ADD_ATTR: ['role', 'aria-checked', 'aria-label', 'aria-live', 'target'] };
@@ -37,11 +47,13 @@ function put(el, markup) { el.innerHTML = DOMPurify.sanitize(markup, SAN); }
 
 const SV = {
   s: { models: [], layouts: [], states: [], axles: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX,
-       minLen: LEN_MIN, maxLen: LEN_MAX, lenUnit: 'ft',
+       minLen: LEN_MIN, maxLen: LEN_MAX, lenUnit: 'm', weightMetric: 'atm',
+       minTare: 2300, maxTare: 3700, minAtm: 2950, maxAtm: 4500, minBall: 150, maxBall: 450, minSleeps: 2, maxSleeps: 6,
        sort: 'featured', group: false, consent: false, intent: 0, detail: null, gal: 0, tab: 'Chassis' },
   set(k, v) { this.s[k] = v; this.render(); },
   toggleIn(k, val) { const a = this.s[k]; this.s[k] = a.includes(val) ? a.filter(x => x !== val) : a.concat([val]); this.render(); },
-  clearAll() { Object.assign(this.s, { models: [], layouts: [], states: [], axles: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX, minLen: LEN_MIN, maxLen: LEN_MAX }); this.render(); },
+  clearAll() { Object.assign(this.s, { models: [], layouts: [], states: [], axles: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX,
+    minLen: LEN_MIN, maxLen: LEN_MAX, minTare: 2300, maxTare: 3700, minAtm: 2950, maxAtm: 4500, minBall: 150, maxBall: 450, minSleeps: 2, maxSleeps: 6 }); this.render(); },
 
   matches(v, skip) {
     const s = this.s;
@@ -50,9 +62,12 @@ const SV = {
     if (skip !== 'states' && s.states.length && !s.states.includes(v.state)) return false;
     if (skip !== 'axles' && s.axles.length && !s.axles.includes(v.axle)) return false;
     if (s.status !== 'all' && v.status !== s.status) return false;
-    const p = v.priceN == null ? PRICE_MIN : v.priceN;
-    if (p > s.maxPrice || p < s.minPrice) return false;
-    if (v.lenIn != null && (v.lenIn < s.minLen || v.lenIn > s.maxLen)) return false;
+    for (const key in SLIDERS) {
+      const c = SLIDERS[key];
+      const val = key === 'price' ? (v.priceN == null ? PRICE_MIN : v.priceN) : v[c.field];
+      if (val == null) continue;
+      if (val < s[c.lo] || val > s[c.hi]) return false;
+    }
     return true;
   },
   countFor(k, val) {
@@ -74,8 +89,14 @@ const SV = {
     s.states.forEach(m => c.push([m, 'states', m]));
     s.axles.forEach(m => c.push([m, 'axles', m]));
     if (s.status !== 'all') c.push([s.status, 'status', '']);
-    if (s.minPrice > PRICE_MIN || s.maxPrice < PRICE_MAX) c.push([money(s.minPrice) + ' – ' + money(s.maxPrice), 'price', '']);
-    if (s.minLen > LEN_MIN || s.maxLen < LEN_MAX) c.push([fmtLen(s.minLen, s.lenUnit) + ' – ' + fmtLen(s.maxLen, s.lenUnit), 'len', '']);
+    const CHIP_PREFIX = { price: '', len: '', tare: 'Tare ', atm: 'ATM ', ball: 'Ball ', sleeps: 'Sleeps ' };
+    for (const key in SLIDERS) {
+      const cfg = SLIDERS[key];
+      if (s[cfg.lo] > cfg.min || s[cfg.hi] < cfg.max) {
+        const f = cfg.fmt || (v => fmtLen(v, s.lenUnit));
+        c.push([CHIP_PREFIX[key] + f(s[cfg.lo]) + ' – ' + f(s[cfg.hi]), 'slider', key]);
+      }
+    }
     return c;
   },
 
@@ -113,13 +134,38 @@ const SV = {
     </article>`;
   },
 
+  sliderBlock(key, extraHead) {
+    const s = this.s, c = SLIDERS[key];
+    const fmt = c.fmt || (v => fmtLen(v, s.lenUnit));
+    const pc = v => ((v - c.min) / (c.max - c.min) * 100).toFixed(2);
+    return `<div data-slider="${key}" style="padding:18px 0;border-bottom:1px solid var(--line)">
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
+        ${c.icon ? `<svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="display:block;flex:none"><path d="${c.icon}" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>` : ''}
+        <span class="kicker">${c.title}</span>
+        ${extraHead || ''}
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px">
+        <span class="slb-lo" style="font:400 12px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${fmt(s[c.lo])}</span>
+        <span class="slb-hi" style="font:500 13px/1 'Gordita';color:var(--olink);font-variant-numeric:tabular-nums">${fmt(s[c.hi])}</span>
+      </div>
+      <div class="dualwrap" data-skey="${key}" style="position:relative;height:28px;touch-action:none">
+        <div style="position:absolute;left:0;right:0;top:12px;height:3px;background:#D8D3CC;border-radius:2px"></div>
+        <div class="slfill" style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--olink);left:${pc(s[c.lo])}%;right:${(100 - +pc(s[c.hi])).toFixed(2)}%"></div>
+        <input type="range" autocomplete="off" class="dual" aria-label="${c.title} minimum" min="${c.min}" max="${c.max}" step="${c.step}" value="${s[c.lo]}" data-skey="${key}" data-end="lo" style="z-index:3">
+        <input type="range" autocomplete="off" class="dual" aria-label="${c.title} maximum" min="${c.min}" max="${c.max}" step="${c.step}" value="${s[c.hi]}" data-skey="${key}" data-end="hi" style="z-index:4">
+      </div>
+    </div>`;
+  },
+
   railHTML() {
     const s = this.s;
     const chk = (k, val) => `<button type="button" role="checkbox" aria-checked="${s[k].includes(val)}" class="chk" data-act="toggle" data-key="${k}" data-val="${val}">
       <span class="box ${s[k].includes(val) ? 'on' : ''}"></span><span style="flex:1;text-align:left">${val}</span>
-      <span style="font:400 11.5px/1 'Gordita';color:var(--mut)">${this.countFor(k, val)}</span></button>`;
-    const pct = v => ((v - PRICE_MIN) / (PRICE_MAX - PRICE_MIN) * 100).toFixed(2);
-    const lpct = v => ((v - LEN_MIN) / (LEN_MAX - LEN_MIN) * 100).toFixed(2);
+      <span style="font:400 11.5px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${this.countFor(k, val)}</span></button>`;
+    const wUnits = `<div style="margin-left:auto;display:flex;gap:6px">${[['tare','Tare'],['atm','ATM'],['ball','Ball']].map(([k,l]) =>
+      `<button type="button" class="useg ${s.weightMetric === k ? 'on' : ''}" data-act="wmetric" data-val="${k}">${l}</button>`).join('')}</div>`;
+    const lUnits = `<div style="margin-left:auto;display:flex;gap:6px">${[['m','Metres'],['ft','Feet']].map(([k,l]) =>
+      `<button type="button" class="useg ${s.lenUnit === k ? 'on' : ''}" data-act="lenUnit" data-val="${k}">${l}</button>`).join('')}</div>`;
     return `
       <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:6px">
         <span class="av" style="font-size:14px;letter-spacing:.06em;text-transform:uppercase">Refine</span>
@@ -133,10 +179,13 @@ const SV = {
         </select>
       </div>
       <div style="padding:18px 0;border-bottom:1px solid var(--line)">
-        <div class="kicker" style="margin-bottom:6px">Model</div>${MODELS.map(m => chk('models', m)).join('')}
-      </div>
-      <div style="padding:18px 0;border-bottom:1px solid var(--line)">
         <div class="kicker" style="margin-bottom:6px">Layout</div>${LAYOUTS.map(m => chk('layouts', m)).join('')}
+      </div>
+      <div style="padding:7px 0">
+        <select autocomplete="off" aria-label="Model" class="selbox" data-act="modelSel">
+          <option value="">All models</option>
+          ${MODELS.map(m => `<option value="${m}" ${s.models[0] === m ? 'selected' : ''}>${m} (${this.countFor('models', m)})</option>`).join('')}
+        </select>
       </div>
       <div style="padding:7px 0">
         <select autocomplete="off" aria-label="State" class="selbox" data-act="stateSel">
@@ -144,44 +193,19 @@ const SV = {
           ${STATES.map(st => `<option value="${st}" ${s.states[0] === st ? 'selected' : ''}>${st} (${this.countFor('states', st)})</option>`).join('')}
         </select>
       </div>
+      ${this.sliderBlock('price')}
+      ${this.sliderBlock(s.weightMetric, wUnits)}
+      ${this.sliderBlock('sleeps')}
+      ${this.sliderBlock('len', lUnits)}
       <div style="padding:18px 0;border-bottom:1px solid var(--line)">
-        <div style="margin-bottom:11px"><span class="kicker">Budget</span></div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px">
-          <span style="font:400 12px/1 'Gordita';color:var(--mut)">${money(s.minPrice)}</span>
-          <span style="font:500 13px/1 'Gordita';color:var(--olink)">${money(s.maxPrice)}</span>
-        </div>
-        <div style="position:relative;height:28px">
-          <div style="position:absolute;left:0;right:0;top:12px;height:3px;background:#D8D3CC;border-radius:2px"></div>
-          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--olink);left:${pct(s.minPrice)}%;right:${(100 - pct(s.maxPrice)).toFixed(2)}%"></div>
-          <input type="range" autocomplete="off" class="dual" aria-label="Budget minimum" min="${PRICE_MIN}" max="${PRICE_MAX}" step="1000" value="${s.minPrice}" data-act="priceMin" style="z-index:3">
-          <input type="range" autocomplete="off" class="dual" aria-label="Budget maximum" min="${PRICE_MIN}" max="${PRICE_MAX}" step="1000" value="${s.maxPrice}" data-act="priceMax" style="z-index:4">
-        </div>
-      </div>
-      <div style="padding:18px 0;border-bottom:1px solid var(--line)">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
-          <span class="kicker">Length</span>
-          <span style="display:inline-flex;border:1px solid var(--line2);border-radius:2px;overflow:hidden">
-            ${['ft', 'm'].map(u => `<button type="button" class="unitbtn ${s.lenUnit === u ? 'on' : ''}" data-act="lenUnit" data-val="${u}">${u}</button>`).join('')}
-          </span>
-        </div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px">
-          <span style="font:400 12px/1 'Gordita';color:var(--mut)">${fmtLen(s.minLen, s.lenUnit)}</span>
-          <span style="font:500 13px/1 'Gordita';color:var(--olink)">${fmtLen(s.maxLen, s.lenUnit)}</span>
-        </div>
-        <div style="position:relative;height:28px">
-          <div style="position:absolute;left:0;right:0;top:12px;height:3px;background:#D8D3CC;border-radius:2px"></div>
-          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--olink);left:${lpct(s.minLen)}%;right:${(100 - lpct(s.maxLen)).toFixed(2)}%"></div>
-          <input type="range" autocomplete="off" class="dual" aria-label="Length minimum" min="${LEN_MIN}" max="${LEN_MAX}" step="1" value="${s.minLen}" data-act="lenMin" style="z-index:3">
-          <input type="range" autocomplete="off" class="dual" aria-label="Length maximum" min="${LEN_MIN}" max="${LEN_MAX}" step="1" value="${s.maxLen}" data-act="lenMax" style="z-index:4">
-        </div>
-      </div>
-      <div style="padding:18px 0;border-bottom:1px solid var(--line)">
-        <div class="kicker" style="margin-bottom:6px">Axle</div>${AXLES.map(m => chk('axles', m)).join('')}
+        <div class="kicker" style="margin-bottom:6px">Axle configuration</div>${AXLES.map(m => chk('axles', m)).join('')}
       </div>
       <button type="button" role="checkbox" aria-checked="${s.group}" class="chk" style="padding-top:20px" data-act="group">
         <span class="box ${s.group ? 'on' : ''}"></span><span style="flex:1;text-align:left">Group by location</span>
       </button>
-      <button type="button" class="btn-orange" style="width:100%;margin-top:20px" data-act="clear">Reset filters</button>
+      <div style="padding:20px 0 2px;border-top:1px solid var(--line);margin-top:18px">
+        <button type="button" class="btn-orange" style="width:100%" data-act="clear">Reset filters</button>
+      </div>
       <div style="margin-top:28px;background:var(--ink);padding:22px;border-radius:4px">
         <div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:12px">Not sure?</div>
         <p style="margin:0 0 16px;font:300 13px/1.55 'Gordita';color:rgba(255,255,255,.72)">Tell us how you travel and we will point you at the right van. No hard sell.</p>
@@ -190,9 +214,23 @@ const SV = {
   },
 
   render() {
+    put(document.getElementById('railbox'), this.railHTML());
+    this.renderList();
+    const sel = document.getElementById('vanselect');
+    const keep = sel.value;
+    put(sel, '<option value="">Which van are you asking about?</option>' +
+      VANS.map(v => `<option value="${v.chassis}">${v.chassis} · ${fullName(v)} (${v.state})</option>`).join('') +
+      '<option value="unsure">Not sure yet, help me choose</option>');
+    sel.value = keep;
+    this.renderIntents();
+    this.syncMob();
+  },
+
+  // Lightweight re-render while a slider is being dragged: results update live but the
+  // rail (and the input being dragged) is left alone so the drag is not interrupted.
+  renderList() {
     const list = this.filtered();
     document.getElementById('count').textContent = list.length;
-    put(document.getElementById('railbox'), this.railHTML());
     const chips = this.chips();
     const chEl = document.getElementById('chips');
     chEl.style.display = chips.length ? 'flex' : 'none';
@@ -213,14 +251,34 @@ const SV = {
         <div class="grid">${g.vans.map(v => this.cardHTML(v)).join('')}</div>
       </div>`).join(''));
     document.getElementById('empty').style.display = list.length ? 'none' : 'block';
-    const sel = document.getElementById('vanselect');
-    const keep = sel.value;
-    put(sel, '<option value="">Which van are you asking about?</option>' +
-      VANS.map(v => `<option value="${v.chassis}">${v.chassis} · ${fullName(v)} (${v.state})</option>`).join('') +
-      '<option value="unsure">Not sure yet, help me choose</option>');
-    sel.value = keep;
-    this.renderIntents();
-    this.syncMob();
+    const mc = document.getElementById('mobcount');
+    if (mc) mc.textContent = list.length;
+  },
+
+  // Update one slider's labels, fill and input values in place (every rendered instance).
+  updateSliderUI(key) {
+    const s = this.s, c = SLIDERS[key];
+    const fmt = c.fmt || (v => fmtLen(v, s.lenUnit));
+    const pc = v => ((v - c.min) / (c.max - c.min) * 100).toFixed(2);
+    document.querySelectorAll(`[data-slider="${key}"]`).forEach(w => {
+      w.querySelector('.slb-lo').textContent = fmt(s[c.lo]);
+      w.querySelector('.slb-hi').textContent = fmt(s[c.hi]);
+      const f = w.querySelector('.slfill');
+      f.style.left = pc(s[c.lo]) + '%';
+      f.style.right = (100 - +pc(s[c.hi])).toFixed(2) + '%';
+      const [ilo, ihi] = w.querySelectorAll('input.dual');
+      ilo.value = s[c.lo]; ihi.value = s[c.hi];
+    });
+  },
+
+  setSlider(key, end, raw, light) {
+    const c = SLIDERS[key];
+    let v = Math.round(+raw / c.step) * c.step;
+    v = Math.max(c.min, Math.min(c.max, v));
+    if (end === 'lo') this.s[c.lo] = Math.min(v, this.s[c.hi] - c.step);
+    else this.s[c.hi] = Math.max(v, this.s[c.lo] + c.step);
+    if (light) { this.updateSliderUI(key); this.renderList(); }
+    else this.render();
   },
 
   INTENTS: ['Call back', 'Book a viewing', 'Get a quote', 'Hold this van'],
@@ -342,7 +400,9 @@ const SV = {
             <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff" href="tel:+61386920032">Call (03) 8692 0032</a>
           </div>
           <div style="padding:0 22px 22px">
-            ${[['Stock no', v.chassis], ['Layout code', v.code], ['Length', v.length || '—'], ['Layout', v.layout], ['Condition', v.used ? 'Pre-loved' : 'New'], ['Location', v.state], ['Photos', v.images.length]].map(([k, val]) => `
+            ${[['Stock no', v.chassis], ['Layout code', v.code], ['Length', v.length || '—'], ['Layout', v.layout], ['Sleeps', v.sleeps || '—'],
+               ['Tare', v.tare ? kg(v.tare) : '—'], ['ATM', v.atm ? kg(v.atm) : '—'], ['Ball weight', v.ball ? kg(v.ball) : '—'],
+               ['Axle', v.axle], ['Condition', v.used ? 'Pre-loved' : 'New'], ['Location', v.state], ['Photos', v.images.length]].map(([k, val]) => `
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line)">
               <span style="font:400 11.5px/1.3 'Gordita';letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">${k}</span>
               <span style="font:500 12.5px/1.3 'Gordita';text-align:right">${val}</span></div>`).join('')}
@@ -434,11 +494,11 @@ const SV = {
     else if (a === 'unchip') {
       const kind = el.dataset.kind;
       if (kind === 'status') this.set('status', 'all');
-      else if (kind === 'price') { this.s.minPrice = PRICE_MIN; this.s.maxPrice = PRICE_MAX; this.render(); }
-      else if (kind === 'len') { this.s.minLen = LEN_MIN; this.s.maxLen = LEN_MAX; this.render(); }
+      else if (kind === 'slider') { const c = SLIDERS[val]; this.s[c.lo] = c.min; this.s[c.hi] = c.max; this.render(); }
       else this.toggleIn(kind, val);
     }
     else if (a === 'lenUnit') this.set('lenUnit', val);
+    else if (a === 'wmetric') this.set('weightMetric', val);
     else if (a === 'intent') { this.s.intent = +id; this.renderIntents(); }
     else if (a === 'back') this.backToGrid();
     else if (a === 'galprev') { const v = VANS[this.s.detail]; this.s.gal = (this.s.gal - 1 + v.images.length) % v.images.length; this.renderDetail(); }
@@ -460,15 +520,44 @@ const SV = {
       if (!el) return;
       if (el.dataset.act === 'status') this.set('status', el.value);
       else if (el.dataset.act === 'stateSel') { this.s.states = el.value ? [el.value] : []; this.render(); }
+      else if (el.dataset.act === 'modelSel') { this.s.models = el.value ? [el.value] : []; this.render(); }
       else if (el.dataset.act === 'sort') { this.s.sort = el.value; this.render(); }
     });
+    // Keyboard on the range inputs (arrow keys): light update while focused.
     document.addEventListener('input', e => {
-      const el = e.target.closest('[data-act]');
-      if (!el) return;
-      if (el.dataset.act === 'priceMin') { this.s.minPrice = Math.min(+el.value, this.s.maxPrice - 1000); this.render(); }
-      else if (el.dataset.act === 'priceMax') { this.s.maxPrice = Math.max(+el.value, this.s.minPrice + 1000); this.render(); }
-      else if (el.dataset.act === 'lenMin') { this.s.minLen = Math.min(+el.value, this.s.maxLen - 1); this.render(); }
-      else if (el.dataset.act === 'lenMax') { this.s.maxLen = Math.max(+el.value, this.s.minLen + 1); this.render(); }
+      const el = e.target;
+      if (el.classList && el.classList.contains('dual') && el.dataset.skey)
+        this.setSlider(el.dataset.skey, el.dataset.end, el.value, true);
+    });
+    // Pointer drag engine for the dual sliders. Native range drag is unreliable with
+    // stacked inputs (Safari ignores pointer-events on the thumb pseudo-element) and a
+    // full re-render mid-drag destroys the input being dragged, so the wrapper owns the
+    // pointer: pick the nearest thumb on pointerdown, track moves, full render on release.
+    const dragState = {};
+    document.addEventListener('pointerdown', e => {
+      const w = e.target.closest('.dualwrap');
+      if (!w) return;
+      e.preventDefault();
+      const key = w.dataset.skey, c = SLIDERS[key];
+      const r = w.getBoundingClientRect();
+      const frac = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      const v = c.min + frac * (c.max - c.min);
+      const dLo = Math.abs(v - this.s[c.lo]), dHi = Math.abs(v - this.s[c.hi]);
+      dragState.key = key; dragState.end = (dLo < dHi || (dLo === dHi && v < this.s[c.lo])) ? 'lo' : 'hi';
+      dragState.rect = r; dragState.active = true;
+      w.setPointerCapture && w.setPointerCapture(e.pointerId);
+      this.setSlider(key, dragState.end, v, true);
+    });
+    document.addEventListener('pointermove', e => {
+      if (!dragState.active) return;
+      const c = SLIDERS[dragState.key], r = dragState.rect;
+      const frac = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width));
+      this.setSlider(dragState.key, dragState.end, c.min + frac * (c.max - c.min), true);
+    });
+    document.addEventListener('pointerup', () => {
+      if (!dragState.active) return;
+      dragState.active = false;
+      this.render();
     });
     document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
     this.render();
