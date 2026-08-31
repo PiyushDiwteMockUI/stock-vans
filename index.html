@@ -10,68 +10,68 @@
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Light.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-:root{--ink:#12171C;--body:#646E76;--body2:#2A3238;--mut:#6E777E;--orange:#C97625;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
+:root{--svink:#12171C;--body:#646E76;--body2:#2A3238;--mut:#6E777E;--svorange:#C97625;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{background:#fff;font-family:'Gordita',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--ink)}
+body{background:#fff;font-family:'Gordita',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--svink)}
 a{color:var(--olink);text-decoration:none}
-a:hover{color:var(--orange)}
+a:hover{color:var(--svorange)}
 .av{font-family:aviano-sans,'Arial Black',sans-serif;font-weight:900}
 button{font-family:'Gordita',sans-serif}
 img{max-width:100%}
 input[type=range]{-webkit-appearance:none;appearance:none;height:3px;background:#D8D3CC;border-radius:2px;outline:none}
 input[type=range].dual{position:absolute;left:0;top:0;height:28px;background:none;pointer-events:none;margin:0;width:100%}
 input[type=range].dual::-webkit-slider-thumb{pointer-events:auto}
-input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--ink);cursor:pointer;border:3px solid #fff;box-shadow:0 0 0 1px var(--ink)}
-input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--ink);cursor:pointer;border:3px solid #fff;box-shadow:0 0 0 1px var(--ink);pointer-events:auto}
-:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--svink);cursor:pointer;border:3px solid #fff;box-shadow:0 0 0 1px var(--svink)}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--svink);cursor:pointer;border:3px solid #fff;box-shadow:0 0 0 1px var(--svink);pointer-events:auto}
+:focus-visible{outline:2px solid var(--svorange);outline-offset:2px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
-.kicker{font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--ink)}
+.kicker{font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--svink)}
 .speck{font:400 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
-.specv{font:500 12.5px/1.2 'Gordita',sans-serif;color:var(--ink)}
-.badge-dark{background:var(--ink);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
-.badge-orange{background:var(--orange);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
+.specv{font:500 12.5px/1.2 'Gordita',sans-serif;color:var(--svink)}
+.badge-dark{background:var(--svink);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
+.badge-orange{background:var(--svorange);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
 .photocount{position:absolute;bottom:12px;right:12px;background:rgba(6,9,12,.72);color:#fff;font:400 11px/1 'Gordita',sans-serif;padding:6px 9px;border-radius:2px}
 .modelkick{font:500 10px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink)}
-.cardname{margin:0 0 14px;font-size:17px;line-height:1.16;letter-spacing:.03em;text-transform:uppercase;color:var(--ink);cursor:pointer}
+.cardname{margin:0 0 14px;font-size:17px;line-height:1.16;letter-spacing:.03em;text-transform:uppercase;color:var(--svink);cursor:pointer}
 .cardspecs{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:16px}
-.selbox{-webkit-appearance:none;appearance:none;width:100%;min-height:52px;padding:0 40px 0 14px;font:400 13.5px/1 'Gordita',sans-serif;color:var(--ink);background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M0 0L7 7L14 0' fill='none' stroke='%2312171C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;background-size:13px 8px;border:1px solid var(--ink);border-radius:6px;cursor:pointer}
+.selbox{-webkit-appearance:none;appearance:none;width:100%;min-height:52px;padding:0 40px 0 14px;font:400 13.5px/1 'Gordita',sans-serif;color:var(--svink);background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M0 0L7 7L14 0' fill='none' stroke='%2312171C'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;background-size:13px 8px;border:1px solid var(--svink);border-radius:6px;cursor:pointer}
 .selstatus{text-transform:uppercase;letter-spacing:.1em;font-size:12.5px}
 .chk{display:flex;align-items:center;gap:12px;width:100%;min-height:44px;padding:0;background:none;border:0;cursor:pointer;font:400 13.5px/1.3 'Gordita',sans-serif;color:var(--body2)}
 .box{width:16px;height:16px;flex:none;border-radius:2px;border:1px solid #D8D3CC;background:#fff}
-.box.on{border-color:var(--ink);background:var(--ink);box-shadow:inset 0 0 0 3px var(--ink),inset 0 0 0 4px #fff}
+.box.on{border-color:var(--svink);background:var(--svink);box-shadow:inset 0 0 0 3px var(--svink),inset 0 0 0 4px #fff}
 .card{border:1px solid var(--line2);border-radius:5px;overflow:hidden;background:#fff;display:flex;flex-direction:column;transition:box-shadow .22s cubic-bezier(.23,1,.32,1),transform .22s cubic-bezier(.23,1,.32,1)}
 .card:hover{box-shadow:0 16px 44px rgba(12,15,18,.14);transform:translateY(-3px)}
 .simcard{border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff;cursor:pointer;transition:border-color .2s ease}
-.simcard:hover{border-color:var(--ink)}
-.btn-dark{background:var(--ink);color:#fff;border:none;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .18s ease,transform .12s cubic-bezier(.23,1,.32,1)}
+.simcard:hover{border-color:var(--svink)}
+.btn-dark{background:var(--svink);color:#fff;border:none;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .18s ease,transform .12s cubic-bezier(.23,1,.32,1)}
 .btn-dark:hover{background:#000}.btn-dark:active{transform:scale(.97)}
-.btn-line{background:#fff;color:var(--ink);border:1px solid var(--ink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .18s ease,transform .12s cubic-bezier(.23,1,.32,1)}
+.btn-line{background:#fff;color:var(--svink);border:1px solid var(--svink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .18s ease,transform .12s cubic-bezier(.23,1,.32,1)}
 .btn-line:hover{background:#F2EEE8}.btn-line:active{transform:scale(.97)}
-.btn-orange{background:var(--orange);color:#fff;border:1px solid var(--orange);font:500 11px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:17px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .2s ease,color .2s ease,transform .12s cubic-bezier(.23,1,.32,1)}
-.btn-orange:hover{background:#fff;color:var(--orange)}.btn-orange:active{transform:scale(.98)}
+.btn-orange{background:var(--svorange);color:#fff;border:1px solid var(--svorange);font:500 11px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:17px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .2s ease,color .2s ease,transform .12s cubic-bezier(.23,1,.32,1)}
+.btn-orange:hover{background:#fff;color:var(--svorange)}.btn-orange:active{transform:scale(.98)}
 .linkbtn{background:none;border:none;padding:0;cursor:pointer;font:400 11.5px/1 'Gordita',sans-serif;color:var(--olink);text-decoration:underline;text-underline-offset:3px}
-.chip{display:flex;align-items:center;gap:8px;background:#F2EEE8;border:1px solid var(--line2);color:var(--ink);font:400 12px/1 'Gordita',sans-serif;padding:8px 11px;border-radius:20px;cursor:pointer}
-.talkbtn{display:block;text-align:center;background:#fff;color:var(--ink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:13px;border-radius:3px}
+.chip{display:flex;align-items:center;gap:8px;background:#F2EEE8;border:1px solid var(--line2);color:var(--svink);font:400 12px/1 'Gordita',sans-serif;padding:8px 11px;border-radius:20px;cursor:pointer}
+.talkbtn{display:block;text-align:center;background:#fff;color:var(--svink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:13px;border-radius:3px}
 .galbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(6,9,12,.6);color:#fff;font-size:17px;cursor:pointer}
 .thumbbtn{flex:none;width:88px;height:62px;padding:0;border-radius:3px;overflow:hidden;cursor:pointer;background:var(--line);border:2px solid transparent;opacity:.62}
-.thumbbtn.on{border-color:var(--ink);opacity:1}
+.thumbbtn.on{border-color:var(--svink);opacity:1}
 .tabbtn{border:none;background:transparent;color:var(--body);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px 16px;border-radius:3px 3px 0 0;cursor:pointer;min-height:44px}
-.tabbtn.on{background:var(--ink);color:#fff}
+.tabbtn.on{background:var(--svink);color:#fff}
 .useg{background:none;border:none;border-bottom:1.5px solid transparent;color:var(--mut);font:500 10px/1 'Gordita',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:7px 2px;cursor:pointer;min-height:30px;transition:color .18s ease}
-.useg.on{color:var(--orange);border-bottom-color:var(--orange)}
-.lineinput{display:block;width:100%;min-height:46px;padding:0 22px 12px 2px;font:400 15px/1 'Gordita',sans-serif;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--ink);border-radius:0;transition:border-color .18s ease}
-.lineinput:focus{border-bottom-color:var(--orange);box-shadow:0 1px 0 var(--orange);outline:none}
-.lineselect{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:46px;padding:0 30px 12px 2px;font:400 15px/1 'Gordita',sans-serif;color:var(--ink);background:#fff;border:0;border-bottom:1px solid var(--ink);border-radius:0;cursor:pointer;transition:border-color .18s ease}
-.lineselect:focus{border-bottom-color:var(--orange);box-shadow:0 1px 0 var(--orange);outline:none}
+.useg.on{color:var(--svorange);border-bottom-color:var(--svorange)}
+.lineinput{display:block;width:100%;min-height:46px;padding:0 22px 12px 2px;font:400 15px/1 'Gordita',sans-serif;color:var(--svink);background:none;border:0;border-bottom:1px solid var(--svink);border-radius:0;transition:border-color .18s ease}
+.lineinput:focus{border-bottom-color:var(--svorange);box-shadow:0 1px 0 var(--svorange);outline:none}
+.lineselect{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:46px;padding:0 30px 12px 2px;font:400 15px/1 'Gordita',sans-serif;color:var(--svink);background:#fff;border:0;border-bottom:1px solid var(--svink);border-radius:0;cursor:pointer;transition:border-color .18s ease}
+.lineselect:focus{border-bottom-color:var(--svorange);box-shadow:0 1px 0 var(--svorange);outline:none}
 .req{position:absolute;right:2px;top:4px;color:#C0392B;font:500 15px/1 'Gordita',sans-serif;pointer-events:none}
 .intentcell{flex:1 1 0;min-width:0;position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:11px 0;background:none;border:0;border-radius:22px}
-.intentdiv{border-left:1px solid var(--ink)}
-.intentpill{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;width:calc(100% - 10px);min-height:34px;border-radius:22px;padding:0 4px;background:transparent;font:400 14px/1.25 'Gordita',sans-serif;color:var(--ink);transition:color .18s ease,background-color .18s ease}
-.intentpill.on{background:var(--orange);font-weight:700;color:#fff}
-#consentbtn{width:22px;height:22px;flex:none;padding:0;cursor:pointer;border-radius:50%;border:1px solid var(--ink);background:transparent;transition:background-color .18s ease,border-color .18s ease}
-#consentbtn.on{background:var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/56%;border-color:var(--orange)}
+.intentdiv{border-left:1px solid var(--svink)}
+.intentpill{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;text-align:center;width:calc(100% - 10px);min-height:34px;border-radius:22px;padding:0 4px;background:transparent;font:400 14px/1.25 'Gordita',sans-serif;color:var(--svink);transition:color .18s ease,background-color .18s ease}
+.intentpill.on{background:var(--svorange);font-weight:700;color:#fff}
+#consentbtn{width:22px;height:22px;flex:none;padding:0;cursor:pointer;border-radius:50%;border:1px solid var(--svink);background:transparent;transition:background-color .18s ease,border-color .18s ease}
+#consentbtn.on{background:var(--svorange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center/56%;border-color:var(--svorange)}
 .gutter{padding-left:56px;padding-right:56px}
 .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(324px,1fr))}
 .wrap{display:flex;flex-wrap:wrap;align-items:flex-start}
@@ -93,10 +93,7 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
   aside.rail{display:none}
   main.list{padding:26px 20px 0}
   .grid{gap:18px}
-  .hero-h1{font-size:44px!important}
-  .hero-sub{font-size:17px!important}
-  .hero{height:430px!important}
-  .mobfab{display:flex;position:fixed;left:0;top:52%;z-index:90;align-items:center;gap:9px;background:var(--ink);border:none;border-radius:0 5px 5px 0;padding:18px 12px;cursor:pointer;box-shadow:5px 6px 22px rgba(6,9,12,.28);writing-mode:vertical-rl;transform:rotate(180deg)}
+  .mobfab{display:flex;position:fixed;left:0;top:52%;z-index:90;align-items:center;gap:9px;background:var(--svink);border:none;border-radius:0 5px 5px 0;padding:18px 12px;cursor:pointer;box-shadow:5px 6px 22px rgba(6,9,12,.28);writing-mode:vertical-rl;transform:rotate(180deg)}
   .detailwrap>div{padding-left:20px!important;padding-right:20px!important}
   .detailwrap .wrap>div{padding-left:20px!important;padding-right:20px!important}
   .detailside{max-width:none!important;padding:0 20px 40px!important}
@@ -106,45 +103,58 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
   .intentpill{font-size:12px!important}
 }
 </style>
+<link rel="stylesheet" href="assets/ref/css/styles.css">
+<link rel="stylesheet" href="assets/ref/css/type-compact.css">
 </head>
 <body>
 
-<header class="site">
-  <a href="https://wonderlandrv.com.au/"><img src="https://wonderlandrv.com.au/wp-content/uploads/2022/12/logo.svg" alt="Wonderland RV" style="height:34px;width:auto;display:block"></a>
-  <nav style="display:flex;gap:22px;align-items:center">
-    <a href="https://wonderlandrv.com.au/" style="font:400 13px/1 'Gordita';color:var(--body)">home</a>
-    <a href="https://wonderlandrv.com.au/range/" style="font:400 13px/1 'Gordita';color:var(--body)">range</a>
-    <span style="font:500 13px/1 'Gordita';color:var(--ink);border-bottom:2px solid var(--orange);padding-bottom:4px">buy</span>
-    <a href="https://wonderlandrv.com.au/events/" style="font:400 13px/1 'Gordita';color:var(--body)">events</a>
-    <a href="https://wonderlandrv.com.au/about-us/" style="font:400 13px/1 'Gordita';color:var(--body)">about</a>
-    <a href="https://wonderlandrv.com.au/contact-us/" style="font:400 13px/1 'Gordita';color:var(--body)">contact</a>
-  </nav>
-  <div class="deskcta" style="margin-left:auto;display:flex;align-items:center;gap:18px">
-    <a href="tel:+61386920032" style="font:400 12.5px/1 'Gordita';color:var(--body)">(03) 8692 0032</a>
-    <a href="https://wonderlandrv.com.au/build-your-caravan/" style="font:500 11px/1 'Gordita';letter-spacing:.16em;text-transform:uppercase;color:#fff;background:var(--ink);padding:13px 20px;border-radius:3px">Build your caravan</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="https://wonderlandrv.com.au/" aria-label="Wonderland RV — home">
+      <img src="assets/ref/img/wonderland-rv-logo.png" alt="Wonderland RV">
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="https://wonderlandrv.com.au/range/">Range</a>
+      <a href="#" aria-current="page">Buy</a>
+      <a href="https://wonderlandrv.com.au/events/">Events</a>
+      <a href="https://wonderlandrv.com.au/about-us/">About</a>
+      <a href="https://wonderlandrv.com.au/media/">Media</a>
+      <a href="https://wonderlandrv.com.au/contact-us/">Contact</a>
+    </nav>
+    <button class="search-btn" type="button" aria-label="Search">
+      <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+        <circle cx="9.5" cy="9.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="15.61" y1="14.2" x2="18.8" y2="17.38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <a class="btn-build" href="https://wonderlandrv.com.au/build-your-caravan/">Build your Caravan</a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
 <div id="page-grid">
-  <div class="hero" style="position:relative;height:560px;overflow:hidden;background:var(--dk)">
-    <img src="https://wonderlandrv.com.au/wp-content/uploads/2025/12/xtr-banner-full-1.webp" alt="Wonderland RV stock vans" fetchpriority="high" style="position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,12,.62) 0%,rgba(6,9,12,.18) 42%,rgba(6,9,12,.86) 100%)"></div>
-    <div class="gutter" style="position:absolute;left:0;right:0;bottom:0;padding-bottom:60px">
-      <h1 class="av hero-h1" style="margin:0;font-size:88px;line-height:1;letter-spacing:-.01em;color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.34)">Stock vans</h1>
-      <p class="av hero-sub" style="margin:14px 0 0;font-weight:400;font-size:26px;line-height:1;color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.36)">ready for handover now</p>
+  <section class="hero">
+    <div class="media">
+      <img src="https://wonderlandrv.com.au/wp-content/uploads/2025/12/xtr-banner-full-1.webp" alt="Wonderland RV stock vans" fetchpriority="high">
     </div>
-  </div>
+    <div class="hero-copy container">
+      <h1>Stock vans</h1>
+      <p class="hero-sub">ready for handover now</p>
+    </div>
+  </section></div>
 
   <button class="mobfab" data-act="openmob">
     <span style="font:500 11.5px/1 'Gordita';letter-spacing:.22em;text-transform:uppercase;color:#fff;pointer-events:none">Search stock</span>
-    <span id="mob-count-badge" style="display:none;background:var(--orange);color:#fff;font:500 10px/1 'Gordita';padding:4px 6px;border-radius:9px;writing-mode:horizontal-tb;transform:rotate(180deg);pointer-events:none"></span>
+    <span id="mob-count-badge" style="display:none;background:var(--svorange);color:#fff;font:500 10px/1 'Gordita';padding:4px 6px;border-radius:9px;writing-mode:horizontal-tb;transform:rotate(180deg);pointer-events:none"></span>
   </button>
 
   <div class="wrap">
     <aside class="rail" id="railbox"></aside>
     <main class="list">
       <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:26px">
-        <span aria-live="polite" style="font:400 13px/1 'Gordita';color:var(--body)"><span id="count" style="color:var(--ink);font-weight:500">0</span> vans ready to leave</span>
+        <span aria-live="polite" style="font:400 13px/1 'Gordita';color:var(--body)"><span id="count" style="color:var(--svink);font-weight:500">0</span> vans ready to leave</span>
         <select aria-label="Sort stock" class="selbox sortsel" data-act="sort">
           <option value="featured">Featured first</option>
           <option value="priceAsc">Price: low to high</option>
@@ -164,85 +174,299 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
 
   <div class="gutter" style="background:var(--cream);border-top:1px solid var(--line);padding-top:66px;padding-bottom:66px">
     <div style="display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
-      <div><span style="width:34px;height:2px;background:var(--orange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Same van, no wait</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">Every stock van is built to the same spec as a custom order. The only difference is that this one is finished.</div></div>
-      <div><span style="width:34px;height:2px;background:var(--orange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Three year warranty</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">Factory-backed, plus aftersales support wherever you happen to be in the country.</div></div>
-      <div><span style="width:34px;height:2px;background:var(--orange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Extras already fitted</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">Stock vans are built to our most popular spec, so the upgrades most people want are already in there.</div></div>
-      <div><span style="width:34px;height:2px;background:var(--orange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">No hard sell</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">We would rather point you at the right van than sell you the wrong one. Come and walk through it.</div></div>
+      <div><span style="width:34px;height:2px;background:var(--svorange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Same van, no wait</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">Every stock van is built to the same spec as a custom order. The only difference is that this one is finished.</div></div>
+      <div><span style="width:34px;height:2px;background:var(--svorange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Three year warranty</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">Factory-backed, plus aftersales support wherever you happen to be in the country.</div></div>
+      <div><span style="width:34px;height:2px;background:var(--svorange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Extras already fitted</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">Stock vans are built to our most popular spec, so the upgrades most people want are already in there.</div></div>
+      <div><span style="width:34px;height:2px;background:var(--svorange);display:block;margin-bottom:15px"></span><div class="av" style="font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">No hard sell</div><div style="font:300 13px/1.6 'Gordita';color:var(--body)">We would rather point you at the right van than sell you the wrong one. Come and walk through it.</div></div>
     </div>
   </div>
 </div>
 
 <div id="page-detail" style="display:none"></div>
 
-<div id="enquire" class="gutter" style="background:#fff;border-top:1px solid var(--line);padding-top:66px;padding-bottom:66px">
-  <h2 class="av" style="margin:0;font-size:58px;line-height:1;letter-spacing:-.01em">Ready for handover ?</h2>
-  <div class="enqgrid" style="display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:64px;padding-top:46px;align-items:stretch">
-    <div style="display:flex;flex-direction:column;min-width:0">
-      <p style="margin:0;font:300 19px/1.42 'Gordita';color:var(--ink)">Tell us which van caught your eye and we will send through the full spec, the photos and the real drive-away number.</p>
-      <p style="margin:26px 0 0;font:300 19px/1.42 'Gordita';color:var(--ink)">We will confirm it is still on the lot, then walk you through it in person or on a call, <span style="color:var(--olink);font-weight:500">and get you on the road.</span></p>
-      <p style="margin-top:auto;padding-top:26px;margin-bottom:0;font:500 13px/1.5 'Gordita';color:var(--olink)">Our team will reach out within 24 hours on business days. Stock moves fast, so we answer these first.</p>
+<section class="enquiry" id="enquire">
+  <div class="container">
+    <h2 class="enquiry-title"><span class="ln">Ready for</span> <span class="ln">handover ?</span></h2>
+    <div class="enquiry-grid">
+      <div class="enquiry-copy">
+        <p class="lede">Tell us which van<br>
+          caught your eye and<br>
+          we will send the full spec,<br>
+          the photos and the real<br>
+          drive-away number.</p>
+        <p class="lede">We&rsquo;ll confirm it is<br>
+          still on the lot,<br>
+          <span class="lede-accent">then get you<br>
+          on the road.</span></p>
+        <p class="reachout">Our experts will reach out<br>
+          to you within 24 hours<br>
+          on Business days.</p>
+      </div>
+      <form class="enquiry-form" id="enqform" action="#" method="post" autocomplete="off" novalidate>
+        <div class="field-grid">
+          <div class="field field--line">
+            <input id="first-name" name="first-name" type="text" placeholder="First Name" required autocomplete="given-name">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="last-name" name="last-name" type="text" placeholder="Last Name" required autocomplete="off">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="email" name="email" type="email" placeholder="Email" required autocomplete="off">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="off">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--select">
+            <select id="state" name="state" autocomplete="off" required>
+              <option value="" selected disabled>State</option>
+              <option>Victoria</option>
+              <option>New South Wales</option>
+              <option>Queensland</option>
+              <option>South Australia</option>
+              <option>Western Australia</option>
+              <option>Tasmania</option>
+              <option>Northern Territory</option>
+              <option>Australian Capital Territory</option>
+            </select>
+            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="postcode" name="postcode" type="text" inputmode="numeric" placeholder="Post Code" required autocomplete="off">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--select field--van">
+            <select id="vanselect" name="van" autocomplete="off" aria-label="Which van are you asking about?">
+              <option value="">Which van are you asking about?</option>
+            </select>
+            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
+          </div>
+        </div>
+        <fieldset class="chips">
+          <legend class="sr-only">What would you like to do?</legend>
+          <span class="chips-thumb is-init" aria-hidden="true"></span>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Call back" checked>
+            <span>Call back</span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Book a viewing">
+            <span>Book a<br>viewing</span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Get a Quote">
+            <span>Get a Quote</span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Hold this van">
+            <span>Hold<br>this van</span>
+          </label>
+        </fieldset>
+        <div class="field field--area">
+          <label class="sr-only" for="message">Something else you want to tell us...</label>
+          <textarea id="message" name="message" placeholder="Something else you want to tell us..."></textarea>
+        </div>
+        <div class="consent">
+          <input type="checkbox" id="marketing" name="marketing">
+          <label for="marketing">
+            I would like to receive marketing communications with discounts, updates, new
+            releases and more.
+            <span class="fineprint">*&nbsp; I understand I can unsubscribe at anytime.</span>
+          </label>
+        </div>
+        <button class="btn-submit" type="submit">Submit</button>
+        <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
+      </form>
     </div>
-    <form id="enqform" style="display:flex;flex-direction:column;min-width:0">
-      <div class="enqfields" style="display:grid;grid-template-columns:1fr 1fr;column-gap:22px;row-gap:24px">
-        <div style="position:relative"><input name="firstname" required autocomplete="given-name" placeholder="First name" class="lineinput"><span aria-hidden="true" class="req">*</span></div>
-        <div style="position:relative"><input name="lastname" required autocomplete="family-name" placeholder="Last name" class="lineinput"><span aria-hidden="true" class="req">*</span></div>
-        <div style="position:relative"><input name="email" required autocomplete="email" spellcheck="false" type="email" placeholder="Email" class="lineinput"><span aria-hidden="true" class="req">*</span></div>
-        <div style="position:relative"><input name="phone" required autocomplete="tel" type="tel" placeholder="Phone" class="lineinput"><span aria-hidden="true" class="req">*</span></div>
-        <div style="position:relative;grid-column:1 / -1">
-          <select name="state" required class="lineselect" aria-label="State">
-            <option value="">State</option>
-            <option>Victoria</option><option>New South Wales / ACT</option><option>Queensland</option>
-            <option>South Australia</option><option>Western Australia</option><option>Northern Territory</option>
-            <option>Tasmania</option><option>New Zealand</option>
-          </select>
-          <span aria-hidden="true" class="req" style="right:14px">*</span>
-        </div>
-        <div style="position:relative;grid-column:1 / -1">
-          <select name="van" id="vanselect" class="lineselect" aria-label="Which van are you asking about?">
-            <option value="">Which van are you asking about?</option>
-          </select>
-        </div>
-      </div>
-      <div role="radiogroup" aria-label="What would you like to do?" id="intents" style="margin:34px 0 0;padding:5px 0;border:1px solid var(--ink);border-radius:28px;display:flex;position:relative;min-width:0"></div>
-      <textarea name="msg" placeholder="Something else you want to tell us…" style="margin-top:26px;width:100%;display:block;background:none;border:1px solid var(--ink);border-radius:6px;padding:16px;font:400 14px/1.5 'Gordita';color:var(--ink);min-height:118px;resize:vertical"></textarea>
-      <div style="display:flex;align-items:flex-start;gap:13px;margin-top:22px">
-        <button type="button" id="consentbtn" role="checkbox" aria-checked="false" aria-label="Send me new stock the day it lands" data-act="consent"></button>
-        <button type="button" data-act="consent" style="flex:1;text-align:left;background:none;border:0;padding:0;cursor:pointer;font:400 13px/1.5 'Gordita';color:var(--ink)">Send me new stock the day it lands, plus runout pricing and events.
-          <span style="display:block;margin-top:5px;font:300 11px/1.45 'Gordita';color:var(--mut);pointer-events:none">*&nbsp; I understand I can unsubscribe at any time.</span>
-        </button>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:32px">
-        <button type="submit" class="av btn-orange" style="font-size:13px;letter-spacing:.14em;padding:0 46px;height:56px">Submit</button>
-        <span id="enqstatus" style="font:400 13px/1.5 'Gordita';color:var(--body)">or call <a href="tel:+61386920032" style="color:var(--ink);font-weight:500">(03) 8692 0032</a></span>
-      </div>
-    </form>
   </div>
-</div>
+</section>
 
-<footer style="background:var(--dk);padding:66px 56px 26px">
-  <div class="fgrid" style="display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.14)">
-    <div style="min-width:0">
-      <img src="https://wonderlandrv.com.au/wp-content/uploads/2022/12/logo.svg" alt="Wonderland RV" loading="lazy" style="height:34px;width:auto;display:block;filter:brightness(0) invert(1);margin-bottom:18px">
-      <div style="font:300 12.5px/1.7 'Gordita';color:rgba(255,255,255,.6)">46 Lara Way, Campbellfield<br>Victoria 3061<br><a href="tel:+61386920032" style="color:#fff">(03) 8692 0032</a></div>
+<section class="video-band" id="video">
+  <div class="video-frame ph" data-ph="VIDEO">
+    <img class="video-poster" src="assets/ref/img/experience-band.jpg" alt="" onload="this.parentElement.classList.remove('ph')" onerror="this.remove()">
+  </div>
+</section>
+
+<section class="unseen">
+  <div class="container">
+    <h2 class="unseen-title">Things you can&rsquo;t see</h2>
+    <p class="unseen-sub"><a href="https://wonderlandrv.com.au/contact-us/">Book a factory tour.</a></p>
+    <div class="quote-block">
+      <span class="quote-mark" aria-hidden="true">&ldquo;</span>
+      <blockquote class="quote-left">
+        <p><span class="ln">Look, this all adds<br>
+          cost.</span> <span class="ln">There&rsquo;s no<br>
+          getting around it.</span></p>
+      </blockquote>
+      <div class="quote-right">
+        <p>35mm composite panels, bonded and bolted into<br>
+          an aluminium frame.</p>
+      </div>
     </div>
-    <div><div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:15px">Range</div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/range/solara/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Solara</a></div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/range/xtr/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">XTR</a></div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/range/hornet/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Hornet</a></div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/range/amaroo/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Amaroo</a></div>
+    <p class="quote-attr">
+      <span class="quote-name">KEVIN DANI</span>
+      <span class="quote-role">MANAGING DIRECTOR</span>
+    </p>
+  </div>
+</section>
+
+<section class="experience">
+  <div class="media">
+    <img src="assets/ref/img/experience-band.jpg" alt="">
+  </div>
+  <div class="container experience-copy">
+    <h2 class="experience-title"><a href="https://wonderlandrv.com.au/">the wonderland experience</a></h2>
+    <p class="experience-body">Because no two travellers are the same, we believe<br>
+      no two caravans should be either.</p>
+  </div>
+</section>
+
+<section class="rules-band">
+  <p>YOUR TRAVELS, YOUR VISION,<br>
+    YOUR CARAVAN JOURNEY, YOUR RULES.</p>
+</section>
+
+<section class="service">
+  <div class="container service-head">
+    <h2 class="service-title">LEGENDARY SERVICE</h2>
+    <p class="service-kicker">OUR HAPPY CUSTOMERS</p>
+  </div>
+  <div class="service-band">
+    <div class="service-viewport">
+      <div class="service-track" id="serviceTrack">
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="assets/ref/img/home/review-julian.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>The quality, craftsmanship, and attention to detail are absolutely outstanding you can really see the pride that&rsquo;s gone into this build.&rdquo;</p>
+          <span class="service-name">JULIAN RANDALL</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="assets/ref/img/home/review-jasique.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Our Wonderland Amaroo has truly lived up to its reputation and exceeded our expectations while we&rsquo;ve explored Australia as a family.&rdquo;</p>
+          <span class="service-name">JASIQUE</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="assets/ref/img/home/review-mandi.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Our van is the ultimate family caravan and the finishes are absolute premium quality. We love hitting the road with our van any chance we get.&rdquo;</p>
+          <span class="service-name">MANDI DAVIES</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="assets/ref/img/home/review-sandro.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>The attention to detail and build quality is exceptional to say the least. This is our 5th caravan and I am sure we will be going back to Wonderland for our 6th.&rdquo;</p>
+          <span class="service-name">SANDRO CARBONI</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      </div>
     </div>
-    <div><div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:15px">Where to buy</div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/buy/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Find a dealer</a></div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/build-your-caravan/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Build your caravan</a></div>
-      <div style="padding:6px 0"><span style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Stock vans</span></div>
-    </div>
-    <div><div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:15px">Owners</div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/contact-us/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Warranty and repairs</a></div>
-      <div style="padding:6px 0"><a href="https://wonderlandrv.com.au/contact-us/" style="font:300 12.5px/1 'Gordita';color:rgba(255,255,255,.6)">Contact us</a></div>
+    <button class="service-arrow service-arrow--prev" type="button" aria-label="Previous review">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="service-arrow service-arrow--next" type="button" aria-label="Next review">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<section class="next-band">
+  <div class="media">
+    <img src="assets/ref/img/where-to-next.jpg" alt="">
+  </div>
+  <div class="next-copy container">
+    <h2 class="next-title">WHERE TO NEXT?</h2>
+    <div class="next-actions">
+      <a class="btn-next" href="https://wonderlandrv.com.au/range/">explore the range</a>
+      <a class="btn-next" href="https://wonderlandrv.com.au/about-us/">meet the team</a>
     </div>
   </div>
-  <div style="padding-top:22px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center">
-    <span style="font:300 11px/1.6 'Gordita';color:rgba(255,255,255,.42);max-width:640px">© 2026 Wonderland RV Caravans. Images may show optional extras fitted. Stock, pricing and availability correct at time of publishing and subject to change without notice.</span>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="assets/ref/img/wonderland-rv-logo.png" alt="Wonderland RV">
+      <p class="footer-blurb">Join the Facebook group where Wonderland
+        owners share their adventures, photos,
+        stories, comments, reviews and advice about
+        travels in their Wonderland RV.</p>
+      <p><a class="footer-strong" href="https://www.facebook.com/groups/wonderlandrv">Find out more</a></p>
+      <h3 class="footer-head">LET'S CHAT</h3>
+      <p class="footer-contact">
+        <a class="footer-strong" href="tel:+61386920032">(03) 8692 0032</a><br>
+        <a class="footer-strong" href="mailto:sales@wonderlandrv.com.au">sales@wonderlandrv.com.au</a><br>
+        <span>46 Lara Way, Campbellfield, Victoria 3061</span>
+      </p>
+      <ul class="socials">
+        <li><a href="https://www.facebook.com/wonderlandrv" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 8.5V6.9c0-.8.2-1.2 1.4-1.2h1.5V2.8h-2.5c-3 0-4 1.4-4 3.8v1.9H9v3h1.9V21h3.6v-9.7h2.5l.3-3h-2.8z"/></svg></a></li>
+        <li><a href="https://www.instagram.com/wonderlandrv" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a></li>
+        <li><a href="https://www.pinterest.com.au/wonderlandrv" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.7 19.3c-.1-.8-.2-2 0-2.9l1.2-5.1s-.3-.6-.3-1.5c0-1.4.8-2.5 1.9-2.5.9 0 1.3.7 1.3 1.5 0 .9-.6 2.2-.9 3.5-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.6-1.8-4.4-4.4-4.4-3 0-4.8 2.2-4.8 4.6 0 .9.3 1.9.8 2.4.1.1.1.2.1.3l-.3 1.1c0 .2-.1.2-.3.1-1.3-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.2l-.6 2.4c-.2.9-.8 2-1.2 2.6A10 10 0 1 0 12 2z"/></svg></a></li>
+        <li><a href="https://www.youtube.com/@WonderlandRV" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 7.2a2.7 2.7 0 0 0-1.9-1.9C18.9 4.8 12 4.8 12 4.8s-6.9 0-8.6.5A2.7 2.7 0 0 0 1.5 7.2C1 8.9 1 12 1 12s0 3.1.5 4.8a2.7 2.7 0 0 0 1.9 1.9c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9c.5-1.7.5-4.8.5-4.8s0-3.1-.5-4.8zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></li>
+        <li><a href="https://www.tiktok.com/@wonderlandrv" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3v13.1a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.5a5.7 5.7 0 1 0 4.8 5.6V8.6a6.6 6.6 0 0 0 3.9 1.3V6.8a3.6 3.6 0 0 1-3.9-3.6V2z"/></svg></a></li>
+      </ul>
+      <img class="made-in" src="assets/ref/img/made-in-australia.png"
+           alt="Wonderland — proudly made in Australia" width="1000" height="148">
+    </div>
+    <div class="footer-links">
+      <div class="newsletter">
+        <h3 class="footer-head">SUBSCRIBE TO OUR NEWSLETTER</h3>
+        <form class="newsletter-form" action="#" method="post" autocomplete="off">
+          <div class="field field--line">
+            <label class="sr-only" for="nl-email">Email</label>
+            <input id="nl-email" name="email" type="email" placeholder="Email*" required autocomplete="off">
+          </div>
+          <button class="btn-subscribe" type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="link-cols">
+        <div class="link-col">
+          <h4 class="footer-head">RANGE</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/range/solara/">Solara</a></li><li><a href="https://wonderlandrv.com.au/range/xtr/">XTR</a></li><li><a href="https://wonderlandrv.com.au/range/hornet/">Hornet</a></li><li><a href="https://wonderlandrv.com.au/range/amaroo/">Amaroo</a></li></ul>
+          <h4 class="footer-head footer-head--gap">OWNERS SUPPORT</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/">Owners manual</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Warranty &amp; repairs</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Contact us</a></li></ul>
+        </div>
+        <div class="link-col">
+          <h4 class="footer-head">EXPLORE</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/blog/">Blog</a></li><li><a href="https://wonderlandrv.com.au/">Media features</a></li><li><a href="https://wonderlandrv.com.au/">Partners</a></li><li><a href="https://wonderlandrv.com.au/">Wonderlanders</a></li></ul>
+          <h4 class="footer-head footer-head--gap">WHERE TO BUY</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/buy/">Find a dealer</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Book a factory tour</a></li><li><a href="https://wonderlandrv.com.au/build-your-caravan/">Request a quote</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Get in touch</a></li></ul>
+        </div>
+        <div class="link-col">
+          <h4 class="footer-head">LOCATIONS</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/buy/">Melbourne</a></li><li><a href="https://wonderlandrv.com.au/buy/">Sydney</a></li><li><a href="https://wonderlandrv.com.au/buy/">Port Stephens</a></li><li><a href="https://wonderlandrv.com.au/buy/">Brisbane</a></li><li><a href="https://wonderlandrv.com.au/buy/">Mackay</a></li><li><a href="https://wonderlandrv.com.au/buy/">Perth</a></li><li><a href="https://wonderlandrv.com.au/buy/">Tasmania</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-left">
+      <p><a href="https://wonderlandrv.com.au/privacy-policy/">Privacy Policy</a></p>
+      <p><a href="https://wonderlandrv.com.au/">Terms &amp; Conditions</a></p>
+      <p>&copy; 2026 Wonderland RV Caravans. All Rights Reserved.</p>
+    </div>
+    <div class="footer-legal-right">
+      <p>Disclaimer: Images shown may have optional extras fitted. Wonderland RV reserves the right to discontinue or change the
+        models, features, specifications, or designs of the caravans referred to herein, at their discretion without prior notice.</p>
+      <p>Photo credit: We would like to thank many of our Wonderlanders for their great photography used across our site.</p>
+    </div>
   </div>
 </footer>
 
@@ -252,5 +476,8 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
 <script src="assets/purify.min.js"></script>
 <script src="data.js"></script>
 <script src="app.js"></script>
+<script src="assets/ref/js/video.js"></script>
+<script src="assets/ref/js/reviews.js"></script>
+<script src="assets/ref/js/footer.js"></script>
 </body>
 </html>

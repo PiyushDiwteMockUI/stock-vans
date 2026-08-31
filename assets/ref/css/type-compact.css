@@ -1,0 +1,97 @@
+/* ==========================================================================
+   COMPACT TYPE SCALE  —  loaded by compact.html on top of styles.css
+
+   THE MATH
+   --------
+   Anchor: "Our experts will reach out / to you within 24 hours / on Business
+   days." goes 24 → 14, so the factor is 14 / 24 = 0.5833 (a 41.7% reduction).
+
+   Floor: nothing renders below 11, so anything that would land under it is
+   clamped there — nav, footer links, footer headings and the legal lines all
+   sit at 11 rather than 10.5 / 9.3 / 9.1.
+
+   Exception: the unsubscribe line is exempt, as instructed, and follows the
+   raw factor down to 9.
+
+   Line-heights carry the same 0.5833 so every paragraph keeps its existing
+   ratio. Nothing else moves — every margin, padding, section gap and box
+   height is inherited untouched from styles.css, which is what opens up the
+   extra breathing space.
+
+     96 → 56    36 → 21    19 → 11
+     56 → 33    32 → 19    18 → 11 (floor)
+     48 → 28    28 → 16    16 → 11 (floor)
+     40 → 23    24 → 14    14 →  9 (exception)
+
+   The header bar is excluded entirely and matches index.html.
+
+   Scoped above the mobile breakpoint so the 900px rules in styles.css keep
+   their own sizes.
+   ========================================================================== */
+
+@media (min-width: 901px) {
+
+  /* ------------------------------------------------------------- base --- */
+  body { font-size: var(--t-body); line-height: var(--lh-body); }
+  .ph::after { font-size: 0.13rem; }
+
+  /* The header bar is deliberately NOT rescaled — it stays identical to
+     index.html so the two versions share one taskbar. The orange CTAs are
+     excluded for the same reason: they all match "Build your Caravan". */
+
+  /* ------------------------------------------------------------- hero --- */
+  .hero h1 { font-size: 0.56rem; }
+  .hero-sub { font-size: var(--t-sub); }
+
+  /* -------------------------------------------------- enquiry + form --- */
+  .enquiry-title { font-size: 0.56rem; }
+  .enquiry-copy .lede { font-size: var(--t-body); line-height: var(--lh-body); }
+  .reachout { font-size: var(--t-body); line-height: var(--lh-body); }
+
+  .field--line input { font-size: var(--t-body); }
+  .field .req { font-size: var(--t-body); }
+  .field--select select { font-size: var(--t-body); }
+  .chip > span { font-size: 0.19rem; line-height: 0.22rem; }
+  .field--area textarea { font-size: var(--t-body); line-height: var(--lh-body); }
+  .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
+  .fineprint { font-size: var(--t-caption); line-height: var(--lh-caption); }   /* the exception */
+
+  /* -------------------------------------------- things you can't see --- */
+  .unseen-title { font-size: 0.56rem; }
+  .unseen-sub { font-size: var(--t-sub); }
+  .quote-mark { font-size: 2.04rem; left: -0.72rem; top: -0.658rem; }
+  .quote-left { font-size: 0.28rem; line-height: 0.335rem; }
+  .quote-right { font-size: var(--t-body); line-height: var(--lh-body); }
+  .quote-attr { font-size: var(--t-caption); line-height: var(--lh-caption); }
+  /* rule keeps its 21 above / 43 below overhang around the shorter quote */
+  .quote-block::before { height: 1.645rem; }
+
+  /* ------------------------------------------------------- experience --- */
+  .experience-title { font-size: 0.56rem; line-height: 0.484rem; }
+  .experience-body { font-size: var(--t-body); line-height: var(--lh-body); }
+  .rules-band p { font-size: var(--t-sub); line-height: 0.44rem; }
+
+  /* ---------------------------------------------------- where to next --- */
+  /* a section heading, not a subheading — matches the other page headings */
+  .next-title { font-size: var(--t-heading); }
+
+  /* ----------------------------------------------------------- footer --- */
+  .site-footer { font-size: var(--t-caption); line-height: 0.30rem; }
+  .footer-head { font-size: var(--t-caption); line-height: 0.28rem; }
+  .footer-contact { line-height: 0.34rem; }
+  .newsletter-form .field--line input { font-size: var(--t-caption); }
+  .link-col li { line-height: 0.20rem; }
+  .footer-legal-left { font-size: var(--t-caption); line-height: 0.32rem; }
+  .footer-legal-right { font-size: var(--t-caption); line-height: 0.30rem; }
+
+  /* Blocks that wrap on their own rather than on a <br> get their measure
+     re-set, so the shorter lines can't leave a single word stranded. */
+  .footer-blurb { width: 3.30rem; }
+  /* logo eases back so it reads in proportion to the larger footer type */
+  .footer-logo { width: 3.40rem; }
+  /* Was 6.40, which stopped the disclaimer and the photo credit 196 short of
+     the right margin while their own column already ended on it. They fill the
+     column now, so the right edge lands on the margin like everything else in
+     the footer. */
+  .footer-legal-right p { max-width: none; }
+}

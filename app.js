@@ -151,7 +151,7 @@ const SV = {
     const pc = v => ((v - c.min) / (c.max - c.min) * 100).toFixed(2);
     return `<div data-slider="${key}" style="padding:18px 0;border-bottom:1px solid var(--line)">
       <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px">
-        ${c.icon ? `<svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="display:block;flex:none"><path d="${c.icon}" fill="none" stroke="var(--ink)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>` : ''}
+        ${c.icon ? `<svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="display:block;flex:none"><path d="${c.icon}" fill="none" stroke="var(--svink)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>` : ''}
         <span class="kicker">${c.title}</span>
         ${extraHead || ''}
       </div>
@@ -178,7 +178,7 @@ const SV = {
     const lUnits = `<div style="margin-left:auto;display:flex;gap:6px">${[['m','Metres'],['ft','Feet']].map(([k,l]) =>
       `<button type="button" class="useg ${s.lenUnit === k ? 'on' : ''}" data-act="lenUnit" data-val="${k}">${l}</button>`).join('')}</div>`;
     return `
-      <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:6px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:14px;border-bottom:2px solid var(--svink);margin-bottom:6px">
         <span class="av" style="font-size:14px;letter-spacing:.06em;text-transform:uppercase">Refine</span>
         <button class="linkbtn" data-act="clear">Clear all</button>
       </div>
@@ -217,7 +217,7 @@ const SV = {
       <div style="padding:20px 0 2px;border-top:1px solid var(--line);margin-top:18px">
         <button type="button" class="btn-orange" style="width:100%" data-act="clear">Reset filters</button>
       </div>
-      <div style="margin-top:28px;background:var(--ink);padding:22px;border-radius:4px">
+      <div style="margin-top:28px;background:var(--svink);padding:22px;border-radius:4px">
         <div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:12px">Not sure?</div>
         <p style="margin:0 0 16px;font:300 13px/1.55 'Gordita';color:rgba(255,255,255,.72)">Tell us how you travel and we will point you at the right van. No hard sell.</p>
         <a href="#enquire" class="talkbtn">Talk to us</a>
@@ -233,7 +233,6 @@ const SV = {
       VANS.map(v => `<option value="${v.chassis}">${v.model} ${v.code} · ${(v.name.startsWith(v.model) ? v.name.slice(v.model.length).trim() : v.name)} (${v.state})</option>`).join('') +
       '<option value="unsure">Not sure yet, help me choose</option>');
     sel.value = keep;
-    this.renderIntents();
     this.syncMob();
   },
 
@@ -292,21 +291,6 @@ const SV = {
     else this.render();
   },
 
-  INTENTS: ['Call back', 'Book a viewing', 'Get a quote', 'Hold this van'],
-  renderIntents() {
-    put(document.getElementById('intents'), this.INTENTS.map((l, i) => `
-      <button type="button" role="radio" aria-checked="${this.s.intent === i}" data-act="intent" data-id="${i}"
-        class="intentcell${i ? ' intentdiv' : ''}">
-        <span class="intentpill ${this.s.intent === i ? 'on' : ''}">${l}</span>
-      </button>`).join(''));
-  },
-  toggleConsent() {
-    this.s.consent = !this.s.consent;
-    const b = document.getElementById('consentbtn');
-    b.setAttribute('aria-checked', this.s.consent);
-    b.classList.toggle('on', this.s.consent);
-  },
-
   view(id) {
     this.s.detail = id; this.s.gal = 0; this.s.tab = 'Chassis';
     document.getElementById('page-grid').style.display = 'none';
@@ -332,7 +316,7 @@ const SV = {
     <div class="detailwrap">
     <div style="padding:20px 56px 0;display:flex;align-items:center;gap:10px;font:400 11px/1 'Gordita';letter-spacing:.14em;text-transform:uppercase;color:var(--mut)">
       <button class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" data-act="back">Stock vans</button>
-      <span>/</span><span style="color:var(--ink)">${v.chassis}</span>
+      <span>/</span><span style="color:var(--svink)">${v.chassis}</span>
     </div>
     <div class="wrap" style="padding:22px 0 0">
       <div style="flex:1 1 560px;min-width:0;padding:0 46px 0 56px">
@@ -352,9 +336,9 @@ const SV = {
         <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:34px">
           ${v.images.map((src, i) => `<button class="thumbbtn ${i === this.s.gal ? 'on' : ''}" data-act="gal" data-id="${i}"><span style="display:block;width:100%;height:100%;background-image:url(${src});background-size:cover;background-position:center;pointer-events:none"></span></button>`).join('')}
         </div>
-        <div style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--ink);border-radius:4px;overflow:hidden;margin-bottom:38px">
+        <div style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">
           ${[['Model', v.model, 'Wonderland RV range'], ['Length', v.length || '—', 'Body length'], ['Layout', v.layout, v.layout === 'Family' ? 'Bunks on board' : 'Two berth touring'], ['Location', v.state, 'Where it is now']].map(([k, val, d]) => `
-          <div style="padding:22px 20px;background:var(--ink)">
+          <div style="padding:22px 20px;background:var(--svink)">
             <div style="font:400 9.5px/1 'Gordita';letter-spacing:.26em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">${k}</div>
             <div class="av" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">${val}</div>
             <div style="margin-top:9px;font:300 11.5px/1.45 'Gordita';color:rgba(255,255,255,.6)">${d}</div>
@@ -439,7 +423,7 @@ const SV = {
     m.style.display = 'block';
     put(m, `<div class="modal-bg" data-act="closemob"></div>
       <div class="mobpanel">
-        <div style="flex:none;background:var(--ink);padding:20px;display:flex;align-items:center;gap:12px">
+        <div style="flex:none;background:var(--svink);padding:20px;display:flex;align-items:center;gap:12px">
           <span class="av" style="font-size:16px;letter-spacing:.09em;text-transform:uppercase;color:#fff">Filters</span>
           <button class="mobx" data-act="closemob">×</button>
         </div>
@@ -464,24 +448,29 @@ const SV = {
     e.preventDefault();
     const f = document.getElementById('enqform');
     const g = n => f.querySelector('[name="' + n + '"]');
-    for (const n of ['firstname', 'lastname', 'email', 'phone', 'state']) {
+    for (const n of ['first-name', 'last-name', 'email', 'phone', 'state', 'postcode']) {
       if (!g(n).value) { g(n).focus(); return false; }
     }
     let phone = g('phone').value.replace(/\s+/g, '');
     if (/^0\d{9}$/.test(phone)) phone = '+61' + phone.slice(1);
+    // AC field 27 has a combined NSW/ACT option; the visible form keeps the plain state names.
+    const stateMap = { 'New South Wales': 'New South Wales / ACT', 'Australian Capital Territory': 'New South Wales / ACT' };
+    const stateVal = stateMap[g('state').value] || g('state').value;
     const vanSel = g('van').value || 'unspecified';
     const vv = VANS.find(x => x.chassis === vanSel);
     const vanTxt = vanSel === 'unsure' ? 'Not sure yet' : vanSel === 'unspecified' ? 'Not specified' : vanSel + ' ' + (vv ? fullName(vv) : '');
-    const intent = this.INTENTS[this.s.intent];
-    const msg = (g('msg').value || '').trim();
-    const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
-      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (this.s.consent ? ' | Newsletter: yes' : '');
+    const intentEl = f.querySelector('[name="enquiry-type"]:checked');
+    const intent = intentEl ? intentEl.value : 'Call back';
+    const msg = (g('message').value || '').trim();
+    const consent = g('marketing').checked;
+    const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt + ' | Postcode: ' + g('postcode').value.slice(0, 8) +
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (consent ? ' | Newsletter: yes' : '');
     const post = document.createElement('form');
     post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
     post.target = 'ac_sink'; post.style.display = 'none';
     const H = { u: '47', f: '47', s: '', c: '0', m: '0', act: 'sub', v: '2', or: OR_TOKEN,
-      firstname: g('firstname').value, lastname: g('lastname').value, email: g('email').value,
-      phone: phone, 'field[27]': g('state').value, 'field[86]': ad };
+      firstname: g('first-name').value, lastname: g('last-name').value, email: g('email').value,
+      phone: phone, 'field[27]': stateVal, 'field[86]': ad };
     for (const k in H) {
       const i = document.createElement('input');
       i.type = 'hidden'; i.name = k; i.value = H[k];
@@ -491,7 +480,7 @@ const SV = {
     const st = document.getElementById('enqstatus');
     st.textContent = 'Thanks — enquiry sent. We will be in touch within 24 hours on business days.';
     st.style.color = '#2E7D32';
-    f.reset(); this.s.intent = 0; if (this.s.consent) this.toggleConsent(); this.renderIntents();
+    f.reset();
     return false;
   },
 
@@ -510,7 +499,6 @@ const SV = {
     }
     else if (a === 'lenUnit') this.set('lenUnit', val);
     else if (a === 'wmetric') this.set('weightMetric', val);
-    else if (a === 'intent') { this.s.intent = +id; this.renderIntents(); }
     else if (a === 'back') this.backToGrid();
     else if (a === 'galprev') { const v = VANS[this.s.detail]; this.s.gal = (this.s.gal - 1 + v.images.length) % v.images.length; this.renderDetail(); }
     else if (a === 'galnext') { const v = VANS[this.s.detail]; this.s.gal = (this.s.gal + 1) % v.images.length; this.renderDetail(); }
@@ -518,7 +506,6 @@ const SV = {
     else if (a === 'tab') { this.s.tab = val; this.renderDetail(); }
     else if (a === 'closemob') document.getElementById('mobfilter').style.display = 'none';
     else if (a === 'openmob') this.openMob();
-    else if (a === 'consent') this.toggleConsent();
   },
 
   boot() {

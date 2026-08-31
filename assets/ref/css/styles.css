@@ -1,0 +1,1435 @@
+/* ==========================================================================
+   Wonderland RV — Contact Us
+   Built 1:1 from the Figma export "Contact Us page-2.svg" (2376 × 6199).
+
+   SCALING MODEL
+   -------------
+   The design canvas is 2376 px wide. `html { font-size }` is set so that
+   1rem === 100 design px at any viewport width, so every measurement below is
+   just the SVG coordinate divided by 100. That reproduces the artboard
+   proportionally at any screen size. The page stops growing past 2376 px.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------ fonts */
+@font-face {
+  font-family: "Aviano Sans";
+  src: url("../fonts/AvianoSans-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Aviano Sans";
+  src: url("../fonts/AvianoSans-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Aviano Sans";
+  src: url("../fonts/AvianoSans-Black.otf") format("opentype");
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("../fonts/Gordita-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("../fonts/Gordita-Medium.otf") format("opentype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("../fonts/Gordita-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+/* ----------------------------------------------------------------- tokens */
+:root {
+  --orange:       #E37921;   /* accent / buttons                */
+  --orange-deep:  #D57114;   /* header CTA, quote, headings     */
+  --blush:        #D99B88;   /* "your rules" band               */
+  --grey:         #B7B7B7;   /* form placeholders               */
+  --red:          #E61010;   /* required asterisk               */
+  --ink:          #000;
+
+  /* strength of the gradient that keeps white type readable over a photo.
+     Set to 0 to show the images completely untouched. */
+  --scrim: 1;
+
+  --aviano: "Aviano Sans", "Trebuchet MS", sans-serif;
+  --gordita: "Gordita", "Helvetica Neue", Arial, sans-serif;
+
+  /* breathing room above and below every text section */
+  --section-gap: 1.20rem;
+  /* one spacing value for every item in the header bar */
+  --bar-gap: 0.39rem;   /* x1.5 */
+
+  /* Page margins cut to 3/4 of the original 501.5, so the content column
+     grows 1373 -> 1624. Everything inside keeps its own size. */
+  --page-margin: 3.76rem;
+  --col: 16.24rem;
+  --gutter: 5.015rem;
+
+  /* Type scale — four tiers, reviews deliberately excluded and tuned apart.
+       heading 56 · subheading 40 · body 28 · caption 20               */
+  --t-heading: 0.56rem;
+  --t-sub:     0.32rem;
+  --t-cta:     0.30rem;   /* between subheading and body */
+  --t-body:    0.28rem;
+  --t-caption: 0.20rem;
+  --lh-sub:     0.42rem;
+  --lh-body:    0.40rem;
+  --lh-caption: 0.30rem;
+}
+
+/* ------------------------------------------------------------------- base */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* 1rem = 100 design px */
+  font-size: min(calc(100vw / 23.76), 100px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 23.76rem;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+
+/* Display headings are set in Aviano Sans Black */
+.hero h1,
+.enquiry-title,
+.unseen-title,
+.experience-title { font-weight: 900; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.container {
+  width: var(--col);
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------- image placeholders --
+   Any <img> that resolves removes nothing; a missing file removes itself
+   (inline onerror) and leaves this labelled placeholder visible.           */
+.ph {
+  position: relative;
+  background:
+    repeating-linear-gradient(45deg, #ececec 0 0.14rem, #f5f5f5 0.14rem 0.28rem);
+}
+.ph::after {
+  content: attr(data-ph);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--gordita);
+  font-size: 0.22rem;
+  letter-spacing: 0.06em;
+  color: #9a9a9a;
+  text-align: center;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+.ph > img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+.media > img,
+.media > video { width: 100%; height: 100%; object-fit: cover; }
+
+/* Photos carry white headings at the bottom edge, so the foreground gets a
+   gradient to hold contrast. Governed by --scrim; 0 disables it entirely. */
+.hero .media::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to top,
+    rgba(0,0,0,calc(0.55 * var(--scrim))) 0%,
+    rgba(0,0,0,calc(0.18 * var(--scrim))) 22%,
+    rgba(0,0,0,0) 44%);
+}
+
+/* Text stops growing past 2376, but the photography and video should never
+   leave white bars at the edges — so the full-bleed bands break out of the
+   capped body and always span the viewport. Their inner .container still
+   centres on the same axis, since body is centred too. */
+.hero,
+.video-band,
+.experience,
+.rules-band,
+.next-band,
+.site-header {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+/* ==========================================================================
+   HEADER   (y 0 – 143)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 1.43rem;
+  background: #fff;
+}
+
+.header-inner {
+  width: var(--col);
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;          /* everything centres on the bar's midline */
+}
+
+.logo { flex: none; width: 3.595rem; }   /* 359.506 × 67 */
+.logo img { width: 100%; height: auto; }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--bar-gap);
+  margin-left: auto;
+  font-family: var(--aviano);
+  font-size: 0.216rem;          /* x1.2 */
+  line-height: 1;
+  white-space: nowrap;
+}
+.main-nav a { font-weight: 900; transition: color .18s; }
+.main-nav a:hover,
+.main-nav a:focus-visible,
+.main-nav a[aria-current="page"] { color: var(--orange-deep); }
+
+.search-btn {
+  margin-left: var(--bar-gap);
+  flex: none;
+  line-height: 0;
+  color: var(--ink);
+  transition: color .18s;
+}
+.search-btn:hover,
+.search-btn:focus-visible { color: var(--orange-deep); }
+.search-btn svg { width: 0.28rem; height: 0.28rem; }
+
+.btn-build {
+  flex: none;
+  margin-left: var(--bar-gap);
+  width: auto; height: 0.46rem;
+  padding: 0 0.28rem;
+  background: var(--orange-deep);
+  color: #fff;
+  font-family: var(--aviano);
+  /* moves with the nav links so the bar stays one size, as it is today */
+  font-size: 0.216rem;          /* x1.2 */
+  font-weight: 900;
+  line-height: 0.46rem;
+  text-align: center;
+  --btn-fill: var(--orange-deep);
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-build:hover,
+.btn-build:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-build:active { background: var(--btn-fill); color: #fff; }
+
+.nav-toggle { display: none; }
+
+/* ==========================================================================
+   HERO   (y 143 – 1024, image 2378 × 881)
+   ========================================================================== */
+.hero { position: relative; height: 8.81rem; }
+.hero .media { position: absolute; inset: 0; }
+.hero .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 0.984rem;     /* last baseline 914.4 → 1024 */
+  color: #fff;
+}
+.hero h1 {
+  font-family: var(--aviano);
+  font-size: 0.96rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.20rem;       /* SVG had these almost touching; opened up */
+}
+.hero-sub {
+  font-family: var(--aviano);
+  font-size: 0.40rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   READY FOR ADVENTURE + FORM   (y 1024 – 2293)
+   ========================================================================== */
+.enquiry { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+
+.enquiry-title {
+  font-family: var(--aviano);
+  font-size: 0.96rem;
+  line-height: 1;
+}
+
+.enquiry-grid {
+  display: grid;
+  /* The artboard had these two columns meeting with no gutter and filling the
+     content column exactly. Cutting the margins widened that column from
+     13.805 to 16.24, so both columns and everything sized inside the form are
+     scaled by the same 1.17639 to fill it again. Every proportion inside the
+     form is preserved — only the scale changes, the same treatment the
+     homepage grids got when the margins moved. Type sizes are untouched.
+     The copy's line breaks are hand-set, so the left column can widen without
+     re-wrapping a word. */
+  /* The gap between the copy and the form is set from the reference: it runs
+     from where the copy text ends, at 712, to the form's left edge, which puts
+     the form on 841 and makes the gap 129. The left column is 4.65 to land it
+     there; the form takes 11.483 so the chips pill still finishes on the right
+     margin. Every width inside the form scales by the same 1.24275, so its
+     proportions hold and the type is untouched. The copy's line breaks are
+     hand-set, so its column can change width without re-wrapping a word. */
+  grid-template-columns: 4.65rem 11.483rem;
+  padding-top: 0.706rem;
+}
+
+/* -------------------------------------------------------- left column ---- */
+.enquiry-copy { display: flex; flex-direction: column; }
+
+.enquiry-copy .lede {
+  font-family: var(--gordita);
+  font-size: 0.36rem;
+  line-height: 0.44rem;
+}
+.enquiry-copy .lede + .lede { margin-top: 0.44rem; }   /* the blank line */
+.lede-accent { color: var(--orange); font-weight: 500; }
+
+.reachout {
+  margin-top: auto;             /* bottom-aligns with the Submit button */
+  color: var(--orange);
+  font-weight: 500;
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+}
+
+/* -------------------------------------------------------------- form ---- */
+.enquiry-form { padding-top: 0.165rem; }
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 5.3562rem 5.493rem;   /* x1.24275 */
+  grid-template-rows: 0.40rem 1.08rem 1.0925rem;  /* rules on 1385.5 / 1493.5 / 1602.6 */
+  column-gap: 0.3604rem;
+  align-items: end;
+  padding-left: 0.1864rem;
+}
+
+.field { position: relative; }
+
+.field--line input {
+  display: block;
+  width: 100%;
+  height: 0.40rem;
+  padding: 0 0.24rem 0.134rem 0.12rem;   /* lifts the label off the rule */
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  line-height: 1;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--grey); opacity: 1; }
+
+.field .req {
+  position: absolute;
+  right: 0.22rem;
+  top: 0.080rem;
+  color: var(--red);
+  font-weight: 500;
+  font-size: 0.24rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* State — rounded select, sits 14 px left of the underline fields */
+.field--select {
+  margin-left: -0.174rem;
+  width: 5.5302rem;
+}
+.field--select select {
+  -webkit-appearance: none; appearance: none;
+  display: block;
+  width: 100%;
+  height: 0.6925rem;            /* 69.25 */
+  padding: 0 0.60rem 0 0.26rem;
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  color: var(--grey);
+  background: none;
+  border: 0.0075rem solid var(--ink);
+  border-radius: 0.14625rem;
+}
+.field--select select:valid { color: var(--ink); }
+.field--select .chev {
+  position: absolute;
+  left: 1.02rem; top: 0.335rem;   /* starting x; script re-places it per value */
+  width: 0.14rem; height: 0.08rem;
+  pointer-events: none;
+  transition: left .18s;
+}
+.field--select .req { right: 0.22rem; top: 0.30rem; }
+
+/* Autofill stays available, but Chrome's contacts button is suppressed so it
+   can't collide with the required asterisk, and the yellow autofill wash is
+   held off with a transition that never lands. */
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  width: 0;
+  margin: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* focus: no browser-blue ring, brand orange instead */
+.field input:focus,
+.field select:focus,
+.field textarea:focus { outline: none; }
+.field--line input:focus { box-shadow: 0 1px 0 var(--orange); border-bottom-color: var(--orange); }
+.field--select select:focus,
+.field--area textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 1px var(--orange); }
+
+/* --------------------------------------------------- enquiry-type chips -- */
+.chips {
+  margin: 0.396rem 0 0 -0.1118rem;
+  width: 11.6974rem;                /* the pill still overhangs the fields as drawn */
+  height: 1.10rem;                /* trimmed; two-line options set the floor */
+  padding: 0.08rem 0;
+  border: 0.0075rem solid var(--ink);
+  border-radius: 0.353rem;
+  display: flex;
+  position: relative;
+}
+.chips legend { display: none; }
+
+/* One indicator that travels between cells, rather than each cell lighting up */
+.chips-thumb {
+  position: absolute;
+  top: 0.08rem; bottom: 0.08rem;
+  left: 0; width: 0;
+  border-radius: 0.246rem;
+  background: var(--orange);
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: center;
+  transition:
+    left      .46s cubic-bezier(.65, 0, .35, 1),
+    width     .46s cubic-bezier(.65, 0, .35, 1),
+    transform .46s cubic-bezier(.65, 0, .35, 1);
+}
+.chips-thumb.is-init { transition: none; }
+.chips-thumb.is-moving { transform: scaleY(0.90); }   /* squashes as it travels */
+
+.chip {
+  flex: 1 1 0;
+  min-width: 0;                 /* without this, min-content keeps cells uneven */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.chip + .chip::before {          /* cell divider, overhanging the pill slightly */
+  content: "";
+  position: absolute; left: 0; top: -0.00875rem;
+  width: 1px; height: calc(100% + 0.0175rem);
+  background: var(--ink);
+}
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+
+/* the pill itself is inset inside its cell so it never touches a divider */
+.chip > span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: calc(100% - 0.16rem);    /* 8 clear on each side, matching top/bottom */
+  height: 100%;
+  border-radius: 0.246rem;
+  font-size: 0.32rem;             /* +33% */
+  line-height: 0.38rem;
+  transition: color .28s ease, font-weight .28s;
+}
+.chip:has(input:checked) > span { color: #fff; font-weight: 700; }
+.chip:has(input:focus-visible) > span { box-shadow: 0 0 0 2px var(--orange-deep); }
+
+/* --------------------------------------------------------------- notes -- */
+.field--area { margin-top: 0.3375rem; }   /* 1739.6 → 1773.4 */
+.field--area textarea {
+  display: block;
+  width: 11.4737rem;
+  height: 1.3225rem;            /* 132.25 */
+  padding: 0.134rem 0.26rem 0.20rem 0.199rem;
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+  color: var(--ink);
+  background: none;
+  border: 0.0075rem solid var(--ink);
+  border-radius: 0.14625rem;
+  resize: vertical;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.145rem;
+  margin-top: 0.247rem;         /* 1905.6 → 1930.4 */
+  padding-left: 0.0135rem;
+}
+.consent input[type="checkbox"] {
+  -webkit-appearance: none; appearance: none;
+  flex: none;
+  margin: 0.045rem 0 0;
+  width: 0.2825rem; height: 0.2825rem;   /* r = 14.125 */
+  border: 0.0075rem solid var(--ink);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.consent input[type="checkbox"]:checked {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 52%;          /* keeps the tick clear of the circumference */
+}
+.consent label {
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+  cursor: pointer;
+}
+.fineprint {
+  display: block;
+  margin-top: 0.026rem;
+  font-size: 0.17rem;
+  line-height: 0.24rem;
+}
+
+.btn-submit {
+  margin-top: 0.350rem;         /* → y 2052 */
+  margin-left: 0.01rem;         /* 958 → 959 */
+  width: 3.14rem; height: 0.70rem;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--aviano);
+  font-weight: 900;             /* Aviano Sans Black, as the other CTAs */
+  font-size: 0.18rem;
+  line-height: 0.70rem;
+  text-align: center;
+  --btn-fill: var(--orange);
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-submit:hover,
+.btn-submit:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-submit:active { background: var(--btn-fill); color: #fff; }
+
+/* ==========================================================================
+   VIDEO   (y 2293 – 3477, full bleed 2389 × 1184)
+   ========================================================================== */
+.video-frame {
+  position: relative;
+  width: 100%;
+  /* Back to the artboard band. The clip is 16:9, so filling this loses a
+     little top and bottom rather than leaving bars down the sides. */
+  aspect-ratio: 2389 / 1184;
+  overflow: hidden;
+  background-color: #111;
+}
+.video-frame iframe,
+.video-frame video {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 56.25vw;              /* 16:9 of the band width, so it fills and the
+                                   crop falls on the top and bottom edges */
+  min-height: 100%;
+  border: 0;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* --- video controls: mute and captions, top right, on hover --------------- */
+.video-controls {
+  position: absolute;
+  top: 88%; left: 50%;
+  transform: translate(-50%, -50%);   /* centred across, low in the frame */
+  /* Above .home-hero-copy, which is also 4. Tied z-indexes fall back to DOM
+     order and the copy comes second, so at 4 the hero's controls painted (and
+     clicked) underneath it. */
+  z-index: 6;
+  display: flex;
+  gap: 0.12rem;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.video-frame:hover .video-controls,
+.video-controls:focus-within { opacity: 1; }
+.video-ctl {
+  width: 0.46rem; height: 0.46rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--gordita);
+  font-size: 0.14rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: background .2s;
+}
+.video-ctl:hover { background: var(--orange-deep); }
+.video-ctl svg { width: 0.22rem; height: 0.22rem; }
+.video-ctl[aria-pressed="true"] { background: var(--orange-deep); }
+.video-poster { width: 100%; height: 100%; object-fit: cover; }
+
+/* --------------------------------------------------- "Tap for sound" ------
+   Appears three seconds after the video has been on screen and only while it
+   is still muted, sitting just under the sound button it points at. */
+.video-nudge {
+  position: absolute;
+  top: 0.24rem; left: 50%;
+  z-index: 4;
+  padding: 0.27rem 0.48rem;     /* x3 */
+  border-radius: 0.18rem;
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font-family: var(--gordita);
+  font-size: 0.42rem;           /* x3 */
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(-50%, -0.18rem);
+  pointer-events: none;
+  transition: opacity .45s ease, transform .45s ease;
+}
+.video-nudge.is-on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+/* the buttons fade in on hover, but the prompt has to be able to stand alone */
+.video-frame:has(.video-nudge.is-on) .video-controls { opacity: 1; }
+
+/* ==========================================================================
+   THINGS YOU CAN'T SEE   (y 3477 – 4187)
+   ========================================================================== */
+/* the video band and this block are one section, so they sit at half a gap */
+.unseen { padding-top: calc(var(--section-gap) / 2); padding-bottom: var(--section-gap); }
+
+.unseen-title {
+  font-family: var(--aviano);
+  font-size: 0.96rem;
+  line-height: 1;
+}
+.unseen-sub {
+  margin-top: 0.16rem;          /* clear gap under the heading */
+  font-family: var(--aviano);
+  font-size: 0.40rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+/* CTA, so it weights up on hover rather than drawing a rule */
+.unseen-sub a { font-weight: 400; }
+.unseen-sub a:hover,
+.unseen-sub a:focus-visible { font-weight: 900; }
+
+.quote-block {
+  position: relative;
+  margin-top: 1.214rem;         /* → the divider band, y 3794 */
+  padding-top: 0.210rem;
+  display: grid;
+  grid-template-columns: 4.33rem 9.40rem;   /* split on the rule at x 934.5 */
+}
+.quote-block::before {          /* vertical rule, x 934.5, y 3794 – 4014 */
+  content: "";
+  position: absolute;
+  left: 4.33rem; top: 0;
+  width: 1px; height: 2.364rem;
+  background: var(--orange-deep);
+}
+.quote-mark {
+  position: absolute;
+  left: -1.235rem; top: -1.1285rem;
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 3.50rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+.quote-left {
+  margin: 0;
+  font-size: 0.48rem;
+  line-height: 0.5746rem;       /* 0.52 +30% then -15% */
+  color: var(--orange-deep);
+}
+.quote-right {
+  padding-left: 0.245rem;       /* rule at 934.5 → text at 959 */
+  font-size: 0.32rem;
+  line-height: 0.44rem;
+}
+
+.quote-attr {
+  margin-top: 0.430rem;         /* 3958.2 → 4036.6 */
+  color: var(--orange-deep);
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+}
+.quote-name { display: block; font-weight: 700; }
+.quote-role { display: block; }
+
+/* ==========================================================================
+   THE WONDERLAND EXPERIENCE   (y 4187 – 4956, image 2389 × 769)
+   ========================================================================== */
+.experience {
+  position: relative;
+  height: 7.69rem;
+  border-radius: 0.15rem;
+  overflow: hidden;
+}
+.experience .media { position: absolute; inset: 0; }
+.experience .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+.experience-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-top: 0.844rem;
+  color: #fff;
+}
+.experience-title a { color: inherit; transition: color .18s; }
+.experience-title a:hover,
+.experience-title a:focus-visible { color: var(--orange); }
+.experience-title {
+  font-family: var(--aviano);
+  font-size: 0.80rem;           /* 96 would need 1574 on one line; column is 1373 */
+  line-height: 0.83rem;
+  white-space: nowrap;
+}
+.experience-body {
+  margin-top: 0.34rem;          /* close enough to read with the title */
+  font-weight: 500;
+  font-size: 0.36rem;
+  line-height: 0.39rem;
+}
+
+/* ==========================================================================
+   YOUR TRAVELS / YOUR RULES   (y 4956 – 5177)
+   ========================================================================== */
+.rules-band {
+  height: 2.21rem;
+  background: var(--blush);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+}
+.rules-band p {
+  font-family: var(--aviano);
+  font-size: 0.48rem;
+  line-height: 0.51rem;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-align: center;
+}
+
+/* ==========================================================================
+   WHERE TO NEXT   — carried over from the live site's contact page
+   ========================================================================== */
+.next-band { position: relative; height: 8.26rem; }   /* was 10.70 */
+.next-band .media { position: absolute; inset: 0; }
+.next-band .media video { object-position: center 20%; }   /* clip's sea/sky sits in its top ~20% — a centred crop shows none of it */
+.next-band .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+.next-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: var(--section-gap);
+  gap: 0.62rem;
+  color: #fff;
+  text-align: center;
+}
+.next-title {
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.56rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.next-actions { display: flex; gap: 0.40rem; }
+.btn-next {
+  background: #DB7627;
+  color: #fff;
+  font-family: var(--aviano);
+  font-weight: 900;             /* Aviano Sans Black, as the other CTAs */
+  font-size: 0.18rem;
+  line-height: 1;
+  padding: 0.30rem 0.62rem;
+  border-radius: 0.02rem;
+  --btn-fill: #DB7627;
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-next:hover,
+.btn-next:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-next:active { background: var(--btn-fill); color: #fff; }
+
+/* ==========================================================================
+   FOOTER   (y 5177 – 6199)
+   ========================================================================== */
+.site-footer {
+  padding-top: 0.99rem;
+  padding-bottom: 0.41rem;
+  font-size: 0.19rem;
+  line-height: 0.29rem;
+}
+.footer-inner {
+  width: var(--col);            /* same column as the rest of the page */
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 6.61rem 9.63rem;
+  column-gap: 0;
+  row-gap: 0.57rem;
+}
+
+.footer-logo { width: 4.00rem; height: auto; margin-bottom: 0.16rem; }
+.footer-blurb { width: 4.79rem; }
+.footer-strong { font-weight: 700; }
+.footer-strong:hover { color: var(--orange-deep); }
+
+.footer-head {
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.18rem;
+  line-height: 0.26rem;
+  letter-spacing: 0.02em;
+  color: var(--orange-deep);
+}
+.footer-brand p + p { margin-top: 0.17rem; }
+.footer-brand .footer-head { margin-top: 0.61rem; margin-bottom: 0.14rem; }
+.footer-contact { line-height: 0.40rem; }
+.footer-contact span { color: #333; }
+
+.socials {
+  display: flex;
+  gap: 0.42rem;
+  margin-top: 0.42rem;
+  color: #3f3f3f;
+}
+.socials svg { width: 0.24rem; height: 0.24rem; }
+.socials a:hover { color: var(--orange-deep); }
+
+.made-in { width: 3.12rem; height: auto; margin-top: 0.67rem; }
+
+/* ---------------------------------------------------------- right side -- */
+.newsletter .footer-head { margin-top: 0.49rem; margin-bottom: 0; }
+
+.newsletter-form {
+  display: grid;
+  grid-template-columns: 7.49rem 1.70rem;   /* Subscribe aligns to LOCATIONS */
+  column-gap: 0.44rem;
+  align-items: end;
+  margin-top: 0.29rem;
+}
+.newsletter-form .field--line input {
+  height: 0.42rem;
+  padding: 0 0 0.10rem 0;
+  font-size: 0.19rem;
+}
+.btn-subscribe {
+  width: 100%; height: 0.74rem;
+  background: var(--orange-deep);
+  color: #fff;
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.18rem;
+  letter-spacing: 0.02em;
+  --btn-fill: var(--orange-deep);
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-subscribe:hover,
+.btn-subscribe:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-subscribe:active { background: var(--btn-fill); color: #fff; }
+
+.link-cols {
+  display: grid;
+  grid-template-columns: 3.96rem 3.96rem 1.70rem;
+  margin-top: 0.64rem;
+}
+.link-col .footer-head { margin-bottom: 0.16rem; }
+.link-col .footer-head--gap { margin-top: 0.57rem; }
+.link-col li { line-height: 0.27rem; margin-bottom: 0.19rem; }
+.link-col a:hover { color: var(--orange-deep); }
+
+/* ------------------------------------------------------------- legal ---- */
+.footer-legal-left { font-size: 0.16rem; line-height: 0.315rem; color: #444; }
+.footer-legal-left a:hover { color: var(--orange-deep); }
+.footer-legal-right { font-size: 0.156rem; line-height: 0.265rem; color: #444; }
+.footer-legal-right p + p { margin-top: 0.13rem; }
+
+/* ==========================================================================
+   RESPONSIVE
+   Below 900 px the 2376-wide artboard is no longer legible when scaled, so
+   the page switches to a stacked layout with real type sizes.
+   ========================================================================== */
+/* ==========================================================================
+   LEGENDARY SERVICE   — reviews on a slider. Shared, because the homepage and
+   the contact page both carry this section, so neither stylesheet owns it
+   ========================================================================== */
+/* A full section gap either side by default. On the homepage the neighbouring
+   sections already carry their own, so homepage.css tightens it back there. */
+.service { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+.service-head { text-align: center; }
+.service-title {
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.56rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+.service-kicker {
+  margin-top: 0.14rem;
+  font-size: var(--t-caption);
+  font-weight: 700;
+  letter-spacing: 0.87em;
+  text-indent: 0.87em;
+  color: var(--orange-deep);
+}
+
+.service-band {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 0.55rem;
+}
+.service-band::before {                 /* the #FFF2DC panel behind the slides */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0.61rem;
+  height: 5.66rem;
+  background: #FFF2DC;
+}
+.service-viewport { position: relative; overflow: hidden; }
+.service-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.45,.05,.15,1);
+}
+.service-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  min-height: 6.74rem;
+}
+.service-media {
+  position: relative;
+  z-index: 1;
+  width: 56.9%;
+  height: 6.74rem;
+  flex: none;
+  /* lifts the photo off the cream panel: offset right, negative spread keeps
+     it from spilling along the top and bottom edges */
+  box-shadow: 0.16rem 0 0.34rem -0.10rem rgba(0, 0, 0, 0.30);
+}
+.service-media img { width: 100%; height: 100%; object-fit: cover; }
+.service-quote {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  /* media 56.9% + this 4.6% gap + 22.68% lands the right edge on the content
+     column (84.18% of the band), so reviews can't run past the margin */
+  width: 22.68%;
+  margin: 0 0 0 4.6%;
+  padding-top: 0.10rem;         /* review + attribution drop 10 */
+  color: var(--orange-deep);
+}
+.service-quote p {
+  font-size: 0.28rem;           /* review reads larger than the name */
+  font-style: italic;
+  line-height: 0.42rem;         /* opened up; the reviews run several lines */
+}
+/* the mark reads orange here, against darker review text */
+.service-quote .qmark { width: 1.01376rem; fill: var(--orange); }
+.service-name { display: block; margin-top: 0.42rem; font-size: 0.21rem; font-weight: 700; line-height: 0.28rem; }
+.service-role { display: block; font-size: 0.21rem; line-height: 0.28rem; }
+
+.service-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 0.70rem; height: 0.70rem;
+  margin-top: -0.35rem;
+  border-radius: 50%;
+  background: rgba(213, 113, 20, 0.35);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  transition: background .2s;
+}
+.service-arrow:hover { background: rgba(213, 113, 20, 0.75); }
+.service-arrow svg { width: 0.30rem; height: 0.30rem; }
+.service-arrow--prev { left: 0.87rem; }
+.service-arrow--next { right: 0.83rem; }
+
+/* The mark is a trimmed outline, so the element's box is the mark itself. */
+.qmark {
+  position: absolute;
+  right: calc(100% - 0.15rem);
+  bottom: 100%;
+  display: block;
+  height: auto;
+  fill: currentColor;
+}
+.service-quote p { position: relative; }
+.service-quote .qmark { width: 1.01376rem; fill: var(--orange); }
+
+@media (max-width: 900px) {
+  html { font-size: 16px; }
+  /* body's own size is a literal rem from the artboard, which lands at 3.84px
+     once rem is flat 16 — harmless where a child sets its own size, poison for
+     anything inheriting or using em. It joins the scale here. */
+  body { max-width: none; font-size: var(--t-body); line-height: var(--lh-body); }
+
+  /* ---- mobile type ----------------------------------------------------
+     The artboard scale stops here: rem is a flat 16px, so every 0.xx rem
+     size would collapse to a few pixels. The four tiers get real phone
+     sizes instead, and nothing is allowed below the 11px floor. */
+  :root {
+    --t-display: 34px;          /* the hero line, and nothing else */
+    --t-heading: 30px;
+    --t-sub:     16px;
+    --t-cta:     16px;
+    --t-body:    15px;
+    --t-caption: 12px;
+    --lh-display:36px;
+    --lh-heading:33px;
+    --lh-sub:    24px;
+    --lh-body:   23px;
+    --lh-caption:18px;
+    --page-margin: 24px;
+    --radius: 10px;             /* one curvature: the sheets carried ten */
+  }
+
+  /* ---- hard breaks -----------------------------------------------------
+     The prose carries line breaks hand-set for the 2376 artboard. Honoured
+     on a 342 column they produce lines a third of the measure wide, which is
+     what reads as broken text. Prose wraps to the column here instead. The
+     footer's address keeps its breaks, because there the line IS the data,
+     and so does the hero, which is a two-line lockup by design. */
+  .pull-quote p br,
+  .testi-quote p br,
+  .intro p br,
+  .solara-lede br, .solara-body br,
+  .range-lede br,
+  .why-text br,
+  .home-contact-lede br,
+  .enquiry-copy .lede br, .reachout br,
+  .quote-left br, .quote-right br,
+  .experience-body br { display: none; }
+
+  .container,
+  .header-inner,
+  .footer-inner { width: auto; margin-inline: 0; padding-inline: 24px; }
+
+  /* Full-bleed sections break out with 100vw, which counts the scrollbar the
+     viewport does not give back — 16px of sideways scroll on a phone. They are
+     already the full width here, so the break-out is simply switched off. */
+  .pull, .testi, .stat-band, .service-band, .brand-marquee, .band,
+  .next-band, .experience, .rules-band, .coty-figure, .site-header {
+    width: 100%; margin-left: 0;
+  }
+
+  /* ---- header ---- */
+  .site-header { height: 64px; border-bottom: 1px solid #eee; }
+  .header-inner { padding-top: 0; }
+  /* +25%, 150 to 188. The mark is 359.5 x 67, so it stands 35 in the 64 bar,
+     centred by .header-inner's align-items with 14 clear above and below the
+     white. (No display rule needed on the image: img is already block from the
+     reset, so the link box is the artwork's height with no baseline gap.) */
+  .logo { width: 188px; }
+  /* The panel is full width and the items centre on it. align-items places each
+     link's box, text-align handles the inside of that box -- a box wider than
+     its word would otherwise leave the word ragged within it. */
+  .main-nav {
+    position: absolute; left: 0; right: 0; top: 64px; z-index: 30;
+    flex-direction: column; align-items: center; gap: 0;
+    text-align: center;
+    background: #fff; border-bottom: 1px solid #eee;
+    font-size: 15px; padding: 8px 24px 20px;
+    display: none;
+  }
+  .main-nav a { align-self: center; }
+  .main-nav.is-open { display: flex; }
+  .main-nav a { padding: 12px 0; }
+  .search-btn { margin-left: auto; }
+  .search-btn svg { width: 20px; height: 20px; }
+  .btn-build { display: none; }
+  .nav-toggle {
+    display: block; margin-left: 16px; width: 24px;
+  }
+  .nav-toggle span { display: block; height: 2px; background: #000; margin: 5px 0; }
+
+  /* ---- hero ---- */
+  .hero { height: 62vw; min-height: 320px; }
+  .hero-copy { padding-bottom: 32px; }
+  .hero h1 { font-size: var(--t-display); letter-spacing: -0.03em; margin-bottom: 8px; }
+  .hero-sub { font-size: var(--t-sub); line-height: var(--lh-sub); }
+
+  /* ---- enquiry ---- */
+  .enquiry { padding: 48px 0 56px; }
+  /* Two lines, placed rather than left to the column width. At 375 it happened
+     to break after "for"; at 430 it broke after "Adventure" and left the
+     question mark alone on line two. The spans stay inline on desktop, so the
+     heading there is untouched. */
+  .enquiry-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  .enquiry-title .ln { display: block; }
+  /* The reach-out line reads as an answer to the submit button, so on a phone
+     it goes after it rather than above the whole form. .enquiry-copy drops to
+     display:contents so its three paragraphs become items of this grid
+     alongside the form, and order does the moving -- no markup change, and the
+     desktop two-column layout keeps the copy as its left column untouched.
+     The grid's own gap goes to 0 so each step is set on its own. */
+  .enquiry-grid { grid-template-columns: 1fr; gap: 0; padding-top: 28px; }
+  .enquiry-copy { display: contents; }
+  .enquiry-copy .lede { order: 1; font-size: var(--t-sub); line-height: var(--lh-sub); }
+  .enquiry-copy .lede + .lede { margin-top: 28px; }
+  .enquiry-form { order: 2; margin-top: 40px; }
+  /* half the step it had: it belongs to the submit above it, not to the
+     section below, and 40 read as a separation rather than an answer */
+  .reachout { order: 3; margin-top: 20px;
+              font-size: var(--t-body); line-height: var(--lh-body); }
+
+  .enquiry-form { padding-top: 0; }
+  /* The fields short enough to share a line do. Source order is already
+     first / last / email / phone / state / postcode, so the two full-width
+     ones are simply children 3 and 4. */
+  /* grid-template-rows has to be released too. The desktop template is in rem,
+     so against the 16px phone base its three rows collapsed to 6.4, 17.3 and
+     17.5 -- and the 48 tall fields inside them overflowed, which is what put
+     the rows 8 and 9 on top of each other instead of 22 apart. */
+  .field-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto;
+                padding-left: 0; row-gap: 22px; column-gap: 14px; }
+  .field-grid > .field:nth-child(3),
+  .field-grid > .field:nth-child(4) { grid-column: 1 / -1; }
+  /* 48, not 40: six of the seven controls were under the 44 a finger needs */
+  .field--line input { height: 48px; font-size: 16px; padding: 0 20px 8px 0; }
+  .field .req { font-size: 16px; top: 4px; right: 0; }
+  .field--select { margin-left: 0; width: 100%; }
+  /* The state field was a boxed control in a form of underlined ones. Ruled
+     like the rest here, so the row it shares with Post Code reads as one row. */
+  .field--select select {
+    height: 48px; font-size: 16px; padding: 0 24px 8px 0;
+    background: none; border: 0; border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+  }
+  .field--select .chev { left: auto; right: 4px; top: 20px; width: 12px; height: 7px; }
+  .field--select .req { right: 0; top: 4px; }
+
+  /* The pill, built the way desktop builds it: one outlined container, four
+     cells in a row, one indicator that travels between them. It had been
+     flattened into a stacked grid of separate boxes here, which left the thumb
+     nothing to slide along.
+
+     Clearance comes from the same two places as on desktop -- 4 top and bottom
+     from the container's padding, 4 either side from the span's own inset -- so
+     the pill sits an even 4 off whatever bounds it, never touches a divider,
+     and every divider stays drawn. The script already measures the span, so it
+     needs no phone case. Radii are concentric: 14 outside, 14 - 4 = 10. */
+  .chips {
+    margin: 22px 0 0; width: 100%; height: auto; padding: 4px 0;
+    border-radius: 14px; border-width: 1px;
+    display: flex;
+  }
+  .chips-thumb { top: 4px; bottom: 4px; border-radius: 10px; }
+  .chip { padding: 12px 0; border-radius: 0; }
+  .chip > span { width: calc(100% - 8px); border-radius: 10px;
+                 font-size: 11px; line-height: 14px; }
+  /* spans the inner box exactly, padding edge to padding edge */
+  .chip + .chip::before { display: block; left: 0; top: -4px;
+                          width: 1px; height: calc(100% + 8px); }
+
+  .field--area { margin-top: 22px; }
+  .field--area textarea {
+    width: 100%; height: 120px; font-size: 16px; line-height: 24px;
+    padding: 16px; border-radius: 10px; border-width: 1px;
+  }
+
+  .consent { margin-top: 22px; gap: 12px; padding-left: 0; }
+  /* Size and border only. The checked state is left entirely to the desktop
+     rule -- orange fill with the white tick at 52% -- because a 4px white inset
+     ring here was painting over that tick and leaving a small orange dot in the
+     middle of the circle instead. 52% of 20 is a 10.4 tick, the same proportion
+     the desktop circle carries. */
+  .consent input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; border-width: 1px; }
+  .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
+  .fineprint { font-size: 12px; line-height: 18px; margin-top: 6px; }
+  .btn-submit { margin: 22px 0 0; width: 100%; max-width: none; height: 54px; font-size: 16px; line-height: 54px; }
+
+  /* ---- video ---- */
+  .video-frame { aspect-ratio: 16 / 9; }
+  /* the controls size off rem, so they need real numbers here — and a 44px
+     target, which is the smallest a finger can reliably hit */
+  .video-controls { gap: 12px; }
+  /* :hover never happens on a touch screen, so the controls would sit at
+     opacity 0 forever. Shown outright here. */
+  .video-controls { opacity: 1; }
+  .video-ctl { width: 44px; height: 44px; font-size: var(--t-caption); }
+  .video-ctl svg { width: 20px; height: 20px; }
+  .video-nudge {
+    top: 12px; font-size: 15px; padding: 11px 18px; border-radius: 8px;
+    transform: translate(-50%, -6px);
+  }
+  .video-nudge.is-on { transform: translate(-50%, 0); }
+
+  /* ---- unseen ---- */
+  .unseen { padding: 48px 0 56px; }
+  .unseen-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  /* The sub was carrying --lh-sub, 24 on 16px type, so 4 of box leading sat on
+     top of the 10 margin and the pair read apart. Desktop sets line-height 1 on
+     this line for exactly that reason; the phone now does the same, and the
+     margin is the whole of the gap rather than most of it. */
+  .unseen-sub { margin-top: 10px; font-size: var(--t-sub); line-height: 1; }
+  .quote-block { grid-template-columns: 1fr; margin-top: 36px; padding-top: 0; gap: 24px; }
+  .quote-block::before { display: none; }
+  .quote-mark { display: none; }
+  /* The spec comes before the quote on a phone: the panel detail answers "book
+     a factory tour", and the line about cost answers the panel detail. Source
+     order is the desktop column order, so it is swapped here rather than in the
+     markup. */
+  .quote-right { order: 1; padding-left: 0; font-size: var(--t-body); line-height: var(--lh-body); }
+  .quote-left { order: 2; font-size: var(--t-sub); line-height: var(--lh-sub); }
+  /* Two lines, with the break placed rather than left to the column width: the
+     brs are hidden here with the rest of the prose, so each half is a span that
+     becomes a block. */
+  .quote-left .ln { display: block; }
+  /* The attribution is the quote's signature, not a third statement. At the
+     same 24 that separates the panel spec from the quote it read as one more
+     item in a list; 14 binds it to the line above -- the step this page already
+     uses between a heading and the content it introduces. */
+  .quote-attr { margin-top: 14px; font-size: var(--t-caption); line-height: var(--lh-caption); }
+
+  /* ---- experience ---- */
+  .experience { height: auto; min-height: 520px; border-radius: 0; }
+  /* space-between pinned the sentence to the foot of a 520 band, 294 below its
+     own heading, so the two read as unrelated. The pair closes up and the rest
+     of the band is picture. */
+  .experience-copy { padding: 56px 24px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 520px; }
+  /* nowrap on the desktop title carried the link 492 wide inside a 327 column,
+     165 past the container. Released here, like every other pinned title. */
+  .experience-title { font-size: var(--t-heading); line-height: var(--lh-heading);
+                      white-space: normal; }
+  .experience-body { margin-top: 14px; font-size: var(--t-sub); line-height: var(--lh-sub); }
+
+  /* ---- rules band ---- */
+  .rules-band { height: auto; padding: 32px 24px; }
+  .rules-band p { font-size: var(--t-sub); line-height: var(--lh-sub); letter-spacing: 0.08em; }
+
+  /* CTAs need a finger-sized target */
+  .btn-next, .btn-submit, .btn-subscribe, .btn-solid { min-height: 48px; }
+
+  /* ---- legendary service -----------------------------------------------
+     Each review becomes an inset card: photograph on top, cream panel beneath,
+     both rounded, with the quote mark straddling the join between them.
+     !important on the padding because a desktop rule in homepage.css loads
+     after this file and was winning, leaving the heading 8.8 off the band. */
+  /* The section ends on a dot rail, which carries almost no weight, so a full
+     48 under it plus Queen of Hearts' own 48 read as a hole. 24 here, 72 in
+     total. */
+  .service { padding-top: 48px !important; padding-bottom: 24px !important; }
+  .service-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  .service-kicker { font-size: 12px; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .service-band { flex-direction: column; margin-top: 26px; min-height: 0; }
+  .service-band::before { display: none; }
+  .service-slide { flex-direction: column; min-height: 0;
+                   scroll-snap-align: start; scroll-snap-stop: always; }
+  /* photo first here, then the review — this is the one section where the
+     picture earns the lead, because the face belongs with the words */
+  .service-media { order: 1; width: auto; height: auto; margin: 0 24px;
+                   aspect-ratio: 16 / 9; overflow: hidden;
+                   border-radius: var(--radius) var(--radius) 0 0; box-shadow: none; }
+  .service-quote { order: 2; position: relative; margin: 0 24px; width: auto;
+                   padding: 34px 24px 26px; background: #FFF2DC;
+                   border-radius: 0 0 var(--radius) var(--radius); }
+  .service-quote p { position: static; font-size: var(--t-sub); line-height: 24px; }
+  /* Anchored to the top of the cream, then lifted half its own height, so the
+     mark sits exactly half on the photograph and half on the panel at any
+     width — measured off the join rather than from a fixed distance. */
+  .service-quote .qmark {
+    display: block; top: 0; bottom: auto; left: 24px; right: auto;
+    transform: translateY(-50%); width: calc(var(--t-sub) * 3.1301);
+  }
+  .service-name, .service-role { font-size: var(--t-caption); line-height: 15px; }
+  .service-name { margin-top: 16px; }
+  .service-arrow { display: none; }
+  .service-viewport {
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .service-viewport::-webkit-scrollbar { display: none; }
+  .service-track { transform: none !important; transition: none !important; }
+  /* the desktop loop's wrap-around copy is a duplicate slide here */
+  .service-slide.is-clone { display: none; }
+
+  .service-rail { display: flex; align-items: center; gap: 9px; padding: 18px 24px 0; }
+  .service-dot { width: 6px; height: 6px; border-radius: 50%; background: #D9D3C8;
+                 transition: width .2s ease, background .2s ease; }
+  .service-dot.is-on { width: 18px; border-radius: 3px; background: var(--orange-deep); }
+  .service-count { margin-left: auto; font-size: var(--t-caption);
+                   letter-spacing: 0.12em; color: #8A8A8A; }
+
+  /* ---- where to next ---- */
+  .next-band { height: auto; min-height: 420px; }
+  .next-copy { padding: 48px 24px; gap: 24px; height: auto; min-height: 420px; }
+  .next-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  /* The two share their row, at the position they already sit -- the title is
+     still 48 off the top of the band and the actions 24 under it. Two buttons
+     in a 327 column with an 11 gap are 158 each; at 15px with 30 of side
+     padding "EXPLORE THE RANGE" needs about 210 and does not fit, so the type
+     comes down to 13 and the side padding to 8. Both still clear the 48 a
+     finger needs. */
+  .next-actions { flex-direction: row; align-items: stretch; gap: 11px; width: 100%; }
+  .btn-next { flex: 1 1 0; min-width: 0;
+              display: flex; align-items: center; justify-content: center;
+              font-size: 13px; padding: 14px 8px; text-align: center; }
+
+  /* ---- footer -----------------------------------------------------------
+     Every line-height in here was still the desktop rem value. Against the
+     16px phone base .footer-head resolved to 4.16 on 15px type and .link-col li
+     to 4.32 -- lines sitting almost on top of each other -- and two paragraph
+     margins came out at 2.7 and 2.1. Only the font sizes had been carried over,
+     never the leading, so it is set explicitly here on everything.
+
+     Four steps, and nothing else:
+       48  between the footer's own sections
+       32  between blocks inside a section
+       14  from a heading to the content it introduces
+       10  between lines within a block                                    */
+  .site-footer { padding: 56px 0 40px; font-size: 15px; line-height: 24px; }
+  .footer-inner { grid-template-columns: 1fr; row-gap: 48px; }
+  .footer-logo { width: 190px; margin-bottom: 32px; }
+  .footer-blurb { width: auto; }
+  .footer-brand p + p { margin-top: 10px; }
+  .footer-contact { line-height: 24px; }
+
+  .footer-head { font-size: 15px; line-height: 20px; margin-bottom: 14px; }
+  .footer-brand .footer-head { margin-top: 32px; margin-bottom: 14px; }
+  /* The three contact lines become ruled rows with a glyph each -- same
+     hairline as the link accordion below, so the whole footer is one stack.
+     Phone and email are links and carry the weight; the address is not a link
+     and is not dressed as one. */
+  .foot-contact { margin-top: 14px; }
+  .foot-row { display: flex; align-items: center; gap: 13px; min-height: 52px;
+              padding: 6px 0; border-top: 1px solid #e4e2de;
+              color: inherit; text-decoration: none; }
+  .foot-row:last-child { border-bottom: 1px solid #e4e2de; }
+  .foot-row .ic { width: 19px; height: 19px; flex: none; color: var(--orange-deep);
+                  stroke: currentColor; fill: none; stroke-width: 1.5;
+                  stroke-linecap: round; stroke-linejoin: round; }
+  .foot-row .t { line-height: 21px; }
+  a.foot-row .t { font-weight: 700; }
+  a.foot-row:hover .t { color: var(--orange-deep); }
+
+  /* No discs. The boxes stay 44 so the target holds, the glyph sits 35 inside,
+     and space-between pins the row to both edges of the same 327 the rules
+     above it measure. The outer two are pulled by (44 - 35) / 2 so it is the
+     GLYPH that lands flush, not its box. The gap is then the remainder --
+     (327 - 5x35) / 4 = 38 -- even by construction. */
+  .socials { justify-content: space-between; gap: 0; margin-top: 26px; }
+  .socials a { display: grid; place-items: center; width: 44px; height: 44px; }
+  .socials svg { width: 35px; height: 35px; display: block; }
+  .socials li:first-child { margin-left: -4.5px; }
+  .socials li:last-child { margin-right: -4.5px; }
+  .made-in { width: 230px; margin-top: 32px; }
+
+  .newsletter { margin-bottom: 32px; }
+  .newsletter .footer-head { margin-top: 0; margin-bottom: 14px; }
+  .newsletter-form { grid-template-columns: 1fr; row-gap: 14px; }
+  .newsletter-form .field--line input { height: 38px; font-size: 16px; }
+  /* side to side, like every other CTA on the phone */
+  .btn-subscribe { height: 50px; font-size: 15px; max-width: none; }
+
+  /* The five link groups become an accordion -- 982 as one column, 266 closed.
+     Same ruled stack as the accordions in Build your dream van and Why choose
+     us: the #e4e2de hairline, and orange for the open state. The rule sits on
+     .link-cols so the stack closes correctly across the three columns, which
+     go to display:contents and stop being boxes. */
+  .link-cols { display: block; border-bottom: 1px solid #e4e2de; }
+  .link-col { display: contents; }
+  .link-col .footer-head { margin-bottom: 14px; }
+  .link-col li { line-height: 22px; margin-bottom: 10px; }
+
+  .foot-acc { border-top: 1px solid #e4e2de; }
+  .foot-acc-head {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 16px 0; background: none; border: 0;
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+  }
+  .foot-acc-head .footer-head { margin: 0; }
+  .foot-acc-sign { position: relative; width: 13px; height: 13px; flex: none; }
+  .foot-acc-sign::before, .foot-acc-sign::after {
+    content: ""; position: absolute; left: 0; top: 6px; width: 13px; height: 1.5px;
+    background: var(--orange-deep); transition: transform .28s ease;
+  }
+  .foot-acc-sign::after { transform: rotate(90deg); }   /* the plus closes to a minus */
+  .foot-acc.is-on .foot-acc-sign::after { transform: rotate(0deg); }
+  .foot-acc-body { overflow: hidden; height: 0;
+                   transition: height .3s cubic-bezier(.4, 0, .2, 1); }
+  .foot-acc-body ul { padding-bottom: 6px; }
+
+  .footer-legal-left,
+  .footer-legal-left a { font-size: var(--t-caption); line-height: 18px; }
+  .footer-legal-right p { max-width: none; font-size: var(--t-caption); line-height: var(--lh-caption); }
+  .footer-legal-right p + p { margin-top: 10px; }
+}
+
+@media (max-width: 520px) {
+  /* .chips was a stacked grid here once; it is a flex row of cells now, so a
+     column template would be inert. Dropped rather than left to mislead. */
+  .link-cols { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
