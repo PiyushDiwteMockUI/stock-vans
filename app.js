@@ -10,41 +10,54 @@
       ActiveCampaign POST body and element .value/.textContent. */
 'use strict';
 const money = n => n == null ? 'Enquire for price' : '$' + Math.round(n).toLocaleString('en-AU');
-const VANS = DATA.vans.map((v, i) => Object.assign({}, v, {
-  id: i, priceN: v.price, priceTxt: money(v.price),
-  lenN: v.length ? parseFloat(v.length.replace(/'/, '.').replace(/"/, '')) : 99,
-  status: v.used ? 'Pre-loved' : 'Stock van',
-  img: v.images[0] || ''
-}));
+const VANS = DATA.vans.map((v, i) => {
+  const lenN = v.length ? parseFloat(v.length.replace(/'/, '.').replace(/"/, '')) : 99;
+  return Object.assign({}, v, {
+    id: i, priceN: v.price, priceTxt: money(v.price), lenN: lenN,
+    lenIn: lenN === 99 ? null : Math.floor(lenN) * 12 + Math.round((lenN % 1) * 100),
+    axle: lenN < 18 ? 'Single axle' : 'Tandem axle',
+    status: v.used ? 'Pre-loved' : 'Stock van',
+    img: v.images[0] || ''
+  });
+});
 const fullName = v => v.name.startsWith(v.model) ? v.name : v.model + ' ' + v.name;
 const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
 const LAYOUTS = ['Couples', 'Family'];
+const AXLES = ['Single axle', 'Tandem axle'];
 const PRICE_MIN = 105000, PRICE_MAX = 215000;
+const LEN_MIN = 204, LEN_MAX = 288; // whole inches: 17'00" to 24'00"
+const fmtLen = (v, unit) => {
+  if (unit === 'm') return (v / 12 * 0.3048).toFixed(1) + ' m';
+  return Math.floor(v / 12) + "'" + String(v % 12).padStart(2, '0') + '"';
+};
 
 const SAN = { ADD_ATTR: ['role', 'aria-checked', 'aria-label', 'aria-live', 'target'] };
 function put(el, markup) { el.innerHTML = DOMPurify.sanitize(markup, SAN); }
 
 const SV = {
-  s: { models: [], layouts: [], states: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX,
+  s: { models: [], layouts: [], states: [], axles: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX,
+       minLen: LEN_MIN, maxLen: LEN_MAX, lenUnit: 'ft',
        sort: 'featured', group: false, consent: false, intent: 0, detail: null, gal: 0, tab: 'Chassis' },
   set(k, v) { this.s[k] = v; this.render(); },
   toggleIn(k, val) { const a = this.s[k]; this.s[k] = a.includes(val) ? a.filter(x => x !== val) : a.concat([val]); this.render(); },
-  clearAll() { Object.assign(this.s, { models: [], layouts: [], states: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX }); this.render(); },
+  clearAll() { Object.assign(this.s, { models: [], layouts: [], states: [], axles: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX, minLen: LEN_MIN, maxLen: LEN_MAX }); this.render(); },
 
   matches(v, skip) {
     const s = this.s;
     if (skip !== 'models' && s.models.length && !s.models.includes(v.model)) return false;
     if (skip !== 'layouts' && s.layouts.length && !s.layouts.includes(v.layout)) return false;
     if (skip !== 'states' && s.states.length && !s.states.includes(v.state)) return false;
+    if (skip !== 'axles' && s.axles.length && !s.axles.includes(v.axle)) return false;
     if (s.status !== 'all' && v.status !== s.status) return false;
     const p = v.priceN == null ? PRICE_MIN : v.priceN;
     if (p > s.maxPrice || p < s.minPrice) return false;
+    if (v.lenIn != null && (v.lenIn < s.minLen || v.lenIn > s.maxLen)) return false;
     return true;
   },
   countFor(k, val) {
     return VANS.filter(v => this.matches(v, k) &&
-      (k === 'models' ? v.model === val : k === 'layouts' ? v.layout === val : v.state === val)).length;
+      (k === 'models' ? v.model === val : k === 'layouts' ? v.layout === val : k === 'axles' ? v.axle === val : v.state === val)).length;
   },
   filtered() {
     let a = VANS.filter(v => this.matches(v));
@@ -59,8 +72,10 @@ const SV = {
     s.models.forEach(m => c.push([m, 'models', m]));
     s.layouts.forEach(m => c.push([m, 'layouts', m]));
     s.states.forEach(m => c.push([m, 'states', m]));
+    s.axles.forEach(m => c.push([m, 'axles', m]));
     if (s.status !== 'all') c.push([s.status, 'status', '']);
     if (s.minPrice > PRICE_MIN || s.maxPrice < PRICE_MAX) c.push([money(s.minPrice) + ' – ' + money(s.maxPrice), 'price', '']);
+    if (s.minLen > LEN_MIN || s.maxLen < LEN_MAX) c.push([fmtLen(s.minLen, s.lenUnit) + ' – ' + fmtLen(s.maxLen, s.lenUnit), 'len', '']);
     return c;
   },
 
@@ -104,6 +119,7 @@ const SV = {
       <span class="box ${s[k].includes(val) ? 'on' : ''}"></span><span style="flex:1;text-align:left">${val}</span>
       <span style="font:400 11.5px/1 'Gordita';color:var(--mut)">${this.countFor(k, val)}</span></button>`;
     const pct = v => ((v - PRICE_MIN) / (PRICE_MAX - PRICE_MIN) * 100).toFixed(2);
+    const lpct = v => ((v - LEN_MIN) / (LEN_MAX - LEN_MIN) * 100).toFixed(2);
     return `
       <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:6px">
         <span class="av" style="font-size:14px;letter-spacing:.06em;text-transform:uppercase">Refine</span>
@@ -141,9 +157,31 @@ const SV = {
           <input type="range" class="dual" aria-label="Budget maximum" min="${PRICE_MIN}" max="${PRICE_MAX}" step="1000" value="${s.maxPrice}" data-act="priceMax" style="z-index:4">
         </div>
       </div>
+      <div style="padding:18px 0;border-bottom:1px solid var(--line)">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px">
+          <span class="kicker">Length</span>
+          <span style="display:inline-flex;border:1px solid var(--line2);border-radius:2px;overflow:hidden">
+            ${['ft', 'm'].map(u => `<button type="button" class="unitbtn ${s.lenUnit === u ? 'on' : ''}" data-act="lenUnit" data-val="${u}">${u}</button>`).join('')}
+          </span>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px">
+          <span style="font:400 12px/1 'Gordita';color:var(--mut)">${fmtLen(s.minLen, s.lenUnit)}</span>
+          <span style="font:500 13px/1 'Gordita';color:var(--olink)">${fmtLen(s.maxLen, s.lenUnit)}</span>
+        </div>
+        <div style="position:relative;height:28px">
+          <div style="position:absolute;left:0;right:0;top:12px;height:3px;background:#D8D3CC;border-radius:2px"></div>
+          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--orange);left:${lpct(s.minLen)}%;right:${(100 - lpct(s.maxLen)).toFixed(2)}%"></div>
+          <input type="range" class="dual" aria-label="Length minimum" min="${LEN_MIN}" max="${LEN_MAX}" step="1" value="${s.minLen}" data-act="lenMin" style="z-index:3">
+          <input type="range" class="dual" aria-label="Length maximum" min="${LEN_MIN}" max="${LEN_MAX}" step="1" value="${s.maxLen}" data-act="lenMax" style="z-index:4">
+        </div>
+      </div>
+      <div style="padding:18px 0;border-bottom:1px solid var(--line)">
+        <div class="kicker" style="margin-bottom:6px">Axle</div>${AXLES.map(m => chk('axles', m)).join('')}
+      </div>
       <button type="button" role="checkbox" aria-checked="${s.group}" class="chk" style="padding-top:20px" data-act="group">
         <span class="box ${s.group ? 'on' : ''}"></span><span style="flex:1;text-align:left">Group by location</span>
       </button>
+      <button type="button" class="btn-orange" style="width:100%;margin-top:20px" data-act="clear">Reset filters</button>
       <div style="margin-top:28px;background:var(--ink);padding:22px;border-radius:4px">
         <div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:12px">Not sure?</div>
         <p style="margin:0 0 16px;font:300 13px/1.55 'Gordita';color:rgba(255,255,255,.72)">Tell us how you travel and we will point you at the right van. No hard sell.</p>
@@ -397,8 +435,10 @@ const SV = {
       const kind = el.dataset.kind;
       if (kind === 'status') this.set('status', 'all');
       else if (kind === 'price') { this.s.minPrice = PRICE_MIN; this.s.maxPrice = PRICE_MAX; this.render(); }
+      else if (kind === 'len') { this.s.minLen = LEN_MIN; this.s.maxLen = LEN_MAX; this.render(); }
       else this.toggleIn(kind, val);
     }
+    else if (a === 'lenUnit') this.set('lenUnit', val);
     else if (a === 'intent') { this.s.intent = +id; this.renderIntents(); }
     else if (a === 'back') this.backToGrid();
     else if (a === 'galprev') { const v = VANS[this.s.detail]; this.s.gal = (this.s.gal - 1 + v.images.length) % v.images.length; this.renderDetail(); }
@@ -427,6 +467,8 @@ const SV = {
       if (!el) return;
       if (el.dataset.act === 'priceMin') { this.s.minPrice = Math.min(+el.value, this.s.maxPrice - 1000); this.render(); }
       else if (el.dataset.act === 'priceMax') { this.s.maxPrice = Math.max(+el.value, this.s.minPrice + 1000); this.render(); }
+      else if (el.dataset.act === 'lenMin') { this.s.minLen = Math.min(+el.value, this.s.maxLen - 1); this.render(); }
+      else if (el.dataset.act === 'lenMax') { this.s.maxLen = Math.max(+el.value, this.s.minLen + 1); this.render(); }
     });
     document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
     this.render();
