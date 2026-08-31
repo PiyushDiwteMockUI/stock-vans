@@ -10,7 +10,7 @@
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Light.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-:root{--svink:#12171C;--body:#646E76;--body2:#2A3238;--mut:#6E777E;--svorange:#C97625;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
+:root{--svink:#12171C;--body:#3D464D;--body2:#2A3238;--mut:#5A646B;--svorange:#C97625;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:#fff;font-family:'Gordita',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--svink)}
@@ -31,6 +31,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .speck{font:400 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
 .specv{font:500 12.5px/1.2 'Gordita',sans-serif;color:var(--svink)}
 .badge-dark{background:var(--svink);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
+.badge-grey{background:#4A5560;color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
 .badge-orange{background:var(--svorange);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
 .photocount{position:absolute;bottom:12px;right:12px;background:rgba(6,9,12,.72);color:#fff;font:400 11px/1 'Gordita',sans-serif;padding:6px 9px;border-radius:2px}
 .modelkick{font:500 10px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink)}
@@ -100,11 +101,27 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
   .enqgrid{grid-template-columns:1fr!important;gap:34px!important}
   .enqfields{grid-template-columns:1fr!important}
   footer{padding-left:20px!important;padding-right:20px!important}
+  #page-index > div{padding-left:20px!important;padding-right:20px!important}
   .intentpill{font-size:12px!important}
 }
 </style>
-<link rel="stylesheet" href="assets/ref/css/styles.css?v=ca3a19f">
-<link rel="stylesheet" href="assets/ref/css/type-compact.css?v=ca3a19f">
+<link rel="stylesheet" href="assets/ref/css/styles.css?v=db92d9e">
+<link rel="stylesheet" href="assets/ref/css/type-compact.css?v=db92d9e">
+<style>
+/* Overrides on top of the reference stylesheet: keep its look, fix usability at sub-design widths. */
+@media (min-width:901px){
+  /* The reference scales 1rem = 100vw/23.76 (designed on a 2376px artboard). On common
+     1280-1600px screens that shrinks the type and inputs too far, so hold a floor while
+     keeping the 16.24rem content column inside the viewport. */
+  html{font-size:min(100px, max(calc(100vw / 23.76), min(66px, calc(100vw / 17.5))))}
+}
+.field--line input{min-height:44px}
+.field--select select{min-height:48px}
+.chips .chip{min-height:48px}
+.btn-submit{min-height:52px}
+.field--van{grid-column:1 / -1}
+.consent input{width:20px;height:20px;flex:none}
+</style>
 </head>
 <body>
 
@@ -155,12 +172,15 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
     <main class="list">
       <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:26px">
         <span aria-live="polite" style="font:400 13px/1 'Gordita';color:var(--body)"><span id="count" style="color:var(--svink);font-weight:500">0</span> vans ready to leave</span>
+        <span style="display:flex;align-items:center;gap:18px">
+        <button class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase;font:500 11px/1 'Gordita',sans-serif" data-act="showindex">Browse as pages</button>
         <select aria-label="Sort stock" class="selbox sortsel" data-act="sort">
           <option value="featured">Featured first</option>
           <option value="priceAsc">Price: low to high</option>
           <option value="priceDesc">Price: high to low</option>
           <option value="lenAsc">Shortest first</option>
         </select>
+        </span>
       </div>
       <div id="chips" style="display:none;flex-wrap:wrap;gap:7px;margin-bottom:22px"></div>
       <div id="groups"></div>
@@ -183,6 +203,7 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
 </div>
 
 <div id="page-detail" style="display:none"></div>
+<div id="page-index" style="display:none"></div>
 
 <section class="enquiry" id="enquire">
   <div class="container">
@@ -474,8 +495,8 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
 <iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 
 <script src="assets/purify.min.js"></script>
-<script src="data.js?v=ca3a19f"></script>
-<script src="app.js?v=ca3a19f"></script>
+<script src="data.js?v=db92d9e"></script>
+<script src="app.js?v=db92d9e"></script>
 <script src="assets/ref/js/video.js"></script>
 <script src="assets/ref/js/reviews.js"></script>
 <script src="assets/ref/js/footer.js"></script>

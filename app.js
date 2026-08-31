@@ -156,7 +156,7 @@ const SV = {
         ${extraHead || ''}
       </div>
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:10px">
-        <span class="slb-lo" style="font:400 12px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${fmt(s[c.lo])}</span>
+        <span class="slb-lo" style="font:400 13px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${fmt(s[c.lo])}</span>
         <span class="slb-hi" style="font:500 13px/1 'Gordita';color:var(--olink);font-variant-numeric:tabular-nums">${fmt(s[c.hi])}</span>
       </div>
       <div class="dualwrap" data-skey="${key}" style="position:relative;height:28px;touch-action:none">
@@ -172,7 +172,7 @@ const SV = {
     const s = this.s;
     const chk = (k, val) => `<button type="button" role="checkbox" aria-checked="${s[k].includes(val)}" class="chk" data-act="toggle" data-key="${k}" data-val="${val}">
       <span class="box ${s[k].includes(val) ? 'on' : ''}"></span><span style="flex:1;text-align:left">${val}</span>
-      <span style="font:400 11.5px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${this.countFor(k, val)}</span></button>`;
+      <span style="font:400 12.5px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${this.countFor(k, val)}</span></button>`;
     const wUnits = `<div style="margin-left:auto;display:flex;gap:6px">${[['tare','Tare'],['atm','ATM'],['ball','Ball']].map(([k,l]) =>
       `<button type="button" class="useg ${s.weightMetric === k ? 'on' : ''}" data-act="wmetric" data-val="${k}">${l}</button>`).join('')}</div>`;
     const lUnits = `<div style="margin-left:auto;display:flex;gap:6px">${[['m','Metres'],['ft','Feet']].map(([k,l]) =>
@@ -219,7 +219,7 @@ const SV = {
       </div>
       <div style="margin-top:28px;background:var(--svink);padding:22px;border-radius:4px">
         <div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--peach);margin-bottom:12px">Not sure?</div>
-        <p style="margin:0 0 16px;font:300 13px/1.55 'Gordita';color:rgba(255,255,255,.72)">Tell us how you travel and we will point you at the right van. No hard sell.</p>
+        <p style="margin:0 0 16px;font:400 13px/1.55 'Gordita';color:rgba(255,255,255,.72)">Tell us how you travel and we will point you at the right van. No hard sell.</p>
         <a href="#enquire" class="talkbtn">Talk to us</a>
       </div>`;
   },
@@ -256,7 +256,7 @@ const SV = {
       <div style="margin-bottom:34px">
         ${g.loc ? `<div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-top:6px">
           <span class="av" style="font-size:19px;letter-spacing:.05em;text-transform:uppercase">${g.loc}</span>
-          <span style="font:400 11.5px/1 'Gordita';color:var(--mut)">${g.vans.length} vans</span>
+          <span style="font:400 12.5px/1 'Gordita';color:var(--mut)">${g.vans.length} vans</span>
           <span style="flex:1;height:1px;background:var(--line);display:block"></span></div>` : ''}
         <div class="grid">${g.vans.map(v => this.cardHTML(v)).join('')}</div>
       </div>`).join(''));
@@ -294,6 +294,7 @@ const SV = {
   view(id) {
     this.s.detail = id; this.s.gal = 0; this.s.tab = 'Chassis';
     document.getElementById('page-grid').style.display = 'none';
+    document.getElementById('page-index').style.display = 'none';
     document.getElementById('page-detail').style.display = 'block';
     this.renderDetail(); window.scrollTo(0, 0);
     history.replaceState(null, '', '#van/' + VANS[id].chassis);
@@ -301,6 +302,7 @@ const SV = {
   backToGrid() {
     this.s.detail = null;
     document.getElementById('page-detail').style.display = 'none';
+    document.getElementById('page-index').style.display = 'none';
     document.getElementById('page-grid').style.display = 'block';
     history.replaceState(null, '', '#'); window.scrollTo(0, 0);
   },
@@ -312,6 +314,8 @@ const SV = {
     if (!tabs.includes(this.s.tab)) this.s.tab = tabs[0];
     const rows = specs[this.s.tab] || [];
     const similar = VANS.filter(x => x.id !== v.id && x.model === v.model).slice(0, 3);
+    const towNote = v.atm ? (v.atm <= 3500 ? 'Tows behind most 3.5T-rated dual cab utes.' : 'Needs a 4.5T-rated tow vehicle.') : '';
+    const payload = (v.atm && v.tare) ? (v.atm - v.tare).toLocaleString('en-AU') + ' kg' : '';
     put(document.getElementById('page-detail'), `
     <div class="detailwrap">
     <div style="padding:20px 56px 0;display:flex;align-items:center;gap:10px;font:400 11px/1 'Gordita';letter-spacing:.14em;text-transform:uppercase;color:var(--mut)">
@@ -321,12 +325,11 @@ const SV = {
     <div class="wrap" style="padding:22px 0 0">
       <div style="flex:1 1 560px;min-width:0;padding:0 46px 0 56px">
         <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
-          <span class="badge-dark">Ready now</span>
-          ${v.used ? '<span class="badge-orange">Pre-loved</span>' : ''}
-          <span style="font:400 11.5px/1 'Gordita';color:var(--mut)">Stock no. ${v.chassis}</span>
+          ${v.used ? '<span class="badge-grey">Pre-loved</span>' : '<span class="badge-dark">Ready now</span>'}
+          <span style="font:400 12.5px/1 'Gordita';color:var(--mut)">Stock no. ${v.chassis}</span>
         </div>
-        <h1 class="av" style="margin:0 0 8px;font-size:38px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">${fullName(v)}</h1>
-        <p style="margin:0 0 22px;font:300 16px/1.55 'Gordita';color:var(--body);max-width:600px">Built, finished and located in ${v.state}, ready to leave.</p>
+        <h1 class="av" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">${fullName(v)}</h1>
+        <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita';color:var(--body);max-width:62ch;text-wrap:pretty">Built, finished and located in ${v.state}, ready to leave.</p>
         <div style="position:relative;aspect-ratio:3/2;background:var(--dk);border-radius:4px;overflow:hidden;margin-bottom:10px">
           <div role="img" aria-label="${v.name}" style="width:100%;height:100%;background-image:url(${v.images[this.s.gal]});background-size:cover;background-position:center;filter:contrast(1.05) saturate(1.06)"></div>
           <button class="galbtn" style="left:14px" data-act="galprev">‹</button>
@@ -339,27 +342,38 @@ const SV = {
         <div style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">
           ${[['Model', v.model, 'Wonderland RV range'], ['Length', v.length || '—', 'Body length'], ['Layout', v.layout, v.layout === 'Family' ? 'Bunks on board' : 'Two berth touring'], ['Location', v.state, 'Where it is now']].map(([k, val, d]) => `
           <div style="padding:22px 20px;background:var(--svink)">
-            <div style="font:400 9.5px/1 'Gordita';letter-spacing:.26em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">${k}</div>
+            <div style="font:400 10.5px/1 'Gordita';letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">${k}</div>
             <div class="av" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">${val}</div>
-            <div style="margin-top:9px;font:300 11.5px/1.45 'Gordita';color:rgba(255,255,255,.6)">${d}</div>
+            <div style="margin-top:9px;font:400 12.5px/1.55 'Gordita';color:rgba(255,255,255,.76)">${d}</div>
           </div>`).join('')}
         </div>
+        ${towNote ? `<div style="display:flex;align-items:center;gap:12px;padding:15px 18px;border:1px solid var(--line2);border-radius:4px;margin-bottom:38px">
+          <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="flex:none;display:block"><path d="M2.5 12.5h11v-5h-11v5z M13.5 9.5h2.6l1.4 3h-4z M5.5 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z M15 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z" fill="none" stroke="var(--svink)" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>
+          <span style="font:400 13.5px/1.5 'Gordita';color:var(--body2)">${towNote}${payload ? ' Payload of ' + payload + ' once you are loaded.' : ''}</span>
+        </div>` : ''}
+        ${v.floorplan ? `<div style="margin-bottom:38px">
+          <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
+          <p style="margin:0 0 16px;font:400 14px/1.65 'Gordita';color:var(--body);max-width:60ch">The ${v.code} layout, top down.</p>
+          <div style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px">
+            <img src="${v.floorplan}" alt="${v.code} floorplan" loading="lazy" style="width:100%;height:auto;display:block">
+          </div>
+        </div>` : ''}
         <div style="margin-bottom:38px">
-          <h2 class="av" style="margin:0 0 6px;font-size:20px;letter-spacing:.05em;text-transform:uppercase">Specifications</h2>
-          <p style="margin:0 0 16px;font:300 12.5px/1.5 'Gordita';color:var(--mut);max-width:560px">Standard specification for the ${v.model} range. This van may include additional optioned upgrades — confirm the exact build on the dealer listing or with our team.</p>
+          <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
+          <p style="margin:0 0 16px;font:400 14px/1.65 'Gordita';color:var(--body);max-width:60ch">Standard specification for the ${v.model} range. This van may include additional optioned upgrades — confirm the exact build on the dealer listing or with our team.</p>
           <div style="display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--line);margin-bottom:4px">
             ${tabs.map(t => `<button class="tabbtn ${this.s.tab === t ? 'on' : ''}" data-act="tab" data-val="${t}">${t}</button>`).join('')}
           </div>
-          <div>${rows.map(([k, val]) => `<div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:15px 2px;border-bottom:1px solid var(--line)">
-            <span style="flex:0 0 200px;font:500 12px/1.45 'Gordita';letter-spacing:.04em">${k}</span>
-            <span style="flex:1 1 260px;min-width:0;font:300 13px/1.55 'Gordita';color:var(--body)">${val}</span></div>`).join('')}</div>
+          <div>${rows.map(([k, val]) => `<div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+            <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita';letter-spacing:.02em">${k}</span>
+            <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita';color:var(--body)">${val}</span></div>`).join('')}</div>
         </div>
         <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin-bottom:38px">
           <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
             <div style="min-width:0">
               <div style="font:500 10px/1 'Gordita';letter-spacing:.28em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
               <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">${v.state}</div>
-              <div style="font:300 13px/1.6 'Gordita';color:var(--body)">This van is with our ${v.state} dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
+              <div style="font:400 13px/1.6 'Gordita';color:var(--body)">This van is with our ${v.state} dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:9px;flex:none">
               <button class="btn-dark" data-act="enquire" data-id="${v.id}">Book a viewing</button>
@@ -369,7 +383,7 @@ const SV = {
         </div>
         <div style="padding-bottom:66px">
           <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px">
-            <h2 class="av" style="margin:0;font-size:20px;letter-spacing:.05em;text-transform:uppercase">Similar vans in stock</h2>
+            <h2 class="av" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
             <button class="linkbtn" style="letter-spacing:.16em;text-transform:uppercase;font-weight:500" data-act="back">See all ${VANS.length}</button>
           </div>
           <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
@@ -397,10 +411,11 @@ const SV = {
           <div style="padding:0 22px 22px">
             ${[['Stock no', v.chassis], ['Layout code', v.code], ['Length', v.length || '—'], ['Layout', v.layout], ['Sleeps', v.sleeps || '—'],
                ['Tare', v.tare ? kg(v.tare) : '—'], ['ATM', v.atm ? kg(v.atm) : '—'], ['Ball weight', v.ball ? kg(v.ball) : '—'],
+               ['Payload', (v.atm && v.tare) ? kg(v.atm - v.tare) : '—'],
                ['Axle', v.axle], ['Condition', v.used ? 'Pre-loved' : 'New'], ['Location', v.state], ['Photos', v.images.length]].map(([k, val]) => `
-            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid var(--line)">
-              <span style="font:400 11.5px/1.3 'Gordita';letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">${k}</span>
-              <span style="font:500 12.5px/1.3 'Gordita';text-align:right">${val}</span></div>`).join('')}
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+              <span style="font:400 12px/1.4 'Gordita';letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">${k}</span>
+              <span style="font:500 13.5px/1.4 'Gordita';text-align:right;font-variant-numeric:tabular-nums">${val}</span></div>`).join('')}
           </div>
         </div>
         <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
@@ -409,6 +424,54 @@ const SV = {
       </aside>
     </div>
     </div>`);
+  },
+
+  showIndex() {
+    this.s.detail = null;
+    document.getElementById('page-grid').style.display = 'none';
+    document.getElementById('page-detail').style.display = 'none';
+    document.getElementById('page-index').style.display = 'block';
+    this.renderIndex(); window.scrollTo(0, 0);
+    history.replaceState(null, '', '#index');
+  },
+  renderIndex() {
+    const groups = [['Stock van', 'Stock vans'], ['Pre-loved', 'Pre-loved']]
+      .map(([k, title]) => ({ title, vans: VANS.filter(v => v.status === k) }))
+      .filter(g => g.vans.length);
+    const card = v => `<button type="button" data-act="view" data-id="${v.id}" style="text-align:left;padding:0;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;font-family:'Gordita',sans-serif;transition:box-shadow .2s ease,transform .2s ease">
+      <div style="position:relative;aspect-ratio:16/10;background:var(--line);width:100%;pointer-events:none">
+        <img src="${v.img}" alt="${v.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+        <span style="position:absolute;left:10px;top:10px;background:${v.used ? '#4A5560' : 'var(--svink)'};color:#fff;font:500 9px/1 'Gordita';letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">${v.used ? 'Pre-loved' : 'Ready now'}</span>
+        <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita';letter-spacing:.08em;padding:6px 8px;border-radius:2px">${v.images.length} photos</span>
+      </div>
+      <div style="padding:16px;display:flex;flex-direction:column;flex:1;width:100%;pointer-events:none">
+        <div style="font:500 10.5px/1 'Gordita';letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:8px">${v.chassis} · ${v.model}</div>
+        <div class="av" style="font-size:14.5px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:12px">${v.name}</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">
+          ${[v.sleeps ? v.sleeps + ' sleeps' : null, v.length, v.axle, v.layout].filter(Boolean).map(t => `<span style="background:#F2EEE8;color:var(--body2);font:400 12px/1 'Gordita';padding:7px 9px;border-radius:2px">${t}</span>`).join('')}
+        </div>
+        <div style="margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:13px;border-top:1px solid var(--line);width:100%">
+          <span style="font:500 16.5px/1 'Gordita';color:var(--svink);font-variant-numeric:tabular-nums">${v.priceTxt}</span>
+          <span style="font:500 11px/1 'Gordita';letter-spacing:.14em;text-transform:uppercase;color:var(--olink)">Open page →</span>
+        </div>
+      </div>
+    </button>`;
+    put(document.getElementById('page-index'), `
+      <div style="background:var(--svink);padding:56px">
+        <div style="font:500 10px/1 'Gordita';letter-spacing:.42em;text-transform:uppercase;color:var(--peach);margin-bottom:16px">Detail pages</div>
+        <h1 class="av" style="margin:0;font-size:42px;line-height:1;letter-spacing:-.01em;color:#fff">One page per van</h1>
+        <p style="margin:14px 0 0;max-width:58ch;font:400 15.5px/1.65 'Gordita';color:rgba(255,255,255,.78)">${VANS.length} stock vans, each with its own photos, weights, floorplan and drive-away price.</p>
+        <button class="linkbtn" style="margin-top:22px;color:var(--peach);font:500 11px/1 'Gordita';letter-spacing:.16em;text-transform:uppercase" data-act="back">← Back to all stock</button>
+      </div>
+      <div style="padding:44px 56px">
+        ${groups.map(g => `<div style="margin-bottom:44px">
+          <div style="display:flex;align-items:baseline;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--svink);margin-bottom:22px">
+            <h2 class="av" style="margin:0;font-size:19px;letter-spacing:.05em;text-transform:uppercase">${g.title}</h2>
+            <span style="font:400 13px/1 'Gordita';color:var(--mut);font-variant-numeric:tabular-nums">${g.vans.length} pages</span>
+          </div>
+          <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">${g.vans.map(card).join('')}</div>
+        </div>`).join('')}
+      </div>`);
   },
 
   enquire(id) {
@@ -500,6 +563,7 @@ const SV = {
     else if (a === 'lenUnit') this.set('lenUnit', val);
     else if (a === 'wmetric') this.set('weightMetric', val);
     else if (a === 'back') this.backToGrid();
+    else if (a === 'showindex') this.showIndex();
     else if (a === 'galprev') { const v = VANS[this.s.detail]; this.s.gal = (this.s.gal - 1 + v.images.length) % v.images.length; this.renderDetail(); }
     else if (a === 'galnext') { const v = VANS[this.s.detail]; this.s.gal = (this.s.gal + 1) % v.images.length; this.renderDetail(); }
     else if (a === 'gal') { this.s.gal = +id; this.renderDetail(); }
@@ -561,6 +625,7 @@ const SV = {
     this.render();
     const h = location.hash.match(/^#van\/(WL\d+)/);
     if (h) { const v = VANS.find(x => x.chassis === h[1]); if (v) this.view(v.id); }
+    else if (location.hash === '#index') this.showIndex();
   }
 };
 SV.boot();
