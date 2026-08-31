@@ -16,6 +16,7 @@ const VANS = DATA.vans.map((v, i) => Object.assign({}, v, {
   status: v.used ? 'Pre-loved' : 'Stock van',
   img: v.images[0] || ''
 }));
+const fullName = v => v.name.startsWith(v.model) ? v.name : v.model + ' ' + v.name;
 const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
 const LAYOUTS = ['Couples', 'Family'];
@@ -177,7 +178,7 @@ const SV = {
     const sel = document.getElementById('vanselect');
     const keep = sel.value;
     put(sel, '<option value="">Which van are you asking about?</option>' +
-      VANS.map(v => `<option value="${v.chassis}">${v.chassis} · ${v.model} ${v.name} (${v.state})</option>`).join('') +
+      VANS.map(v => `<option value="${v.chassis}">${v.chassis} · ${fullName(v)} (${v.state})</option>`).join('') +
       '<option value="unsure">Not sure yet, help me choose</option>');
     sel.value = keep;
     this.renderIntents();
@@ -233,7 +234,7 @@ const SV = {
           ${v.used ? '<span class="badge-orange">Pre-loved</span>' : ''}
           <span style="font:400 11.5px/1 'Gordita';color:var(--mut)">Stock no. ${v.chassis}</span>
         </div>
-        <h1 class="av" style="margin:0 0 8px;font-size:38px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">${v.model} ${v.name}</h1>
+        <h1 class="av" style="margin:0 0 8px;font-size:38px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">${fullName(v)}</h1>
         <p style="margin:0 0 22px;font:300 16px/1.55 'Gordita';color:var(--body);max-width:600px">Built, finished and located in ${v.state}, ready to leave.</p>
         <div style="position:relative;aspect-ratio:3/2;background:var(--dk);border-radius:4px;overflow:hidden;margin-bottom:10px">
           <div role="img" aria-label="${v.name}" style="width:100%;height:100%;background-image:url(${v.images[this.s.gal]});background-size:cover;background-position:center;filter:contrast(1.05) saturate(1.06)"></div>
@@ -361,7 +362,7 @@ const SV = {
     if (/^0\d{9}$/.test(phone)) phone = '+61' + phone.slice(1);
     const vanSel = g('van').value || 'unspecified';
     const vv = VANS.find(x => x.chassis === vanSel);
-    const vanTxt = vanSel === 'unsure' ? 'Not sure yet' : vanSel === 'unspecified' ? 'Not specified' : vanSel + ' ' + (vv ? vv.model + ' ' + vv.name : '');
+    const vanTxt = vanSel === 'unsure' ? 'Not sure yet' : vanSel === 'unspecified' ? 'Not specified' : vanSel + ' ' + (vv ? fullName(vv) : '');
     const intent = this.INTENTS[this.s.intent];
     const msg = (g('msg').value || '').trim();
     const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
