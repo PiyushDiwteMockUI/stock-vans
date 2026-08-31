@@ -152,7 +152,7 @@ const SV = {
         </div>
         <div style="position:relative;height:28px">
           <div style="position:absolute;left:0;right:0;top:12px;height:3px;background:#D8D3CC;border-radius:2px"></div>
-          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--orange);left:${pct(s.minPrice)}%;right:${(100 - pct(s.maxPrice)).toFixed(2)}%"></div>
+          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--olink);left:${pct(s.minPrice)}%;right:${(100 - pct(s.maxPrice)).toFixed(2)}%"></div>
           <input type="range" class="dual" aria-label="Budget minimum" min="${PRICE_MIN}" max="${PRICE_MAX}" step="1000" value="${s.minPrice}" data-act="priceMin" style="z-index:3">
           <input type="range" class="dual" aria-label="Budget maximum" min="${PRICE_MIN}" max="${PRICE_MAX}" step="1000" value="${s.maxPrice}" data-act="priceMax" style="z-index:4">
         </div>
@@ -170,7 +170,7 @@ const SV = {
         </div>
         <div style="position:relative;height:28px">
           <div style="position:absolute;left:0;right:0;top:12px;height:3px;background:#D8D3CC;border-radius:2px"></div>
-          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--orange);left:${lpct(s.minLen)}%;right:${(100 - lpct(s.maxLen)).toFixed(2)}%"></div>
+          <div style="position:absolute;top:12px;height:3px;border-radius:2px;background:var(--olink);left:${lpct(s.minLen)}%;right:${(100 - lpct(s.maxLen)).toFixed(2)}%"></div>
           <input type="range" class="dual" aria-label="Length minimum" min="${LEN_MIN}" max="${LEN_MAX}" step="1" value="${s.minLen}" data-act="lenMin" style="z-index:3">
           <input type="range" class="dual" aria-label="Length maximum" min="${LEN_MIN}" max="${LEN_MAX}" step="1" value="${s.maxLen}" data-act="lenMax" style="z-index:4">
         </div>
