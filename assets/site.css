@@ -277,3 +277,10 @@ a.btn-line{color:var(--svink)}
   .vpb-ctas a{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px}
   .detailside .side-price,.detailside .side-ctas{display:none}
 }
+
+/* value tiles: span the page column edge to edge, matching the header ruler */
+.valband{width:var(--col);margin:0 auto;display:flex;justify-content:space-between;align-items:start;gap:34px;flex-wrap:wrap}
+.valband>div{flex:0 1 auto}
+@media (max-width:900px){
+  .valband{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));justify-items:center}
+}
