@@ -197,7 +197,7 @@ def van_page(v):
           <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
         </div>
         <div style="display:flex;flex-direction:column;gap:9px;flex:none">
-          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff" href="{enq}">Book a viewing</a>
+          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="{enq}">Book a viewing</a>
           <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
         </div>
       </div>
@@ -218,8 +218,8 @@ def van_page(v):
         {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
       </div>
       <div style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;text-align:center" href="{enq}">Enquire about this van</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff" href="tel:+61386920032">Call (03) 8692 0032</a>
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
+        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61386920032">Call (03) 8692 0032</a>
       </div>
       <div style="padding:0 22px 22px">{facts}</div>
     </div>
