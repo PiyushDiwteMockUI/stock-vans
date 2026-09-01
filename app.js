@@ -523,16 +523,20 @@ SV.boot();
   },3200);
 })();
 
-/* Desktop-only styled dropdown driving the native #vanselect (native picker kept on phones). */
-(function () {
-  var sel = document.getElementById('vanselect');
-  if (!sel) return;
-  var field = sel.closest('.field--van');
+/* Desktop-only styled dropdowns driving the native selects (native pickers kept on phones). */
+function makeDrop(sel) {
+  if (!sel) return null;
+  var field = sel.closest('.field');
+  field.classList.add('dropified');
   var wrap = document.createElement('div');
   wrap.className = 'vandrop';
   wrap.innerHTML = '<button type="button" class="vandrop-btn" aria-haspopup="listbox" aria-expanded="false"><span class="vandrop-label"></span><svg viewBox="0 0 14 8" width="14" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg></button><div class="vandrop-panel" role="listbox" tabindex="-1"></div>';
   field.appendChild(wrap);
   var btn = wrap.querySelector('.vandrop-btn'), lab = wrap.querySelector('.vandrop-label'), panel = wrap.querySelector('.vandrop-panel');
+  function opt(o) {
+    if (o.disabled) return '';
+    return '<button type="button" class="vandrop-opt' + (o.value === sel.value ? ' on' : '') + '" role="option" aria-selected="' + (o.value === sel.value) + '" data-v="' + o.value + '">' + o.textContent + '</button>';
+  }
   function build() {
     var html = '';
     [].forEach.call(sel.children, function (node) {
@@ -542,13 +546,10 @@ SV.boot();
       } else html += opt(node);
     });
     panel.innerHTML = html;
-    function opt(o) {
-      return '<button type="button" class="vandrop-opt' + (o.value === sel.value ? ' on' : '') + '" role="option" aria-selected="' + (o.value === sel.value) + '" data-v="' + o.value + '">' + o.textContent + '</button>';
-    }
     var cur = sel.options[sel.selectedIndex];
-    lab.textContent = cur ? cur.textContent : 'General stock van enquiry';
+    lab.textContent = cur ? cur.textContent : '';
+    lab.classList.toggle('is-placeholder', !sel.value);
   }
-  window.syncVandrop = build;
   build();
   function close() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
   btn.addEventListener('click', function () {
@@ -559,6 +560,7 @@ SV.boot();
   panel.addEventListener('click', function (e) {
     var o = e.target.closest('.vandrop-opt'); if (!o) return;
     sel.value = o.getAttribute('data-v');
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
     build(); close(); btn.focus();
   });
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) close(); });
@@ -573,4 +575,10 @@ SV.boot();
     if (i === -1) n = 0;
     os[n].focus(); os[n].scrollIntoView({ block: 'nearest' });
   });
+  return { build: build };
+}
+(function () {
+  var vd = makeDrop(document.getElementById('vanselect'));
+  if (vd) window.syncVandrop = vd.build;
+  makeDrop(document.getElementById('state'));
 })();
