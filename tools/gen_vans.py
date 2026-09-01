@@ -84,7 +84,7 @@ def spec_sections(v):
 
 def van_page(v):
     name = full_name(v)
-    clr = v.get('year', 2026) < 2026
+    clr = int(v.get('year') or 2026) < 2026
     badge = ('<span class="badge-red">Clearance</span>' if clr else '<span class="badge-dark">Ready now</span>') + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
     tow = ''
     if v.get('atm'):
@@ -199,12 +199,12 @@ def index_page():
     groups = [('Stock van', 'Stock vans'), ('Clearance', 'Clearance'), ('Pre-loved', 'Pre-loved')]
     out = []
     for key, title in groups:
-        vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else ('Clearance' if v.get('year',2026) < 2026 else 'Stock van')) == key]
+        vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else ('Clearance' if int(v.get('year') or 2026) < 2026 else 'Stock van')) == key]
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
             <img src="{asrc(v['images'][0])}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
-            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if v.get('year',2026)<2026 else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if v.get('year',2026)<2026 else 'Ready now')}</span>
+            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if int(v.get('year') or 2026)<2026 else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if int(v.get('year') or 2026)<2026 else 'Ready now')}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
