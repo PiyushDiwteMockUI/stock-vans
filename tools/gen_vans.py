@@ -193,7 +193,7 @@ def van_page(v):
       <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61386920032">Call now</a>
       </div>
       <div class="vpb-ctas">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire now</a>
         <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61386920032">Call (03) 8692 0032</a>
       </div>
     </div>
