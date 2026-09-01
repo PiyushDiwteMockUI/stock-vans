@@ -69,7 +69,7 @@ def gallery(v):
       <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
       <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
-      {'<img src="https://wonderlandrv.com.au/wp-content/uploads/2026/06/Coty-JCA-2-212x300.png" alt="Caravan of the Year 2026 Judges Choice Award" width="212" height="300" style="position:absolute;top:0;right:20px;width:72px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.4))">' if v['model']=='Solara' else ''}
+      {'<img src="https://wonderlandrv.com.au/wp-content/uploads/2026/06/Coty-JCA-2-212x300.png" alt="Caravan of the Year 2026 Judges Choice Award" width="212" height="300" style="position:absolute;top:0;right:24px;width:128px;height:auto;filter:drop-shadow(0 5px 12px rgba(0,0,0,.42))">' if v['model']=='Solara' else ''}
     </div>
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px" id="vp-thumbs">{thumbs}</div></div>'''
 
@@ -207,7 +207,7 @@ def index_page():
             <img src="{asrc(v['images'][0])}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
             <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if int(v.get('year') or 2026)<2026 else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if int(v.get('year') or 2026)<2026 else 'Ready now')}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
-            {'<img src="https://wonderlandrv.com.au/wp-content/uploads/2026/06/Coty-JCA-2-212x300.png" alt="Caravan of the Year 2026 Judges Choice Award" width="212" height="300" loading="lazy" style="position:absolute;top:0;right:12px;width:48px;height:auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))">' if v['model']=='Solara' else ''}
+            {'<img src="https://wonderlandrv.com.au/wp-content/uploads/2026/06/Coty-JCA-2-212x300.png" alt="Caravan of the Year 2026 Judges Choice Award" width="212" height="300" loading="lazy" style="position:absolute;top:0;right:14px;width:84px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))">' if v['model']=='Solara' else ''}
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:8px">{v['chassis']} · {v['model']}</div>
