@@ -313,7 +313,7 @@ const SV = {
   enquire(id) {
     const v = VANS[id];
     document.getElementById('vanselect').value = v.chassis;
-    document.getElementById('enquire').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('enquire').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   },
 
   openMob() {
@@ -384,7 +384,7 @@ const SV = {
     }
     document.body.appendChild(post); post.submit();
     const st = document.getElementById('enqstatus');
-    st.textContent = 'Thanks — enquiry sent. We will be in touch within 24 hours on business days.';
+    st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
     st.style.color = '#2E7D32';
     f.reset();
     return false;
@@ -507,7 +507,7 @@ SV.boot();
   band.addEventListener('touchend',function(){setTimeout(function(){idx=Math.round(band.scrollLeft/band.clientWidth);paused=false},700)},{passive:true});
   if('IntersectionObserver' in window) new IntersectionObserver(function(e){seen=e[0].isIntersecting},{threshold:.35}).observe(band);
   setInterval(function(){
-    if(paused||!seen||!mq.matches||band.scrollWidth<=band.clientWidth+4) return;
+    if(paused||!seen||!mq.matches||band.scrollWidth<=band.clientWidth+4||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     idx=(idx+1)%band.children.length;
     band.scrollTo({left:idx*band.clientWidth,behavior:'smooth'});
   },3200);

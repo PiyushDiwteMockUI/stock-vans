@@ -34,14 +34,14 @@ const VIDEO_URL = "https://www.youtube.com/watch?v=thFwJAod6Ng";
       "&cc_load_policy=0&cc_lang_pref=en&iv_load_policy=3&enablejsapi=1&playlist=" + yt[1];
     node.allow = "autoplay; encrypted-media; picture-in-picture";
     node.allowFullscreen = true;
-    node.title = "Wonderland RV — things you can't see";
+    node.title = "Wonderland RV, things you can't see";
   } else if (vimeo) {
     node = document.createElement("iframe");
     node.src = "https://player.vimeo.com/video/" + vimeo[1] +
       "?autoplay=1&muted=1&loop=1&background=1";
     node.allow = "autoplay; fullscreen; picture-in-picture";
     node.allowFullscreen = true;
-    node.title = "Wonderland RV — things you can't see";
+    node.title = "Wonderland RV, things you can't see";
   } else {
     node = document.createElement("video");
     node.src = url;
