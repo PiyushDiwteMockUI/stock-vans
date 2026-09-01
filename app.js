@@ -117,7 +117,7 @@ const SV = {
           ${v.clearance ? '<span class="badge-red">Clearance</span>' : '<span class="badge-dark">Ready now</span>'}
           ${v.used ? '<span class="badge-grey">Pre-loved</span>' : ''}
         </div>
-        ${v.model === 'Solara' ? '<img src="assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" style="position:absolute;top:0;right:16px;width:48px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))">' : ''}
+        ${v.model === 'Solara' ? '<img src="assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-card">' : ''}
         <span class="photocount">${v.images.length} photos</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">

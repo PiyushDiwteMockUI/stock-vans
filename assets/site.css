@@ -184,3 +184,8 @@ h1,h2,h3{text-wrap:balance}
 
 /* Results area never collapses under the user mid-filter (keeps the sticky rail put). */
 main.list{min-height:100vh}
+
+/* COTY ribbon on catalogue cards: desktop +15%, tablet +50% (mobile tuned later) */
+.coty-card{position:absolute;top:0;right:16px;width:55px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))}
+@media (min-width:601px) and (max-width:1100px){.coty-card{width:72px}}
+@media (max-width:600px){.coty-card{width:48px}}
