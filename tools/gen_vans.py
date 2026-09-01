@@ -252,7 +252,7 @@ def van_page(v):
     </div>
   </aside>
 </div>
-''' + nextV + footerV + '''
+''' + nextV + footerV + f'''
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
 </body>
 </html>'''
