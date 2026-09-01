@@ -47,7 +47,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .linkbtn{background:none;border:none;padding:0;cursor:pointer;font:400 11.5px/1 'Gordita',sans-serif;color:var(--olink);text-decoration:underline;text-underline-offset:3px}
 
 .talkbtn{display:block;text-align:center;background:#fff;color:var(--svink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:13px;border-radius:3px}
-.galbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(6,9,12,.6);color:#fff;font-size:17px;cursor:pointer}
+.galbtn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:#fff;color:var(--svink);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(6,9,12,.28);display:flex;align-items:center;justify-content:center;padding-bottom:3px}
 .thumbbtn{flex:none;width:88px;height:62px;padding:0;border-radius:3px;overflow:hidden;cursor:pointer;background:var(--line);border:2px solid transparent;opacity:.62}
 .thumbbtn.on{border-color:var(--svink);opacity:1}
 .tabbtn{border:none;background:transparent;color:var(--body);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px 16px;border-radius:3px 3px 0 0;cursor:pointer;min-height:44px}
@@ -160,3 +160,5 @@ h1,h2,h3{text-wrap:balance}
 .fchip{display:inline-flex;align-items:center;gap:9px;width:auto;white-space:nowrap;background:#F2EEE8;border:1px solid var(--line2);color:var(--svink);font:400 12.5px/1 'Gordita',sans-serif;padding:9px 13px;border-radius:19px;cursor:pointer;min-height:36px;transition:background .15s ease,border-color .15s ease,transform .12s cubic-bezier(.23,1,.32,1)}
 .fchip:active{transform:scale(.97)}
 @media (hover:hover) and (pointer:fine){.fchip:hover{border-color:var(--svink)}}
+
+@media (hover:hover) and (pointer:fine){.galbtn:hover{background:var(--svorange);border-color:var(--svorange);color:#fff}}
