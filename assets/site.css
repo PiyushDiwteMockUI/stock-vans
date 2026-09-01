@@ -236,3 +236,16 @@ main.list{min-height:100vh}
   .spec-acc[open] .spec-body{animation:specin .24s cubic-bezier(.23,1,.32,1)}
 }
 @keyframes specin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+/* Specification accordion: exclusive, soft grid-rows animation (Safari-safe) */
+.spec-acc{border-bottom:1px solid var(--line)}
+.spec-head{display:flex;align-items:center;gap:14px;width:100%;padding:18px 2px;cursor:pointer;background:none;border:0;min-height:48px;color:var(--svink);text-align:left}
+.spec-head .spec-chev{margin-left:auto;flex:none;transition:transform .3s cubic-bezier(.23,1,.32,1);color:var(--svink)}
+.spec-acc.open .spec-head .spec-chev{transform:rotate(180deg)}
+@media (hover:hover) and (pointer:fine){.spec-head:hover .av{color:var(--olink)}}
+.spec-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.45,.05,.15,1)}
+.spec-acc.open .spec-panel{grid-template-rows:1fr}
+.spec-inner{overflow:hidden;min-height:0}
+.spec-body{padding-bottom:10px;opacity:0;transform:translateY(-4px);transition:opacity .35s ease .1s,transform .35s cubic-bezier(.23,1,.32,1) .1s}
+.spec-acc.open .spec-body{opacity:1;transform:none}
+.spec-body > div:last-child{border-bottom:none}

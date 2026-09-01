@@ -99,10 +99,14 @@ def spec_sections(v):
         rws = ''.join(f'''<div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
           <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">{k}</span>
           <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">{val}</span></div>''' for k, val in rows)
-        out.append(f'''<details class="spec-acc"{' open' if not out else ''}>
-          <summary><span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">{tab}</span><span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(rows)} items</span><svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></summary>
-          <div class="spec-body">{rws}</div>
-        </details>'''.replace('|G|', chr(39)+'Gordita'+chr(39)))
+        out.append(f'''<div class="spec-acc{' open' if not out else ''}">
+          <button type="button" class="spec-head" aria-expanded="{'true' if not out else 'false'}">
+            <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">{tab}</span>
+            <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(rows)} items</span>
+            <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{rws}</div></div></div>
+        </div>'''.replace('|G|', chr(39)+'Gordita'+chr(39)))
     return ''.join(out)
 
 def van_page(v):

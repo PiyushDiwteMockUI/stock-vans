@@ -136,4 +136,19 @@
       }, { threshold: 0.2 }).observe(car);
     } else { start(); }
   }
+  // Exclusive spec accordion: opening one section closes the open one, both animated.
+  var accs = Array.prototype.slice.call(document.querySelectorAll('.spec-acc'));
+  accs.forEach(function (acc) {
+    acc.querySelector('.spec-head').addEventListener('click', function () {
+      var isOpen = acc.classList.contains('open');
+      accs.forEach(function (a) {
+        a.classList.remove('open');
+        a.querySelector('.spec-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        acc.classList.add('open');
+        acc.querySelector('.spec-head').setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 })();
