@@ -41,4 +41,31 @@
       if (main) main.scrollIntoView({ block: 'nearest' });
     }
   });
+  // Floorplan carousel: soft auto-advance, pauses on hover/touch, respects reduced motion.
+  var car = document.querySelector('.fp-car');
+  if (car) {
+    var track = car.querySelector('.fp-track');
+    var dots = Array.prototype.slice.call(car.querySelectorAll('.fp-dot'));
+    var n = dots.length, fi = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(i) {
+      fi = (i + n) % n;
+      track.style.transform = 'translateX(-' + (fi * 100) + '%)';
+      dots.forEach(function (d, j) { d.style.background = j === fi ? 'var(--svink)' : '#fff'; });
+    }
+    function start() { if (!reduce && n > 1 && !timer) timer = setInterval(function () { go(fi + 1); }, 4000); }
+    function stop() { clearInterval(timer); timer = null; }
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    car.addEventListener('touchstart', stop, { passive: true });
+    car.addEventListener('click', function (e) {
+      var d = e.target.closest('.fp-dot');
+      if (d) { stop(); go(parseInt(d.dataset.fp, 10)); }
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.2 }).observe(car);
+    } else { start(); }
+  }
 })();

@@ -100,16 +100,19 @@ def van_page(v):
           <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="flex:none;display:block"><path d="M2.5 12.5h11v-5h-11v5z M13.5 9.5h2.6l1.4 3h-4z M5.5 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z M15 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z" fill="none" stroke="#12171C" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>
           <span style="font:400 13.5px/1.5 'Gordita',sans-serif;color:var(--body2)">{note}{payload}</span></div>'''
     floor = ''
-    plans = v.get('floorplans') or ([v['floorplan']] if v.get('floorplan') else [])
+    plans = [p for p in (v.get('floorplans') or []) if p.endswith('_tilt.png') or p.endswith('_top.png')]
     if plans:
-        CAP = {'tilt': '3D view', 'top': 'Top down', 'tag': 'Labelled layout'}
-        imgs = ''.join(
-            f"""<figure style="margin:0{';border-top:1px solid var(--line);padding-top:18px' if i else ''}"><img src="../{p}" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="lazy" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>""".replace('|G|', chr(39)+'Gordita'+chr(39))
-            for i, p in enumerate(plans))
+        CAP = {'tilt': '3D view', 'top': 'Top down'}
+        slides = ''.join(
+            f"""<figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="../{p}" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>"""
+            for p in plans).replace('|G|', chr(39)+'Gordita'+chr(39))
         floor = f"""<div style="margin-bottom:38px">
           <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
-          <p style="margin:0 0 16px;font:400 14px/1.65 |G|,sans-serif;color:var(--body);max-width:60ch">The {v['code']} layout in three views.</p>
-          <div style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px;display:flex;flex-direction:column;gap:18px">{imgs}</div></div>""".replace('|G|', chr(39)+'Gordita'+chr(39))
+          <p style="margin:0 0 16px;font:400 14px/1.65 |G|,sans-serif;color:var(--body);max-width:60ch">The {v['code']} layout.</p>
+          <div class="fp-car" style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px;overflow:hidden">
+            <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)">{slides}</div>
+            <div class="fp-dots" style="display:flex;gap:8px;justify-content:center;margin-top:12px">{''.join(f'<button type="button" class="fp-dot" data-fp="{i}" aria-label="Floorplan view {i+1}" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:{"var(--svink)" if i==0 else "#fff"};padding:0;cursor:pointer"></button>' for i in range(len(plans)))}</div>
+          </div></div>""".replace('|G|', chr(39)+'Gordita'+chr(39))
     strip = ''.join(f'''<div style="padding:22px 20px;background:var(--svink)">
         <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">{k}</div>
         <div class="av" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">{val}</div>
