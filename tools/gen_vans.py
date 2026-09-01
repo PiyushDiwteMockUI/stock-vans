@@ -36,6 +36,10 @@ HEAD = '''<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>{title} | Wonderland RV stock vans</title>
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://caravancampingsales.pxcrush.net">
+<link rel="preconnect" href="https://jealstorage.blob.core.windows.net">
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/ywn7byg.css">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/ref/css/styles.css">
@@ -53,12 +57,12 @@ HEAD = '''<!doctype html>
 
 def gallery(v):
     thumbs = ''.join(
-        f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}"><span style="display:block;width:100%;height:100%;background-image:url({u});background-size:cover;background-position:center;pointer-events:none"></span></button>'
+        f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}" aria-label="Photo {i+1}"><span style="display:block;width:100%;height:100%;background-image:url({u});background-size:cover;background-position:center;pointer-events:none"></span></button>'
         for i, u in enumerate(v['images']))
     return f'''<div class="vp-wrap"><div class="vp-main">
-      <img id="vp-img" src="{v['images'][0]}" alt="{v['name']}" fetchpriority="high">
-      <button class="galbtn" style="left:14px" data-nav="-1">‹</button>
-      <button class="galbtn" style="right:14px" data-nav="1">›</button>
+      <img id="vp-img" src="{v['images'][0]}" alt="{v['name']}" width="1600" height="1067" fetchpriority="high">
+      <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
+      <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
     </div>
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px" id="vp-thumbs">{thumbs}</div></div>'''
@@ -109,7 +113,7 @@ def van_page(v):
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', v['state'])])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
-        <div style="aspect-ratio:16/10;background:var(--line)"><img src="{x['images'][0]}" alt="{x['name']}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="aspect-ratio:16/10;background:var(--line)"><img src="{x['images'][0]}" alt="{x['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         <div style="padding:15px">
           <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">{x['model']} {x['code'].replace(' ()','').strip()}</div>
           <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">{x['name']}</div>
@@ -192,7 +196,7 @@ def index_page():
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
-            <img src="{v['images'][0]}" alt="{v['name']}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="{v['images'][0]}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
             <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else '#12171C'};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else 'Ready now'}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
           </div>

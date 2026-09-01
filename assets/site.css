@@ -144,3 +144,10 @@ a,.linkbtn{transition:color .15s ease}
   .shell .detailwrap > div{padding-left:0!important;padding-right:0!important}
   .gutter.shellpad{padding-left:calc((100% - var(--col)) / 2);padding-right:calc((100% - var(--col)) / 2)}
 }
+
+button,a,select,input[type=range]{touch-action:manipulation}
+button,a{-webkit-tap-highlight-color:transparent}
+.mobpanel{overscroll-behavior:contain}
+h1,h2,h3{text-wrap:balance}
+.skiplink{position:absolute;left:-9999px;top:0;z-index:999;background:var(--svink);color:#fff;padding:12px 18px;font:500 12px/1 'Gordita',sans-serif;letter-spacing:.08em}
+.skiplink:focus{left:0}

@@ -111,7 +111,7 @@ const SV = {
   cardHTML(v) {
     return `<article class="card">
       <div class="cardimg" data-act="view" data-id="${v.id}" style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);cursor:pointer">
-        <img src="${v.img}" alt="${v.name}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
+        <img src="${v.img}" alt="${v.name}" loading="lazy" width="430" height="269" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
         <div style="position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
           <span class="badge-dark">Ready now</span>
           ${v.used ? '<span class="badge-orange">Pre-loved</span>' : ''}
@@ -305,7 +305,7 @@ const SV = {
       <div class="mobpanel">
         <div style="flex:none;background:var(--svink);padding:20px;display:flex;align-items:center;gap:12px">
           <span class="av" style="font-size:16px;letter-spacing:.09em;text-transform:uppercase;color:#fff">Filters</span>
-          <button class="mobx" data-act="closemob">×</button>
+          <button class="mobx" data-act="closemob" aria-label="Close filters">×</button>
         </div>
         <div id="mobrail" style="flex:1;min-height:0;overflow-y:auto;padding:0 20px 20px"></div>
         <div style="flex:none;border-top:1px solid var(--line);padding:13px 20px;display:flex;gap:9px;background:#fff">
@@ -329,8 +329,15 @@ const SV = {
     e.preventDefault();
     const f = document.getElementById('enqform');
     const g = n => f.querySelector('[name="' + n + '"]');
+    const LBL = { 'first-name': 'first name', 'last-name': 'last name', email: 'email', phone: 'phone', state: 'state', postcode: 'post code' };
     for (const n of ['first-name', 'last-name', 'email', 'phone', 'state', 'postcode']) {
-      if (!g(n).value) { g(n).focus(); return false; }
+      if (!g(n).value) {
+        g(n).focus();
+        const st0 = document.getElementById('enqstatus');
+        st0.textContent = 'Please add your ' + LBL[n] + ' and press Submit again.';
+        st0.style.color = '#C0392B';
+        return false;
+      }
     }
     let phone = g('phone').value.replace(/\s+/g, '');
     if (/^0\d{9}$/.test(phone)) phone = '+61' + phone.slice(1);
