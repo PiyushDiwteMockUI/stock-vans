@@ -166,7 +166,7 @@ def van_page(v):
         </div>
         <div style="display:flex;flex-direction:column;gap:9px;flex:none">
           <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff" href="{enq}">Book a viewing</a>
-          <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="{v['listing']}" target="_blank" rel="noopener">View dealer listing</a>
+          <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
         </div>
       </div>
     </div>
