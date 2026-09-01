@@ -74,7 +74,7 @@ def gallery(v):
       <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
       <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
-      {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" style="position:absolute;top:0;right:24px;width:64px;height:auto;filter:drop-shadow(0 5px 12px rgba(0,0,0,.42))">' if v['model']=='Solara' else ''}
+      {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" class="coty-vp">' if v['model']=='Solara' else ''}
     </div>
     <div class="vp-sidegrid" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px">{side}</div></div>
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div></div>'''
