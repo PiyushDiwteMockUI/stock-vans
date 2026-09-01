@@ -152,3 +152,8 @@ button,a{-webkit-tap-highlight-color:transparent}
 h1,h2,h3{text-wrap:balance}
 .skiplink{position:absolute;left:-9999px;top:0;z-index:999;background:var(--svink);color:#fff;padding:12px 18px;font:500 12px/1 'Gordita',sans-serif;letter-spacing:.08em}
 .skiplink:focus{left:0}
+
+.pagecard{transition:box-shadow .22s cubic-bezier(.23,1,.32,1),transform .22s cubic-bezier(.23,1,.32,1)}
+@media (hover:hover) and (pointer:fine){
+  .pagecard:hover{box-shadow:0 16px 44px rgba(12,15,18,.14);transform:translateY(-3px)}
+}

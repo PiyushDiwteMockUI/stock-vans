@@ -117,6 +117,7 @@ const SV = {
           ${v.clearance ? '<span class="badge-red">Clearance</span>' : '<span class="badge-dark">Ready now</span>'}
           ${v.used ? '<span class="badge-grey">Pre-loved</span>' : ''}
         </div>
+        ${v.model === 'Solara' ? '<img src="https://wonderlandrv.com.au/wp-content/uploads/2026/06/Coty-JCA-2-212x300.png" alt="Caravan of the Year 2026 Judges Choice Award" width="212" height="300" loading="lazy" style="position:absolute;top:0;right:14px;width:58px;height:auto;filter:drop-shadow(0 3px 8px rgba(0,0,0,.35))">' : ''}
         <span class="photocount">${v.images.length} photos</span>
       </div>
       <div style="padding:20px;display:flex;flex-direction:column;flex:1">
