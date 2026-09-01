@@ -135,3 +135,12 @@ a,.linkbtn{transition:color .15s ease}
 .pill:active span{transform:scale(.97)}
 .useg{transition:color .18s ease,border-color .18s ease}
 .enq2-submit:active{transform:scale(.98)}
+
+/* Content shell: same centred column as the header (.header-inner uses width:var(--col)). */
+@media (min-width:901px){
+  .shell{width:var(--col);max-width:100%;margin-inline:auto}
+  .shell aside.rail{padding-left:0}
+  .shell main.list{padding-right:0}
+  .shell .detailwrap > div{padding-left:0!important;padding-right:0!important}
+  .gutter.shellpad{padding-left:calc((100% - var(--col)) / 2);padding-right:calc((100% - var(--col)) / 2)}
+}

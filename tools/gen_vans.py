@@ -118,13 +118,13 @@ def van_page(v):
         </div></a>''' for x in similar)
     enq = f"../?van={v['chassis']}#enquire"
     return HEAD.format(title=f"{name} {v['chassis']}") + headerV + f'''
-<div style="padding:20px 56px 0;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter">
+<div style="padding:20px 56px 0;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
   <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../">Stock vans</a>
   <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="./">Pages</a>
   <span>/</span><span style="color:var(--svink)">{v['chassis']}</span>
 </div>
-<div class="wrap" style="padding:22px 0 0">
-  <div style="flex:1 1 560px;min-width:0;padding:0 46px 0 56px" class="vp-left">
+<div class="wrap shell" style="padding:22px 0 0">
+  <div style="flex:1 1 560px;min-width:0;padding:0 46px 0 0" class="vp-left">
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
       {badge}
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. {v['chassis']}</span>
@@ -162,7 +162,7 @@ def van_page(v):
       <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">{sim}</div>
     </div>
   </div>
-  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 56px 66px 0;position:sticky;top:20px;align-self:flex-start">
+  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
       <div style="padding:24px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
@@ -215,13 +215,13 @@ def index_page():
         </div>''')
     n = len(DATA['vans'])
     return HEAD.format(title='Stock van pages') + headerV + f'''
-<div style="background:var(--svink);padding:56px" class="gutter">
+<div style="background:var(--svink);padding:56px 0" class="gutter shellpad">
   <div style="font:500 10px/1 'Gordita',sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--peach);margin-bottom:16px">Detail pages</div>
   <h1 class="av" style="margin:0;font-size:42px;line-height:1;letter-spacing:-.01em;color:#fff">One page per van</h1>
   <p style="margin:14px 0 0;max-width:58ch;font:400 15.5px/1.65 'Gordita',sans-serif;color:rgba(255,255,255,.78)">{n} stock vans, each with its own photos, weights, floorplan and drive-away price.</p>
   <a class="linkbtn" style="display:inline-block;margin-top:22px;color:var(--peach);font:500 11px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase" href="../">← Back to all stock</a>
 </div>
-<div style="padding:44px 56px" class="gutter">{out and ''.join(out)}</div>
+<div style="padding:44px 0" class="gutter shellpad">{out and ''.join(out)}</div>
 ''' + footerV + '''
 </body>
 </html>'''
