@@ -303,3 +303,22 @@ a.btn-line{color:var(--svink)}
 @media (max-width:900px){
   .detailside{position:static!important;max-width:none!important;width:100%;padding-bottom:34px!important}
 }
+
+/* styled van dropdown (desktop); phones keep the native picker */
+.vandrop{display:none}
+@media (min-width:901px){
+  .field--van select{position:absolute;inset:0;opacity:0;pointer-events:none}
+  .vandrop{display:block;position:relative}
+  .vandrop-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;height:0.6925rem;padding:0 0.26rem;font-family:'Gordita',sans-serif;font-size:0.24rem;color:var(--svink);background:#fff;border:0.0075rem solid var(--svink);border-radius:0.14625rem;cursor:pointer;text-align:left}
+  .vandrop-btn svg{flex:none;transition:transform .22s cubic-bezier(.23,1,.32,1)}
+  .vandrop.open .vandrop-btn svg{transform:rotate(180deg)}
+  .vandrop-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .vandrop-panel{position:absolute;left:0;right:0;top:calc(100% + 8px);z-index:60;max-height:340px;overflow:auto;background:#fff;border:1px solid var(--svink);box-shadow:0 18px 44px rgba(6,9,12,.14);opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .18s ease,transform .18s cubic-bezier(.23,1,.32,1)}
+  .vandrop.open .vandrop-panel{opacity:1;transform:none;pointer-events:auto}
+  .vandrop-group{padding:14px 16px 7px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olink);border-top:1px solid var(--line)}
+  .vandrop-group:first-child{border-top:0}
+  .vandrop-opt{display:block;width:100%;padding:10px 16px;font:400 14.5px/1.4 'Gordita',sans-serif;color:var(--body2);background:none;border:0;text-align:left;cursor:pointer}
+  .vandrop-opt:hover{background:var(--cream)}
+  .vandrop-opt.on{color:var(--svink);font-weight:500;background:var(--cream)}
+}
+@media (prefers-reduced-motion: reduce){.vandrop-panel,.vandrop-btn svg{transition:none}}

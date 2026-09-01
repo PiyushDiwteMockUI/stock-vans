@@ -249,10 +249,11 @@ const SV = {
     const vanOpt = v => `<option value="${v.chassis}">${v.model} ${v.code} · ${(v.name.startsWith(v.model) ? v.name.slice(v.model.length).trim() : v.name)}</option>`;
     const stOrder = ['Victoria', 'New South Wales', 'Queensland', 'South Australia', 'Western Australia', 'Tasmania', 'Northern Territory'];
     const states = [...new Set(VANS.map(v => v.state))].sort((x, y) => stOrder.indexOf(x) - stOrder.indexOf(y));
-    put(sel, '<option value="">Which van are you asking about?</option>' +
+    put(sel, '<option value="">General stock van enquiry</option>' +
       states.map(st => `<optgroup label="${st}">` + VANS.filter(v => v.state === st).map(vanOpt).join('') + '</optgroup>').join('') +
       '<option value="unsure">Not sure yet, help me choose</option>');
     sel.value = keep;
+    if (window.syncVandrop) window.syncVandrop();
     this.syncMob();
   },
 
@@ -316,6 +317,7 @@ const SV = {
   enquire(id) {
     const v = VANS[id];
     document.getElementById('vanselect').value = v.chassis;
+    if (window.syncVandrop) window.syncVandrop();
     document.getElementById('enquire').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   },
 
@@ -367,7 +369,7 @@ const SV = {
     const stateVal = stateMap[g('state').value] || g('state').value;
     const vanSel = g('van').value || 'unspecified';
     const vv = VANS.find(x => x.chassis === vanSel);
-    const vanTxt = vanSel === 'unsure' ? 'Not sure yet' : vanSel === 'unspecified' ? 'Not specified' : vanSel + ' ' + (vv ? fullName(vv) : '');
+    const vanTxt = vanSel === 'unsure' ? 'Not sure yet' : vanSel === 'unspecified' ? 'General stock van enquiry' : vanSel + ' ' + (vv ? fullName(vv) : '');
     const intentEl = f.querySelector('[name="enquiry-type"]:checked');
     const intent = intentEl ? intentEl.value : 'Call back';
     const msg = (g('message').value || '').trim();
@@ -500,6 +502,7 @@ const SV = {
     if (q) {
       const v = VANS.find(x => x.chassis.toUpperCase() === q.toUpperCase());
       if (v) { document.getElementById('vanselect').value = v.chassis;
+        if (window.syncVandrop) window.syncVandrop();
         document.getElementById('enquire').scrollIntoView(); }
     }
   }
@@ -518,4 +521,46 @@ SV.boot();
     idx=(idx+1)%band.children.length;
     band.scrollTo({left:idx*band.clientWidth,behavior:'smooth'});
   },3200);
+})();
+
+/* Desktop-only styled dropdown driving the native #vanselect (native picker kept on phones). */
+(function () {
+  var sel = document.getElementById('vanselect');
+  if (!sel) return;
+  var field = sel.closest('.field--van');
+  var wrap = document.createElement('div');
+  wrap.className = 'vandrop';
+  wrap.innerHTML = '<button type="button" class="vandrop-btn" aria-haspopup="listbox" aria-expanded="false"><span class="vandrop-label"></span><svg viewBox="0 0 14 8" width="14" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg></button><div class="vandrop-panel" role="listbox" tabindex="-1"></div>';
+  field.appendChild(wrap);
+  var btn = wrap.querySelector('.vandrop-btn'), lab = wrap.querySelector('.vandrop-label'), panel = wrap.querySelector('.vandrop-panel');
+  function build() {
+    var html = '';
+    [].forEach.call(sel.children, function (node) {
+      if (node.tagName === 'OPTGROUP') {
+        html += '<div class="vandrop-group">' + node.label + '</div>';
+        [].forEach.call(node.children, function (o) { html += opt(o); });
+      } else html += opt(node);
+    });
+    panel.innerHTML = html;
+    function opt(o) {
+      return '<button type="button" class="vandrop-opt' + (o.value === sel.value ? ' on' : '') + '" role="option" aria-selected="' + (o.value === sel.value) + '" data-v="' + o.value + '">' + o.textContent + '</button>';
+    }
+    var cur = sel.options[sel.selectedIndex];
+    lab.textContent = cur ? cur.textContent : 'General stock van enquiry';
+  }
+  window.syncVandrop = build;
+  build();
+  function close() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function () {
+    var open = wrap.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) { build(); var on = panel.querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' }); }
+  });
+  panel.addEventListener('click', function (e) {
+    var o = e.target.closest('.vandrop-opt'); if (!o) return;
+    sel.value = o.getAttribute('data-v');
+    build(); close(); btn.focus();
+  });
+  document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 })();
