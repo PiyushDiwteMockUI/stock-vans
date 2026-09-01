@@ -563,4 +563,14 @@ SV.boot();
   });
   document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  wrap.addEventListener('keydown', function (e) {
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+    e.preventDefault();
+    if (!wrap.classList.contains('open')) { btn.click(); }
+    var os = [].slice.call(panel.querySelectorAll('.vandrop-opt'));
+    var i = os.indexOf(document.activeElement);
+    var n = e.key === 'ArrowDown' ? Math.min(i + 1, os.length - 1) : Math.max(i - 1, 0);
+    if (i === -1) n = 0;
+    os[n].focus(); os[n].scrollIntoView({ block: 'nearest' });
+  });
 })();

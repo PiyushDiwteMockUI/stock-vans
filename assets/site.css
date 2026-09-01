@@ -308,9 +308,13 @@ a.btn-line{color:var(--svink)}
 /* styled van dropdown (desktop); phones keep the native picker */
 .vandrop{display:none}
 @media (min-width:901px){
-  .field--van select{position:absolute;inset:0;opacity:0;pointer-events:none}
+  .field--van select{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none}
   .vandrop{display:block;position:relative}
   .vandrop-btn{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;height:0.6925rem;padding:0 0.26rem;font-family:'Gordita',sans-serif;font-size:0.24rem;color:var(--svink);background:#fff;border:0.0075rem solid var(--svink);border-radius:0.14625rem;cursor:pointer;text-align:left}
+  .vandrop-btn:hover{border-color:var(--svorange)}
+  .vandrop-btn:active{transform:scale(.985)}
+  .vandrop-btn{transition:border-color .18s ease,transform .14s cubic-bezier(.23,1,.32,1)}
+  .vandrop-opt:active{background:var(--line)}
   .vandrop-btn svg{flex:none;transition:transform .22s cubic-bezier(.23,1,.32,1)}
   .vandrop.open .vandrop-btn svg{transform:rotate(180deg)}
   .vandrop-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
