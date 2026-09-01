@@ -192,6 +192,8 @@ main.list{min-height:100vh}
 
 /* Van pages on mobile: single sliding photo, tighter type */
 @media (max-width:900px){
+  .vp-left{padding:0 16px!important}
+  .detailside{padding:0 16px 40px!important;max-width:none!important}
   .vp-left h1{font-size:27px!important;line-height:1.1!important}
   .vp-left > p{font-size:15px!important}
   .vp-mediarow{grid-template-columns:1fr!important}
