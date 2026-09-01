@@ -162,3 +162,22 @@ h1,h2,h3{text-wrap:balance}
 @media (hover:hover) and (pointer:fine){.fchip:hover{border-color:var(--svink)}}
 
 @media (hover:hover) and (pointer:fine){.galbtn:hover{background:var(--svorange);border-color:var(--svorange);color:#fff}}
+
+/* Connected intent bar with sliding thumb (reference contact-form behaviour) */
+.enq2-seg{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;border:1px solid var(--svink);border-radius:28px;padding:5px;min-width:0}
+.enq2-thumb{position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px) / 4);background:var(--svorange);border-radius:22px;transition:transform .3s cubic-bezier(.23,1,.32,1);will-change:transform;z-index:0}
+.enq2-thumb.moving{transform-origin:center;animation:thumbsquash .3s cubic-bezier(.23,1,.32,1)}
+@keyframes thumbsquash{50%{scale:1 .9}}
+.seg{position:relative;z-index:1;display:block;cursor:pointer;min-width:0}
+.seg input{position:absolute;opacity:0;width:0;height:0}
+.seg span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:44px;padding:6px 8px;border-radius:22px;font:400 13.5px/1.25 'Gordita',sans-serif;color:var(--svink);transition:color .22s ease,font-weight .22s ease}
+.seg input:checked + span{color:#fff;font-weight:500}
+.seg input:focus-visible + span{outline:2px solid var(--svorange);outline-offset:2px}
+.segdiv::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:1px;background:var(--svink);opacity:.35}
+@media (max-width:900px){
+  .enq2-seg{grid-template-columns:1fr 1fr;border-radius:16px;gap:2px}
+  .enq2-thumb{display:none}
+  .segdiv::before{display:none}
+  .seg span{border:1px solid var(--svink);border-radius:14px}
+  .seg input:checked + span{background:var(--svorange);border-color:var(--svorange)}
+}

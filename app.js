@@ -333,8 +333,8 @@ const SV = {
     e.preventDefault();
     const f = document.getElementById('enqform');
     const g = n => f.querySelector('[name="' + n + '"]');
-    const LBL = { 'first-name': 'first name', 'last-name': 'last name', email: 'email', phone: 'phone', state: 'state', postcode: 'post code' };
-    for (const n of ['first-name', 'last-name', 'email', 'phone', 'state', 'postcode']) {
+    const LBL = { 'first-name': 'first name', 'last-name': 'last name', email: 'email', phone: 'phone', state: 'state' };
+    for (const n of ['first-name', 'last-name', 'email', 'phone', 'state']) {
       if (!g(n).value) {
         g(n).focus();
         const st0 = document.getElementById('enqstatus');
@@ -355,7 +355,7 @@ const SV = {
     const intent = intentEl ? intentEl.value : 'Call back';
     const msg = (g('message').value || '').trim();
     const consent = g('marketing').checked;
-    const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt + ' | Postcode: ' + g('postcode').value.slice(0, 8) +
+    const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
       (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (consent ? ' | Newsletter: yes' : '');
     const post = document.createElement('form');
     post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
@@ -445,6 +445,21 @@ const SV = {
       this.render();
     });
     document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
+    // Sliding thumb for the intent bar
+    const seg = document.querySelector('.enq2-seg');
+    if (seg) {
+      const thumb = seg.querySelector('.enq2-thumb');
+      const radios = [...seg.querySelectorAll('input[name="enquiry-type"]')];
+      const place = () => {
+        const i = radios.findIndex(r => r.checked);
+        thumb.style.transform = 'translateX(' + (i * 100) + '%)';
+      };
+      seg.addEventListener('change', () => {
+        place();
+        thumb.classList.remove('moving'); void thumb.offsetWidth; thumb.classList.add('moving');
+      });
+      place();
+    }
     this.render();
     const h = location.hash.match(/^#van\/(WL\d+)/);
     if (h) { location.replace('vans/' + h[1].toLowerCase() + '.html'); return; }
