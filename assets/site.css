@@ -60,7 +60,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .lineselect:focus{border-bottom-color:var(--svorange);box-shadow:0 1px 0 var(--svorange);outline:none}
 .req{position:absolute;right:2px;top:4px;color:#C0392B;font:500 15px/1 'Gordita',sans-serif;pointer-events:none}
 .gutter{padding-left:56px;padding-right:56px}
-.grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(min(340px,100%),1fr))}
 .wrap{display:flex;flex-wrap:wrap;align-items:flex-start}
 aside.rail{flex:1 1 270px;max-width:320px;padding:42px 30px 66px 56px;position:sticky;top:0;align-self:flex-start}
 main.list{flex:1 1 520px;min-width:0;padding:42px 56px 0 0}

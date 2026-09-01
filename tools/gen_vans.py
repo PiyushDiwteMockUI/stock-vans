@@ -156,7 +156,7 @@ def van_page(v):
     <h1 class="av" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
     <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in {v['state']}, ready to leave.</p>
     {gallery(v)}
-    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
+    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
     {tow}
     {floor}
     <div style="margin-bottom:10px">
@@ -183,7 +183,7 @@ def van_page(v):
         <h2 class="av" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
         <a class="linkbtn" style="letter-spacing:.16em;text-transform:uppercase;font-weight:500" href="../">See all stock</a>
       </div>
-      <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">{sim}</div>
+      <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))">{sim}</div>
     </div>
   </div>
   <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
@@ -237,7 +237,7 @@ def index_page():
             <h2 class="av" style="margin:0;font-size:19px;letter-spacing:.05em;text-transform:uppercase">{title}</h2>
             <span style="font:400 13px/1 'Gordita',sans-serif;color:var(--mut);font-variant-numeric:tabular-nums">{len(vans)} pages</span>
           </div>
-          <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">{cards}</div>
+          <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))">{cards}</div>
         </div>''')
     n = len(DATA['vans'])
     return HEAD.format(title='Stock van pages', ASSET_V=ASSET_V) + headerV + f'''
