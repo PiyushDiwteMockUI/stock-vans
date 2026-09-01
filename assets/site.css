@@ -200,3 +200,11 @@ main.list{min-height:100vh}
   .vp-wrap{margin-bottom:24px}
   .galbtn{width:42px;height:42px;font-size:26px}
 }
+
+@media (max-width:900px){
+  .vp-strip{grid-template-columns:repeat(4,1fr)!important}
+  .vp-cell{padding:14px 8px!important;text-align:center}
+  .vp-celll{font-size:8.5px!important;letter-spacing:.16em!important;margin-bottom:7px!important}
+  .vp-cellv{font-size:13px!important;line-height:1.2!important}
+  .vp-celld{display:none!important}
+}

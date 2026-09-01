@@ -113,10 +113,10 @@ def van_page(v):
             <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)">{slides}</div>
             <div class="fp-dots" style="display:flex;gap:8px;justify-content:center;margin-top:12px">{''.join(f'<button type="button" class="fp-dot" data-fp="{i}" aria-label="Floorplan view {i+1}" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:{"var(--svink)" if i==0 else "#fff"};padding:0;cursor:pointer"></button>' for i in range(len(plans)))}</div>
           </div></div>""".replace('|G|', chr(39)+'Gordita'+chr(39))
-    strip = ''.join(f'''<div style="padding:22px 20px;background:var(--svink)">
-        <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">{k}</div>
-        <div class="av" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">{val}</div>
-        <div style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
+    strip = ''.join(f'''<div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
+        <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">{k}</div>
+        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">{val}</div>
+        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
         for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Length', v.get('length') or '—', 'Body length'),
                           ('Layout', v['layout'], 'Bunks on board' if v['layout'] == 'Family' else 'Two berth touring'),
                           ('Location', v['state'], 'Where it is now')])
@@ -155,7 +155,7 @@ def van_page(v):
     <h1 class="av" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
     <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in {v['state']}, ready to leave.</p>
     {gallery(v)}
-    <div style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
+    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
     {tow}
     {floor}
     <div style="margin-bottom:10px">
