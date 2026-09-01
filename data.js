@@ -97,7 +97,7 @@ const DATA = {
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2006Q-R-C.png",
-   "was": null,
+   "was": 179684.5,
    "floorplans": [
     "assets/layouts/2006Q-R-C_tilt.png",
     "assets/layouts/2006Q-R-C_top.png",
