@@ -111,7 +111,11 @@ def van_page(v):
           <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
           <p style="margin:0 0 16px;font:400 14px/1.65 |G|,sans-serif;color:var(--body);max-width:60ch">The {v['code']} layout.</p>
           <div class="fp-car" style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px;overflow:hidden">
-            <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)">{slides}</div>
+            <div style="position:relative;overflow:hidden">
+              <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)">{slides}</div>
+              <button class="galbtn" style="left:10px" data-fpnav="-1" aria-label="Previous floorplan view">&#8249;</button>
+              <button class="galbtn" style="right:10px" data-fpnav="1" aria-label="Next floorplan view">&#8250;</button>
+            </div>
             <div class="fp-dots" style="display:flex;gap:8px;justify-content:center;margin-top:12px">{''.join(f'<button type="button" class="fp-dot" data-fp="{i}" aria-label="Floorplan view {i+1}" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:{"var(--svink)" if i==0 else "#fff"};padding:0;cursor:pointer"></button>' for i in range(len(plans)))}</div>
           </div></div>""".replace('|G|', chr(39)+'Gordita'+chr(39))
     strip = ''.join(f'''<div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
