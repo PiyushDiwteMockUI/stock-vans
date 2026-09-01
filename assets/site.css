@@ -208,3 +208,6 @@ main.list{min-height:100vh}
   .vp-cellv{font-size:13px!important;line-height:1.2!important}
   .vp-celld{display:none!important}
 }
+
+/* Reference chips inside our page: never wider than the form column on small screens */
+.enquiry .chips{max-width:100%}

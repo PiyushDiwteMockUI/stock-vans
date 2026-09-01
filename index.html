@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://jealstorage.blob.core.windows.net">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/ywn7byg.css">
-<link rel="stylesheet" href="assets/site.css?v=c3c4425">
-<link rel="stylesheet" href="assets/ref/css/styles.css?v=c3c4425">
-<link rel="stylesheet" href="assets/ref/css/type-compact.css?v=c3c4425">
+<link rel="stylesheet" href="assets/site.css?v=b59a4fc">
+<link rel="stylesheet" href="assets/ref/css/styles.css?v=b59a4fc">
+<link rel="stylesheet" href="assets/ref/css/type-compact.css?v=b59a4fc">
 <style>
 /* Overrides on top of the reference stylesheet: keep its look, fix usability at sub-design widths. */
 @media (min-width:901px){
@@ -130,39 +130,79 @@
           to you within 24 hours<br>
           on Business days.</p>
       </div>
-      <form id="enqform" class="enq2" autocomplete="off" novalidate>
-        <div class="enq2-grid">
-          <div class="enq2-f"><input class="lineinput" id="first-name" name="first-name" type="text" placeholder="First name" required autocomplete="given-name"><span class="req" aria-hidden="true">*</span></div>
-          <div class="enq2-f"><input class="lineinput" id="last-name" name="last-name" type="text" placeholder="Last name" required autocomplete="family-name"><span class="req" aria-hidden="true">*</span></div>
-          <div class="enq2-f"><input class="lineinput" id="email" name="email" type="email" placeholder="Email" required autocomplete="email" spellcheck="false"><span class="req" aria-hidden="true">*</span></div>
-          <div class="enq2-f"><input class="lineinput" id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="tel"><span class="req" aria-hidden="true">*</span></div>
-          <div class="enq2-f"><select class="lineselect" id="state" name="state" required aria-label="State">
+      <form class="enquiry-form" id="enqform" action="#" method="post" autocomplete="off" novalidate>
+        <div class="field-grid">
+          <div class="field field--line">
+            <input id="first-name" name="first-name" type="text" placeholder="First Name" required autocomplete="given-name">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="last-name" name="last-name" type="text" placeholder="Last Name" required autocomplete="family-name">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email" spellcheck="false">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--line">
+            <input id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="tel">
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--select">
+            <select id="state" name="state" autocomplete="off" required>
               <option value="" selected disabled>State</option>
-              <option>Victoria</option><option>New South Wales</option><option>Queensland</option>
-              <option>South Australia</option><option>Western Australia</option><option>Tasmania</option>
-              <option>Northern Territory</option><option>Australian Capital Territory</option>
-            </select><span class="req" aria-hidden="true" style="right:16px">*</span></div>
-          <div class="enq2-f"><select class="lineselect" id="vanselect" name="van" aria-label="Which van are you asking about?">
-              <option value="">Which van are you asking about?</option>
-            </select></div>
+              <option>Victoria</option>
+              <option>New South Wales</option>
+              <option>Queensland</option>
+              <option>South Australia</option>
+              <option>Western Australia</option>
+              <option>Tasmania</option>
+              <option>Northern Territory</option>
+              <option>Australian Capital Territory</option>
+            </select>
+            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
+            <span class="req" aria-hidden="true">*</span>
+          </div>
+          <div class="field field--select field--van">
+            <select id="vanselect" name="van" autocomplete="off" aria-label="Which van are you asking about?">
+              <option value="">Which van?</option>
+            </select>
+            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
+          </div>
         </div>
-        <div class="enq2-seg" role="radiogroup" aria-label="What would you like to do?">
-          <span class="enq2-thumb" aria-hidden="true"></span>
-          <label class="seg"><input type="radio" name="enquiry-type" value="Call back" checked><span>Call back</span></label>
-          <label class="seg segdiv"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label>
-          <label class="seg segdiv"><input type="radio" name="enquiry-type" value="Get a quote"><span>Get a quote</span></label>
-          <label class="seg segdiv"><input type="radio" name="enquiry-type" value="Hold this van"><span>Hold this van</span></label>
+        <fieldset class="chips">
+          <legend class="sr-only">What would you like to do?</legend>
+          <span class="chips-thumb is-init" aria-hidden="true"></span>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Call back" checked>
+            <span>Call back</span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Book a viewing">
+            <span>Book a<br>viewing</span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Get a quote">
+            <span>Get a Quote</span>
+          </label>
+          <label class="chip">
+            <input type="radio" name="enquiry-type" value="Hold this van">
+            <span>Hold<br>this van</span>
+          </label>
+        </fieldset>
+        <div class="field field--area">
+          <label class="sr-only" for="message">Something else you want to tell us…</label>
+          <textarea id="message" name="message" placeholder="Something else you want to tell us..."></textarea>
         </div>
-        <textarea class="enq2-area" id="message" name="message" placeholder="Something else you want to tell us…"></textarea>
-        <label class="enq2-consent">
+        <div class="consent">
           <input type="checkbox" id="marketing" name="marketing">
-          <span>Send me new stock the day it lands, plus runout pricing and events.
-            <small>*&nbsp; I understand I can unsubscribe at any time.</small></span>
-        </label>
-        <div class="enq2-actions">
-          <button class="av btn-orange enq2-submit" type="submit">Submit</button>
-          <span id="enqstatus" role="status">or call <a href="tel:+61386920032" style="color:var(--svink);font-weight:500">(03) 8692 0032</a></span>
+          <label for="marketing">
+            Send me new stock the day it lands, plus runout pricing and events.
+            <span class="fineprint">*&nbsp; I understand I can unsubscribe at anytime.</span>
+          </label>
         </div>
+        <button class="btn-submit" type="submit">Submit</button>
+        <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
       </form>
     </div>
   </div>
@@ -357,8 +397,8 @@
 <iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 
 <script src="assets/purify.min.js"></script>
-<script src="data.js?v=c3c4425"></script>
-<script src="app.js?v=c3c4425"></script>
+<script src="data.js?v=b59a4fc"></script>
+<script src="app.js?v=b59a4fc"></script>
 <script src="assets/ref/js/video.js"></script>
 <script src="assets/ref/js/reviews.js"></script>
 <script src="assets/ref/js/footer.js"></script>

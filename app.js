@@ -451,20 +451,25 @@ const SV = {
       }
     });
     document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
-    // Sliding thumb for the intent bar
-    const seg = document.querySelector('.enq2-seg');
-    if (seg) {
-      const thumb = seg.querySelector('.enq2-thumb');
-      const radios = [...seg.querySelectorAll('input[name="enquiry-type"]')];
+    // Reference chips-thumb: position over the checked chip, squash while travelling.
+    const chips = document.querySelector('.enquiry-form .chips');
+    if (chips) {
+      const thumb = chips.querySelector('.chips-thumb');
+      const cells = [...chips.querySelectorAll('.chip')];
       const place = () => {
-        const i = radios.findIndex(r => r.checked);
-        thumb.style.transform = 'translateX(' + (i * 100) + '%)';
+        const on = cells.find(c => c.querySelector('input').checked) || cells[0];
+        thumb.style.left = on.offsetLeft + 'px';
+        thumb.style.width = on.offsetWidth + 'px';
       };
-      seg.addEventListener('change', () => {
+      chips.addEventListener('change', () => {
+        thumb.classList.remove('is-init');
+        thumb.classList.add('is-moving');
         place();
-        thumb.classList.remove('moving'); void thumb.offsetWidth; thumb.classList.add('moving');
+        setTimeout(() => thumb.classList.remove('is-moving'), 460);
       });
+      window.addEventListener('resize', () => { thumb.classList.add('is-init'); place(); requestAnimationFrame(() => thumb.classList.remove('is-init')); });
       place();
+      requestAnimationFrame(() => thumb.classList.remove('is-init'));
     }
     this.render();
     const h = location.hash.match(/^#van\/(WL\d+)/);
