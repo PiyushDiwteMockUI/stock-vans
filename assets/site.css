@@ -45,7 +45,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .btn-orange{background:var(--svorange);color:#fff;border:1px solid var(--svorange);font:500 11px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:17px;border-radius:3px;cursor:pointer;min-height:44px;transition:background .2s ease,color .2s ease,transform .12s cubic-bezier(.23,1,.32,1)}
 .btn-orange:active{transform:scale(.98)}
 .linkbtn{background:none;border:none;padding:0;cursor:pointer;font:400 11.5px/1 'Gordita',sans-serif;color:var(--olink);text-decoration:underline;text-underline-offset:3px}
-.chip{display:flex;align-items:center;gap:8px;background:#F2EEE8;border:1px solid var(--line2);color:var(--svink);font:400 12px/1 'Gordita',sans-serif;padding:8px 11px;border-radius:20px;cursor:pointer}
+
 .talkbtn{display:block;text-align:center;background:#fff;color:var(--svink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:13px;border-radius:3px}
 .galbtn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:rgba(6,9,12,.6);color:#fff;font-size:17px;cursor:pointer}
 .thumbbtn{flex:none;width:88px;height:62px;padding:0;border-radius:3px;overflow:hidden;cursor:pointer;background:var(--line);border:2px solid transparent;opacity:.62}
@@ -130,8 +130,7 @@ a,.linkbtn{transition:color .15s ease}
 .thumbbtn{transition:border-color .15s ease,opacity .15s ease}
 .galbtn{transition:transform .12s cubic-bezier(.23,1,.32,1),background .15s ease}
 .galbtn:active{transform:translateY(-50%) scale(.94)}
-.chip:active{transform:scale(.97)}
-.chip{transition:background .15s ease,transform .12s cubic-bezier(.23,1,.32,1)}
+
 .pill span{transition:background .18s ease,color .18s ease,border-color .18s ease,transform .12s cubic-bezier(.23,1,.32,1)}
 .pill:active span{transform:scale(.97)}
 .useg{transition:color .18s ease,border-color .18s ease}
@@ -157,3 +156,7 @@ h1,h2,h3{text-wrap:balance}
 @media (hover:hover) and (pointer:fine){
   .pagecard:hover{box-shadow:0 16px 44px rgba(12,15,18,.14);transform:translateY(-3px)}
 }
+
+.fchip{display:inline-flex;align-items:center;gap:9px;width:auto;white-space:nowrap;background:#F2EEE8;border:1px solid var(--line2);color:var(--svink);font:400 12.5px/1 'Gordita',sans-serif;padding:9px 13px;border-radius:19px;cursor:pointer;min-height:36px;transition:background .15s ease,border-color .15s ease,transform .12s cubic-bezier(.23,1,.32,1)}
+.fchip:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.fchip:hover{border-color:var(--svink)}}

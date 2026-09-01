@@ -248,7 +248,7 @@ const SV = {
     const chEl = document.getElementById('chips');
     chEl.style.display = chips.length ? 'flex' : 'none';
     put(chEl, chips.map(([l, kind, val]) =>
-      `<button class="chip" data-act="unchip" data-kind="${kind}" data-val="${val}">${l}<span style="color:var(--mut);font-size:13px">×</span></button>`).join(''));
+      `<button class="fchip" data-act="unchip" data-kind="${kind}" data-val="${val}">${l}<span style="color:var(--mut);font-size:13px">×</span></button>`).join(''));
     const badge = document.getElementById('mob-count-badge');
     badge.style.display = chips.length ? 'block' : 'none';
     badge.textContent = chips.length;
