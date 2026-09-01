@@ -42,6 +42,7 @@ HEAD = '''<!doctype html>
 <link rel="stylesheet" href="../assets/ref/css/type-compact.css">
 <style>
 @media (min-width:901px){{html{{font-size:min(100px, max(calc(100vw / 23.76), min(66px, calc(100vw / 17.5))))}}}}
+.vp-wrap{{max-width:640px;margin-bottom:34px}}
 .vp-main{{position:relative;aspect-ratio:3/2;background:var(--dk);border-radius:4px;overflow:hidden;margin-bottom:10px}}
 .vp-main img{{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)}}
 .vp-count{{position:absolute;bottom:14px;right:14px;background:rgba(6,9,12,.72);color:#fff;font:400 11.5px/1 'Gordita',sans-serif;padding:7px 11px;border-radius:2px}}
@@ -54,13 +55,13 @@ def gallery(v):
     thumbs = ''.join(
         f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}"><span style="display:block;width:100%;height:100%;background-image:url({u});background-size:cover;background-position:center;pointer-events:none"></span></button>'
         for i, u in enumerate(v['images']))
-    return f'''<div class="vp-main">
+    return f'''<div class="vp-wrap"><div class="vp-main">
       <img id="vp-img" src="{v['images'][0]}" alt="{v['name']}" fetchpriority="high">
       <button class="galbtn" style="left:14px" data-nav="-1">‹</button>
       <button class="galbtn" style="right:14px" data-nav="1">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
     </div>
-    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:34px" id="vp-thumbs">{thumbs}</div>'''
+    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px" id="vp-thumbs">{thumbs}</div></div>'''
 
 def spec_sections(v):
     specs = DATA['modelSpecs'].get(v['model'], {})
