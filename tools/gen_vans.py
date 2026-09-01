@@ -179,7 +179,7 @@ def van_page(v):
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. {v['chassis']}</span>
     </div>
     <h1 class="av" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
-    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in {v['state']}, ready to leave.</p>
+    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in {v['state']}, ready for handover.</p>
     {gallery(v)}
     <div class="vp-mobilebuy">
       <div class="vpb-row">
