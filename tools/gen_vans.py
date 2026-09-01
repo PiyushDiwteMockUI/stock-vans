@@ -207,7 +207,7 @@ def van_page(v):
         <h2 class="av" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
         <a class="linkbtn" style="letter-spacing:.16em;text-transform:uppercase;font-weight:500" href="../">See all stock</a>
       </div>
-      <div style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))">{sim}</div>
+      <div class="sim-row" style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))">{sim}</div>
     </div>
   </div>
   <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">

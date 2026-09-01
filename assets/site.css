@@ -258,3 +258,10 @@ a.btn-line{color:var(--svink)}
   a.btn-orange:hover{color:var(--svorange)}
   a.btn-dark:hover{color:#fff}
 }
+
+/* Similar vans on mobile: soft horizontal snap strip instead of a stack */
+@media (max-width:900px){
+  .sim-row{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:8px;scrollbar-width:none}
+  .sim-row::-webkit-scrollbar{display:none}
+  .sim-row > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
+}
