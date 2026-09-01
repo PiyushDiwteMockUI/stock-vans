@@ -10,6 +10,7 @@
     return m ? m[1] : '';
   });
   var cur = 0;
+  var sides = Array.prototype.slice.call(document.querySelectorAll('.vp-side'));
   function show(i) {
     cur = (i + srcs.length) % srcs.length;
     img.src = srcs[cur];
@@ -17,6 +18,14 @@
     var n = document.getElementById('vp-n');
     if (n) n.textContent = cur + 1;
     btns[cur].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    // side grid rolls with the gallery: always the next four photos
+    sides.forEach(function (s, j) {
+      var k = (cur + 1 + j) % srcs.length;
+      var im = s.querySelector('img');
+      if (im) im.src = srcs[k];
+      s.dataset.goto = k;
+      s.setAttribute('aria-label', 'Photo ' + (k + 1));
+    });
   }
   thumbs.addEventListener('click', function (e) {
     var b = e.target.closest('.thumbbtn');
