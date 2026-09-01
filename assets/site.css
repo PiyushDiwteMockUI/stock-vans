@@ -265,3 +265,10 @@ a.btn-line{color:var(--svink)}
   .sim-row::-webkit-scrollbar{display:none}
   .sim-row > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
 }
+
+/* mobile buy card: phones only; desktop/tablet keep the sidebar price + CTAs */
+.vp-mobilebuy{display:none}
+@media (max-width:900px){
+  .vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px;margin-bottom:24px}
+  .detailside .side-price,.detailside .side-ctas{display:none}
+}
