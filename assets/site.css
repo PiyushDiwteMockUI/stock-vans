@@ -181,3 +181,6 @@ h1,h2,h3{text-wrap:balance}
   .seg span{border:1px solid var(--svink);border-radius:14px}
   .seg input:checked + span{background:var(--svorange);border-color:var(--svorange)}
 }
+
+/* Results area never collapses under the user mid-filter (keeps the sticky rail put). */
+main.list{min-height:100vh}

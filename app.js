@@ -430,6 +430,8 @@ const SV = {
       const dLo = Math.abs(v - this.s[c.lo]), dHi = Math.abs(v - this.s[c.hi]);
       dragState.key = key; dragState.end = (dLo < dHi || (dLo === dHi && v < this.s[c.lo])) ? 'lo' : 'hi';
       dragState.rect = r; dragState.active = true;
+      const grp = document.getElementById('groups');
+      if (grp) { dragState.grp = grp; grp.style.minHeight = grp.offsetHeight + 'px'; }
       try { w.setPointerCapture && w.setPointerCapture(e.pointerId); } catch (err) { /* synthetic events have no active pointer */ }
       this.setSlider(key, dragState.end, v, true);
     });
@@ -443,6 +445,10 @@ const SV = {
       if (!dragState.active) return;
       dragState.active = false;
       this.render();
+      if (dragState.grp) {
+        const grp = dragState.grp; dragState.grp = null;
+        setTimeout(() => { grp.style.minHeight = ''; }, 250);
+      }
     });
     document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
     // Sliding thumb for the intent bar
