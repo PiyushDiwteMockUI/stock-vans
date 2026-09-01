@@ -5,7 +5,8 @@ Header/footer are sliced from index.html (WLHEADER/WLFOOTER markers) so the
 pages always match the main page. All dynamic strings in data.js are already
 HTML-escaped at harvest time."""
 import json, re, os, subprocess
-ASSET_V = subprocess.run(['git','rev-parse','--short','HEAD'],capture_output=True,text=True).stdout.strip() or '0'
+import hashlib
+ASSET_V = hashlib.md5(open('assets/site.css','rb').read() + open('assets/vanpage.js','rb').read()).hexdigest()[:8]
 
 src = open('data.js').read()
 DATA = json.loads(re.search(r'const DATA = ([\s\S]*?);\s*const OR_TOKEN', src).group(1))
