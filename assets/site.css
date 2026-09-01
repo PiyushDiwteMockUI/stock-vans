@@ -2,7 +2,7 @@ html,body{overflow-x:clip}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Light.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
-:root{--svink:#12171C;--body:#3D464D;--body2:#2A3238;--mut:#5A646B;--svorange:#C97625;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
+:root{--svink:#12171C;--body:#3D464D;--body2:#2A3238;--mut:#5A646B;--svorange:#DB7627;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{background:#fff;font-family:'Gordita',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:var(--svink)}
