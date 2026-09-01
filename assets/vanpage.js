@@ -41,19 +41,38 @@
       if (main) main.scrollIntoView({ block: 'nearest' });
     }
   });
-  // Floorplan carousel: soft auto-advance, pauses on hover/touch, respects reduced motion.
+  // Floorplan carousel: continuous one-direction loop (first slide cloned at the end,
+  // snap back invisibly after the clone), soft ease, pauses on hover/touch/off-screen.
   var car = document.querySelector('.fp-car');
   if (car) {
     var track = car.querySelector('.fp-track');
     var dots = Array.prototype.slice.call(car.querySelectorAll('.fp-dot'));
-    var n = dots.length, fi = 0, timer = null;
+    var n = dots.length, fi = 0, timer = null, snapping = false;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function go(i) {
-      fi = (i + n) % n;
-      track.style.transform = 'translateX(-' + (fi * 100) + '%)';
-      dots.forEach(function (d, j) { d.style.background = j === fi ? 'var(--svink)' : '#fff'; });
+    if (n > 1) track.appendChild(track.children[0].cloneNode(true));
+    var EASE = 'transform 1.1s cubic-bezier(.45,.05,.15,1)';
+    track.style.transition = EASE;
+    function paint() {
+      dots.forEach(function (d, j) { d.style.background = j === (fi % n) ? 'var(--svink)' : '#fff'; });
     }
-    function start() { if (!reduce && n > 1 && !timer) timer = setInterval(function () { go(fi + 1); }, 4000); }
+    function go(i) {
+      fi = i;
+      track.style.transform = 'translateX(-' + (fi * 100) + '%)';
+      paint();
+    }
+    track.addEventListener('transitionend', function () {
+      if (fi === n) {
+        snapping = true;
+        track.style.transition = 'none';
+        fi = 0;
+        track.style.transform = 'translateX(0%)';
+        void track.offsetWidth;
+        track.style.transition = EASE;
+        snapping = false;
+        paint();
+      }
+    });
+    function start() { if (!reduce && n > 1 && !timer) timer = setInterval(function () { if (!snapping) go(fi + 1); }, 4200); }
     function stop() { clearInterval(timer); timer = null; }
     car.addEventListener('mouseenter', stop);
     car.addEventListener('mouseleave', start);
