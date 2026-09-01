@@ -13,10 +13,11 @@ DATA = json.loads(re.search(r'const DATA = ([\s\S]*?);\s*const OR_TOKEN', src).g
 idx = open('index.html').read()
 header = re.search(r'<!--WLHEADER-->([\s\S]*?)<!--/WLHEADER-->', idx).group(1)
 footer = re.search(r'<!--WLFOOTER-->([\s\S]*?)<!--/WLFOOTER-->', idx).group(1)
+nextband = re.search(r'<!--WLNEXT-->([\s\S]*?)<!--/WLNEXT-->', idx).group(1)
 # links inside header/footer are relative to root; from vans/ prefix local assets with ../
 def rel(html):
     return html.replace('src="assets/', 'src="../assets/').replace('href="assets/', 'href="../assets/')
-headerV, footerV = rel(header), rel(footer)
+headerV, footerV, nextV = rel(header), rel(footer), rel(nextband)
 
 kg = lambda n: format(n, ',').replace(',', ',') + ' kg'
 money = lambda n: 'Enquire for price' if n is None else '$' + format(round(n), ',')
@@ -241,7 +242,7 @@ def van_page(v):
     </div>
   </aside>
 </div>
-''' + footerV + '''
+''' + nextV + footerV + '''
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
 </body>
 </html>'''
@@ -285,7 +286,7 @@ def index_page():
   <a class="linkbtn" style="display:inline-block;margin-top:22px;color:var(--peach);font:500 11px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase" href="../">← Back to all stock</a>
 </div>
 <div style="padding-top:44px;padding-bottom:44px" class="gutter shellpad">{out and ''.join(out)}</div>
-''' + footerV + '''
+''' + nextV + footerV + '''
 </body>
 </html>'''
 
