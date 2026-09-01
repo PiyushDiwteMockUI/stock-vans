@@ -373,7 +373,7 @@ const SV = {
     const intentEl = f.querySelector('[name="enquiry-type"]:checked');
     const intent = intentEl ? intentEl.value : 'Call back';
     const msg = (g('message').value || '').trim();
-    const consent = g('marketing').checked;
+    const consent = true; // enquirers are subscribed by default, unsubscribe anytime
     const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
       (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (consent ? ' | Newsletter: yes' : '');
     const post = document.createElement('form');
