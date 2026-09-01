@@ -26,6 +26,11 @@ INCL = {
  'Solara': ['Redarc Alpha 75 off-grid power', 'Frameless composite construction', '2 x 90-100L water tanks'],
 }
 
+
+def asrc(u):
+    """Image src usable from inside /vans/: absolute URLs pass through, local assets get ../"""
+    return u if u.startswith('http') else '../' + u
+
 def full_name(v):
     return v['name'] if v['name'].startswith(v['model']) else v['model'] + ' ' + v['name']
 
@@ -57,10 +62,10 @@ HEAD = '''<!doctype html>
 
 def gallery(v):
     thumbs = ''.join(
-        f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}" aria-label="Photo {i+1}"><span style="display:block;width:100%;height:100%;background-image:url({u});background-size:cover;background-position:center;pointer-events:none"></span></button>'
+        f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}" aria-label="Photo {i+1}"><span style="display:block;width:100%;height:100%;background-image:url({asrc(u)});background-size:cover;background-position:center;pointer-events:none"></span></button>'
         for i, u in enumerate(v['images']))
     return f'''<div class="vp-wrap"><div class="vp-main">
-      <img id="vp-img" src="{v['images'][0]}" alt="{v['name']}" width="1600" height="1067" fetchpriority="high">
+      <img id="vp-img" src="{asrc(v['images'][0])}" alt="{v['name']}" width="1600" height="1067" fetchpriority="high">
       <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
       <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
@@ -113,7 +118,7 @@ def van_page(v):
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', v['state'])])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
-        <div style="aspect-ratio:16/10;background:var(--line)"><img src="{x['images'][0]}" alt="{x['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="aspect-ratio:16/10;background:var(--line)"><img src="{asrc(x['images'][0])}" alt="{x['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         <div style="padding:15px">
           <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">{x['model']} {x['code'].replace(' ()','').strip()}</div>
           <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">{x['name']}</div>
@@ -122,7 +127,7 @@ def van_page(v):
         </div></a>''' for x in similar)
     enq = f"../?van={v['chassis']}#enquire"
     return HEAD.format(title=f"{name} {v['chassis']}") + headerV + f'''
-<div style="padding:20px 56px 0;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
+<div style="padding-top:20px;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
   <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../">Stock vans</a>
   <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="./">Pages</a>
   <span>/</span><span style="color:var(--svink)">{v['chassis']}</span>
@@ -196,7 +201,7 @@ def index_page():
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
-            <img src="{v['images'][0]}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="{asrc(v['images'][0])}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
             <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else '#12171C'};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else 'Ready now'}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
           </div>
@@ -219,13 +224,13 @@ def index_page():
         </div>''')
     n = len(DATA['vans'])
     return HEAD.format(title='Stock van pages') + headerV + f'''
-<div style="background:var(--svink);padding:56px 0" class="gutter shellpad">
+<div style="background:var(--svink);padding-top:56px;padding-bottom:56px" class="gutter shellpad">
   <div style="font:500 10px/1 'Gordita',sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--peach);margin-bottom:16px">Detail pages</div>
   <h1 class="av" style="margin:0;font-size:42px;line-height:1;letter-spacing:-.01em;color:#fff">One page per van</h1>
   <p style="margin:14px 0 0;max-width:58ch;font:400 15.5px/1.65 'Gordita',sans-serif;color:rgba(255,255,255,.78)">{n} stock vans, each with its own photos, weights, floorplan and drive-away price.</p>
   <a class="linkbtn" style="display:inline-block;margin-top:22px;color:var(--peach);font:500 11px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase" href="../">← Back to all stock</a>
 </div>
-<div style="padding:44px 0" class="gutter shellpad">{out and ''.join(out)}</div>
+<div style="padding-top:44px;padding-bottom:44px" class="gutter shellpad">{out and ''.join(out)}</div>
 ''' + footerV + '''
 </body>
 </html>'''
