@@ -22,6 +22,13 @@ const VANS = DATA.vans.map((v, i) => {
     img: v.images[0] || ''
   });
 });
+const imgSm = u => {
+  if (u.includes('pxcrush.net')) return u.replace(/pxc_size=\d+,\d+/, 'pxc_size=640,427');
+  if (u.startsWith('assets/')) return u.replace(/\.(jpg|png)$/, '_sm.$1');
+  return u;
+};
+const imgSrcset = u => u.includes('pxcrush.net') || u.startsWith('assets/')
+  ? `${imgSm(u)} 640w, ${u} 1600w` : '';
 const fullName = v => v.name.startsWith(v.model) ? v.name : v.model + ' ' + v.name;
 const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
@@ -112,7 +119,7 @@ const SV = {
   cardHTML(v) {
     return `<article class="card">
       <div class="cardimg" data-act="view" data-id="${v.id}" style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);cursor:pointer">
-        <img src="${v.img}" alt="${v.name}" loading="lazy" width="430" height="269" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
+        <img src="${imgSm(v.img)}" ${imgSrcset(v.img) ? 'srcset="' + imgSrcset(v.img) + '" sizes="(max-width:900px) 92vw, 480px"' : ''} alt="${v.name}" loading="lazy" decoding="async" width="430" height="269" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
         <div style="position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
           ${v.clearance ? '<span class="badge-red">Clearance</span>' : '<span class="badge-dark">Ready now</span>'}
           ${v.used ? '<span class="badge-grey">Pre-loved</span>' : ''}

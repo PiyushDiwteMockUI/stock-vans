@@ -5,10 +5,22 @@
   var thumbs = document.getElementById('vp-thumbs');
   if (!img || !thumbs) return;
   var btns = Array.prototype.slice.call(thumbs.querySelectorAll('.thumbbtn'));
+  var toFull = function (u) {
+    u = u.replace(/pxc_size=\d+,\d+/, 'pxc_size=1024,683');
+    return u.replace(/_sm\.(jpg|png)$/, '.$1');
+  };
   var srcs = btns.map(function (b) {
     var m = b.querySelector('span').style.backgroundImage.match(/url\("?(.*?)"?\)/);
-    return m ? m[1] : '';
+    return m ? toFull(m[1]) : '';
   });
+  // Preload the neighbours of the current photo so arrow taps feel instant
+  var preloaded = {};
+  function preload(i) {
+    var k = (i + srcs.length) % srcs.length;
+    if (preloaded[k]) return;
+    preloaded[k] = true;
+    var im = new Image(); im.src = srcs[k];
+  }
   var cur = 0;
   var sides = Array.prototype.slice.call(document.querySelectorAll('.vp-side'));
   function show(i) {
@@ -18,6 +30,7 @@
     var n = document.getElementById('vp-n');
     if (n) n.textContent = cur + 1;
     btns[cur].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    preload(cur + 1); preload(cur - 1);
     // side grid rolls with the gallery: always the next four photos
     sides.forEach(function (s, j) {
       var k = (cur + 1 + j) % srcs.length;

@@ -28,6 +28,18 @@ INCL = {
 }
 
 
+
+def img_sm(u):
+    import re as _re
+    if 'pxcrush.net' in u: return _re.sub(r'pxc_size=\d+,\d+', 'pxc_size=640,427', u)
+    if u.startswith('assets/'): return _re.sub(r'\.(jpg|png)$', r'_sm.\1', u)
+    return u
+
+def img_mid(u):
+    import re as _re
+    if 'pxcrush.net' in u: return _re.sub(r'pxc_size=\d+,\d+', 'pxc_size=1024,683', u)
+    return u
+
 def asrc(u):
     """Image src usable from inside /vans/: absolute URLs pass through, local assets get ../"""
     return u if u.startswith('http') else '../' + u
@@ -64,13 +76,13 @@ HEAD = '''<!doctype html>
 
 def gallery(v):
     thumbs = ''.join(
-        f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}" aria-label="Photo {i+1}"><span style="display:block;width:100%;height:100%;background-image:url({asrc(u)});background-size:cover;background-position:center;pointer-events:none"></span></button>'
+        f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}" aria-label="Photo {i+1}"><span style="display:block;width:100%;height:100%;background-image:url({asrc(img_sm(u))});background-size:cover;background-position:center;pointer-events:none"></span></button>'
         for i, u in enumerate(v['images']))
     side = ''.join(
-        f"""<button type="button" class="vp-side" data-goto="{i}" aria-label="Photo {i+1}" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="{asrc(v['images'][i])}" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button>"""
+        f"""<button type="button" class="vp-side" data-goto="{i}" aria-label="Photo {i+1}" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="{asrc(img_sm(v['images'][i]))}" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button>"""
         for i in range(1, min(5, len(v['images']))))
     return f'''<div class="vp-wrap"><div style="display:grid;grid-template-columns:2fr 1fr;gap:10px" class="vp-mediarow"><div class="vp-main" style="margin-bottom:0">
-      <img id="vp-img" src="{asrc(v['images'][0])}" alt="{v['name']}" width="1600" height="1067" fetchpriority="high">
+      <img id="vp-img" src="{asrc(img_mid(v['images'][0]))}" alt="{v['name']}" width="1600" height="1067" fetchpriority="high" decoding="async">
       <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
       <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
@@ -105,7 +117,7 @@ def van_page(v):
     if plans:
         CAP = {'tilt': '3D view', 'top': 'Top down'}
         slides = ''.join(
-            f"""<figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="../{p}" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>"""
+            f"""<figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="../{img_sm(p)}" srcset="../{img_sm(p)} 640w, ../{p} 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>"""
             for p in plans).replace('|G|', chr(39)+'Gordita'+chr(39))
         floor = f"""<div style="margin-bottom:38px">
           <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
@@ -137,7 +149,7 @@ def van_page(v):
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', v['state'])])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
-        <div style="aspect-ratio:16/10;background:var(--line)"><img src="{asrc(x['images'][0])}" alt="{x['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="aspect-ratio:16/10;background:var(--line)"><img src="{asrc(img_sm(x['images'][0]))}" alt="{x['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         <div style="padding:15px">
           <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">{x['model']} {x['code'].replace(' ()','').strip()}</div>
           <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">{x['name']}</div>
@@ -221,7 +233,7 @@ def index_page():
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" class="pagecard" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
-            <img src="{asrc(v['images'][0])}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="{asrc(img_sm(v['images'][0]))}" alt="{v['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
             <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if int(v.get('year') or 2026)<2026 else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if int(v.get('year') or 2026)<2026 else 'Ready now')}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
             {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" style="position:absolute;top:0;right:14px;width:62px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))">' if v['model']=='Solara' else ''}
