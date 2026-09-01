@@ -24,6 +24,12 @@
   });
   document.addEventListener('click', function (e) {
     var nav = e.target.closest('[data-nav]');
-    if (nav) show(cur + parseInt(nav.dataset.nav, 10));
+    if (nav) { show(cur + parseInt(nav.dataset.nav, 10)); return; }
+    var side = e.target.closest('[data-goto]');
+    if (side) {
+      show(parseInt(side.dataset.goto, 10));
+      var main = document.querySelector('.vp-main');
+      if (main) main.scrollIntoView({ block: 'nearest' });
+    }
   });
 })();

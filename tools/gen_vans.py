@@ -51,7 +51,8 @@ HEAD = '''<!doctype html>
 <link rel="stylesheet" href="../assets/ref/css/type-compact.css">
 <style>
 @media (min-width:901px){{html{{font-size:min(100px, max(calc(100vw / 23.76), min(66px, calc(100vw / 17.5))))}}}}
-.vp-wrap{{max-width:640px;margin-bottom:34px}}
+.vp-wrap{{max-width:1040px;margin-bottom:34px}}
+@media (max-width:900px){{.vp-mediarow{{grid-template-columns:1fr!important}}}}
 .vp-main{{position:relative;aspect-ratio:3/2;background:var(--dk);border-radius:4px;overflow:hidden;margin-bottom:10px}}
 .vp-main img{{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)}}
 .vp-count{{position:absolute;bottom:14px;right:14px;background:rgba(6,9,12,.72);color:#fff;font:400 11.5px/1 'Gordita',sans-serif;padding:7px 11px;border-radius:2px}}
@@ -64,14 +65,18 @@ def gallery(v):
     thumbs = ''.join(
         f'<button class="thumbbtn{" on" if i==0 else ""}" data-i="{i}" aria-label="Photo {i+1}"><span style="display:block;width:100%;height:100%;background-image:url({asrc(u)});background-size:cover;background-position:center;pointer-events:none"></span></button>'
         for i, u in enumerate(v['images']))
-    return f'''<div class="vp-wrap"><div class="vp-main">
+    side = ''.join(
+        f"""<button type="button" class="vp-side" data-goto="{i}" aria-label="Photo {i+1}" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="{asrc(v['images'][i])}" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button>"""
+        for i in range(1, min(5, len(v['images']))))
+    return f'''<div class="vp-wrap"><div style="display:grid;grid-template-columns:1.55fr 1fr;gap:10px" class="vp-mediarow"><div class="vp-main" style="margin-bottom:0">
       <img id="vp-img" src="{asrc(v['images'][0])}" alt="{v['name']}" width="1600" height="1067" fetchpriority="high">
       <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
       <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
       <span class="vp-count"><span id="vp-n">1</span> / {len(v['images'])}</span>
       {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" style="position:absolute;top:0;right:24px;width:64px;height:auto;filter:drop-shadow(0 5px 12px rgba(0,0,0,.42))">' if v['model']=='Solara' else ''}
     </div>
-    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px" id="vp-thumbs">{thumbs}</div></div>'''
+    <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px">{side}</div></div>
+    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div></div>'''
 
 def spec_sections(v):
     specs = DATA['modelSpecs'].get(v['model'], {})
