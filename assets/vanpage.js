@@ -9,49 +9,50 @@
     u = u.replace(/pxc_size=\d+,\d+/, 'pxc_size=1024,683');
     return u.replace(/_sm\.(jpg|png)$/, '.$1');
   };
-  var srcs = btns.map(function (b) {
+  var smalls = btns.map(function (b) {
     var m = b.querySelector('span').style.backgroundImage.match(/url\("?(.*?)"?\)/);
-    return m ? toFull(m[1]) : '';
+    return m ? m[1] : '';
   });
-  // Preload the neighbours of the current photo so arrow taps feel instant
-  var preloaded = {};
-  function preload(i) {
-    var k = (i + srcs.length) % srcs.length;
-    if (preloaded[k]) return;
-    preloaded[k] = true;
-    var im = new Image(); im.src = srcs[k];
-  }
-  var cur = 0;
+  var srcs = smalls.map(toFull);
+  var cur = 0, showToken = 0;
   var sides = Array.prototype.slice.call(document.querySelectorAll('.vp-side'));
-  function show(i) {
-    cur = (i + srcs.length) % srcs.length;
-    img.src = srcs[cur];
+  var warmed = {};
+  function warm(list, i) {
+    var k = (i + list.length) % list.length;
+    var key = list === srcs ? 'f' + k : 's' + k;
+    if (warmed[key]) return;
+    warmed[key] = true;
+    var im = new Image(); im.src = list[k];
+  }
+  function warmRing() {
+    warm(srcs, cur + 1); warm(srcs, cur - 1); warm(srcs, cur + 2);
+    for (var j = 1; j <= 5; j++) warm(smalls, cur + j);
+  }
+  function paint() {
     btns.forEach(function (b, j) { b.classList.toggle('on', j === cur); });
     var n = document.getElementById('vp-n');
     if (n) n.textContent = cur + 1;
     btns[cur].scrollIntoView({ block: 'nearest', inline: 'nearest' });
-    preload(cur + 1); preload(cur - 1);
-    // side grid rolls with the gallery: always the next four photos
     sides.forEach(function (s, j) {
-      var k = (cur + 1 + j) % srcs.length;
+      var k = (cur + 1 + j) % smalls.length;
       var im = s.querySelector('img');
-      if (im) im.src = srcs[k];
+      if (im) im.src = smalls[k];
       s.dataset.goto = k;
       s.setAttribute('aria-label', 'Photo ' + (k + 1));
     });
+    warmRing();
   }
-  // Swipe on the main photo (mobile slideshow)
-  var main = document.querySelector('.vp-main');
-  if (main) {
-    var sx = null;
-    main.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
-    main.addEventListener('touchend', function (e) {
-      if (sx === null) return;
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
-      sx = null;
-    }, { passive: true });
+  function show(i) {
+    cur = (i + srcs.length) % srcs.length;
+    var token = ++showToken;
+    var next = srcs[cur];
+    var pre = new Image();
+    pre.src = next;
+    var swap = function () { if (token === showToken) img.src = next; };
+    if (pre.decode) pre.decode().then(swap, swap); else { pre.onload = swap; pre.onerror = swap; }
+    paint();
   }
+  warmRing();
   thumbs.addEventListener('click', function (e) {
     var b = e.target.closest('.thumbbtn');
     if (b) show(btns.indexOf(b));
