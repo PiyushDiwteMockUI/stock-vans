@@ -383,6 +383,10 @@ const SV = {
       post.appendChild(i);
     }
     document.body.appendChild(post); post.submit();
+    try {
+      if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent });
+      if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt || 'Not specified', enquiry_type: intent });
+    } catch (e) {}
     const st = document.getElementById('enqstatus');
     st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
     st.style.color = '#2E7D32';
