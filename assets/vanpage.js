@@ -153,3 +153,16 @@
     });
   });
 })();
+
+/* on phones the buy/warranty sidebar sits above Similar vans in stock */
+(function () {
+  var aside = document.querySelector('.detailside'), sim = document.querySelector('.vp-simblock');
+  if (!aside || !sim) return;
+  var home = aside.parentElement, mq = matchMedia('(max-width:900px)');
+  function place() {
+    if (mq.matches) sim.parentNode.insertBefore(aside, sim);
+    else home.appendChild(aside);
+  }
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place);
+})();

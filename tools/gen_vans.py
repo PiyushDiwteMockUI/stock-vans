@@ -242,7 +242,7 @@ def van_page(v):
         </div>
       </div>
     </div>
-    <div style="padding-bottom:66px">
+    <div class="vp-simblock" style="padding-bottom:66px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px">
         <h2 class="av" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
         <a class="linkbtn" style="letter-spacing:.16em;text-transform:uppercase;font-weight:500" href="../">See all stock</a>

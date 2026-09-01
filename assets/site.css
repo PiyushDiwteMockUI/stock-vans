@@ -294,3 +294,12 @@ a.btn-line{color:var(--svink)}
   .spec-acc-key{display:block}
   .detailside .side-facts{display:none}
 }
+
+/* van page: sidebar never wraps below the content on desktop; on phones it moves above Similar vans (vanpage.js) */
+@media (min-width:901px){
+  .wrap:has(.detailside){flex-wrap:nowrap;gap:34px}
+  .wrap:has(.detailside) > main, .wrap:has(.detailside) > div:first-child{min-width:0}
+}
+@media (max-width:900px){
+  .detailside{position:static!important;max-width:none!important;width:100%;padding-bottom:34px!important}
+}
