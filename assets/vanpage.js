@@ -27,6 +27,18 @@
       s.setAttribute('aria-label', 'Photo ' + (k + 1));
     });
   }
+  // Swipe on the main photo (mobile slideshow)
+  var main = document.querySelector('.vp-main');
+  if (main) {
+    var sx = null;
+    main.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+    main.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+      sx = null;
+    }, { passive: true });
+  }
   thumbs.addEventListener('click', function (e) {
     var b = e.target.closest('.thumbbtn');
     if (b) show(btns.indexOf(b));

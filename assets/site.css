@@ -189,3 +189,14 @@ main.list{min-height:100vh}
 .coty-card{position:absolute;top:0;right:16px;width:55px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))}
 @media (min-width:601px) and (max-width:1100px){.coty-card{width:72px}}
 @media (max-width:600px){.coty-card{width:48px}}
+
+/* Van pages on mobile: single sliding photo, tighter type */
+@media (max-width:900px){
+  .vp-left h1{font-size:27px!important;line-height:1.1!important}
+  .vp-left > p{font-size:15px!important}
+  .vp-mediarow{grid-template-columns:1fr!important}
+  .vp-sidegrid{display:none!important}
+  #vp-thumbs{display:none!important}
+  .vp-wrap{margin-bottom:24px}
+  .galbtn{width:42px;height:42px;font-size:26px}
+}
