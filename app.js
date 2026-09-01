@@ -235,8 +235,15 @@ const SV = {
   },
 
   render() {
+    const anchor = document.getElementById('railbox');
+    const beforeTop = anchor ? anchor.getBoundingClientRect().top : null;
     put(document.getElementById('railbox'), this.railHTML());
     this.renderList();
+    if (beforeTop !== null) {
+      const afterTop = anchor.getBoundingClientRect().top;
+      const delta = afterTop - beforeTop;
+      if (Math.abs(delta) > 1) window.scrollBy(0, delta);
+    }
     const sel = document.getElementById('vanselect');
     const keep = sel.value;
     put(sel, '<option value="">Which van are you asking about?</option>' +

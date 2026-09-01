@@ -53,6 +53,7 @@
     paint();
   }
   warmRing();
+  window.__galv = 2; window.__galsrc = function(){ return { s1: smalls[1], f1: srcs[1] }; };
   thumbs.addEventListener('click', function (e) {
     var b = e.target.closest('.thumbbtn');
     if (b) show(btns.indexOf(b));
