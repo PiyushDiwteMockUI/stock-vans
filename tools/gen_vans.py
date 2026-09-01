@@ -204,6 +204,13 @@ def van_page(v):
       <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
       <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px">{incl}</div>
+      <div class="spec-acc spec-acc-key">
+        <button type="button" class="spec-head" aria-expanded="false">
+          <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">Key details</span>
+          <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+        <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{facts}</div></div></div>
+      </div>
       {spec_sections(v)}
     </div>
     <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:38px 0">
@@ -238,7 +245,7 @@ def van_page(v):
         <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
         <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61386920032">Call (03) 8692 0032</a>
       </div>
-      <div style="padding:0 22px 22px">{facts}</div>
+      <div class="side-facts" style="padding:0 22px 22px">{facts}</div>
     </div>
     <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
       <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>

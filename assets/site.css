@@ -1,3 +1,4 @@
+html,body{overflow-x:clip}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Light.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Gordita';src:url('assets/fonts/Gordita-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
@@ -282,5 +283,14 @@ a.btn-line{color:var(--svink)}
 .valband{width:var(--col);margin:0 auto;display:flex;justify-content:space-between;align-items:start;gap:34px;flex-wrap:wrap}
 .valband>div{flex:0 1 auto}
 @media (max-width:900px){
-  .valband{width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));justify-items:center}
+  .valband{width:100%;display:flex;flex-wrap:nowrap;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .valband::-webkit-scrollbar{display:none}
+  .valband>div{flex:0 0 100%;scroll-snap-align:center}
+}
+
+/* key details live in the sidebar on desktop, inside Specifications on phones */
+.spec-acc-key{display:none}
+@media (max-width:900px){
+  .spec-acc-key{display:block}
+  .detailside .side-facts{display:none}
 }

@@ -498,3 +498,17 @@ const SV = {
   }
 };
 SV.boot();
+
+/* value band: soft auto slideshow on phones, pauses on touch and off-screen */
+(function(){
+  var band=document.querySelector('.valband'); if(!band) return;
+  var mq=matchMedia('(max-width:900px)'), idx=0, paused=false, seen=true;
+  band.addEventListener('touchstart',function(){paused=true},{passive:true});
+  band.addEventListener('touchend',function(){setTimeout(function(){idx=Math.round(band.scrollLeft/band.clientWidth);paused=false},700)},{passive:true});
+  if('IntersectionObserver' in window) new IntersectionObserver(function(e){seen=e[0].isIntersecting},{threshold:.35}).observe(band);
+  setInterval(function(){
+    if(paused||!seen||!mq.matches||band.scrollWidth<=band.clientWidth+4) return;
+    idx=(idx+1)%band.children.length;
+    band.scrollTo({left:idx*band.clientWidth,behavior:'smooth'});
+  },3200);
+})();
