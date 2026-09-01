@@ -82,7 +82,8 @@ header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;
   aside.rail{display:none}
   main.list{padding:26px 20px 0}
   .grid{gap:18px}
-  .mobfab{display:flex;position:fixed;left:0;top:52%;z-index:90;align-items:center;gap:8px;background:var(--svorange);border:none;border-radius:0;padding:16px 11px;cursor:pointer;box-shadow:3px 4px 14px rgba(6,9,12,.18);writing-mode:vertical-rl;transform:rotate(180deg)}
+  .mobfab{display:flex;position:fixed;left:0;top:52%;z-index:90;align-items:center;gap:9px;background:var(--svorange);border:none;border-radius:14px 0 0 14px;padding:17px 12px;cursor:pointer;box-shadow:3px 4px 16px rgba(6,9,12,.22);writing-mode:vertical-rl;transform:rotate(180deg);transition:transform .16s cubic-bezier(.23,1,.32,1)}
+  .mobfab:active{transform:rotate(180deg) scale(.96)}
   .detailwrap>div{padding-left:20px!important;padding-right:20px!important}
   .detailwrap .wrap>div{padding-left:20px!important;padding-right:20px!important}
   .detailside{max-width:none!important;padding:0 20px 40px!important}
