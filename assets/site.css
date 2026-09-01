@@ -22,6 +22,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .speck{font:400 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:3px}
 .specv{font:500 12.5px/1.2 'Gordita',sans-serif;color:var(--svink)}
 .badge-dark{background:var(--svink);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
+.badge-red{background:#C0392B;color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
 .badge-grey{background:#4A5560;color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
 .badge-orange{background:var(--svorange);color:#fff;font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:2px}
 .photocount{position:absolute;bottom:12px;right:12px;background:rgba(6,9,12,.72);color:#fff;font:400 11px/1 'Gordita',sans-serif;padding:6px 9px;border-radius:2px}

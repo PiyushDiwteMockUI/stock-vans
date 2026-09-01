@@ -17,7 +17,8 @@ const VANS = DATA.vans.map((v, i) => {
     code: (v.code || '').replace(' ()', '').trim(),
     lenIn: lenN === 99 ? null : Math.floor(lenN) * 12 + Math.round((lenN % 1) * 100),
     axle: lenN < 18 ? 'Single axle' : 'Tandem axle',
-    status: v.used ? 'Pre-loved' : 'Stock van',
+    status: v.used ? 'Pre-loved' : (v.year < 2026 ? 'Clearance' : 'Stock van'),
+    clearance: v.year < 2026,
     img: v.images[0] || ''
   });
 });
@@ -113,8 +114,8 @@ const SV = {
       <div class="cardimg" data-act="view" data-id="${v.id}" style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);cursor:pointer">
         <img src="${v.img}" alt="${v.name}" loading="lazy" width="430" height="269" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
         <div style="position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
-          <span class="badge-dark">Ready now</span>
-          ${v.used ? '<span class="badge-orange">Pre-loved</span>' : ''}
+          ${v.clearance ? '<span class="badge-red">Clearance</span>' : '<span class="badge-dark">Ready now</span>'}
+          ${v.used ? '<span class="badge-grey">Pre-loved</span>' : ''}
         </div>
         <span class="photocount">${v.images.length} photos</span>
       </div>
@@ -133,6 +134,7 @@ const SV = {
         <div style="margin-top:auto">
           <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
             <span class="av" style="font-size:27px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
+            ${v.was && v.priceN ? '<span style="font:400 14px/1 \'Gordita\';color:var(--mut);text-decoration:line-through;font-variant-numeric:tabular-nums">' + money(v.was) + '</span><span style="font:500 12.5px/1 \'Gordita\';color:var(--olink);font-variant-numeric:tabular-nums">Save ' + money(v.was - v.priceN) + '</span>' : ''}
             ${v.priceN ? '<span style="font:400 12px/1 \'Gordita\';color:var(--mut)">drive away · ' + v.state + '</span>' : ''}
           </div>
           <div style="display:flex;gap:8px;margin-top:16px">
@@ -185,6 +187,7 @@ const SV = {
         <select autocomplete="off" aria-label="Stock status" class="selbox selstatus" data-act="status">
           <option value="all" ${s.status === 'all' ? 'selected' : ''}>Show all stock</option>
           <option value="Stock van" ${s.status === 'Stock van' ? 'selected' : ''}>New stock vans</option>
+          <option value="Clearance" ${s.status === 'Clearance' ? 'selected' : ''}>Clearance</option>
           <option value="Pre-loved" ${s.status === 'Pre-loved' ? 'selected' : ''}>Pre-loved</option>
         </select>
       </div>

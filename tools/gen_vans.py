@@ -84,7 +84,8 @@ def spec_sections(v):
 
 def van_page(v):
     name = full_name(v)
-    badge = '<span class="badge-grey">Pre-loved</span>' if v['used'] else '<span class="badge-dark">Ready now</span>'
+    clr = v.get('year', 2026) < 2026
+    badge = ('<span class="badge-red">Clearance</span>' if clr else '<span class="badge-dark">Ready now</span>') + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
     tow = ''
     if v.get('atm'):
         note = 'Tows behind most 3.5T-rated dual cab utes.' if v['atm'] <= 3500 else 'Needs a 4.5T-rated tow vehicle.'
@@ -176,6 +177,7 @@ def van_page(v):
       <div style="padding:24px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
         <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
+        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
       </div>
       <div style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
         <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;text-align:center" href="{enq}">Enquire about this van</a>
@@ -194,15 +196,15 @@ def van_page(v):
 </html>'''
 
 def index_page():
-    groups = [('Stock van', 'Stock vans'), ('Pre-loved', 'Pre-loved')]
+    groups = [('Stock van', 'Stock vans'), ('Clearance', 'Clearance'), ('Pre-loved', 'Pre-loved')]
     out = []
     for key, title in groups:
-        vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else 'Stock van') == key]
+        vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else ('Clearance' if v.get('year',2026) < 2026 else 'Stock van')) == key]
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
             <img src="{asrc(v['images'][0])}" alt="{v['name']}" loading="lazy" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
-            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else '#12171C'};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else 'Ready now'}</span>
+            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if v.get('year',2026)<2026 else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if v.get('year',2026)<2026 else 'Ready now')}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
