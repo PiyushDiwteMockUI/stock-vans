@@ -89,25 +89,34 @@
     car.addEventListener('mouseenter', stop);
     car.addEventListener('mouseleave', start);
     car.addEventListener('touchstart', stop, { passive: true });
+    function step(dir) {
+      stop();
+      if (dir < 0 && fi === 0) {
+        track.style.transition = 'none';
+        fi = n;
+        track.style.transform = 'translateX(-' + (n * 100) + '%)';
+        void track.offsetWidth;
+        track.style.transition = EASE;
+        go(n - 1);
+      } else {
+        go(fi + dir);
+      }
+    }
     car.addEventListener('click', function (e) {
       var d = e.target.closest('.fp-dot');
       if (d) { stop(); go(parseInt(d.dataset.fp, 10)); return; }
       var nav = e.target.closest('[data-fpnav]');
-      if (nav) {
-        stop();
-        var dir = parseInt(nav.dataset.fpnav, 10);
-        if (dir < 0 && fi === 0) {
-          track.style.transition = 'none';
-          fi = n;
-          track.style.transform = 'translateX(-' + (n * 100) + '%)';
-          void track.offsetWidth;
-          track.style.transition = EASE;
-          go(n - 1);
-        } else {
-          go(fi + dir);
-        }
-      }
+      if (nav) step(parseInt(nav.dataset.fpnav, 10));
     });
+    // Swipe between floorplan views on touch devices
+    var fsx = null;
+    car.addEventListener('touchstart', function (e) { fsx = e.touches[0].clientX; }, { passive: true });
+    car.addEventListener('touchend', function (e) {
+      if (fsx === null) return;
+      var dx = e.changedTouches[0].clientX - fsx;
+      if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+      fsx = null;
+    }, { passive: true });
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) {
         es[0].isIntersecting ? start() : stop();
