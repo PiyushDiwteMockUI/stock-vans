@@ -47,7 +47,7 @@ input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;bac
 .linkbtn{background:none;border:none;padding:0;cursor:pointer;font:400 11.5px/1 'Gordita',sans-serif;color:var(--olink);text-decoration:underline;text-underline-offset:3px}
 
 .talkbtn{display:block;text-align:center;background:#fff;color:var(--svink);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:13px;border-radius:3px}
-.galbtn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:#fff;color:var(--svink);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(6,9,12,.28);display:flex;align-items:center;justify-content:center;padding-bottom:3px}
+.galbtn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:#fff;color:var(--svink);font-size:30px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(6,9,12,.28);display:flex;align-items:center;justify-content:center;padding-bottom:4px;font-weight:500}
 .thumbbtn{flex:none;width:88px;height:62px;padding:0;border-radius:3px;overflow:hidden;cursor:pointer;background:var(--line);border:2px solid transparent;opacity:.62}
 .thumbbtn.on{border-color:var(--svink);opacity:1}
 .tabbtn{border:none;background:transparent;color:var(--body);font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:14px 16px;border-radius:3px 3px 0 0;cursor:pointer;min-height:44px}
