@@ -4,7 +4,8 @@ Run from the repo root: python3 tools/gen_vans.py
 Header/footer are sliced from index.html (WLHEADER/WLFOOTER markers) so the
 pages always match the main page. All dynamic strings in data.js are already
 HTML-escaped at harvest time."""
-import json, re, os
+import json, re, os, subprocess
+ASSET_V = subprocess.run(['git','rev-parse','--short','HEAD'],capture_output=True,text=True).stdout.strip() or '0'
 
 src = open('data.js').read()
 DATA = json.loads(re.search(r'const DATA = ([\s\S]*?);\s*const OR_TOKEN', src).group(1))
@@ -46,7 +47,7 @@ HEAD = '''<!doctype html>
 <link rel="preconnect" href="https://jealstorage.blob.core.windows.net">
 <link rel="preconnect" href="https://use.typekit.net" crossorigin>
 <link rel="stylesheet" href="https://use.typekit.net/ywn7byg.css">
-<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/site.css?v={ASSET_V}">
 <link rel="stylesheet" href="../assets/ref/css/styles.css">
 <link rel="stylesheet" href="../assets/ref/css/type-compact.css">
 <style>
@@ -140,7 +141,7 @@ def van_page(v):
           <div style="margin-top:8px;font:400 12.5px/1 'Gordita',sans-serif;color:var(--body)">{x['state']}</div>
         </div></a>''' for x in similar)
     enq = f"../?van={v['chassis']}#enquire"
-    return HEAD.format(title=f"{name} {v['chassis']}") + headerV + f'''
+    return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + headerV + f'''
 <div style="padding-top:20px;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
   <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../">Stock vans</a>
   <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="./">Pages</a>
@@ -204,7 +205,7 @@ def van_page(v):
   </aside>
 </div>
 ''' + footerV + '''
-<script src="../assets/vanpage.js"></script>
+<script src="../assets/vanpage.js?v={ASSET_V}"></script>
 </body>
 </html>'''
 
@@ -239,7 +240,7 @@ def index_page():
           <div style="display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">{cards}</div>
         </div>''')
     n = len(DATA['vans'])
-    return HEAD.format(title='Stock van pages') + headerV + f'''
+    return HEAD.format(title='Stock van pages', ASSET_V=ASSET_V) + headerV + f'''
 <div style="background:var(--svink);padding-top:56px;padding-bottom:56px" class="gutter shellpad">
   <div style="font:500 10px/1 'Gordita',sans-serif;letter-spacing:.42em;text-transform:uppercase;color:var(--peach);margin-bottom:16px">Detail pages</div>
   <h1 class="av" style="margin:0;font-size:42px;line-height:1;letter-spacing:-.01em;color:#fff">One page per van</h1>
