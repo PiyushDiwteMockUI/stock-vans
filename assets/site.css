@@ -266,9 +266,13 @@ a.btn-line{color:var(--svink)}
   .sim-row > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
 }
 
-/* mobile buy card: phones only; desktop/tablet keep the sidebar price + CTAs */
-.vp-mobilebuy{display:none}
+/* buy strip under the gallery: desktop/tablet show price + one Call now button on the right; phones stack the CTAs and hide the sidebar price block */
+.vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px 20px;margin-bottom:24px}
+.vpb-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.vpb-call{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
+.vpb-ctas{display:none}
 @media (max-width:900px){
-  .vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px;margin-bottom:24px}
+  .vpb-call{display:none}
+  .vpb-ctas{display:flex;flex-direction:column;gap:8px;margin-top:14px}
   .detailside .side-price,.detailside .side-ctas{display:none}
 }
