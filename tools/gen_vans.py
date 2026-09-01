@@ -169,7 +169,7 @@ def van_page(v):
         for k, val in [('Stock no', v['chassis']), ('Layout code', v['code']), ('Internal length', v.get('length') or '—'), ('Layout', v['layout']),
                        ('Sleeps', v.get('sleeps') or '—'),
                        ('Tare', f"{v['tare']:,} kg" if v.get('tare') else '—'), ('ATM', f"{v['atm']:,} kg" if v.get('atm') else '—'),
-                       ('Max ball weight', f"{v['ball']:,} kg" if v.get('ball') else '—'),
+                       ('Ball weight (empty)', f"{v['ball']:,} kg" if v.get('ball') else '—'),
                        ('Payload', f"{v['atm']-v['tare']:,} kg" if v.get('atm') and v.get('tare') else '—'),
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', v['state'])])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]

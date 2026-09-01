@@ -93,7 +93,7 @@ const DATA = {
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-solara-2006ft-composite/OAG-AD-25817770/",
    "tare": 2947,
    "atm": 3495,
-   "ball": 350,
+   "ball": null,
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2006Q-R-C.png",
@@ -102,7 +102,8 @@ const DATA = {
     "assets/layouts/2006Q-R-C_tilt.png",
     "assets/layouts/2006Q-R-C_top.png",
     "assets/layouts/2006Q-R-C_tag.png"
-   ]
+   ],
+   "ball_max": 350
   },
   {
    "chassis": "WL1227",
@@ -143,7 +144,7 @@ const DATA = {
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-hornet-2107ft-triple-bunk-with-storage/OAG-AD-25819325/",
    "tare": 3022,
    "atm": 3495,
-   "ball": 350,
+   "ball": null,
    "sleeps": 5,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2107EW-F3-3.png",
@@ -152,7 +153,8 @@ const DATA = {
     "assets/layouts/2107EW-F3-3_tilt.png",
     "assets/layouts/2107EW-F3-3_top.png",
     "assets/layouts/2107EW-F3-3_tag.png"
-   ]
+   ],
+   "ball_max": 350
   },
   {
    "chassis": "WL1231",
@@ -195,7 +197,7 @@ const DATA = {
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-amaroo-23ft-double-rear-bunk/OAG-AD-25826348/",
    "tare": 2992,
    "atm": 4495,
-   "ball": 450,
+   "ball": null,
    "sleeps": 4,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2300Q1-F2-4.png",
@@ -204,7 +206,8 @@ const DATA = {
     "assets/layouts/2300Q1-F2-4_tilt.png",
     "assets/layouts/2300Q1-F2-4_top.png",
     "assets/layouts/2300Q1-F2-4_tag.png"
-   ]
+   ],
+   "ball_max": 450
   },
   {
    "chassis": "WL1228",
@@ -860,7 +863,8 @@ const DATA = {
     "assets/layouts/2006Q-R-SC_tilt.png",
     "assets/layouts/2006Q-R-SC_top.png",
     "assets/layouts/2006Q-R-SC_tag.png"
-   ]
+   ],
+   "ball_empty": 160
   },
   {
    "chassis": "WL1181",
