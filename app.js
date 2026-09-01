@@ -315,6 +315,7 @@ const SV = {
         </div>
       </div>`);
     this.syncMob();
+    requestAnimationFrame(() => { const p = document.querySelector('.mobpanel'); if (p) p.classList.add('in'); });
   },
   syncMob() {
     const el = document.getElementById('mobrail');
