@@ -93,7 +93,7 @@ const DATA = {
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-solara-2006ft-composite/OAG-AD-25817770/",
    "tare": 2947,
    "atm": 3495,
-   "ball": null,
+   "ball": 163,
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2006Q-R-C.png",
@@ -102,8 +102,7 @@ const DATA = {
     "assets/layouts/2006Q-R-C_tilt.png",
     "assets/layouts/2006Q-R-C_top.png",
     "assets/layouts/2006Q-R-C_tag.png"
-   ],
-   "ball_max": 350
+   ]
   },
   {
    "chassis": "WL1227",
@@ -144,7 +143,7 @@ const DATA = {
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-hornet-2107ft-triple-bunk-with-storage/OAG-AD-25819325/",
    "tare": 3022,
    "atm": 3495,
-   "ball": null,
+   "ball": 220,
    "sleeps": 5,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2107EW-F3-3.png",
@@ -153,8 +152,7 @@ const DATA = {
     "assets/layouts/2107EW-F3-3_tilt.png",
     "assets/layouts/2107EW-F3-3_top.png",
     "assets/layouts/2107EW-F3-3_tag.png"
-   ],
-   "ball_max": 350
+   ]
   },
   {
    "chassis": "WL1231",
@@ -197,7 +195,7 @@ const DATA = {
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-amaroo-23ft-double-rear-bunk/OAG-AD-25826348/",
    "tare": 2992,
    "atm": 4495,
-   "ball": null,
+   "ball": 253,
    "sleeps": 4,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2300Q1-F2-4.png",
@@ -206,8 +204,7 @@ const DATA = {
     "assets/layouts/2300Q1-F2-4_tilt.png",
     "assets/layouts/2300Q1-F2-4_top.png",
     "assets/layouts/2300Q1-F2-4_tag.png"
-   ],
-   "ball_max": 450
+   ]
   },
   {
    "chassis": "WL1228",
@@ -592,9 +589,9 @@ const DATA = {
     "assets/vans/WL1014/01.jpg"
    ],
    "listing": "https://www.caravancampingsales.com.au/items/details/2024-wonderland-rv-amaroo-1906-couple-van/OAG-AD-24353434/?gts=OAG-AD-24353434&amp;gtsSaleId=OAG-AD-24353434&amp;gtsViewType=showcase&amp;rankingType=showcase",
-   "tare": 2720,
+   "tare": 2680,
    "atm": 3495,
-   "ball": null,
+   "ball": 160,
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/1906Q-R-L.png",
@@ -800,9 +797,9 @@ const DATA = {
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3k5xk2sho6upyd98kzw2dfuzu.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
    ],
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-ready-now-amaroo-2106-rear-twin-bunk-family/OAG-AD-26062889/",
-   "tare": null,
+   "tare": 2914,
    "atm": 3500,
-   "ball": null,
+   "ball": 242,
    "sleeps": 4,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2106EW-F2-4.png",
@@ -947,7 +944,7 @@ const DATA = {
    "listing": "https://www.outboundrvs.com.au/stock/2026-wonderlandrv-hornetquadbunk-caravan--2304-544305",
    "tare": 3300,
    "atm": 4500,
-   "ball": null,
+   "ball": 260,
    "sleeps": 6,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2304EW-F4-5.png",
@@ -1135,9 +1132,9 @@ const DATA = {
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/19310981.jpg?sv=2023-11-03&se=2027-01-04T13%3A16%3A23Z&sr=b&sp=r&sig=FO6VLxpal%2B7uL0Q%2Fr%2Fp6W0E7r3mp4BmVaSukH8%2BRKJ8%3D"
    ],
    "listing": "https://www.outboundrvs.com.au/stock/2026-wonderlandrv-amaroo---2107-555567",
-   "tare": null,
+   "tare": 2880,
    "atm": 3500,
-   "ball": null,
+   "ball": 213,
    "sleeps": 6,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2107EW-F4-3.png",
@@ -1189,7 +1186,7 @@ const DATA = {
    "listing": "https://www.outboundrvs.com.au/stock/2024-wonderlandrv-xtr---2100q2f_2-601112",
    "tare": 3100,
    "atm": 4500,
-   "ball": null,
+   "ball": 260,
    "sleeps": 4,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2100Q2-F2-0.png",
