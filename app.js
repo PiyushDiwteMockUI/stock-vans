@@ -246,8 +246,11 @@ const SV = {
     }
     const sel = document.getElementById('vanselect');
     const keep = sel.value;
+    const vanOpt = v => `<option value="${v.chassis}">${v.model} ${v.code} · ${(v.name.startsWith(v.model) ? v.name.slice(v.model.length).trim() : v.name)}</option>`;
+    const stOrder = ['Victoria', 'New South Wales', 'Queensland', 'South Australia', 'Western Australia', 'Tasmania', 'Northern Territory'];
+    const states = [...new Set(VANS.map(v => v.state))].sort((x, y) => stOrder.indexOf(x) - stOrder.indexOf(y));
     put(sel, '<option value="">Which van are you asking about?</option>' +
-      VANS.map(v => `<option value="${v.chassis}">${v.model} ${v.code} · ${(v.name.startsWith(v.model) ? v.name.slice(v.model.length).trim() : v.name)} (${v.state})</option>`).join('') +
+      states.map(st => `<optgroup label="${st}">` + VANS.filter(v => v.state === st).map(vanOpt).join('') + '</optgroup>').join('') +
       '<option value="unsure">Not sure yet, help me choose</option>');
     sel.value = keep;
     this.syncMob();
