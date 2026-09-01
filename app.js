@@ -130,12 +130,11 @@ const SV = {
           <div><div class="speck">Tare</div><div class="specv">${v.tare ? kg(v.tare) : '—'}</div></div>
           <div><div class="speck">ATM</div><div class="specv">${v.atm ? kg(v.atm) : '—'}</div></div>
         </div>
-        <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:18px">
-          ${(INCL[v.model] || []).map(i => `<span style="font:400 10.5px/1 'Gordita';color:var(--body2,#2A3238);background:var(--cream);border:1px solid var(--line);padding:6px 9px;border-radius:2px">${i}</span>`).join('')}
-        </div>
         <div style="margin-top:auto">
-          <span class="av" style="font-size:23px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
-          ${v.priceN ? '<div style="margin-top:8px;font:400 11px/1 \'Gordita\';color:var(--mut)">drive away · ' + v.state + '</div>' : ''}
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+            <span class="av" style="font-size:27px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
+            ${v.priceN ? '<span style="font:400 12px/1 \'Gordita\';color:var(--mut)">drive away · ' + v.state + '</span>' : ''}
+          </div>
           <div style="display:flex;gap:8px;margin-top:16px">
             <button class="btn-dark" style="flex:1" data-act="view" data-id="${v.id}">View details</button>
             <button class="btn-line" style="flex:1" data-act="enquire" data-id="${v.id}">Enquire</button>
