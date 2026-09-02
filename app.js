@@ -134,10 +134,10 @@ const SV = {
         </div>
         <h3 class="av cardname" data-act="view" data-id="${v.id}">${v.name}</h3>
         <div class="cardspecs">
-          <div><div class="speck">Length</div><div class="specv">${v.length || '—'}</div></div>
-          <div><div class="speck">Sleeps</div><div class="specv">${v.sleeps || '—'}</div></div>
-          <div><div class="speck">Tare</div><div class="specv">${v.tare ? kg(v.tare) : '—'}</div></div>
           <div><div class="speck">ATM</div><div class="specv">${v.atm ? kg(v.atm) : '—'}</div></div>
+          <div><div class="speck">Tare</div><div class="specv">${v.tare ? kg(v.tare) : '—'}</div></div>
+          <div><div class="speck">Sleeps</div><div class="specv">${v.sleeps || '—'}</div></div>
+          <div><div class="speck">Travel length</div><div class="specv">${v.travel ? v.travel + ' m' : '—'}</div></div>
         </div>
         <div style="margin-top:auto">
           <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">

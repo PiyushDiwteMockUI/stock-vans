@@ -50,7 +50,8 @@ const DATA = {
     "assets/layouts/2100Q1-F2-0_tilt.png",
     "assets/layouts/2100Q1-F2-0_top.png",
     "assets/layouts/2100Q1-F2-0_tag.png"
-   ]
+   ],
+   "travel": 8.8
   },
   {
    "chassis": "WL1225",
@@ -102,7 +103,8 @@ const DATA = {
     "assets/layouts/2006Q-R-C_tilt.png",
     "assets/layouts/2006Q-R-C_top.png",
     "assets/layouts/2006Q-R-C_tag.png"
-   ]
+   ],
+   "travel": 8.6
   },
   {
    "chassis": "WL1227",
@@ -152,7 +154,8 @@ const DATA = {
     "assets/layouts/2107EW-F3-3_tilt.png",
     "assets/layouts/2107EW-F3-3_top.png",
     "assets/layouts/2107EW-F3-3_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1231",
@@ -204,7 +207,8 @@ const DATA = {
     "assets/layouts/2300Q1-F2-4_tilt.png",
     "assets/layouts/2300Q1-F2-4_top.png",
     "assets/layouts/2300Q1-F2-4_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1228",
@@ -256,7 +260,8 @@ const DATA = {
     "assets/layouts/1906Q-R-L_tilt.png",
     "assets/layouts/1906Q-R-L_top.png",
     "assets/layouts/1906Q-R-L_tag.png"
-   ]
+   ],
+   "travel": 8.3
   },
   {
    "chassis": "WL1261",
@@ -305,7 +310,8 @@ const DATA = {
     "assets/layouts/1906Q-M-C_tilt.png",
     "assets/layouts/1906Q-M-C_top.png",
     "assets/layouts/1906Q-M-C_tag.png"
-   ]
+   ],
+   "travel": 8.3
   },
   {
    "chassis": "WL1180",
@@ -352,7 +358,8 @@ const DATA = {
     "assets/layouts/2100Q-M-XLE_tilt.png",
     "assets/layouts/2100Q-M-XLE_top.png",
     "assets/layouts/2100Q-M-XLE_tag.png"
-   ]
+   ],
+   "travel": 8.8
   },
   {
    "chassis": "WL1244",
@@ -400,7 +407,8 @@ const DATA = {
     "assets/layouts/1709Q-R-L_tilt.png",
     "assets/layouts/1709Q-R-L_top.png",
     "assets/layouts/1709Q-R-L_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1171",
@@ -449,7 +457,8 @@ const DATA = {
     "assets/layouts/1709Q-R-L_tilt.png",
     "assets/layouts/1709Q-R-L_top.png",
     "assets/layouts/1709Q-R-L_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1002",
@@ -501,7 +510,8 @@ const DATA = {
     "assets/layouts/2100K1-F2-0_tilt.png",
     "assets/layouts/2100K1-F2-0_top.png",
     "assets/layouts/2100K1-F2-0_tag.png"
-   ]
+   ],
+   "travel": 8.8
   },
   {
    "chassis": "WL1086",
@@ -553,7 +563,8 @@ const DATA = {
     "assets/layouts/2311K1-F3-3_tilt.png",
     "assets/layouts/2311K1-F3-3_top.png",
     "assets/layouts/2311K1-F3-3_tag.png"
-   ]
+   ],
+   "travel": 9.4
   },
   {
    "chassis": "WL1014",
@@ -600,7 +611,8 @@ const DATA = {
     "assets/layouts/1906Q-R-L_tilt.png",
     "assets/layouts/1906Q-R-L_top.png",
     "assets/layouts/1906Q-R-L_tag.png"
-   ]
+   ],
+   "travel": 8.3
   },
   {
    "chassis": "WL684",
@@ -652,7 +664,8 @@ const DATA = {
     "assets/layouts/2311Q-F4-3_tilt.png",
     "assets/layouts/2311Q-F4-3_top.png",
     "assets/layouts/2311Q-F4-3_tag.png"
-   ]
+   ],
+   "travel": 9.4
   },
   {
    "chassis": "WL491",
@@ -704,7 +717,8 @@ const DATA = {
     "assets/layouts/2200Q-F2-0_tilt.png",
     "assets/layouts/2200Q-F2-0_top.png",
     "assets/layouts/2200Q-F2-0_tag.png"
-   ]
+   ],
+   "travel": 9.35
   },
   {
    "chassis": "WL1172",
@@ -756,7 +770,8 @@ const DATA = {
     "assets/layouts/2100Q1-F2-0_tilt.png",
     "assets/layouts/2100Q1-F2-0_top.png",
     "assets/layouts/2100Q1-F2-0_tag.png"
-   ]
+   ],
+   "travel": 8.8
   },
   {
    "chassis": "WL1267",
@@ -808,7 +823,8 @@ const DATA = {
     "assets/layouts/2106EW-F2-4_tilt.png",
     "assets/layouts/2106EW-F2-4_top.png",
     "assets/layouts/2106EW-F2-4_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1223",
@@ -861,7 +877,8 @@ const DATA = {
     "assets/layouts/2006Q-R-SC_top.png",
     "assets/layouts/2006Q-R-SC_tag.png"
    ],
-   "ball_empty": 160
+   "ball_empty": 160,
+   "travel": 8.6
   },
   {
    "chassis": "WL1181",
@@ -913,7 +930,8 @@ const DATA = {
     "assets/layouts/1906Q-M-C_tilt.png",
     "assets/layouts/1906Q-M-C_top.png",
     "assets/layouts/1906Q-M-C_tag.png"
-   ]
+   ],
+   "travel": 8.3
   },
   {
    "chassis": "WL1184",
@@ -953,7 +971,8 @@ const DATA = {
     "assets/layouts/2304EW-F4-5_tilt.png",
     "assets/layouts/2304EW-F4-5_top.png",
     "assets/layouts/2304EW-F4-5_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1215",
@@ -1004,7 +1023,8 @@ const DATA = {
    "floorplans": [
     "assets/layouts/1906F-B3_tilt.png",
     "assets/layouts/1906F-B3_top.png"
-   ]
+   ],
+   "travel": 8.3
   },
   {
    "chassis": "WL1222",
@@ -1056,7 +1076,8 @@ const DATA = {
     "assets/layouts/1906EW-F3-0_tilt.png",
     "assets/layouts/1906EW-F3-0_top.png",
     "assets/layouts/1906EW-F3-0_tag.png"
-   ]
+   ],
+   "travel": 8.3
   },
   {
    "chassis": "WL1233",
@@ -1091,7 +1112,8 @@ const DATA = {
     "assets/layouts/1709Q-R-L_tilt.png",
     "assets/layouts/1709Q-R-L_top.png",
     "assets/layouts/1709Q-R-L_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL1260",
@@ -1143,7 +1165,8 @@ const DATA = {
     "assets/layouts/2107EW-F4-3_tilt.png",
     "assets/layouts/2107EW-F4-3_top.png",
     "assets/layouts/2107EW-F4-3_tag.png"
-   ]
+   ],
+   "travel": null
   },
   {
    "chassis": "WL901",
@@ -1195,7 +1218,8 @@ const DATA = {
     "assets/layouts/2100Q2-F2-0_tilt.png",
     "assets/layouts/2100Q2-F2-0_top.png",
     "assets/layouts/2100Q2-F2-0_tag.png"
-   ]
+   ],
+   "travel": 8.8
   },
   {
    "chassis": "WL1090",
@@ -1245,7 +1269,8 @@ const DATA = {
     "assets/layouts/2200Q-RC_tilt.png",
     "assets/layouts/2200Q-RC_top.png",
     "assets/layouts/2200Q-RC_tag.png"
-   ]
+   ],
+   "travel": 9.2
   },
   {
    "chassis": "WL1100",
@@ -1297,7 +1322,8 @@ const DATA = {
     "assets/layouts/2100Q-M-XLE_tilt.png",
     "assets/layouts/2100Q-M-XLE_top.png",
     "assets/layouts/2100Q-M-XLE_tag.png"
-   ]
+   ],
+   "travel": 8.8
   }
  ],
  "modelSpecs": {

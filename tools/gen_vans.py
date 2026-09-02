@@ -289,7 +289,7 @@ def index_page():
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:8px">{v['chassis']} · {v['model']}</div>
             <div class="av" style="font-size:14.5px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:12px">{v['name']}</div>
-            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">{''.join(f'<span style="background:#F2EEE8;color:var(--body2);font:400 12px/1 |Gordita|,sans-serif;padding:7px 9px;border-radius:2px">{t}</span>' for t in [str(v.get('sleeps') or '') and f"{v['sleeps']} sleeps", v.get('length'), v['axle'], v['layout']] if t)}</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">{''.join(f'<span style="background:#F2EEE8;color:var(--body2);font:400 12px/1 |Gordita|,sans-serif;padding:7px 9px;border-radius:2px">{t}</span>' for t in [str(v.get('sleeps') or '') and f"{v['sleeps']} sleeps", (f"{v['travel']} m travel" if v.get('travel') else v.get('length')), v['axle'], v['layout']] if t)}</div>
             <div style="margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:13px;border-top:1px solid var(--line)">
               <span style="font:500 16.5px/1 'Gordita',sans-serif;color:var(--svink);font-variant-numeric:tabular-nums">{money(v['price'])}</span>
               <span style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--olink)">Open page →</span>
