@@ -110,6 +110,21 @@ def gallery(v):
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div></div>'''
 
 def spec_sections(v):
+    if v.get('spec_override'):
+        out = []
+        for tab, items in v['spec_override']:
+            rws = ''.join(f"""<div style="display:flex;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)">
+              <span style="flex:none;width:6px;height:6px;border-radius:50%;background:var(--svorange);margin-top:9px"></span>
+              <span style="font:400 15px/1.65 |G|,sans-serif;color:var(--body)">{it}</span></div>""".replace('|G|', chr(39)+'Gordita'+chr(39)) for it in items)
+            out.append(f"""<div class="spec-acc{' open' if not out else ''}">
+              <button type="button" class="spec-head" aria-expanded="{'true' if not out else 'false'}">
+                <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">{tab}</span>
+                <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(items)} items</span>
+                <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+              </button>
+              <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{rws}</div></div></div>
+            </div>""".replace('|G|', chr(39)+'Gordita'+chr(39)))
+        return ''.join(out)
     specs = DATA['modelSpecs'].get(v['model'], {})
     out = []
     for tab, rows in specs.items():
@@ -218,7 +233,7 @@ def van_page(v):
     {floor}
     <div style="margin-bottom:10px">
       <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
-      <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team.</p>
+      <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_override') else f"Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team."}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px">{incl}</div>
       <div class="spec-acc spec-acc-key">
         <button type="button" class="spec-head" aria-expanded="false">

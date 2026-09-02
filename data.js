@@ -110,7 +110,7 @@ const DATA = {
    "chassis": "WL1227",
    "model": "Hornet",
    "code": "2107EWF-3.3",
-   "name": "Hornet 2107 Triple Bunk with Storage",
+   "name": "Hornet 21'07&quot; Quad Bunk Delete",
    "year": "2026",
    "length": "21'07\"",
    "layout": "Family",
@@ -144,7 +144,7 @@ const DATA = {
    ],
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-hornet-2107ft-triple-bunk-with-storage/OAG-AD-25819325/",
    "tare": 3022,
-   "atm": 3495,
+   "atm": 3500,
    "ball": 220,
    "sleeps": 5,
    "axle": "Tandem axle",
@@ -155,7 +155,80 @@ const DATA = {
     "assets/layouts/2107EW-F3-3_top.png",
     "assets/layouts/2107EW-F3-3_tag.png"
    ],
-   "travel": 9.2
+   "travel": 9.2,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Aluminium Henrob Rivet",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS Insulation",
+      "DiBond marine grade cladding",
+      "850mm black plate protection"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "4.5t Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extended A Frame, 1950mm long",
+      "Toughcoat Chassis Finish",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension",
+      "Brakes: Disc or Drum",
+      "Cruisemaster DO-35 hitch",
+      "Large toolbox with slides & Anderson plug"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 75 off-grid system delivering 75A solar/AC, 50A DC, 2600W inverter, 800W solar, and 400Ah lithium",
+      "1 x portable solar input Anderson plug",
+      "Anderson plug in toolbox for portable fridge"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L dedicated drinking water tank",
+      "1 x 100L grey water tank with by pass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, gas bayonet & cold tap on A frame",
+      "Outdoor shower"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW air conditioner",
+      "Multi-function cooker, fryer, grill & microwave",
+      "Portable induction cooktop",
+      "Swift flush mount recessed rangehood with dual fan",
+      "216L Dometic compressor fridge",
+      "3kg washing machine",
+      "CS pressure, 12V powered dust reduction",
+      "Thetford separating toilet",
+      "Outdoor pantry with drop down picnic table",
+      "Dometic manual awning",
+      "Reverse camera",
+      "TV 24″ Smart TV & Starlink connection",
+      "Fusion audio and speakers"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Rear bumper box with drawers, 2 jerry can holders, wood box & spare wheel",
+      "Soft close drawers",
+      "K5i external kitchen",
+      "Instant hot water",
+      "5 x sirocco fans"
+     ]
+    ]
+   ]
   },
   {
    "chassis": "WL1231",
