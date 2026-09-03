@@ -135,3 +135,26 @@
     window.addEventListener("resize", function () { show(false); });
   }
 })();
+
+/* caravans-built count-up (from the reference home page) */
+(function () {
+  var el = document.querySelector(".stat-number");
+  if (!el) return;
+  var target = parseInt(el.dataset.countTo, 10) || 0;
+  var done = false;
+  function run() {
+    if (done) return; done = true;
+    var DUR = 1440, t0 = Date.now();
+    var id = setInterval(function () {
+      var k = Math.min(1, (Date.now() - t0) / DUR);
+      var eased = 1 - Math.pow(1 - k, 3);
+      el.firstChild.nodeValue = Math.round(target * eased).toLocaleString();
+      if (k >= 1) { clearInterval(id); el.firstChild.nodeValue = target.toLocaleString(); }
+    }, 32);
+  }
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.firstChild.nodeValue = target.toLocaleString(); return; }
+  var watch = setInterval(function () {
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.9 && r.bottom > 0) { clearInterval(watch); run(); }
+  }, 300);
+})();
