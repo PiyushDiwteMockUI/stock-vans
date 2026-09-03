@@ -238,6 +238,26 @@ def van_page(v):
     <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
     {tow}
     {floor}
+  </div>
+  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
+    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
+      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
+        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
+        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
+        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
+      </div>
+      <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
+        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
+      </div>
+      <div class="side-facts" style="padding:0 22px 22px">{facts}</div>
+    </div>
+    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
+      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
+    </div>
+  </aside>
+</div>
+<div class="wrap shell" style="display:block;padding:8px 0 0">
     <div style="margin-bottom:10px">
       <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
       <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_override') else f"Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team."}</p>
@@ -272,23 +292,6 @@ def van_page(v):
       <div class="sim-row" style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))">{sim}</div>
     </div>
   </div>
-  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
-    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
-      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
-        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
-        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
-        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
-      </div>
-      <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
-      </div>
-      <div class="side-facts" style="padding:0 22px 22px">{facts}</div>
-    </div>
-    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
-      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
-    </div>
-  </aside>
 </div>
 ''' + reviewsV + nextV + footerV + f'''
 <script src="../assets/ref/js/reviews.js?v={ASSET_V}"></script>
