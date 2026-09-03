@@ -6,7 +6,7 @@ pages always match the main page. All dynamic strings in data.js are already
 HTML-escaped at harvest time."""
 import json, re, os, subprocess
 import hashlib
-ASSET_V = hashlib.md5(open('assets/site.css','rb').read() + open('assets/vanpage.js','rb').read()).hexdigest()[:8]
+ASSET_V = hashlib.md5(open('assets/site.css','rb').read() + open('assets/vanpage.js','rb').read() + open('assets/ref/js/reviews.js','rb').read()).hexdigest()[:8]
 
 src = open('data.js').read()
 DATA = json.loads(re.search(r'const DATA = ([\s\S]*?);\s*const OR_TOKEN', src).group(1))
@@ -292,7 +292,7 @@ def van_page(v):
   </aside>
 </div>
 ''' + reviewsV + nextV + footerV + f'''
-<script src="../assets/ref/js/reviews.js"></script>
+<script src="../assets/ref/js/reviews.js?v={ASSET_V}"></script>
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
 </body>
 </html>'''
