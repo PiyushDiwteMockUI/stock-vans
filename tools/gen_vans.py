@@ -259,7 +259,7 @@ def van_page(v):
 </div>
 <div class="wrap shell" style="display:block;padding:8px 0 0">
     <div style="margin-bottom:10px">
-      <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
+      <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
       <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_override') else f"Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team."}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px">{incl}</div>
       <div class="spec-acc spec-acc-key">
