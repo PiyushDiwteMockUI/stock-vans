@@ -680,6 +680,16 @@ fbq('track','PageView');
   font-size:16px;
 }
 .wl-popup__input::placeholder{color:rgba(255,255,255,.42)}
+.wl-popup__input{-webkit-text-fill-color:#fff;caret-color:#fff}
+.wl-popup__input:-webkit-autofill,
+.wl-popup__input:-webkit-autofill:hover,
+.wl-popup__input:-webkit-autofill:focus{
+  -webkit-text-fill-color:#fff;
+  caret-color:#fff;
+  border:0;
+  -webkit-box-shadow:0 0 0 1000px transparent inset;
+  transition:background-color 9999s ease-in-out 0s;
+}
 .wl-popup__input:focus-visible{box-shadow:0 2px 0 var(--wl-amber)}
 .wl-popup__submit{
   align-self:center;
