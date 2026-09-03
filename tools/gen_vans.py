@@ -14,10 +14,11 @@ idx = open('index.html').read()
 header = re.search(r'<!--WLHEADER-->([\s\S]*?)<!--/WLHEADER-->', idx).group(1)
 footer = re.search(r'<!--WLFOOTER-->([\s\S]*?)<!--/WLFOOTER-->', idx).group(1)
 nextband = re.search(r'<!--WLNEXT-->([\s\S]*?)<!--/WLNEXT-->', idx).group(1)
+reviews = re.search(r'<!--WLREVIEWS-->([\s\S]*?)<!--/WLREVIEWS-->', idx).group(1)
 # links inside header/footer are relative to root; from vans/ prefix local assets with ../
 def rel(html):
     return html.replace('src="assets/', 'src="../assets/').replace('href="assets/', 'href="../assets/')
-headerV, footerV, nextV = rel(header), rel(footer), rel(nextband)
+headerV, footerV, nextV, reviewsV = rel(header), rel(footer), rel(nextband), rel(reviews)
 
 kg = lambda n: format(n, ',').replace(',', ',') + ' kg'
 money = lambda n: 'Enquire for price' if n is None else '$' + format(round(n), ',')
@@ -290,7 +291,8 @@ def van_page(v):
     </div>
   </aside>
 </div>
-''' + nextV + footerV + f'''
+''' + reviewsV + nextV + footerV + f'''
+<script src="../assets/ref/js/reviews.js"></script>
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
 </body>
 </html>'''
