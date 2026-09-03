@@ -387,5 +387,9 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 @media (min-width:901px){
   .spec-tabs .spec-body>div span:first-child{flex:0 0 30%!important}
   .spec-tabs+ *{margin-top:0}
-  .spec-h2{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:clamp(30px,4.3vw,50px)!important;letter-spacing:0!important;line-height:1.05}
+  .spec-h2,.sec-h2{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:clamp(26px,3.2vw,37px)!important;letter-spacing:.02em!important;line-height:1.08}
+  h1.vp-h1{font-size:clamp(34px,4vw,46px)!important}
+  .wrap p, .spec-tabs .spec-body{font-size:15.5px}
+  p[style*="max-width:60ch"]{font-size:15.5px!important;line-height:1.6!important}
+  p[style*="max-width:62ch"]{font-size:17px!important}
 }

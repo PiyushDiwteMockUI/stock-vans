@@ -166,7 +166,7 @@ def van_page(v):
             f"""<figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="../{img_sm(p)}" srcset="../{img_sm(p)} 640w, ../{p} 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>"""
             for p in plans).replace('|G|', chr(39)+'Gordita'+chr(39))
         floor = f"""<div style="margin-bottom:38px">
-          <h2 class="av" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
+          <h2 class="av sec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
           <p style="margin:0 0 16px;font:400 14px/1.65 |G|,sans-serif;color:var(--body);max-width:60ch">The {v['code']} layout.</p>
           <div class="fp-car" style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px;overflow:hidden">
             <div style="position:relative;overflow:hidden">
@@ -216,7 +216,7 @@ def van_page(v):
       {badge}
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. {v['chassis']}</span>
     </div>
-    <h1 class="av" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
+    <h1 class="av vp-h1" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
     <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in {v['state']}, ready for handover.</p>
     {gallery(v)}
     <div class="vp-mobilebuy">
@@ -286,7 +286,7 @@ def van_page(v):
     </div>
     <div class="vp-simblock" style="padding-bottom:66px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px">
-        <h2 class="av" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
+        <h2 class="av sec-h2" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
         <a class="linkbtn" style="letter-spacing:.16em;text-transform:uppercase;font-weight:500" href="../">See all stock</a>
       </div>
       <div class="sim-row" style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))">{sim}</div>
