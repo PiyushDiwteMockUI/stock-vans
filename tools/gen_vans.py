@@ -228,11 +228,11 @@ def van_page(v):
           {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
         </div>
       </div>
-      <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61386920032">Call now</a>
+      <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61399586708">Call now</a>
       </div>
       <div class="vpb-ctas">
         <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire now</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61386920032">Call (03) 8692 0032</a>
+        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
       </div>
     </div>
     <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
@@ -281,7 +281,7 @@ def van_page(v):
       </div>
       <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
         <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61386920032">Call (03) 8692 0032</a>
+        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
       </div>
       <div class="side-facts" style="padding:0 22px 22px">{facts}</div>
     </div>
