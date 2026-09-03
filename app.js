@@ -32,6 +32,7 @@ const imgSrcset = u => u.includes('pxcrush.net') || u.startsWith('assets/')
 const fullName = v => v.name.startsWith(v.model) ? v.name : v.model + ' ' + v.name;
 const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
+const DEALER = {'New South Wales':'Off Grid Outfitters - NSW','Queensland':'Aussie Escape Caravans - QLD','Victoria':'Outbound RVs - VIC','Western Australia':'Outbound RVs - WA'};
 const LAYOUTS = ['Couples', 'Family'];
 const AXLES = ['Single axle', 'Tandem axle'];
 // Standard-spec inclusion chips per model, from the live range page spec tables.
@@ -271,7 +272,7 @@ const SV = {
     badge.style.display = chips.length ? 'block' : 'none';
     badge.textContent = chips.length;
     let groups;
-    if (this.s.group) groups = STATES.map(st => ({ loc: st, vans: list.filter(v => v.state === st) })).filter(g => g.vans.length);
+    if (this.s.group) groups = STATES.map(st => ({ loc: DEALER[st] || st, vans: list.filter(v => v.state === st) })).filter(g => g.vans.length);
     else groups = [{ loc: null, vans: list }];
     put(document.getElementById('groups'), groups.map(g => `
       <div style="margin-bottom:34px">

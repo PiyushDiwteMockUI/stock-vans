@@ -46,6 +46,12 @@ def asrc(u):
     """Image src usable from inside /vans/: absolute URLs pass through, local assets get ../"""
     return u if u.startswith('http') else '../' + u
 
+
+DEALER = {'New South Wales': 'Off Grid Outfitters - NSW', 'Queensland': 'Aussie Escape Caravans - QLD',
+          'Victoria': 'Outbound RVs - VIC', 'Western Australia': 'Outbound RVs - WA'}
+def dealer(state):
+    return DEALER.get(state, state)
+
 def full_name(v):
     return v['name'] if v['name'].startswith(v['model']) else v['model'] + ' ' + v['name']
 
@@ -176,7 +182,7 @@ def van_page(v):
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
         for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Travel length', f"{v['travel']} m" if v.get('travel') else '—', 'Overall towing length'),
                           ('Layout', v['layout'], 'Bunks on board' if v['layout'] == 'Family' else 'Two berth touring'),
-                          ('Location', v['state'], 'Where it is now')])
+                          ('Location', dealer(v['state']), 'Where it is now')])
     incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in INCL.get(v['model'], []))
     facts = ''.join(f'''<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
         <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">{k}</span>
@@ -186,7 +192,7 @@ def van_page(v):
                        ('Tare', f"{v['tare']:,} kg" if v.get('tare') else '—'), ('ATM', f"{v['atm']:,} kg" if v.get('atm') else '—'),
                        ('Ball weight (empty)', f"{v['ball']:,} kg" if v.get('ball') else '—'),
                        ('Payload', f"{v['atm']-v['tare']:,} kg" if v.get('atm') and v.get('tare') else '—'),
-                       ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', v['state'])])
+                       ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', dealer(v['state']))])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
         <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="{asrc(img_sm(x['images'][0]))}" alt="{x['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">{'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-sim">' if x['model']=='Solara' else ''}</div>
@@ -249,7 +255,7 @@ def van_page(v):
       <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
         <div style="min-width:0">
           <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
-          <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">{v['state']}</div>
+          <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">{dealer(v['state'])}</div>
           <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:10px;flex:none;align-items:stretch">
