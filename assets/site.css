@@ -363,19 +363,21 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 /* Specifications: range-page style side tabs on desktop, accordion stays on phones */
 .spec-kicker{display:none}
 @media (min-width:901px){
-  .spec-tabs{display:grid;grid-template-columns:290px minmax(0,1fr);column-gap:48px;align-items:start}
+  .spec-tabs{display:grid;grid-template-columns:236px minmax(0,1fr);column-gap:40px;align-items:start}
   .spec-tabs .spec-acc{display:contents}
   .spec-tabs .spec-head{grid-column:1;border-bottom:1px solid var(--svink);padding:20px 2px}
-  .spec-tabs .spec-head .av{font-family:'Gordita',sans-serif;font-weight:500;font-size:17px;letter-spacing:0;text-transform:none}
+  .spec-tabs .spec-head .av{font-family:'Gordita',sans-serif;font-weight:400;font-size:19px;letter-spacing:0;text-transform:none;color:var(--svink)}
   .spec-tabs .spec-head>span:nth-child(2){display:none}
   .spec-tabs .spec-chev{transform:rotate(-90deg);color:var(--svink);opacity:.75}
   .spec-tabs .spec-acc.open .spec-chev{color:var(--svorange);opacity:1;transform:rotate(-90deg)}
   .spec-tabs .spec-panel{grid-column:2;grid-row:1/span 12;display:none;grid-template-rows:none;overflow:visible}
   .spec-tabs .spec-acc.open .spec-panel{display:block}
   .spec-tabs .spec-inner{overflow:visible}
-  .spec-kicker{display:block;font:500 12px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--body2);margin:6px 0 16px}
+  .spec-kicker{display:block;font:600 13.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--svink);margin:6px 0 16px}
   .spec-tabs .spec-body{border:1px solid var(--line2)}
-  .spec-tabs .spec-body>div{margin:0;padding:16px 18px;border-bottom:1px solid var(--line2)}
+  .spec-tabs .spec-body>div{margin:0;padding:17px 20px;border-bottom:1px solid var(--line2)}
+  .spec-tabs .spec-body>div span{font-size:16px!important;line-height:1.55!important}
+  .spec-tabs .spec-body>div span:first-child{color:var(--body2)}
   .spec-tabs .spec-body>div:last-child{border-bottom:0}
   .spec-tabs .spec-body>div:nth-child(odd){background:#F5F4F2}
 }

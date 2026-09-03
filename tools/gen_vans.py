@@ -120,9 +120,8 @@ def spec_sections(v):
     if v.get('spec_override'):
         out = []
         for tab, items in v['spec_override']:
-            rws = ''.join(f"""<div style="display:flex;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)">
-              <span style="flex:none;width:6px;height:6px;border-radius:50%;background:var(--svorange);margin-top:9px"></span>
-              <span style="font:400 15px/1.65 |G|,sans-serif;color:var(--body)">{it}</span></div>""".replace('|G|', chr(39)+'Gordita'+chr(39)) for it in items)
+            rws = ''.join(f"""<div style="padding:13px 2px;border-bottom:1px solid var(--line)">
+              <span style="font:400 16px/1.6 |G|,sans-serif;color:var(--body2)">{it}</span></div>""".replace('|G|', chr(39)+'Gordita'+chr(39)) for it in items)
             out.append(f"""<div class="spec-acc{' open' if not out else ''}">
               <button type="button" class="spec-head" aria-expanded="{'true' if not out else 'false'}">
                 <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">{tab}</span>
