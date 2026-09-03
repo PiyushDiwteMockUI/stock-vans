@@ -198,6 +198,7 @@ def van_page(v):
         </div></a>''' for x in similar)
     enq = f"../?van={v['chassis']}#enquire"
     return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + headerV + f'''
+{'<script>window.GAL_SLIDE=true</script>' if v['chassis']=='WL1227' else ''}
 <div style="padding-top:20px;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
   <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../">Stock vans</a>
   <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="./">Pages</a>

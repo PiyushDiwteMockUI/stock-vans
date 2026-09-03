@@ -42,14 +42,49 @@
     });
     warmRing();
   }
+  var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function slideTo(next, dir, token) {
+    var main = img.parentElement;
+    Array.prototype.slice.call(main.querySelectorAll('img[data-ov]')).forEach(function (o) { o.remove(); });
+    img.style.transition = 'none'; img.style.transform = 'none';
+    var ov = document.createElement('img');
+    ov.setAttribute('data-ov', '1');
+    ov.src = next; ov.alt = img.alt;
+    ov.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:contrast(1.05) saturate(1.06);transform:translateX(' + (dir * 100) + '%)';
+    main.appendChild(ov);
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      var EASE = 'transform .95s cubic-bezier(.45,.05,.15,1)';
+      ov.style.transition = EASE; img.style.transition = EASE;
+      ov.style.transform = 'translateX(0)';
+      img.style.transform = 'translateX(' + (-dir * 100) + '%)';
+      var done = false;
+      var fin = function () {
+        if (done) return; done = true;
+        if (token === showToken) img.src = next;
+        img.style.transition = 'none'; img.style.transform = 'none';
+        ov.remove();
+      };
+      ov.addEventListener('transitionend', fin);
+      setTimeout(fin, 1150);
+    }); });
+  }
   function show(i) {
-    cur = (i + srcs.length) % srcs.length;
+    var n = srcs.length;
+    var target = (i + n) % n;
+    if (target === cur) { paint(); return; }
+    var raw = target - cur; if (raw > n / 2) raw -= n; if (raw < -n / 2) raw += n;
+    var dir = raw >= 0 ? 1 : -1;
+    cur = target;
     var token = ++showToken;
     var next = srcs[cur];
     var pre = new Image();
     pre.src = next;
-    var swap = function () { if (token === showToken) img.src = next; };
-    if (pre.decode) pre.decode().then(swap, swap); else { pre.onload = swap; pre.onerror = swap; }
+    var go = function () {
+      if (token !== showToken) return;
+      if (window.GAL_SLIDE && !REDUCE) slideTo(next, dir, token);
+      else img.src = next;
+    };
+    if (pre.decode) pre.decode().then(go, go); else { pre.onload = go; pre.onerror = go; }
     paint();
   }
   warmRing();

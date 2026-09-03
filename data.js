@@ -155,7 +155,7 @@ const DATA = {
     "assets/layouts/2107EW-F3-3_top.png",
     "assets/layouts/2107EW-F3-3_tag.png"
    ],
-   "travel": 9.2,
+   "travel": 8.8,
    "spec_override": [
     [
      "Construction",
