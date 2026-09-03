@@ -124,7 +124,7 @@ def spec_sections(v):
               <span style="font:400 16px/1.6 |G|,sans-serif;color:var(--body2)">{it}</span></div>""".replace('|G|', chr(39)+'Gordita'+chr(39)) for it in items)
             out.append(f"""<div class="spec-acc{' open' if not out else ''}">
               <button type="button" class="spec-head" aria-expanded="{'true' if not out else 'false'}">
-                <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">{tab}</span>
+                <span class="av spec-tab-t">{tab}</span>
                 <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(items)} items</span>
                 <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
               </button>
@@ -139,7 +139,7 @@ def spec_sections(v):
           <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">{val}</span></div>''' for k, val in rows)
         out.append(f'''<div class="spec-acc{' open' if not out else ''}">
           <button type="button" class="spec-head" aria-expanded="{'true' if not out else 'false'}">
-            <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">{tab}</span>
+            <span class="av spec-tab-t">{tab}</span>
             <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(rows)} items</span>
             <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
           </button>
