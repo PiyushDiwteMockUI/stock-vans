@@ -129,7 +129,7 @@ def spec_sections(v):
                 <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(items)} items</span>
                 <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
               </button>
-              <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{rws}</div></div></div>
+              <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard {tab}</div><div class="spec-body">{rws}</div></div></div>
             </div>""".replace('|G|', chr(39)+'Gordita'+chr(39)))
         return ''.join(out)
     specs = DATA['modelSpecs'].get(v['model'], {})
@@ -144,7 +144,7 @@ def spec_sections(v):
             <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(rows)} items</span>
             <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
           </button>
-          <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{rws}</div></div></div>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard {tab}</div><div class="spec-body">{rws}</div></div></div>
         </div>'''.replace('|G|', chr(39)+'Gordita'+chr(39)))
     return ''.join(out)
 
@@ -250,7 +250,7 @@ def van_page(v):
         </button>
         <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{facts}</div></div></div>
       </div>
-      {spec_sections(v)}
+      <div class="spec-tabs">{spec_sections(v)}</div>
     </div>
     <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:38px 0">
       <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">

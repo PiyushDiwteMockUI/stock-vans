@@ -177,6 +177,7 @@
   accs.forEach(function (acc) {
     acc.querySelector('.spec-head').addEventListener('click', function () {
       var isOpen = acc.classList.contains('open');
+      if (isOpen && window.matchMedia('(min-width: 901px)').matches) return; // desktop tabs: one always open
       accs.forEach(function (a) {
         a.classList.remove('open');
         a.querySelector('.spec-head').setAttribute('aria-expanded', 'false');
