@@ -44,7 +44,6 @@
   }
   var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function slideTo(next, dir, token) {
-    (window.__dbg=window.__dbg||[]).push(['slideTo',dir]);
     var main = img.parentElement;
     Array.prototype.slice.call(main.querySelectorAll('img[data-ov]')).forEach(function (o) { o.remove(); });
     img.style.transition = 'none'; img.style.transform = 'none';
@@ -81,12 +80,10 @@
     var pre = new Image();
     pre.src = next;
     var go = function () {
-      (window.__dbg=window.__dbg||[]).push(['go',token,showToken,!!window.GAL_SLIDE,REDUCE]);
       if (token !== showToken) return;
       if (window.GAL_SLIDE && !REDUCE) slideTo(next, dir, token);
       else img.src = next;
     };
-    (window.__dbg=window.__dbg||[]).push(['show',target,dir,typeof pre.decode]);
     if (pre.decode) pre.decode().then(go, go); else { pre.onload = go; pre.onerror = go; }
     paint();
   }
