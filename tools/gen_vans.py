@@ -174,7 +174,7 @@ def van_page(v):
         <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">{k}</div>
         <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">{val}</div>
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
-        for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Internal length', v.get('length') or '—', 'Internal body length'),
+        for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Travel length', f"{v['travel']} m" if v.get('travel') else '—', 'Overall towing length'),
                           ('Layout', v['layout'], 'Bunks on board' if v['layout'] == 'Family' else 'Two berth touring'),
                           ('Location', v['state'], 'Where it is now')])
     incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in INCL.get(v['model'], []))
