@@ -81,7 +81,7 @@
     pre.src = next;
     var go = function () {
       if (token !== showToken) return;
-      if (window.GAL_SLIDE && !REDUCE) slideTo(next, dir, token);
+      if (!REDUCE) slideTo(next, dir, token);
       else img.src = next;
     };
     if (pre.decode) pre.decode().then(go, go); else { pre.onload = go; pre.onerror = go; }
