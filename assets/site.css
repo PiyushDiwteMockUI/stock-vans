@@ -395,6 +395,8 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 .sg .specs-table td strong{font-weight:500}
 .sg .specs-table tr:nth-child(odd) td{background:rgba(128,128,128,.07)}
 .sg-panel{display:none}
-.sg-panel.on{display:block}
+.sg-panel.on{display:block;animation:sgIn .4s cubic-bezier(.23,1,.32,1)}
+@keyframes sgIn{from{opacity:0;transform:translateY(10px)}}
+@media (prefers-reduced-motion:reduce){.sg-panel.on{animation:none}}
 @media (max-width:900px){.sg{display:none}}
 @media (min-width:901px){.spec-tabs > .spec-acc{display:none}}
