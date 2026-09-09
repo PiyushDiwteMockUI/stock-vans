@@ -194,6 +194,7 @@ main.list{min-height:100vh}
 
 /* Van pages on mobile: single sliding photo, tighter type */
 @media (max-width:900px){
+  .vp-lower{padding-left:16px!important;padding-right:16px!important}
   .vp-left{padding:0 16px!important}
   .detailside{padding:0 16px 40px!important;max-width:none!important}
   .vp-left h1{font-size:27px!important;line-height:1.1!important}
@@ -367,11 +368,12 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 
 @media (min-width:901px){
   .spec-tabs + *{margin-top:0}
-  .spec-h2,.sec-h2{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:clamp(26px,3.2vw,37px)!important;letter-spacing:.02em!important;line-height:1.08}
-  h1.vp-h1{font-size:clamp(34px,4vw,46px)!important}
-  .wrap p{font-size:15.5px}
-  p[style*="max-width:60ch"]{font-size:15.5px!important;line-height:1.6!important}
-  p[style*="max-width:62ch"]{font-size:17px!important}
+  /* Desktop type scale matched to wonderlandrv.com.au/range/solara/: section H2 32px aviano 900, body 18px Gordita */
+  .spec-h2,.sec-h2{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:32px!important;letter-spacing:.02em!important;line-height:1.05}
+  h1.vp-h1{font-size:34px!important;line-height:1.12!important}
+  .wrap p{font-size:18px;line-height:1.5}
+  p[style*="max-width:60ch"]{font-size:18px!important;line-height:1.5!important}
+  p[style*="max-width:62ch"]{font-size:18px!important;line-height:1.5!important}
 }
 
 /* Specifications at a glance — markup + styling lifted from the live range pages */

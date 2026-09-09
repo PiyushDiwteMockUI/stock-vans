@@ -285,7 +285,7 @@ def van_page(v):
     </div>
   </aside>
 </div>
-<div class="wrap shell" style="display:block;padding:8px 0 0">
+<div class="wrap shell vp-lower" style="display:block;padding:8px 0 0">
     {floor}
     <div style="margin-bottom:10px">
       <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
