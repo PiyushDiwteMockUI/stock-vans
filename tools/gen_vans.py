@@ -267,7 +267,6 @@ def van_page(v):
     </div>
     <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
     {tow}
-    {floor}
   </div>
   <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
@@ -288,6 +287,7 @@ def van_page(v):
   </aside>
 </div>
 <div class="wrap shell" style="display:block;padding:8px 0 0">
+    {floor}
     <div style="margin-bottom:10px">
       <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
       <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_override') else f"Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team."}</p>
