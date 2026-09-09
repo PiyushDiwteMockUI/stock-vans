@@ -1,0 +1,2569 @@
+<link rel="canonical" href="https://wonderlandrv.com.auhttps://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-vans-wl1090.html">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JJGXTWTP7L"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-JJGXTWTP7L');
+gtag('config','AW-16557773612');
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','260531330477020');
+fbq('track','PageView');
+</script>
+<style>
+/* ==========================================================================
+   Wonderland RV — Contact Us
+   Built 1:1 from the Figma export "Contact Us page-2.svg" (2376 × 6199).
+
+   SCALING MODEL
+   -------------
+   The design canvas is 2376 px wide. `html { font-size }` is set so that
+   1rem === 100 design px at any viewport width, so every measurement below is
+   just the SVG coordinate divided by 100. That reproduces the artboard
+   proportionally at any screen size. The page stops growing past 2376 px.
+   ========================================================================== */
+
+/* ------------------------------------------------------------------ fonts */
+@font-face {
+  font-family: "Aviano Sans";
+  src: url("../fonts/AvianoSans-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Aviano Sans";
+  src: url("../fonts/AvianoSans-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Aviano Sans";
+  src: url("../fonts/AvianoSans-Black.otf") format("opentype");
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("../fonts/Gordita-Regular.otf") format("opentype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("../fonts/Gordita-Medium.otf") format("opentype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Gordita";
+  src: url("../fonts/Gordita-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+/* ----------------------------------------------------------------- tokens */
+:root {
+  --orange:       #E37921;   /* accent / buttons                */
+  --orange-deep:  #D57114;   /* header CTA, quote, headings     */
+  --blush:        #D99B88;   /* "your rules" band               */
+  --grey:         #B7B7B7;   /* form placeholders               */
+  --red:          #E61010;   /* required asterisk               */
+  --ink:          #000;
+
+  /* strength of the gradient that keeps white type readable over a photo.
+     Set to 0 to show the images completely untouched. */
+  --scrim: 1;
+
+  --aviano: "Aviano Sans", "Trebuchet MS", sans-serif;
+  --gordita: "Gordita", "Helvetica Neue", Arial, sans-serif;
+
+  /* breathing room above and below every text section */
+  --section-gap: 1.20rem;
+  /* one spacing value for every item in the header bar */
+  --bar-gap: 0.39rem;   /* x1.5 */
+
+  /* Page margins cut to 3/4 of the original 501.5, so the content column
+     grows 1373 -> 1624. Everything inside keeps its own size. */
+  --page-margin: 3.76rem;
+  --col: 16.24rem;
+  --gutter: 5.015rem;
+
+  /* Type scale — four tiers, reviews deliberately excluded and tuned apart.
+       heading 56 · subheading 40 · body 28 · caption 20               */
+  --t-heading: 0.56rem;
+  --t-sub:     0.32rem;
+  --t-cta:     0.30rem;   /* between subheading and body */
+  --t-body:    0.28rem;
+  --t-caption: 0.20rem;
+  --lh-sub:     0.42rem;
+  --lh-body:    0.40rem;
+  --lh-caption: 0.30rem;
+}
+
+/* ------------------------------------------------------------------- base */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  /* 1rem = 100 design px */
+  font-size: min(calc(100vw / 23.76), 100px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 23.76rem;
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+
+/* Display headings are set in Aviano Sans Black */
+.hero h1,
+.enquiry-title,
+.unseen-title,
+.experience-title { font-weight: 900; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.container {
+  width: var(--col);
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------- image placeholders --
+   Any <img> that resolves removes nothing; a missing file removes itself
+   (inline onerror) and leaves this labelled placeholder visible.           */
+.ph {
+  position: relative;
+  background:
+    repeating-linear-gradient(45deg, #ececec 0 0.14rem, #f5f5f5 0.14rem 0.28rem);
+}
+.ph::after {
+  content: attr(data-ph);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--gordita);
+  font-size: 0.22rem;
+  letter-spacing: 0.06em;
+  color: #9a9a9a;
+  text-align: center;
+  padding: 0 1rem;
+  pointer-events: none;
+}
+.ph > img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+.media > img,
+.media > video { width: 100%; height: 100%; object-fit: cover; }
+
+/* Photos carry white headings at the bottom edge, so the foreground gets a
+   gradient to hold contrast. Governed by --scrim; 0 disables it entirely. */
+.hero .media::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(to top,
+    rgba(0,0,0,calc(0.55 * var(--scrim))) 0%,
+    rgba(0,0,0,calc(0.18 * var(--scrim))) 22%,
+    rgba(0,0,0,0) 44%);
+}
+
+/* Text stops growing past 2376, but the photography and video should never
+   leave white bars at the edges — so the full-bleed bands break out of the
+   capped body and always span the viewport. Their inner .container still
+   centres on the same axis, since body is centred too. */
+.hero,
+.video-band,
+.experience,
+.rules-band,
+.next-band,
+.site-header {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+}
+
+/* ==========================================================================
+   HEADER   (y 0 – 143)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 1.43rem;
+  background: #fff;
+}
+
+.header-inner {
+  width: var(--col);
+  margin-inline: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;          /* everything centres on the bar's midline */
+}
+
+.logo { flex: none; width: 3.595rem; }   /* 359.506 × 67 */
+.logo img { width: 100%; height: auto; }
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--bar-gap);
+  margin-left: auto;
+  font-family: var(--aviano);
+  font-size: 0.216rem;          /* x1.2 */
+  line-height: 1;
+  white-space: nowrap;
+}
+.main-nav a { font-weight: 900; transition: color .18s; }
+.main-nav a:hover,
+.main-nav a:focus-visible,
+.main-nav a[aria-current="page"] { color: var(--orange-deep); }
+
+.search-btn {
+  margin-left: var(--bar-gap);
+  flex: none;
+  line-height: 0;
+  color: var(--ink);
+  transition: color .18s;
+}
+.search-btn:hover,
+.search-btn:focus-visible { color: var(--orange-deep); }
+.search-btn svg { width: 0.28rem; height: 0.28rem; }
+
+.btn-build {
+  flex: none;
+  margin-left: var(--bar-gap);
+  width: auto; height: 0.46rem;
+  padding: 0 0.28rem;
+  background: var(--orange-deep);
+  color: #fff;
+  font-family: var(--aviano);
+  /* moves with the nav links so the bar stays one size, as it is today */
+  font-size: 0.216rem;          /* x1.2 */
+  font-weight: 900;
+  line-height: 0.46rem;
+  text-align: center;
+  --btn-fill: var(--orange-deep);
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-build:hover,
+.btn-build:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-build:active { background: var(--btn-fill); color: #fff; }
+
+.nav-toggle { display: none; }
+
+/* ==========================================================================
+   HERO   (y 143 – 1024, image 2378 × 881)
+   ========================================================================== */
+.hero { position: relative; height: 8.81rem; }
+.hero .media { position: absolute; inset: 0; }
+.hero .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 0.984rem;     /* last baseline 914.4 → 1024 */
+  color: #fff;
+}
+.hero h1 {
+  font-family: var(--aviano);
+  font-size: 0.96rem;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.20rem;       /* SVG had these almost touching; opened up */
+}
+.hero-sub {
+  font-family: var(--aviano);
+  font-size: 0.40rem;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   READY FOR ADVENTURE + FORM   (y 1024 – 2293)
+   ========================================================================== */
+.enquiry { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+
+.enquiry-title {
+  font-family: var(--aviano);
+  font-size: 0.96rem;
+  line-height: 1;
+}
+
+.enquiry-grid {
+  display: grid;
+  /* The artboard had these two columns meeting with no gutter and filling the
+     content column exactly. Cutting the margins widened that column from
+     13.805 to 16.24, so both columns and everything sized inside the form are
+     scaled by the same 1.17639 to fill it again. Every proportion inside the
+     form is preserved — only the scale changes, the same treatment the
+     homepage grids got when the margins moved. Type sizes are untouched.
+     The copy's line breaks are hand-set, so the left column can widen without
+     re-wrapping a word. */
+  /* The gap between the copy and the form is set from the reference: it runs
+     from where the copy text ends, at 712, to the form's left edge, which puts
+     the form on 841 and makes the gap 129. The left column is 4.65 to land it
+     there; the form takes 11.483 so the chips pill still finishes on the right
+     margin. Every width inside the form scales by the same 1.24275, so its
+     proportions hold and the type is untouched. The copy's line breaks are
+     hand-set, so its column can change width without re-wrapping a word. */
+  grid-template-columns: 4.65rem 11.483rem;
+  padding-top: 0.706rem;
+}
+
+/* -------------------------------------------------------- left column ---- */
+.enquiry-copy { display: flex; flex-direction: column; }
+
+.enquiry-copy .lede {
+  font-family: var(--gordita);
+  font-size: 0.36rem;
+  line-height: 0.44rem;
+}
+.enquiry-copy .lede + .lede { margin-top: 0.44rem; }   /* the blank line */
+.lede-accent { color: var(--orange); font-weight: 500; }
+
+.reachout {
+  margin-top: auto;             /* bottom-aligns with the Submit button */
+  color: var(--orange);
+  font-weight: 500;
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+}
+
+/* -------------------------------------------------------------- form ---- */
+.enquiry-form { padding-top: 0.165rem; }
+
+.field-grid {
+  display: grid;
+  grid-template-columns: 5.3562rem 5.493rem;   /* x1.24275 */
+  grid-template-rows: 0.40rem 1.08rem 1.0925rem;  /* rules on 1385.5 / 1493.5 / 1602.6 */
+  column-gap: 0.3604rem;
+  align-items: end;
+  padding-left: 0.1864rem;
+}
+
+.field { position: relative; }
+
+.field--line input {
+  display: block;
+  width: 100%;
+  height: 0.40rem;
+  padding: 0 0.24rem 0.134rem 0.12rem;   /* lifts the label off the rule */
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  line-height: 1;
+  color: var(--ink);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: var(--grey); opacity: 1; }
+
+.field .req {
+  position: absolute;
+  right: 0.22rem;
+  top: 0.080rem;
+  color: var(--red);
+  font-weight: 500;
+  font-size: 0.24rem;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* State — rounded select, sits 14 px left of the underline fields */
+.field--select {
+  margin-left: -0.174rem;
+  width: 5.5302rem;
+}
+.field--select select {
+  -webkit-appearance: none; appearance: none;
+  display: block;
+  width: 100%;
+  height: 0.6925rem;            /* 69.25 */
+  padding: 0 0.60rem 0 0.26rem;
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  color: var(--grey);
+  background: none;
+  border: 0.0075rem solid var(--ink);
+  border-radius: 0.14625rem;
+}
+.field--select select:valid { color: var(--ink); }
+.field--select .chev {
+  position: absolute;
+  left: 1.02rem; top: 0.335rem;   /* starting x; script re-places it per value */
+  width: 0.14rem; height: 0.08rem;
+  pointer-events: none;
+  transition: left .18s;
+}
+.field--select .req { right: 0.22rem; top: 0.30rem; }
+
+/* Autofill stays available, but Chrome's contacts button is suppressed so it
+   can't collide with the required asterisk, and the yellow autofill wash is
+   held off with a transition that never lands. */
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  display: none !important;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  width: 0;
+  margin: 0;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink);
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* focus: no browser-blue ring, brand orange instead */
+.field input:focus,
+.field select:focus,
+.field textarea:focus { outline: none; }
+.field--line input:focus { box-shadow: 0 1px 0 var(--orange); border-bottom-color: var(--orange); }
+.field--select select:focus,
+.field--area textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 1px var(--orange); }
+
+/* --------------------------------------------------- enquiry-type chips -- */
+.chips {
+  margin: 0.396rem 0 0 -0.1118rem;
+  width: 11.6974rem;                /* the pill still overhangs the fields as drawn */
+  height: 1.10rem;                /* trimmed; two-line options set the floor */
+  padding: 0.08rem 0;
+  border: 0.0075rem solid var(--ink);
+  border-radius: 0.353rem;
+  display: flex;
+  position: relative;
+}
+.chips legend { display: none; }
+
+/* One indicator that travels between cells, rather than each cell lighting up */
+.chips-thumb {
+  position: absolute;
+  top: 0.08rem; bottom: 0.08rem;
+  left: 0; width: 0;
+  border-radius: 0.246rem;
+  background: var(--orange);
+  z-index: 0;
+  pointer-events: none;
+  transform-origin: center;
+  transition:
+    left      .46s cubic-bezier(.65, 0, .35, 1),
+    width     .46s cubic-bezier(.65, 0, .35, 1),
+    transform .46s cubic-bezier(.65, 0, .35, 1);
+}
+.chips-thumb.is-init { transition: none; }
+.chips-thumb.is-moving { transform: scaleY(0.90); }   /* squashes as it travels */
+
+.chip {
+  flex: 1 1 0;
+  min-width: 0;                 /* without this, min-content keeps cells uneven */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.chip + .chip::before {          /* cell divider, overhanging the pill slightly */
+  content: "";
+  position: absolute; left: 0; top: -0.00875rem;
+  width: 1px; height: calc(100% + 0.0175rem);
+  background: var(--ink);
+}
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+
+/* the pill itself is inset inside its cell so it never touches a divider */
+.chip > span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: calc(100% - 0.16rem);    /* 8 clear on each side, matching top/bottom */
+  height: 100%;
+  border-radius: 0.246rem;
+  font-size: 0.32rem;             /* +33% */
+  line-height: 0.38rem;
+  transition: color .28s ease, font-weight .28s;
+}
+.chip:has(input:checked) > span { color: #fff; font-weight: 700; }
+.chip:has(input:focus-visible) > span { box-shadow: 0 0 0 2px var(--orange-deep); }
+
+/* --------------------------------------------------------------- notes -- */
+.field--area { margin-top: 0.3375rem; }   /* 1739.6 → 1773.4 */
+.field--area textarea {
+  display: block;
+  width: 11.4737rem;
+  height: 1.3225rem;            /* 132.25 */
+  padding: 0.134rem 0.26rem 0.20rem 0.199rem;
+  font-family: var(--gordita);
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+  color: var(--ink);
+  background: none;
+  border: 0.0075rem solid var(--ink);
+  border-radius: 0.14625rem;
+  resize: vertical;
+}
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.145rem;
+  margin-top: 0.247rem;         /* 1905.6 → 1930.4 */
+  padding-left: 0.0135rem;
+}
+.consent input[type="checkbox"] {
+  -webkit-appearance: none; appearance: none;
+  flex: none;
+  margin: 0.045rem 0 0;
+  width: 0.2825rem; height: 0.2825rem;   /* r = 14.125 */
+  border: 0.0075rem solid var(--ink);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.consent input[type="checkbox"]:checked {
+  background-color: var(--orange);
+  border-color: var(--orange);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 52%;          /* keeps the tick clear of the circumference */
+}
+.consent label {
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+  cursor: pointer;
+}
+.fineprint {
+  display: block;
+  margin-top: 0.026rem;
+  font-size: 0.17rem;
+  line-height: 0.24rem;
+}
+
+.btn-submit {
+  margin-top: 0.350rem;         /* → y 2052 */
+  margin-left: 0.01rem;         /* 958 → 959 */
+  width: 3.14rem; height: 0.70rem;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--aviano);
+  font-weight: 900;             /* Aviano Sans Black, as the other CTAs */
+  font-size: 0.18rem;
+  line-height: 0.70rem;
+  text-align: center;
+  --btn-fill: var(--orange);
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-submit:hover,
+.btn-submit:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-submit:active { background: var(--btn-fill); color: #fff; }
+
+/* ==========================================================================
+   VIDEO   (y 2293 – 3477, full bleed 2389 × 1184)
+   ========================================================================== */
+.video-frame {
+  position: relative;
+  width: 100%;
+  /* Back to the artboard band. The clip is 16:9, so filling this loses a
+     little top and bottom rather than leaving bars down the sides. */
+  aspect-ratio: 2389 / 1184;
+  overflow: hidden;
+  background-color: #111;
+}
+.video-frame iframe,
+.video-frame video {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 56.25vw;              /* 16:9 of the band width, so it fills and the
+                                   crop falls on the top and bottom edges */
+  min-height: 100%;
+  border: 0;
+  object-fit: cover;
+  z-index: 2;
+}
+
+/* --- video controls: mute and captions, top right, on hover --------------- */
+.video-controls {
+  position: absolute;
+  top: 88%; left: 50%;
+  transform: translate(-50%, -50%);   /* centred across, low in the frame */
+  /* Above .home-hero-copy, which is also 4. Tied z-indexes fall back to DOM
+     order and the copy comes second, so at 4 the hero's controls painted (and
+     clicked) underneath it. */
+  z-index: 6;
+  display: flex;
+  gap: 0.12rem;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.video-frame:hover .video-controls,
+.video-controls:focus-within { opacity: 1; }
+.video-ctl {
+  width: 0.46rem; height: 0.46rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-family: var(--gordita);
+  font-size: 0.14rem;
+  font-weight: 700;
+  line-height: 1;
+  transition: background .2s;
+}
+.video-ctl:hover { background: var(--orange-deep); }
+.video-ctl svg { width: 0.22rem; height: 0.22rem; }
+.video-ctl[aria-pressed="true"] { background: var(--orange-deep); }
+.video-poster { width: 100%; height: 100%; object-fit: cover; }
+
+/* --------------------------------------------------- "Tap for sound" ------
+   Appears three seconds after the video has been on screen and only while it
+   is still muted, sitting just under the sound button it points at. */
+.video-nudge {
+  position: absolute;
+  top: 0.24rem; left: 50%;
+  z-index: 4;
+  padding: 0.27rem 0.48rem;     /* x3 */
+  border-radius: 0.18rem;
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font-family: var(--gordita);
+  font-size: 0.42rem;           /* x3 */
+  line-height: 1;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0;
+  transform: translate(-50%, -0.18rem);
+  pointer-events: none;
+  transition: opacity .45s ease, transform .45s ease;
+}
+.video-nudge.is-on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+/* the buttons fade in on hover, but the prompt has to be able to stand alone */
+.video-frame:has(.video-nudge.is-on) .video-controls { opacity: 1; }
+
+/* ==========================================================================
+   THINGS YOU CAN'T SEE   (y 3477 – 4187)
+   ========================================================================== */
+/* the video band and this block are one section, so they sit at half a gap */
+.unseen { padding-top: calc(var(--section-gap) / 2); padding-bottom: var(--section-gap); }
+
+.unseen-title {
+  font-family: var(--aviano);
+  font-size: 0.96rem;
+  line-height: 1;
+}
+.unseen-sub {
+  margin-top: 0.16rem;          /* clear gap under the heading */
+  font-family: var(--aviano);
+  font-size: 0.40rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+/* CTA, so it weights up on hover rather than drawing a rule */
+.unseen-sub a { font-weight: 400; }
+.unseen-sub a:hover,
+.unseen-sub a:focus-visible { font-weight: 900; }
+
+.quote-block {
+  position: relative;
+  margin-top: 1.214rem;         /* → the divider band, y 3794 */
+  padding-top: 0.210rem;
+  display: grid;
+  grid-template-columns: 4.33rem 9.40rem;   /* split on the rule at x 934.5 */
+}
+.quote-block::before {          /* vertical rule, x 934.5, y 3794 – 4014 */
+  content: "";
+  position: absolute;
+  left: 4.33rem; top: 0;
+  width: 1px; height: 2.364rem;
+  background: var(--orange-deep);
+}
+.quote-mark {
+  position: absolute;
+  left: -1.235rem; top: -1.1285rem;
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 3.50rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+.quote-left {
+  margin: 0;
+  font-size: 0.48rem;
+  line-height: 0.5746rem;       /* 0.52 +30% then -15% */
+  color: var(--orange-deep);
+}
+.quote-right {
+  padding-left: 0.245rem;       /* rule at 934.5 → text at 959 */
+  font-size: 0.32rem;
+  line-height: 0.44rem;
+}
+
+.quote-attr {
+  margin-top: 0.430rem;         /* 3958.2 → 4036.6 */
+  color: var(--orange-deep);
+  font-size: 0.24rem;
+  line-height: 0.32rem;
+}
+.quote-name { display: block; font-weight: 700; }
+.quote-role { display: block; }
+
+/* ==========================================================================
+   THE WONDERLAND EXPERIENCE   (y 4187 – 4956, image 2389 × 769)
+   ========================================================================== */
+.experience {
+  position: relative;
+  height: 7.69rem;
+  border-radius: 0.15rem;
+  overflow: hidden;
+}
+.experience .media { position: absolute; inset: 0; }
+.experience .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+.experience-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding-top: 0.844rem;
+  color: #fff;
+}
+.experience-title a { color: inherit; transition: color .18s; }
+.experience-title a:hover,
+.experience-title a:focus-visible { color: var(--orange); }
+.experience-title {
+  font-family: var(--aviano);
+  font-size: 0.80rem;           /* 96 would need 1574 on one line; column is 1373 */
+  line-height: 0.83rem;
+  white-space: nowrap;
+}
+.experience-body {
+  margin-top: 0.34rem;          /* close enough to read with the title */
+  font-weight: 500;
+  font-size: 0.36rem;
+  line-height: 0.39rem;
+}
+
+/* ==========================================================================
+   YOUR TRAVELS / YOUR RULES   (y 4956 – 5177)
+   ========================================================================== */
+.rules-band {
+  height: 2.21rem;
+  background: var(--blush);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+}
+.rules-band p {
+  font-family: var(--aviano);
+  font-size: 0.48rem;
+  line-height: 0.51rem;
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-align: center;
+}
+
+/* ==========================================================================
+   WHERE TO NEXT   — carried over from the live site's contact page
+   ========================================================================== */
+.next-band { position: relative; height: 8.26rem; }   /* was 10.70 */
+.next-band .media { position: absolute; inset: 0; }
+.next-band .media video { object-position: center 20%; }   /* clip's sea/sky sits in its top ~20% — a centred crop shows none of it */
+.next-band .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+.next-copy {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: var(--section-gap);
+  gap: 0.62rem;
+  color: #fff;
+  text-align: center;
+}
+.next-title {
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.56rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+.next-actions { display: flex; gap: 0.40rem; }
+.btn-next {
+  background: #DB7627;
+  color: #fff;
+  font-family: var(--aviano);
+  font-weight: 900;             /* Aviano Sans Black, as the other CTAs */
+  font-size: 0.18rem;
+  line-height: 1;
+  padding: 0.30rem 0.62rem;
+  border-radius: 0.02rem;
+  --btn-fill: #DB7627;
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-next:hover,
+.btn-next:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-next:active { background: var(--btn-fill); color: #fff; }
+
+/* ==========================================================================
+   FOOTER   (y 5177 – 6199)
+   ========================================================================== */
+.site-footer {
+  padding-top: 0.99rem;
+  padding-bottom: 0.41rem;
+  font-size: 0.19rem;
+  line-height: 0.29rem;
+}
+.footer-inner {
+  width: var(--col);            /* same column as the rest of the page */
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 6.61rem 9.63rem;
+  column-gap: 0;
+  row-gap: 0.57rem;
+}
+
+.footer-logo { width: 4.00rem; height: auto; margin-bottom: 0.16rem; }
+.footer-blurb { width: 4.79rem; }
+.footer-strong { font-weight: 700; }
+.footer-strong:hover { color: var(--orange-deep); }
+
+.footer-head {
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.18rem;
+  line-height: 0.26rem;
+  letter-spacing: 0.02em;
+  color: var(--orange-deep);
+}
+.footer-brand p + p { margin-top: 0.17rem; }
+.footer-brand .footer-head { margin-top: 0.61rem; margin-bottom: 0.14rem; }
+.footer-contact { line-height: 0.40rem; }
+.footer-contact span { color: #333; }
+
+.socials {
+  display: flex;
+  gap: 0.42rem;
+  margin-top: 0.42rem;
+  color: #3f3f3f;
+}
+.socials svg { width: 0.24rem; height: 0.24rem; }
+.socials a:hover { color: var(--orange-deep); }
+
+.made-in { width: 3.12rem; height: auto; margin-top: 0.67rem; }
+
+/* ---------------------------------------------------------- right side -- */
+.newsletter .footer-head { margin-top: 0.49rem; margin-bottom: 0; }
+
+.newsletter-form {
+  display: grid;
+  grid-template-columns: 7.49rem 1.70rem;   /* Subscribe aligns to LOCATIONS */
+  column-gap: 0.44rem;
+  align-items: end;
+  margin-top: 0.29rem;
+}
+.newsletter-form .field--line input {
+  height: 0.42rem;
+  padding: 0 0 0.10rem 0;
+  font-size: 0.19rem;
+}
+.btn-subscribe {
+  width: 100%; height: 0.74rem;
+  background: var(--orange-deep);
+  color: #fff;
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.18rem;
+  letter-spacing: 0.02em;
+  --btn-fill: var(--orange-deep);
+  box-shadow: inset 0 0 0 0.02rem var(--btn-fill);
+  transition: background .42s ease, color .42s ease, box-shadow .42s ease;
+}
+.btn-subscribe:hover,
+.btn-subscribe:focus-visible { background: #fff; color: var(--btn-fill); }
+.btn-subscribe:active { background: var(--btn-fill); color: #fff; }
+
+.link-cols {
+  display: grid;
+  grid-template-columns: 3.96rem 3.96rem 1.70rem;
+  margin-top: 0.64rem;
+}
+.link-col .footer-head { margin-bottom: 0.16rem; }
+.link-col .footer-head--gap { margin-top: 0.57rem; }
+.link-col li { line-height: 0.27rem; margin-bottom: 0.19rem; }
+.link-col a:hover { color: var(--orange-deep); }
+
+/* ------------------------------------------------------------- legal ---- */
+.footer-legal-left { font-size: 0.16rem; line-height: 0.315rem; color: #444; }
+.footer-legal-left a:hover { color: var(--orange-deep); }
+.footer-legal-right { font-size: 0.156rem; line-height: 0.265rem; color: #444; }
+.footer-legal-right p + p { margin-top: 0.13rem; }
+
+/* ==========================================================================
+   RESPONSIVE
+   Below 900 px the 2376-wide artboard is no longer legible when scaled, so
+   the page switches to a stacked layout with real type sizes.
+   ========================================================================== */
+/* ==========================================================================
+   LEGENDARY SERVICE   — reviews on a slider. Shared, because the homepage and
+   the contact page both carry this section, so neither stylesheet owns it
+   ========================================================================== */
+/* A full section gap either side by default. On the homepage the neighbouring
+   sections already carry their own, so homepage.css tightens it back there. */
+.service { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+.service-head { text-align: center; }
+.service-title {
+  font-family: var(--aviano);
+  font-weight: 900;
+  font-size: 0.56rem;
+  line-height: 1;
+  color: var(--orange-deep);
+}
+.service-kicker {
+  margin-top: 0.14rem;
+  font-size: var(--t-caption);
+  font-weight: 700;
+  letter-spacing: 0.87em;
+  text-indent: 0.87em;
+  color: var(--orange-deep);
+}
+
+.service-band {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 0.55rem;
+}
+.service-band::before {                 /* the #FFF2DC panel behind the slides */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0.61rem;
+  height: 5.66rem;
+  background: #FFF2DC;
+}
+.service-viewport { position: relative; overflow: hidden; }
+.service-track {
+  display: flex;
+  transition: transform .55s cubic-bezier(.45,.05,.15,1);
+}
+.service-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  min-height: 6.74rem;
+}
+.service-media {
+  position: relative;
+  z-index: 1;
+  width: 56.9%;
+  height: 6.74rem;
+  flex: none;
+  /* lifts the photo off the cream panel: offset right, negative spread keeps
+     it from spilling along the top and bottom edges */
+  box-shadow: 0.16rem 0 0.34rem -0.10rem rgba(0, 0, 0, 0.30);
+}
+.service-media img { width: 100%; height: 100%; object-fit: cover; }
+.service-quote {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  /* media 56.9% + this 4.6% gap + 22.68% lands the right edge on the content
+     column (84.18% of the band), so reviews can't run past the margin */
+  width: 22.68%;
+  margin: 0 0 0 4.6%;
+  padding-top: 0.10rem;         /* review + attribution drop 10 */
+  color: var(--orange-deep);
+}
+.service-quote p {
+  font-size: 0.28rem;           /* review reads larger than the name */
+  font-style: italic;
+  line-height: 0.42rem;         /* opened up; the reviews run several lines */
+}
+/* the mark reads orange here, against darker review text */
+.service-quote .qmark { width: 1.01376rem; fill: var(--orange); }
+.service-name { display: block; margin-top: 0.42rem; font-size: 0.21rem; font-weight: 700; line-height: 0.28rem; }
+.service-role { display: block; font-size: 0.21rem; line-height: 0.28rem; }
+
+.service-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 0.70rem; height: 0.70rem;
+  margin-top: -0.35rem;
+  border-radius: 50%;
+  background: rgba(213, 113, 20, 0.35);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  transition: background .2s;
+}
+.service-arrow:hover { background: rgba(213, 113, 20, 0.75); }
+.service-arrow svg { width: 0.30rem; height: 0.30rem; }
+.service-arrow--prev { left: 0.87rem; }
+.service-arrow--next { right: 0.83rem; }
+
+/* The mark is a trimmed outline, so the element's box is the mark itself. */
+.qmark {
+  position: absolute;
+  right: calc(100% - 0.15rem);
+  bottom: 100%;
+  display: block;
+  height: auto;
+  fill: currentColor;
+}
+.service-quote p { position: relative; }
+.service-quote .qmark { width: 1.01376rem; fill: var(--orange); }
+
+@media (max-width: 900px) {
+  html { font-size: 16px; }
+  /* body's own size is a literal rem from the artboard, which lands at 3.84px
+     once rem is flat 16 — harmless where a child sets its own size, poison for
+     anything inheriting or using em. It joins the scale here. */
+  body { max-width: none; font-size: var(--t-body); line-height: var(--lh-body); }
+
+  /* ---- mobile type ----------------------------------------------------
+     The artboard scale stops here: rem is a flat 16px, so every 0.xx rem
+     size would collapse to a few pixels. The four tiers get real phone
+     sizes instead, and nothing is allowed below the 11px floor. */
+  :root {
+    --t-display: 34px;          /* the hero line, and nothing else */
+    --t-heading: 30px;
+    --t-sub:     16px;
+    --t-cta:     16px;
+    --t-body:    15px;
+    --t-caption: 12px;
+    --lh-display:36px;
+    --lh-heading:33px;
+    --lh-sub:    24px;
+    --lh-body:   23px;
+    --lh-caption:18px;
+    --page-margin: 24px;
+    --radius: 10px;             /* one curvature: the sheets carried ten */
+  }
+
+  /* ---- hard breaks -----------------------------------------------------
+     The prose carries line breaks hand-set for the 2376 artboard. Honoured
+     on a 342 column they produce lines a third of the measure wide, which is
+     what reads as broken text. Prose wraps to the column here instead. The
+     footer's address keeps its breaks, because there the line IS the data,
+     and so does the hero, which is a two-line lockup by design. */
+  .pull-quote p br,
+  .testi-quote p br,
+  .intro p br,
+  .solara-lede br, .solara-body br,
+  .range-lede br,
+  .why-text br,
+  .home-contact-lede br,
+  .enquiry-copy .lede br, .reachout br,
+  .quote-left br, .quote-right br,
+  .experience-body br { display: none; }
+
+  .container,
+  .header-inner,
+  .footer-inner { width: auto; margin-inline: 0; padding-inline: 24px; }
+
+  /* Full-bleed sections break out with 100vw, which counts the scrollbar the
+     viewport does not give back — 16px of sideways scroll on a phone. They are
+     already the full width here, so the break-out is simply switched off. */
+  .pull, .testi, .stat-band, .service-band, .brand-marquee, .band,
+  .next-band, .experience, .rules-band, .coty-figure, .site-header {
+    width: 100%; margin-left: 0;
+  }
+
+  /* ---- header ---- */
+  .site-header { height: 64px; border-bottom: 1px solid #eee; }
+  .header-inner { padding-top: 0; }
+  /* +25%, 150 to 188. The mark is 359.5 x 67, so it stands 35 in the 64 bar,
+     centred by .header-inner's align-items with 14 clear above and below the
+     white. (No display rule needed on the image: img is already block from the
+     reset, so the link box is the artwork's height with no baseline gap.) */
+  .logo { width: 188px; }
+  /* The panel is full width and the items centre on it. align-items places each
+     link's box, text-align handles the inside of that box -- a box wider than
+     its word would otherwise leave the word ragged within it. */
+  .main-nav {
+    position: absolute; left: 0; right: 0; top: 64px; z-index: 30;
+    flex-direction: column; align-items: center; gap: 0;
+    text-align: center;
+    background: #fff; border-bottom: 1px solid #eee;
+    font-size: 15px; padding: 8px 24px 20px;
+    display: none;
+  }
+  .main-nav a { align-self: center; }
+  .main-nav.is-open { display: flex; }
+  .main-nav a { padding: 12px 0; }
+  .search-btn { margin-left: auto; }
+  .search-btn svg { width: 20px; height: 20px; }
+  .btn-build { display: none; }
+  .nav-toggle {
+    display: block; margin-left: 16px; width: 24px;
+  }
+  .nav-toggle span { display: block; height: 2px; background: #000; margin: 5px 0; }
+
+  /* ---- hero ---- */
+  .hero { height: 62vw; min-height: 320px; }
+  .hero-copy { padding-bottom: 32px; }
+  .hero h1 { font-size: var(--t-display); letter-spacing: -0.03em; margin-bottom: 8px; }
+  .hero-sub { font-size: var(--t-sub); line-height: var(--lh-sub); }
+
+  /* ---- enquiry ---- */
+  .enquiry { padding: 48px 0 56px; }
+  /* Two lines, placed rather than left to the column width. At 375 it happened
+     to break after "for"; at 430 it broke after "Adventure" and left the
+     question mark alone on line two. The spans stay inline on desktop, so the
+     heading there is untouched. */
+  .enquiry-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  .enquiry-title .ln { display: block; }
+  /* The reach-out line reads as an answer to the submit button, so on a phone
+     it goes after it rather than above the whole form. .enquiry-copy drops to
+     display:contents so its three paragraphs become items of this grid
+     alongside the form, and order does the moving -- no markup change, and the
+     desktop two-column layout keeps the copy as its left column untouched.
+     The grid's own gap goes to 0 so each step is set on its own. */
+  .enquiry-grid { grid-template-columns: 1fr; gap: 0; padding-top: 28px; }
+  .enquiry-copy { display: contents; }
+  .enquiry-copy .lede { order: 1; font-size: var(--t-sub); line-height: var(--lh-sub); }
+  .enquiry-copy .lede + .lede { margin-top: 28px; }
+  .enquiry-form { order: 2; margin-top: 40px; }
+  /* half the step it had: it belongs to the submit above it, not to the
+     section below, and 40 read as a separation rather than an answer */
+  .reachout { order: 3; margin-top: 20px;
+              font-size: var(--t-body); line-height: var(--lh-body); }
+
+  .enquiry-form { padding-top: 0; }
+  /* The fields short enough to share a line do. Source order is already
+     first / last / email / phone / state / postcode, so the two full-width
+     ones are simply children 3 and 4. */
+  /* grid-template-rows has to be released too. The desktop template is in rem,
+     so against the 16px phone base its three rows collapsed to 6.4, 17.3 and
+     17.5 -- and the 48 tall fields inside them overflowed, which is what put
+     the rows 8 and 9 on top of each other instead of 22 apart. */
+  .field-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto;
+                padding-left: 0; row-gap: 22px; column-gap: 14px; }
+  .field-grid > .field:nth-child(3),
+  .field-grid > .field:nth-child(4) { grid-column: 1 / -1; }
+  /* 48, not 40: six of the seven controls were under the 44 a finger needs */
+  .field--line input { height: 48px; font-size: 16px; padding: 0 20px 8px 0; }
+  .field .req { font-size: 16px; top: 4px; right: 0; }
+  .field--select { margin-left: 0; width: 100%; }
+  /* The state field was a boxed control in a form of underlined ones. Ruled
+     like the rest here, so the row it shares with Post Code reads as one row. */
+  .field--select select {
+    height: 48px; font-size: 16px; padding: 0 24px 8px 0;
+    background: none; border: 0; border-bottom: 1px solid var(--ink);
+    border-radius: 0;
+  }
+  .field--select .chev { left: auto; right: 4px; top: 20px; width: 12px; height: 7px; }
+  .field--select .req { right: 0; top: 4px; }
+
+  /* The pill, built the way desktop builds it: one outlined container, four
+     cells in a row, one indicator that travels between them. It had been
+     flattened into a stacked grid of separate boxes here, which left the thumb
+     nothing to slide along.
+
+     Clearance comes from the same two places as on desktop -- 4 top and bottom
+     from the container's padding, 4 either side from the span's own inset -- so
+     the pill sits an even 4 off whatever bounds it, never touches a divider,
+     and every divider stays drawn. The script already measures the span, so it
+     needs no phone case. Radii are concentric: 14 outside, 14 - 4 = 10. */
+  .chips {
+    margin: 22px 0 0; width: 100%; height: auto; padding: 4px 0;
+    border-radius: 14px; border-width: 1px;
+    display: flex;
+  }
+  .chips-thumb { top: 4px; bottom: 4px; border-radius: 10px; }
+  .chip { padding: 12px 0; border-radius: 0; }
+  .chip > span { width: calc(100% - 8px); border-radius: 10px;
+                 font-size: 11px; line-height: 14px; }
+  /* spans the inner box exactly, padding edge to padding edge */
+  .chip + .chip::before { display: block; left: 0; top: -4px;
+                          width: 1px; height: calc(100% + 8px); }
+
+  .field--area { margin-top: 22px; }
+  .field--area textarea {
+    width: 100%; height: 120px; font-size: 16px; line-height: 24px;
+    padding: 16px; border-radius: 10px; border-width: 1px;
+  }
+
+  .consent { margin-top: 22px; gap: 12px; padding-left: 0; }
+  /* Size and border only. The checked state is left entirely to the desktop
+     rule -- orange fill with the white tick at 52% -- because a 4px white inset
+     ring here was painting over that tick and leaving a small orange dot in the
+     middle of the circle instead. 52% of 20 is a 10.4 tick, the same proportion
+     the desktop circle carries. */
+  .consent input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; border-width: 1px; }
+  .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
+  .fineprint { font-size: 12px; line-height: 18px; margin-top: 6px; }
+  .btn-submit { margin: 22px 0 0; width: 100%; max-width: none; height: 54px; font-size: 16px; line-height: 54px; }
+
+  /* ---- video ---- */
+  .video-frame { aspect-ratio: 16 / 9; }
+  /* the controls size off rem, so they need real numbers here — and a 44px
+     target, which is the smallest a finger can reliably hit */
+  .video-controls { gap: 12px; }
+  /* :hover never happens on a touch screen, so the controls would sit at
+     opacity 0 forever. Shown outright here. */
+  .video-controls { opacity: 1; }
+  .video-ctl { width: 44px; height: 44px; font-size: var(--t-caption); }
+  .video-ctl svg { width: 20px; height: 20px; }
+  .video-nudge {
+    top: 12px; font-size: 15px; padding: 11px 18px; border-radius: 8px;
+    transform: translate(-50%, -6px);
+  }
+  .video-nudge.is-on { transform: translate(-50%, 0); }
+
+  /* ---- unseen ---- */
+  .unseen { padding: 48px 0 56px; }
+  .unseen-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  /* The sub was carrying --lh-sub, 24 on 16px type, so 4 of box leading sat on
+     top of the 10 margin and the pair read apart. Desktop sets line-height 1 on
+     this line for exactly that reason; the phone now does the same, and the
+     margin is the whole of the gap rather than most of it. */
+  .unseen-sub { margin-top: 10px; font-size: var(--t-sub); line-height: 1; }
+  .quote-block { grid-template-columns: 1fr; margin-top: 36px; padding-top: 0; gap: 24px; }
+  .quote-block::before { display: none; }
+  .quote-mark { display: none; }
+  /* The spec comes before the quote on a phone: the panel detail answers "book
+     a factory tour", and the line about cost answers the panel detail. Source
+     order is the desktop column order, so it is swapped here rather than in the
+     markup. */
+  .quote-right { order: 1; padding-left: 0; font-size: var(--t-body); line-height: var(--lh-body); }
+  .quote-left { order: 2; font-size: var(--t-sub); line-height: var(--lh-sub); }
+  /* Two lines, with the break placed rather than left to the column width: the
+     brs are hidden here with the rest of the prose, so each half is a span that
+     becomes a block. */
+  .quote-left .ln { display: block; }
+  /* The attribution is the quote's signature, not a third statement. At the
+     same 24 that separates the panel spec from the quote it read as one more
+     item in a list; 14 binds it to the line above -- the step this page already
+     uses between a heading and the content it introduces. */
+  .quote-attr { margin-top: 14px; font-size: var(--t-caption); line-height: var(--lh-caption); }
+
+  /* ---- experience ---- */
+  .experience { height: auto; min-height: 520px; border-radius: 0; }
+  /* space-between pinned the sentence to the foot of a 520 band, 294 below its
+     own heading, so the two read as unrelated. The pair closes up and the rest
+     of the band is picture. */
+  .experience-copy { padding: 56px 24px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 520px; }
+  /* nowrap on the desktop title carried the link 492 wide inside a 327 column,
+     165 past the container. Released here, like every other pinned title. */
+  .experience-title { font-size: var(--t-heading); line-height: var(--lh-heading);
+                      white-space: normal; }
+  .experience-body { margin-top: 14px; font-size: var(--t-sub); line-height: var(--lh-sub); }
+
+  /* ---- rules band ---- */
+  .rules-band { height: auto; padding: 32px 24px; }
+  .rules-band p { font-size: var(--t-sub); line-height: var(--lh-sub); letter-spacing: 0.08em; }
+
+  /* CTAs need a finger-sized target */
+  .btn-next, .btn-submit, .btn-subscribe, .btn-solid { min-height: 48px; }
+
+  /* ---- legendary service -----------------------------------------------
+     Each review becomes an inset card: photograph on top, cream panel beneath,
+     both rounded, with the quote mark straddling the join between them.
+     !important on the padding because a desktop rule in homepage.css loads
+     after this file and was winning, leaving the heading 8.8 off the band. */
+  /* The section ends on a dot rail, which carries almost no weight, so a full
+     48 under it plus Queen of Hearts' own 48 read as a hole. 24 here, 72 in
+     total. */
+  .service { padding-top: 48px !important; padding-bottom: 24px !important; }
+  .service-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  .service-kicker { font-size: 12px; letter-spacing: 0.3em; text-indent: 0.3em; }
+  .service-band { flex-direction: column; margin-top: 26px; min-height: 0; }
+  .service-band::before { display: none; }
+  .service-slide { flex-direction: column; min-height: 0;
+                   scroll-snap-align: start; scroll-snap-stop: always; }
+  /* photo first here, then the review — this is the one section where the
+     picture earns the lead, because the face belongs with the words */
+  .service-media { order: 1; width: auto; height: auto; margin: 0 24px;
+                   aspect-ratio: 16 / 9; overflow: hidden;
+                   border-radius: var(--radius) var(--radius) 0 0; box-shadow: none; }
+  .service-quote { order: 2; position: relative; margin: 0 24px; width: auto;
+                   padding: 34px 24px 26px; background: #FFF2DC;
+                   border-radius: 0 0 var(--radius) var(--radius); }
+  .service-quote p { position: static; font-size: var(--t-sub); line-height: 24px; }
+  /* Anchored to the top of the cream, then lifted half its own height, so the
+     mark sits exactly half on the photograph and half on the panel at any
+     width — measured off the join rather than from a fixed distance. */
+  .service-quote .qmark {
+    display: block; top: 0; bottom: auto; left: 24px; right: auto;
+    transform: translateY(-50%); width: calc(var(--t-sub) * 3.1301);
+  }
+  .service-name, .service-role { font-size: var(--t-caption); line-height: 15px; }
+  .service-name { margin-top: 16px; }
+  .service-arrow { display: none; }
+  .service-viewport {
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .service-viewport::-webkit-scrollbar { display: none; }
+  .service-track { transform: none !important; transition: none !important; }
+  /* the desktop loop's wrap-around copy is a duplicate slide here */
+  .service-slide.is-clone { display: none; }
+
+  .service-rail { display: flex; align-items: center; gap: 9px; padding: 18px 24px 0; }
+  .service-dot { width: 6px; height: 6px; border-radius: 50%; background: #D9D3C8;
+                 transition: width .2s ease, background .2s ease; }
+  .service-dot.is-on { width: 18px; border-radius: 3px; background: var(--orange-deep); }
+  .service-count { margin-left: auto; font-size: var(--t-caption);
+                   letter-spacing: 0.12em; color: #8A8A8A; }
+
+  /* ---- where to next ---- */
+  .next-band { height: auto; min-height: 420px; }
+  .next-copy { padding: 48px 24px; gap: 24px; height: auto; min-height: 420px; }
+  .next-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  /* The two share their row, at the position they already sit -- the title is
+     still 48 off the top of the band and the actions 24 under it. Two buttons
+     in a 327 column with an 11 gap are 158 each; at 15px with 30 of side
+     padding "EXPLORE THE RANGE" needs about 210 and does not fit, so the type
+     comes down to 13 and the side padding to 8. Both still clear the 48 a
+     finger needs. */
+  .next-actions { flex-direction: row; align-items: stretch; gap: 11px; width: 100%; }
+  .btn-next { flex: 1 1 0; min-width: 0;
+              display: flex; align-items: center; justify-content: center;
+              font-size: 13px; padding: 14px 8px; text-align: center; }
+
+  /* ---- footer -----------------------------------------------------------
+     Every line-height in here was still the desktop rem value. Against the
+     16px phone base .footer-head resolved to 4.16 on 15px type and .link-col li
+     to 4.32 -- lines sitting almost on top of each other -- and two paragraph
+     margins came out at 2.7 and 2.1. Only the font sizes had been carried over,
+     never the leading, so it is set explicitly here on everything.
+
+     Four steps, and nothing else:
+       48  between the footer's own sections
+       32  between blocks inside a section
+       14  from a heading to the content it introduces
+       10  between lines within a block                                    */
+  .site-footer { padding: 56px 0 40px; font-size: 15px; line-height: 24px; }
+  .footer-inner { grid-template-columns: 1fr; row-gap: 48px; }
+  .footer-logo { width: 190px; margin-bottom: 32px; }
+  .footer-blurb { width: auto; }
+  .footer-brand p + p { margin-top: 10px; }
+  .footer-contact { line-height: 24px; }
+
+  .footer-head { font-size: 15px; line-height: 20px; margin-bottom: 14px; }
+  .footer-brand .footer-head { margin-top: 32px; margin-bottom: 14px; }
+  /* The three contact lines become ruled rows with a glyph each -- same
+     hairline as the link accordion below, so the whole footer is one stack.
+     Phone and email are links and carry the weight; the address is not a link
+     and is not dressed as one. */
+  .foot-contact { margin-top: 14px; }
+  .foot-row { display: flex; align-items: center; gap: 13px; min-height: 52px;
+              padding: 6px 0; border-top: 1px solid #e4e2de;
+              color: inherit; text-decoration: none; }
+  .foot-row:last-child { border-bottom: 1px solid #e4e2de; }
+  .foot-row .ic { width: 19px; height: 19px; flex: none; color: var(--orange-deep);
+                  stroke: currentColor; fill: none; stroke-width: 1.5;
+                  stroke-linecap: round; stroke-linejoin: round; }
+  .foot-row .t { line-height: 21px; }
+  a.foot-row .t { font-weight: 700; }
+  a.foot-row:hover .t { color: var(--orange-deep); }
+
+  /* No discs. The boxes stay 44 so the target holds, the glyph sits 35 inside,
+     and space-between pins the row to both edges of the same 327 the rules
+     above it measure. The outer two are pulled by (44 - 35) / 2 so it is the
+     GLYPH that lands flush, not its box. The gap is then the remainder --
+     (327 - 5x35) / 4 = 38 -- even by construction. */
+  .socials { justify-content: space-between; gap: 0; margin-top: 26px; }
+  .socials a { display: grid; place-items: center; width: 44px; height: 44px; }
+  .socials svg { width: 35px; height: 35px; display: block; }
+  .socials li:first-child { margin-left: -4.5px; }
+  .socials li:last-child { margin-right: -4.5px; }
+  .made-in { width: 230px; margin-top: 32px; }
+
+  .newsletter { margin-bottom: 32px; }
+  .newsletter .footer-head { margin-top: 0; margin-bottom: 14px; }
+  .newsletter-form { grid-template-columns: 1fr; row-gap: 14px; }
+  .newsletter-form .field--line input { height: 38px; font-size: 16px; }
+  /* side to side, like every other CTA on the phone */
+  .btn-subscribe { height: 50px; font-size: 15px; max-width: none; }
+
+  /* The five link groups become an accordion -- 982 as one column, 266 closed.
+     Same ruled stack as the accordions in Build your dream van and Why choose
+     us: the #e4e2de hairline, and orange for the open state. The rule sits on
+     .link-cols so the stack closes correctly across the three columns, which
+     go to display:contents and stop being boxes. */
+  .link-cols { display: block; border-bottom: 1px solid #e4e2de; }
+  .link-col { display: contents; }
+  .link-col .footer-head { margin-bottom: 14px; }
+  .link-col li { line-height: 22px; margin-bottom: 10px; }
+
+  .foot-acc { border-top: 1px solid #e4e2de; }
+  .foot-acc-head {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 16px 0; background: none; border: 0;
+    font: inherit; color: inherit; text-align: left; cursor: pointer;
+  }
+  .foot-acc-head .footer-head { margin: 0; }
+  .foot-acc-sign { position: relative; width: 13px; height: 13px; flex: none; }
+  .foot-acc-sign::before, .foot-acc-sign::after {
+    content: ""; position: absolute; left: 0; top: 6px; width: 13px; height: 1.5px;
+    background: var(--orange-deep); transition: transform .28s ease;
+  }
+  .foot-acc-sign::after { transform: rotate(90deg); }   /* the plus closes to a minus */
+  .foot-acc.is-on .foot-acc-sign::after { transform: rotate(0deg); }
+  .foot-acc-body { overflow: hidden; height: 0;
+                   transition: height .3s cubic-bezier(.4, 0, .2, 1); }
+  .foot-acc-body ul { padding-bottom: 6px; }
+
+  .footer-legal-left,
+  .footer-legal-left a { font-size: var(--t-caption); line-height: 18px; }
+  .footer-legal-right p { max-width: none; font-size: var(--t-caption); line-height: var(--lh-caption); }
+  .footer-legal-right p + p { margin-top: 10px; }
+}
+
+@media (max-width: 520px) {
+  /* .chips was a stacked grid here once; it is a flex row of cells now, so a
+     column template would be inert. Dropped rather than left to mislead. */
+  .link-cols { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+</style>
+<style>
+/* ==========================================================================
+   COMPACT TYPE SCALE  —  loaded by compact.html on top of styles.css
+
+   THE MATH
+   --------
+   Anchor: "Our experts will reach out / to you within 24 hours / on Business
+   days." goes 24 → 14, so the factor is 14 / 24 = 0.5833 (a 41.7% reduction).
+
+   Floor: nothing renders below 11, so anything that would land under it is
+   clamped there — nav, footer links, footer headings and the legal lines all
+   sit at 11 rather than 10.5 / 9.3 / 9.1.
+
+   Exception: the unsubscribe line is exempt, as instructed, and follows the
+   raw factor down to 9.
+
+   Line-heights carry the same 0.5833 so every paragraph keeps its existing
+   ratio. Nothing else moves — every margin, padding, section gap and box
+   height is inherited untouched from styles.css, which is what opens up the
+   extra breathing space.
+
+     96 → 56    36 → 21    19 → 11
+     56 → 33    32 → 19    18 → 11 (floor)
+     48 → 28    28 → 16    16 → 11 (floor)
+     40 → 23    24 → 14    14 →  9 (exception)
+
+   The header bar is excluded entirely and matches index.html.
+
+   Scoped above the mobile breakpoint so the 900px rules in styles.css keep
+   their own sizes.
+   ========================================================================== */
+
+@media (min-width: 901px) {
+
+  /* ------------------------------------------------------------- base --- */
+  body { font-size: var(--t-body); line-height: var(--lh-body); }
+  .ph::after { font-size: 0.13rem; }
+
+  /* The header bar is deliberately NOT rescaled — it stays identical to
+     index.html so the two versions share one taskbar. The orange CTAs are
+     excluded for the same reason: they all match "Build your Caravan". */
+
+  /* ------------------------------------------------------------- hero --- */
+  .hero h1 { font-size: 0.56rem; }
+  .hero-sub { font-size: var(--t-sub); }
+
+  /* -------------------------------------------------- enquiry + form --- */
+  .enquiry-title { font-size: 0.56rem; }
+  .enquiry-copy .lede { font-size: var(--t-body); line-height: var(--lh-body); }
+  .reachout { font-size: var(--t-body); line-height: var(--lh-body); }
+
+  .field--line input { font-size: var(--t-body); }
+  .field .req { font-size: var(--t-body); }
+  .field--select select { font-size: var(--t-body); }
+  .chip > span { font-size: 0.19rem; line-height: 0.22rem; }
+  .field--area textarea { font-size: var(--t-body); line-height: var(--lh-body); }
+  .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
+  .fineprint { font-size: var(--t-caption); line-height: var(--lh-caption); }   /* the exception */
+
+  /* -------------------------------------------- things you can't see --- */
+  .unseen-title { font-size: 0.56rem; }
+  .unseen-sub { font-size: var(--t-sub); }
+  .quote-mark { font-size: 2.04rem; left: -0.72rem; top: -0.658rem; }
+  .quote-left { font-size: 0.28rem; line-height: 0.335rem; }
+  .quote-right { font-size: var(--t-body); line-height: var(--lh-body); }
+  .quote-attr { font-size: var(--t-caption); line-height: var(--lh-caption); }
+  /* rule keeps its 21 above / 43 below overhang around the shorter quote */
+  .quote-block::before { height: 1.645rem; }
+
+  /* ------------------------------------------------------- experience --- */
+  .experience-title { font-size: 0.56rem; line-height: 0.484rem; }
+  .experience-body { font-size: var(--t-body); line-height: var(--lh-body); }
+  .rules-band p { font-size: var(--t-sub); line-height: 0.44rem; }
+
+  /* ---------------------------------------------------- where to next --- */
+  /* a section heading, not a subheading — matches the other page headings */
+  .next-title { font-size: var(--t-heading); }
+
+  /* ----------------------------------------------------------- footer --- */
+  .site-footer { font-size: var(--t-caption); line-height: 0.30rem; }
+  .footer-head { font-size: var(--t-caption); line-height: 0.28rem; }
+  .footer-contact { line-height: 0.34rem; }
+  .newsletter-form .field--line input { font-size: var(--t-caption); }
+  .link-col li { line-height: 0.20rem; }
+  .footer-legal-left { font-size: var(--t-caption); line-height: 0.32rem; }
+  .footer-legal-right { font-size: var(--t-caption); line-height: 0.30rem; }
+
+  /* Blocks that wrap on their own rather than on a <br> get their measure
+     re-set, so the shorter lines can't leave a single word stranded. */
+  .footer-blurb { width: 3.30rem; }
+  /* logo eases back so it reads in proportion to the larger footer type */
+  .footer-logo { width: 3.40rem; }
+  /* Was 6.40, which stopped the disclaimer and the photo credit 196 short of
+     the right margin while their own column already ended on it. They fill the
+     column now, so the right edge lands on the margin like everything else in
+     the footer. */
+  .footer-legal-right p { max-width: none; }
+}
+
+</style>
+<style>
+@media (min-width:901px){html{font-size:min(100px, max(calc(100vw / 23.76), min(66px, calc(100vw / 17.5))))}}
+.vp-wrap{margin-bottom:34px}
+@media (max-width:900px){.vp-mediarow{grid-template-columns:1fr!important}}
+.vp-main{position:relative;aspect-ratio:3/2;background:var(--dk);border-radius:4px;overflow:hidden;margin-bottom:10px}
+.vp-main img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)}
+.vp-count{position:absolute;bottom:14px;right:14px;background:rgba(6,9,12,.72);color:#fff;font:400 11.5px/1 'Gordita',sans-serif;padding:7px 11px;border-radius:2px}
+</style>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="https://wonderlandrv.com.au/" aria-label="Wonderland RV home">
+      <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-wonderland-rv-logo-scaled.png" alt="Wonderland RV">
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="https://wonderlandrv.com.au/range/">Range</a>
+      <a href="https://wonderlandrv.com.au/stock-vans/">buy now</a>
+      <a href="https://wonderlandrv.com.au/events/">Events</a>
+      <a href="https://wonderlandrv.com.au/about-us/">About</a>
+      <a href="https://wonderlandrv.com.au/media/">Media</a>
+      <a href="https://wonderlandrv.com.au/contact-us/">Contact</a>
+    </nav>
+    <button class="search-btn" type="button" aria-label="Search">
+      <svg viewBox="0 0 22 22" aria-hidden="true" focusable="false">
+        <circle cx="9.5" cy="9.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/>
+        <line x1="15.61" y1="14.2" x2="18.8" y2="17.38" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <a class="btn-build" href="https://wonderlandrv.com.au/build-your-caravan/">Build your Caravan</a>
+    <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<div style="padding-top:20px;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
+  <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="/stock-vans/">Stock vans</a>
+  <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="/stock/">Pages</a>
+  <span>/</span><span style="color:var(--svink)">WL1090</span>
+</div>
+<div class="wrap shell" style="padding:22px 0 0">
+  <div style="flex:1 1 560px;min-width:0;padding:0 46px 0 0" class="vp-left">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+      <span class="badge-red">Clearance</span>
+      <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. WL1090</span>
+    </div>
+    <h1 class="av vp-h1" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">Amaroo 2200 Rear Club Lounge</h1>
+    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in Queensland, ready for handover.</p>
+    <div class="vp-wrap"><div style="display:grid;grid-template-columns:2fr 1fr;gap:10px" class="vp-mediarow"><div class="vp-main" style="margin-bottom:0">
+      <img id="vp-img" src="https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-01-1.jpg" alt="Amaroo 2200 Rear Club Lounge" width="1600" height="1067" fetchpriority="high" decoding="async">
+      <button class="galbtn" style="left:14px" data-nav="-1" aria-label="Previous photo">‹</button>
+      <button class="galbtn" style="right:14px" data-nav="1" aria-label="Next photo">›</button>
+      <span class="vp-count"><span id="vp-n">1</span> / 23</span>
+      
+    </div>
+    <div class="vp-sidegrid" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px"><button type="button" class="vp-side" data-goto="1" aria-label="Photo 2" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-01.jpg" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button><button type="button" class="vp-side" data-goto="2" aria-label="Photo 3" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-12.jpg" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button><button type="button" class="vp-side" data-goto="3" aria-label="Photo 4" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-11.jpg" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button><button type="button" class="vp-side" data-goto="4" aria-label="Photo 5" style="position:relative;padding:0;border:0;cursor:pointer;background:var(--line);overflow:hidden;border-radius:3px"><img src="https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-10.jpg" alt="" loading="lazy" width="700" height="466" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none"></button></div></div>
+    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs"><button class="thumbbtn on" data-i="0" aria-label="Photo 1"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-01-1.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="1" aria-label="Photo 2"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-01.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="2" aria-label="Photo 3"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-12.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="3" aria-label="Photo 4"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-11.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="4" aria-label="Photo 5"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-10.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="5" aria-label="Photo 6"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-09.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="6" aria-label="Photo 7"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-08.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="7" aria-label="Photo 8"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-07.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="8" aria-label="Photo 9"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-06.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="9" aria-label="Photo 10"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-02.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="10" aria-label="Photo 11"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-02-864x1080.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="11" aria-label="Photo 12"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-03.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="12" aria-label="Photo 13"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-03-864x1080.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="13" aria-label="Photo 14"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-04.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="14" aria-label="Photo 15"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-04-864x1080.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="15" aria-label="Photo 16"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-05.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="16" aria-label="Photo 17"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-05-864x1080.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="17" aria-label="Photo 18"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-02-480x720.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="18" aria-label="Photo 19"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-03-480x720.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="19" aria-label="Photo 20"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-04-480x720.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="20" aria-label="Photo 21"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-05-480x720.png);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="21" aria-label="Photo 22"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/08/2025-Wonderland-RV-XTR.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button><button class="thumbbtn" data-i="22" aria-label="Photo 23"><span style="display:block;width:100%;height:100%;background-image:url(https://aussieescapecaravans.com.au/wp-content/uploads/2026/08/2022-Wonderland-RV-2311-Quad-BUNK-XTR.jpg);background-size:cover;background-position:center;pointer-events:none"></span></button></div></div>
+    <div class="vp-mobilebuy">
+      <div class="vpb-row">
+      <div>
+        <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-bottom:8px">Drive away</div>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <span class="av" style="font-size:26px;line-height:1;letter-spacing:-.02em">$137,159</span>
+          <span style="font:400 13px/1 'Gordita',sans-serif;color:var(--mut);text-decoration:line-through">$147,897</span><span style="font:500 12px/1 'Gordita',sans-serif;color:var(--olink)">Save $10,738</span>
+        </div>
+      </div>
+      <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61399586708">Call now</a>
+      </div>
+      <div class="vpb-ctas">
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="/stock-vans/?van=WL1090#enquire">Enquire now</a>
+        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
+      </div>
+    </div>
+    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px"><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
+        <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">Model</div>
+        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">Amaroo</div>
+        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Wonderland RV range</div></div><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
+        <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">Travel length</div>
+        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">9.1 m</div>
+        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Overall towing length</div></div><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
+        <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">Layout</div>
+        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">Couples</div>
+        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Two berth touring</div></div><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
+        <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">Location</div>
+        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">Aussie Escape Caravans - QLD</div>
+        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Where it is now</div></div></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:15px 18px;border:1px solid var(--line2);border-radius:4px;margin-bottom:38px">
+          <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="flex:none;display:block"><path d="M2.5 12.5h11v-5h-11v5z M13.5 9.5h2.6l1.4 3h-4z M5.5 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z M15 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z" fill="none" stroke="#12171C" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>
+          <span style="font:400 13.5px/1.5 'Gordita',sans-serif;color:var(--body2)">Tows behind most 3.5T-rated dual cab utes. Payload of 621 kg once you are loaded.</span></div>
+  </div>
+  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
+    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
+      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
+        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
+        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">$137,159</div>
+        <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 'Gordita',sans-serif;color:var(--mut);text-decoration:line-through">$147,897</span><span style="font:500 13px/1 'Gordita',sans-serif;color:var(--olink)">Save $10,738</span></div>
+      </div>
+      <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="/stock-vans/?van=WL1090#enquire">Enquire about this van</a>
+        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
+      </div>
+      <div class="side-facts" style="padding:0 22px 22px"><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Stock no</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">WL1090</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout code</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2200Q-RC</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Internal length</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">22'00"</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Couples</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Sleeps</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Tare</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2,879 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">ATM</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">3,500 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Ball weight (empty)</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">220 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Payload</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">621 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Axle</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Tandem axle</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Condition</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">New</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Location</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Aussie Escape Caravans - QLD</span></div></div>
+    </div>
+    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
+      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
+    </div>
+  </aside>
+</div>
+<div class="wrap shell vp-lower" style="display:block;padding:8px 0 0">
+    <div style="margin-bottom:38px">
+          <h2 class="av sec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
+          <p style="margin:0 0 16px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">The 2200Q-RC layout.</p>
+          <div class="fp-car" style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px;overflow:hidden">
+            <div style="position:relative;overflow:hidden">
+              <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)"><figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2200Q-RC_tilt_sm.png" srcset="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2200Q-RC_tilt_sm.png 640w, https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2200Q-RC_tilt.png 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="2200Q-RC 3D view" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">3D view</figcaption></figure><figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2200Q-RC_top_sm.png" srcset="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2200Q-RC_top_sm.png 640w, https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2200Q-RC_top.png 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="2200Q-RC Top down" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">Top down</figcaption></figure></div>
+              <button class="galbtn" style="left:10px" data-fpnav="-1" aria-label="Previous floorplan view">&#8249;</button>
+              <button class="galbtn" style="right:10px" data-fpnav="1" aria-label="Next floorplan view">&#8250;</button>
+            </div>
+            <div class="fp-dots" style="display:flex;gap:8px;justify-content:center;margin-top:12px"><button type="button" class="fp-dot" data-fp="0" aria-label="Floorplan view 1" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:var(--svink);padding:0;cursor:pointer"></button><button type="button" class="fp-dot" data-fp="1" aria-label="Floorplan view 2" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:#fff;padding:0;cursor:pointer"></button></div>
+          </div></div>
+    <div style="margin-bottom:10px">
+      <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
+      <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">Standard specification for the Amaroo range. This van may include additional optioned upgrades, confirm the exact build with our team.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px"><span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 'Gordita',sans-serif;padding:8px 10px;border-radius:2px">Redarc Alpha 50 off-grid power</span><span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 'Gordita',sans-serif;padding:8px 10px;border-radius:2px">Cruisemaster coil suspension</span><span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 'Gordita',sans-serif;padding:8px 10px;border-radius:2px">2 x 90-100L water tanks</span></div>
+      <div class="spec-acc spec-acc-key">
+        <button type="button" class="spec-head" aria-expanded="false">
+          <span class="av" style="font-size:15px;letter-spacing:.08em;text-transform:uppercase">Key details</span>
+          <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </button>
+        <div class="spec-panel"><div class="spec-inner"><div class="spec-body"><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Stock no</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">WL1090</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout code</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2200Q-RC</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Internal length</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">22'00"</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Couples</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Sleeps</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Tare</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2,879 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">ATM</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">3,500 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Ball weight (empty)</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">220 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Payload</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">621 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Axle</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Tandem axle</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Condition</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">New</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Location</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Aussie Escape Caravans - QLD</span></div></div></div></div>
+      </div>
+      <div class="spec-tabs"><div class="sg"><nav class="sg-rail" aria-label="Specification categories"><button type="button" class="sg-item on" data-tab="Chassis" aria-expanded="true"><span>Chassis</span><span class="sg-ico" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none"><path d="M0.0920042 7.90871L7.7467 14.9087L9.90894 12.9314L2.25424 5.93141L0.0920042 7.90871Z" fill="black"/><path d="M2.25424 9.88524L9.90894 2.88525L7.7467 0.90796L0.0920051 7.90795L2.25424 9.88524Z" fill="black"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="9.022" height="15.09" viewBox="0 0 9.022 15.09"><path d="M7692.17-10548.4l7.41-7.128-7.41-6.872" transform="translate(-7691.65 10562.948)" fill="none" stroke="#db7627" stroke-width="1.5"/></svg></span></button><button type="button" class="sg-item" data-tab="Exterior" aria-expanded="false"><span>Exterior</span><span class="sg-ico" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none"><path d="M0.0920042 7.90871L7.7467 14.9087L9.90894 12.9314L2.25424 5.93141L0.0920042 7.90871Z" fill="black"/><path d="M2.25424 9.88524L9.90894 2.88525L7.7467 0.90796L0.0920051 7.90795L2.25424 9.88524Z" fill="black"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="9.022" height="15.09" viewBox="0 0 9.022 15.09"><path d="M7692.17-10548.4l7.41-7.128-7.41-6.872" transform="translate(-7691.65 10562.948)" fill="none" stroke="#db7627" stroke-width="1.5"/></svg></span></button><button type="button" class="sg-item" data-tab="Interior" aria-expanded="false"><span>Interior</span><span class="sg-ico" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none"><path d="M0.0920042 7.90871L7.7467 14.9087L9.90894 12.9314L2.25424 5.93141L0.0920042 7.90871Z" fill="black"/><path d="M2.25424 9.88524L9.90894 2.88525L7.7467 0.90796L0.0920051 7.90795L2.25424 9.88524Z" fill="black"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="9.022" height="15.09" viewBox="0 0 9.022 15.09"><path d="M7692.17-10548.4l7.41-7.128-7.41-6.872" transform="translate(-7691.65 10562.948)" fill="none" stroke="#db7627" stroke-width="1.5"/></svg></span></button><button type="button" class="sg-item" data-tab="Electrical" aria-expanded="false"><span>Electrical</span><span class="sg-ico" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none"><path d="M0.0920042 7.90871L7.7467 14.9087L9.90894 12.9314L2.25424 5.93141L0.0920042 7.90871Z" fill="black"/><path d="M2.25424 9.88524L9.90894 2.88525L7.7467 0.90796L0.0920051 7.90795L2.25424 9.88524Z" fill="black"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="9.022" height="15.09" viewBox="0 0 9.022 15.09"><path d="M7692.17-10548.4l7.41-7.128-7.41-6.872" transform="translate(-7691.65 10562.948)" fill="none" stroke="#db7627" stroke-width="1.5"/></svg></span></button><button type="button" class="sg-item" data-tab="Water" aria-expanded="false"><span>Water</span><span class="sg-ico" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none"><path d="M0.0920042 7.90871L7.7467 14.9087L9.90894 12.9314L2.25424 5.93141L0.0920042 7.90871Z" fill="black"/><path d="M2.25424 9.88524L9.90894 2.88525L7.7467 0.90796L0.0920051 7.90795L2.25424 9.88524Z" fill="black"/></svg><svg xmlns="http://www.w3.org/2000/svg" width="9.022" height="15.09" viewBox="0 0 9.022 15.09"><path d="M7692.17-10548.4l7.41-7.128-7.41-6.872" transform="translate(-7691.65 10562.948)" fill="none" stroke="#db7627" stroke-width="1.5"/></svg></span></button></nav><div class="sg-panels"><div class="sg-panel on" data-tab="Chassis">
+          <p class="sg-kicker">STANDARD CHASSIS</p>
+          <div class="sg-scroll"><table class="specs-table"><tbody><tr><td>A-Frame, riser and chassis</td><td>6″ x 1950mm A-Frame &amp; double 4+4″ chassis &amp; wheelbox riser (flat floor)</td></tr><tr><td>Axle</td><td>Tandem Axle (except for 1709 &amp; 1806F – Single Axle)</td></tr><tr><td>Suspension</td><td>Choose from: 3.0T Cruisemaster ATX Coil (single axle) 3.7T Cruisemaster XT Coil (tandem axle) 3.7T Tuff-Ride Coil – Airbag Ready (tandem axle)</td></tr><tr><td>Brakes</td><td>12″ drum brakes</td></tr><tr><td>Bumper</td><td>4 arm with taillights</td></tr><tr><td>Chassis finish</td><td>Painted black</td></tr><tr><td>Hitch Type</td><td>DO35 by Cruisemaster recessed</td></tr><tr><td>Jockey wheel</td><td>AL-KO 8″ wide large clamp 629915</td></tr><tr><td>Stabilising legs</td><td>Drop down corner stabilisers</td></tr><tr><td>Step</td><td>Double aluminium step</td></tr><tr><td>Water tank/jerry can holder</td><td>2 x rear bar water tank/jerry can holders</td></tr><tr><td>Wheels and tyres</td><td>Toro 16″ 6×139 ET0 &amp; 285/75R16 Mud Terrain (single axle) or; Grid 16″ 6×139 ET0 &amp; 265/75R16 All Terrain (tandem axle)</td></tr></tbody></table></div>
+        </div><div class="sg-panel" data-tab="Exterior">
+          <p class="sg-kicker">STANDARD EXTERIOR</p>
+          <div class="sg-scroll"><table class="specs-table"><tbody><tr><td>Awning</td><td>Dometic manual 8700 grey with black arms</td></tr><tr><td>BBQ bayonet and tap</td><td>1 x gas bayonet plus 1 x cold tap at tunnel boot</td></tr><tr><td>Gas bottles</td><td>2 x 4kg powdercoated gas cylinders</td></tr><tr><td>Outdoor Pantry</td><td>Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack &amp; airbag controls (where possible &amp; available with portable induction only)</td></tr><tr><td>Spare wheel with holder</td><td>1 x matching spare wheel with holder</td></tr><tr><td>Alloy plate / side protection</td><td>850mm checkerplate in black or; 850mm alloy in flat black plate</td></tr><tr><td>Construction</td><td>Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames</td></tr><tr><td>Cladding colour – side</td><td>Various</td></tr><tr><td>Entry door</td><td>Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind</td></tr><tr><td>Floor</td><td>PP honeycomb floor</td></tr><tr><td>Outer trim</td><td>J-mould / truline mould with rubber insert</td></tr><tr><td>Insulation</td><td>XPS insulation</td></tr></tbody></table></div>
+        </div><div class="sg-panel" data-tab="Interior">
+          <p class="sg-kicker">STANDARD INTERIOR</p>
+          <div class="sg-scroll"><table class="specs-table"><tbody><tr><td>Air Conditioner</td><td>Dometic FreshJet Z – 7 series lite 3kW inverter roof-top air conditioner</td></tr><tr><td>Cooker</td><td>Multi-function cooker, fryer, grill &amp; microwave in base cupboards &amp; portable induction cooktop, or; Mini grill and 4 gas burner stove with 2 drawers and no microwave</td></tr><tr><td>Fans</td><td>2 x black or white Sirocco II fans</td></tr><tr><td>Fridge</td><td>216L compressor fridge (DC)</td></tr><tr><td>Hot water service</td><td>Swift 28L dual gas and electric hot water service</td></tr><tr><td>Rangehood</td><td>Swift flush mount recessed rangehood with dual fan</td></tr><tr><td>Washing machine</td><td>3kg – 3.5kg washing machine</td></tr><tr><td>Accessories pack</td><td>Towel hooks, hand towel rails, bath towel rails – brushed chrome</td></tr><tr><td>Shower and toilet hatch and exhaust fan</td><td>2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens</td></tr><tr><td>Shower screen frame</td><td>Silver, black or white</td></tr><tr><td>Sink</td><td>Black or white round ceramic ensuite bowl</td></tr><tr><td>Tapware</td><td>Chrome bathroom mixer tap</td></tr></tbody></table></div>
+        </div><div class="sg-panel" data-tab="Electrical">
+          <p class="sg-kicker">STANDARD ELECTRICAL</p>
+          <div class="sg-scroll"><table class="specs-table"><tbody><tr><td>Anderson plug</td><td>Grey anderson plug and 1 x grey 12V portable solar input</td></tr><tr><td>Electrical system</td><td>Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.</td></tr><tr><td>External entertainment pack</td><td>External entertainment pack – includes USB charger, coaxial antenna, 12V socket and TV bracket</td></tr><tr><td>External GPO</td><td>Dual 240V GPOs above tunnel boot and outdoor pantry</td></tr><tr><td>Lighting – external: 6 external lights</td><td>17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside</td></tr><tr><td>Lighting – internal</td><td>Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights</td></tr><tr><td>Media</td><td>Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers</td></tr><tr><td>Mood lighting and step light</td><td>Amber</td></tr><tr><td>Starlink Provision</td><td>Starlink internet provision</td></tr><tr><td>Tow plug</td><td>12 pin</td></tr><tr><td>TV</td><td>24″ Smart TV</td></tr><tr><td>TV antenna</td><td>Omni Winegard / Cowfish TV antenna</td></tr></tbody></table></div>
+        </div><div class="sg-panel" data-tab="Water">
+          <p class="sg-kicker">STANDARD WATER</p>
+          <div class="sg-scroll"><table class="specs-table"><tbody><tr><td>External shower</td><td>1 x external shower</td></tr><tr><td>Grey water bypass</td><td>Grey water bypass</td></tr><tr><td>Tank – fresh water</td><td>2 x 90L-100L freshwater tanks</td></tr><tr><td>Tank – grey water</td><td>1 x 100L grey water tank (at rear)</td></tr><tr><td>Water filler and mains</td><td>Quick fill and mains connection and 1 separate filler and cap</td></tr><tr><td>Water tank gauge</td><td>1 per tank</td></tr></tbody></table></div>
+        </div></div></div><div class="spec-acc open">
+          <button type="button" class="spec-head" aria-expanded="true">
+            <span class="av spec-tab-t">Chassis</span>
+            <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">12 items</span>
+            <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard Chassis</div><div class="spec-body"><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">A-Frame, riser and chassis</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">6″ x 1950mm A-Frame &amp; double 4+4″ chassis &amp; wheelbox riser (flat floor)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Axle</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Tandem Axle (except for 1709 &amp; 1806F – Single Axle)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Suspension</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Choose from: 3.0T Cruisemaster ATX Coil (single axle) 3.7T Cruisemaster XT Coil (tandem axle) 3.7T Tuff-Ride Coil – Airbag Ready (tandem axle)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Brakes</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">12″ drum brakes</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Bumper</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">4 arm with taillights</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Chassis finish</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Painted black</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Hitch Type</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">DO35 by Cruisemaster recessed</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Jockey wheel</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">AL-KO 8″ wide large clamp 629915</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Stabilising legs</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Drop down corner stabilisers</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Step</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Double aluminium step</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Water tank/jerry can holder</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">2 x rear bar water tank/jerry can holders</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Wheels and tyres</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Toro 16″ 6×139 ET0 &amp; 285/75R16 Mud Terrain (single axle) or; Grid 16″ 6×139 ET0 &amp; 265/75R16 All Terrain (tandem axle)</span></div></div></div></div>
+        </div><div class="spec-acc">
+          <button type="button" class="spec-head" aria-expanded="false">
+            <span class="av spec-tab-t">Exterior</span>
+            <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">12 items</span>
+            <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard Exterior</div><div class="spec-body"><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Awning</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Dometic manual 8700 grey with black arms</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">BBQ bayonet and tap</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">1 x gas bayonet plus 1 x cold tap at tunnel boot</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Gas bottles</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">2 x 4kg powdercoated gas cylinders</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Outdoor Pantry</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack &amp; airbag controls (where possible &amp; available with portable induction only)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Spare wheel with holder</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">1 x matching spare wheel with holder</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Alloy plate / side protection</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">850mm checkerplate in black or; 850mm alloy in flat black plate</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Construction</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Cladding colour – side</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Various</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Entry door</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Floor</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">PP honeycomb floor</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Outer trim</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">J-mould / truline mould with rubber insert</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Insulation</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">XPS insulation</span></div></div></div></div>
+        </div><div class="spec-acc">
+          <button type="button" class="spec-head" aria-expanded="false">
+            <span class="av spec-tab-t">Interior</span>
+            <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">12 items</span>
+            <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard Interior</div><div class="spec-body"><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Air Conditioner</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Dometic FreshJet Z – 7 series lite 3kW inverter roof-top air conditioner</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Cooker</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Multi-function cooker, fryer, grill &amp; microwave in base cupboards &amp; portable induction cooktop, or; Mini grill and 4 gas burner stove with 2 drawers and no microwave</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Fans</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">2 x black or white Sirocco II fans</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Fridge</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">216L compressor fridge (DC)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Hot water service</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Swift 28L dual gas and electric hot water service</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Rangehood</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Swift flush mount recessed rangehood with dual fan</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Washing machine</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">3kg – 3.5kg washing machine</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Accessories pack</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Towel hooks, hand towel rails, bath towel rails – brushed chrome</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Shower and toilet hatch and exhaust fan</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Shower screen frame</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Silver, black or white</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Sink</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Black or white round ceramic ensuite bowl</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Tapware</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Chrome bathroom mixer tap</span></div></div></div></div>
+        </div><div class="spec-acc">
+          <button type="button" class="spec-head" aria-expanded="false">
+            <span class="av spec-tab-t">Electrical</span>
+            <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">12 items</span>
+            <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard Electrical</div><div class="spec-body"><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Anderson plug</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Grey anderson plug and 1 x grey 12V portable solar input</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Electrical system</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">External entertainment pack</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">External entertainment pack – includes USB charger, coaxial antenna, 12V socket and TV bracket</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">External GPO</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Dual 240V GPOs above tunnel boot and outdoor pantry</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Lighting – external: 6 external lights</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Lighting – internal</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Media</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Mood lighting and step light</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Amber</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Starlink Provision</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Starlink internet provision</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Tow plug</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">12 pin</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">TV</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">24″ Smart TV</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">TV antenna</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Omni Winegard / Cowfish TV antenna</span></div></div></div></div>
+        </div><div class="spec-acc">
+          <button type="button" class="spec-head" aria-expanded="false">
+            <span class="av spec-tab-t">Water</span>
+            <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">6 items</span>
+            <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
+          <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard Water</div><div class="spec-body"><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">External shower</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">1 x external shower</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Grey water bypass</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Grey water bypass</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Tank – fresh water</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">2 x 90L-100L freshwater tanks</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Tank – grey water</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">1 x 100L grey water tank (at rear)</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Water filler and mains</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">Quick fill and mains connection and 1 separate filler and cap</span></div><div style="display:flex;flex-wrap:wrap;gap:6px 20px;padding:17px 2px;border-bottom:1px solid var(--line)">
+          <span style="flex:0 0 220px;font:500 13.5px/1.55 'Gordita',sans-serif;letter-spacing:.02em;color:var(--svink)">Water tank gauge</span>
+          <span style="flex:1 1 260px;min-width:0;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body)">1 per tank</span></div></div></div></div>
+        </div></div>
+    </div>
+    <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:38px 0">
+      <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
+        <div style="min-width:0">
+          <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
+          <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Aussie Escape Caravans - QLD</div>
+          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our Queensland dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;flex:none;align-items:stretch">
+          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="/stock-vans/?van=WL1090#enquire">Book a viewing</a>
+          <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
+        </div>
+      </div>
+    </div>
+    <div class="vp-simblock" style="padding-bottom:66px">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px">
+        <h2 class="av sec-h2" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
+        <a class="linkbtn" style="letter-spacing:.16em;text-transform:uppercase;font-weight:500" href="/stock-vans/">See all stock</a>
+      </div>
+      <div class="sim-row" style="display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr))"><a class="simcard" style="text-decoration:none" href="/stock/wl1231/">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1du2zec9ydtlquco9vueelfpj.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=640,427" alt="Amaroo 23ft Double Rear Bunk" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:15px">
+          <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">Amaroo 2300Q1-F2.4</div>
+          <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">Amaroo 23ft Double Rear Bunk</div>
+          <div style="font:500 15.5px/1 'Gordita',sans-serif;color:var(--svink)">$160,638</div>
+          <div style="margin-top:8px;font:400 12.5px/1 'Gordita',sans-serif;color:var(--body)">New South Wales</div>
+        </div></a><a class="simcard" style="text-decoration:none" href="/stock/wl1228/">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6acht6q7euiaob8ublb5puvm3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=640,427" alt="Amaroo 1906 Aluminium Frame" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:15px">
+          <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">Amaroo 1906Q-R-L</div>
+          <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">Amaroo 1906 Aluminium Frame</div>
+          <div style="font:500 15.5px/1 'Gordita',sans-serif;color:var(--svink)">$154,000</div>
+          <div style="margin-top:8px;font:400 12.5px/1 'Gordita',sans-serif;color:var(--body)">New South Wales</div>
+        </div></a><a class="simcard" style="text-decoration:none" href="/stock/wl1261/">
+        <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3rbywaajnzblj8jr4qrpycv60.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=640,427" alt="Amaroo 1906 Aluminium Frame" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+        <div style="padding:15px">
+          <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">Amaroo 1906Q-M-C</div>
+          <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">Amaroo 1906 Aluminium Frame</div>
+          <div style="font:500 15.5px/1 'Gordita',sans-serif;color:var(--svink)">$149,033</div>
+          <div style="margin-top:8px;font:400 12.5px/1 'Gordita',sans-serif;color:var(--body)">New South Wales</div>
+        </div></a></div>
+    </div>
+  </div>
+</div>
+<section class="stat-band">
+  <p class="stat-number" data-count-to="1300">0<span aria-hidden="true">+</span></p>
+  <p class="stat-label">CARAVANS BUILT</p>
+</section>
+<section class="service">
+  <div class="container service-head">
+    <h2 class="service-title">LEGENDARY SERVICE</h2>
+    <p class="service-kicker">OUR HAPPY CUSTOMERS</p>
+  </div>
+  <div class="service-band">
+    <div class="service-viewport">
+      <div class="service-track" id="serviceTrack">
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-home-review-julian-scaled.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>The quality, craftsmanship, and attention to detail are absolutely outstanding you can really see the pride that&rsquo;s gone into this build.&rdquo;</p>
+          <span class="service-name">JULIAN RANDALL</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-home-review-jasique-scaled.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Our Wonderland Amaroo has truly lived up to its reputation and exceeded our expectations while we&rsquo;ve explored Australia as a family.&rdquo;</p>
+          <span class="service-name">JASIQUE</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-home-review-mandi-scaled.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Our van is the ultimate family caravan and the finishes are absolute premium quality. We love hitting the road with our van any chance we get.&rdquo;</p>
+          <span class="service-name">MANDI DAVIES</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-home-review-sandro-scaled.jpg" alt="">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>The attention to detail and build quality is exceptional to say the least. This is our 5th caravan and I am sure we will be going back to Wonderland for our 6th.&rdquo;</p>
+          <span class="service-name">SANDRO CARBONI</span>
+          <span class="service-role">WONDERLANDER</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-kiwi-outback-road.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>We bought a Wonderland XTR 2300 and could not be happier. The build quality is extremely good and the whole experience was exceptional. 5 out of 5 stars for your great work.&rdquo;</p>
+          <span class="service-name">NICK BARNETT</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-interior-finish.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Found the whole process to be easy and build time efficient. Regular inspections at the build factory were never a problem and we have been very satisfied.&rdquo;</p>
+          <span class="service-name">JAMIE CULPH</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-range-campsite.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>We received our Wonderland caravan a few months ago and have already enjoyed a few trips, it&rsquo;s amazing! Our van is the ultimate family caravan and the finishes are absolute premium.&rdquo;</p>
+          <span class="service-name">GJON GJOLAJ</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-range-field.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Family friendly company that is there for the customer, you are not just another number like the larger brands. Build quality is great and so is the service.&rdquo;</p>
+          <span class="service-name">KEENAN ELLIOTT</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-kiwi-flinders.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>This is by far the best customer service we have received. We are currently on a lap of Oz and needed a couple of adjustments made to our van.&rdquo;</p>
+          <span class="service-name">CHRISTOPHER BARRETT</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-kiwi-coast.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Your communication and customer service are next to none, your quality of work is off the chart and you saved our adventure.&rdquo;</p>
+          <span class="service-name">PHILLIP BROMHAM</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-interior-bunks.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>The build and finishing touches are absolutely incredible and I would highly recommend Wonderland caravans to everyone!&rdquo;</p>
+          <span class="service-name">SHARNI MILLER</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/08/hero-off-road-caravans.webp" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>I have just picked up my van after its 1,000km service and could not be more pleased. All the Wonderland staff are incredibly helpful and friendly.&rdquo;</p>
+          <span class="service-name">JILL DE VOS</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-solara-dusk.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Outstanding service. We have purchased a second hand Wonderland, a new Wonderland and had our caravan serviced by Wonderland.&rdquo;</p>
+          <span class="service-name">LEIGH DUFTY</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-kiwi-bush.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>After 2.5 years full time on the road we built a brand new Wonderland and couldn&rsquo;t be happier with the sales, build, custom tweaks and especially after sales service.&rdquo;</p>
+          <span class="service-name">SONIA M</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-solara-lakeside2.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>This is our second Wonderland we have owned and had this one custom built to suit our needs. An amazing company to deal with from design, manufacture and after sales support.&rdquo;</p>
+          <span class="service-name">MARK BATES</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      <div class="service-slide">
+        <div class="service-media">
+          <img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-reviews-solara-field2.jpg" alt="" loading="lazy">
+        </div>
+        <blockquote class="service-quote">
+          <p><svg class="qmark" viewBox="0 0 352 208" aria-hidden="true"><path d="M159 208H289L352 0H249ZM0 208H130L193 0H90Z"/></svg>Having purchased our 4th van, 1st with Wonderland, it&rsquo;s been such a breeze. They bend over backwards through every stage of quote, purchase, build and handover. Quality of build is next to none.&rdquo;</p>
+          <span class="service-name">OUTBACKANDABOUT 4WD</span>
+          <span class="service-role">GOOGLE REVIEW &middot; WONDERLAND RV</span>
+        </blockquote>
+      </div>
+      </div>
+    </div>
+    <button class="service-arrow service-arrow--prev" type="button" aria-label="Previous review">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="service-arrow service-arrow--next" type="button" aria-label="Next review">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section><section class="next-band">
+  <div class="media">
+    <img src="https://wonderlandrv.com.au/wp-content/uploads/2025/05/sunset-driving.webp" alt="" loading="lazy" width="1920" height="1280">
+  </div>
+  <div class="next-copy container">
+    <h2 class="next-title">WHERE TO NEXT?</h2>
+    <div class="next-actions">
+      <a class="btn-next" href="https://wonderlandrv.com.au/range/">explore the range</a>
+      <a class="btn-next" href="https://wonderlandrv.com.au/about-us/">meet the team</a>
+    </div>
+  </div>
+</section><footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-wonderland-rv-logo-scaled.png" alt="Wonderland RV">
+      <p class="footer-blurb">Join the Facebook group where Wonderland
+        owners share their adventures, photos,
+        stories, comments, reviews and advice about
+        travels in their Wonderland RV.</p>
+      <p><a class="footer-strong" href="https://www.facebook.com/groups/wonderlandrv">Find out more</a></p>
+      <h3 class="footer-head">LET'S CHAT</h3>
+      <p class="footer-contact">
+        <a class="footer-strong" href="tel:+61399586708">(03) 9958 6708</a><br>
+        <a class="footer-strong" href="mailto:sales@wonderlandrv.com.au">sales@wonderlandrv.com.au</a><br>
+        <span>46 Lara Way, Campbellfield, Victoria 3061</span>
+      </p>
+      <ul class="socials">
+        <li><a href="https://www.facebook.com/wonderlandrv" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.5 8.5V6.9c0-.8.2-1.2 1.4-1.2h1.5V2.8h-2.5c-3 0-4 1.4-4 3.8v1.9H9v3h1.9V21h3.6v-9.7h2.5l.3-3h-2.8z"/></svg></a></li>
+        <li><a href="https://www.instagram.com/wonderlandrv" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a></li>
+        <li><a href="https://www.pinterest.com.au/wonderlandrv" aria-label="Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.7 19.3c-.1-.8-.2-2 0-2.9l1.2-5.1s-.3-.6-.3-1.5c0-1.4.8-2.5 1.9-2.5.9 0 1.3.7 1.3 1.5 0 .9-.6 2.2-.9 3.5-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.6-1.8-4.4-4.4-4.4-3 0-4.8 2.2-4.8 4.6 0 .9.3 1.9.8 2.4.1.1.1.2.1.3l-.3 1.1c0 .2-.1.2-.3.1-1.3-.6-2-2.4-2-3.9 0-3.2 2.3-6.1 6.7-6.1 3.5 0 6.2 2.5 6.2 5.8 0 3.5-2.2 6.3-5.2 6.3-1 0-2-.5-2.3-1.2l-.6 2.4c-.2.9-.8 2-1.2 2.6A10 10 0 1 0 12 2z"/></svg></a></li>
+        <li><a href="https://www.youtube.com/@WonderlandRV" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 7.2a2.7 2.7 0 0 0-1.9-1.9C18.9 4.8 12 4.8 12 4.8s-6.9 0-8.6.5A2.7 2.7 0 0 0 1.5 7.2C1 8.9 1 12 1 12s0 3.1.5 4.8a2.7 2.7 0 0 0 1.9 1.9c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9c.5-1.7.5-4.8.5-4.8s0-3.1-.5-4.8zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a></li>
+        <li><a href="https://www.tiktok.com/@wonderlandrv" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 2h-3v13.1a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.5a5.7 5.7 0 1 0 4.8 5.6V8.6a6.6 6.6 0 0 0 3.9 1.3V6.8a3.6 3.6 0 0 1-3.9-3.6V2z"/></svg></a></li>
+      </ul>
+      <img class="made-in" src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-ref-img-made-in-australia.png"
+           alt="Wonderland RV, proudly made in Australia" width="1000" height="148">
+    </div>
+    <div class="footer-links">
+      <div class="link-cols">
+        <div class="link-col">
+          <h4 class="footer-head">RANGE</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/range/solara/">Solara</a></li><li><a href="https://wonderlandrv.com.au/range/xtr/">XTR</a></li><li><a href="https://wonderlandrv.com.au/range/hornet/">Hornet</a></li><li><a href="https://wonderlandrv.com.au/range/amaroo/">Amaroo</a></li></ul>
+          <h4 class="footer-head footer-head--gap">OWNERS SUPPORT</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/">Owners manual</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Warranty &amp; repairs</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Contact us</a></li></ul>
+        </div>
+        <div class="link-col">
+          <h4 class="footer-head">EXPLORE</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/blog/">Blog</a></li><li><a href="https://wonderlandrv.com.au/">Media features</a></li><li><a href="https://wonderlandrv.com.au/">Partners</a></li><li><a href="https://wonderlandrv.com.au/">Wonderlanders</a></li></ul>
+          <h4 class="footer-head footer-head--gap">WHERE TO BUY</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/buy/">Find a dealer</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Book a factory tour</a></li><li><a href="https://wonderlandrv.com.au/build-your-caravan/">Request a quote</a></li><li><a href="https://wonderlandrv.com.au/contact-us/">Get in touch</a></li></ul>
+        </div>
+        <div class="link-col">
+          <h4 class="footer-head">LOCATIONS</h4>
+          <ul><li><a href="https://wonderlandrv.com.au/buy/">Melbourne</a></li><li><a href="https://wonderlandrv.com.au/buy/">Sydney</a></li><li><a href="https://wonderlandrv.com.au/buy/">Port Stephens</a></li><li><a href="https://wonderlandrv.com.au/buy/">Brisbane</a></li><li><a href="https://wonderlandrv.com.au/buy/">Mackay</a></li><li><a href="https://wonderlandrv.com.au/buy/">Perth</a></li><li><a href="https://wonderlandrv.com.au/buy/">Tasmania</a></li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal-left">
+      <p><a href="https://wonderlandrv.com.au/privacy-policy/">Privacy Policy</a></p>
+      <p><a href="https://wonderlandrv.com.au/">Terms &amp; Conditions</a></p>
+      <p>&copy; 2026 Wonderland RV Caravans. All Rights Reserved.</p>
+    </div>
+    <div class="footer-legal-right">
+      <p>Disclaimer: Images shown may have optional extras fitted. Wonderland RV reserves the right to discontinue or change the
+        models, features, specifications, or designs of the caravans referred to herein, at their discretion without prior notice.</p>
+      <p>Photo credit: We would like to thank many of our Wonderlanders for their great photography used across our site.</p>
+    </div>
+  </div>
+</footer>
+<script>
+/* ==========================================================================
+   Legendary Service — the review slider.
+   Its own file: the homepage and the contact page both carry the section, so
+   neither page's script owns it.
+   ========================================================================== */
+/* ------------------------------------- Legendary service: review slider ---
+   Endless in both directions: a clone of the first review is parked after the
+   last, so advancing past the end keeps moving forward and the jump back to
+   the real first slide happens with the transition off, out of sight.    */
+(function () {
+  const track = document.getElementById("serviceTrack");
+  if (!track) return;
+  const real = [].slice.call(track.children);
+  const n = real.length;
+  if (!n) return;
+
+  const EASE = "transform .9s cubic-bezier(.45, .05, .15, 1)";
+  const RIDE = 900;      // matches EASE
+  const HOLD = 10000;    // 10s between reviews
+
+  const PHONE = window.matchMedia("(max-width: 900px)");
+
+  if (n > 1) {
+    const clone = real[0].cloneNode(true);
+    clone.classList.add("is-clone");   // hidden on the phone: it is a duplicate there
+    track.appendChild(clone);
+  }
+
+  let i = 0, busy = false, timer;
+
+  function show(animate) {
+    track.style.transition = animate ? EASE : "none";
+    track.style.transform = "translateX(" + (-i * 100) + "%)";
+  }
+
+  function go(dir) {
+    if (busy || n < 2) return;
+    busy = true;
+    if (dir < 0 && i === 0) {          // stand on the clone, then walk back
+      i = n; show(false); void track.offsetWidth;
+    }
+    i += dir;
+    show(true);
+    setTimeout(function () {
+      if (i === n) { i = 0; show(false); }   // landed on the clone: reset unseen
+      busy = false;
+    }, RIDE);
+  }
+
+  function auto() { clearInterval(timer); timer = setInterval(function () { go(1); }, HOLD); }
+
+  const prev = document.querySelector(".service-arrow--prev");
+  const next = document.querySelector(".service-arrow--next");
+  if (prev) prev.addEventListener("click", function () { go(-1); auto(); });
+  if (next) next.addEventListener("click", function () { go(1);  auto(); });
+
+  /* ----------------------------------------------------- the phone rail ---
+     On the phone the viewport scrolls and snaps, so the translate slider is off
+     entirely -- auto() would fight the finger.
+
+     It loops the way the desktop one does, by a different route. The set is
+     laid down three times and the scroller sits in the middle one; crossing a
+     set boundary moves a whole set width, which lands on an identical pixel
+     because the sets are identical. So the fourth review is followed by the
+     first, in both directions, and there is no end to reach.
+
+     Index is polled rather than listened for: scroll events are not dependable.
+  */
+  function phoneRail() {
+    const port = track.parentElement;
+    if (!port || port.querySelector(".service-rail")) return;
+
+    /* Two further sets. Built only on the phone, so the desktop track still
+       holds its four slides and the one wrap-around clone it expects. */
+    for (let s = 0; s < 2; s++) {
+      real.forEach(function (sl) {
+        const copy = sl.cloneNode(true);
+        copy.classList.remove("is-clone");   // that one is hidden; these are not
+        copy.classList.add("is-copy");
+        track.appendChild(copy);
+      });
+    }
+    const slides = [].slice.call(track.children).filter(function (s) {
+      return !s.classList.contains("is-clone");   // it is display:none here
+    });
+    if (slides.length < n * 2) return;
+
+    const rail = document.createElement("div");
+    rail.className = "service-rail";
+    const dots = real.map(function (_, k) {
+      const d = document.createElement("span");
+      d.className = "service-dot" + (k ? "" : " is-on");
+      rail.appendChild(d);
+      return d;
+    });
+    const count = document.createElement("span");
+    count.className = "service-count";
+    count.textContent = "01 / " + String(n).padStart(2, "0");
+    rail.appendChild(count);
+    port.parentElement.insertBefore(rail, port.nextSibling);
+
+    /* measured between two slides, so any gap between them is included */
+    function pitch() { return slides[1].offsetLeft - slides[0].offsetLeft; }
+
+    function start() {
+      const p = pitch();
+      if (p > 0) port.scrollLeft = p * n;      // open in the middle set
+    }
+    start();
+    window.addEventListener("resize", start);
+
+    let last = -1;
+    setInterval(function () {
+      const p = pitch();
+      if (!p) return;
+      const W = p * n;
+      /* while(), not if(): a flung finger can carry past a whole set */
+      while (port.scrollLeft >= W * 2 - 1) port.scrollLeft -= W;
+      while (port.scrollLeft < W - 1) port.scrollLeft += W;
+
+      const live = ((Math.round(port.scrollLeft / p) % n) + n) % n;
+      if (live === last) return;
+      dots.forEach(function (d, k) { d.classList.toggle("is-on", k === live); });
+      count.textContent = String(live + 1).padStart(2, "0") + " / " + String(n).padStart(2, "0");
+      last = live;
+    }, 150);
+  }
+
+  if (PHONE.matches) {
+    track.style.transform = "none";
+    phoneRail();
+  } else {
+    show(false);
+    auto();
+    window.addEventListener("resize", function () { show(false); });
+  }
+})();
+
+/* caravans-built count-up (from the reference home page) */
+(function () {
+  var el = document.querySelector(".stat-number");
+  if (!el) return;
+  var target = parseInt(el.dataset.countTo, 10) || 0;
+  var done = false;
+  function run() {
+    if (done) return; done = true;
+    var DUR = 1440, t0 = Date.now();
+    var id = setInterval(function () {
+      var k = Math.min(1, (Date.now() - t0) / DUR);
+      var eased = 1 - Math.pow(1 - k, 3);
+      el.firstChild.nodeValue = Math.round(target * eased).toLocaleString();
+      if (k >= 1) { clearInterval(id); el.firstChild.nodeValue = target.toLocaleString(); }
+    }, 32);
+  }
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) { el.firstChild.nodeValue = target.toLocaleString(); return; }
+  var watch = setInterval(function () {
+    var r = el.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.9 && r.bottom > 0) { clearInterval(watch); run(); }
+  }, 300);
+})();
+
+</script>
+<script>
+/* Gallery for a static van page: thumbnails + prev/next swap the main image. */
+'use strict';
+(function () {
+  var img = document.getElementById('vp-img');
+  var thumbs = document.getElementById('vp-thumbs');
+  if (!img || !thumbs) return;
+  var btns = Array.prototype.slice.call(thumbs.querySelectorAll('.thumbbtn'));
+  var toFull = function (u) {
+    u = u.replace(/pxc_size=\d+,\d+/, 'pxc_size=1024,683');
+    return u.replace(/_sm\.(jpg|png)$/, '.$1');
+  };
+  var smalls = btns.map(function (b) {
+    var m = b.querySelector('span').style.backgroundImage.match(/url\("?(.*?)"?\)/);
+    return m ? m[1] : '';
+  });
+  var srcs = smalls.map(toFull);
+  var cur = 0, showToken = 0;
+  var sides = Array.prototype.slice.call(document.querySelectorAll('.vp-side'));
+  var warmed = {};
+  function warm(list, i) {
+    var k = (i + list.length) % list.length;
+    var key = list === srcs ? 'f' + k : 's' + k;
+    if (warmed[key]) return;
+    warmed[key] = true;
+    var im = new Image(); im.src = list[k];
+  }
+  function warmRing() {
+    warm(srcs, cur + 1); warm(srcs, cur - 1); warm(srcs, cur + 2);
+    for (var j = 1; j <= 5; j++) warm(smalls, cur + j);
+  }
+  function paint() {
+    btns.forEach(function (b, j) { b.classList.toggle('on', j === cur); });
+    var n = document.getElementById('vp-n');
+    if (n) n.textContent = cur + 1;
+    btns[cur].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    sides.forEach(function (s, j) {
+      var k = (cur + 1 + j) % smalls.length;
+      var im = s.querySelector('img');
+      if (im) im.src = smalls[k];
+      s.dataset.goto = k;
+      s.setAttribute('aria-label', 'Photo ' + (k + 1));
+    });
+    warmRing();
+  }
+  var REDUCE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function slideTo(next, dir, token) {
+    var main = img.parentElement;
+    Array.prototype.slice.call(main.querySelectorAll('img[data-ov]')).forEach(function (o) { o.remove(); });
+    img.style.transition = 'none'; img.style.transform = 'none';
+    var ov = document.createElement('img');
+    ov.setAttribute('data-ov', '1');
+    ov.src = next; ov.alt = img.alt;
+    ov.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;filter:contrast(1.05) saturate(1.06);transform:translateX(' + (dir * 100) + '%)';
+    main.appendChild(ov);
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      var EASE = 'transform .95s cubic-bezier(.45,.05,.15,1)';
+      ov.style.transition = EASE; img.style.transition = EASE;
+      ov.style.transform = 'translateX(0)';
+      img.style.transform = 'translateX(' + (-dir * 100) + '%)';
+      var done = false;
+      var fin = function () {
+        if (done) return; done = true;
+        if (token === showToken) img.src = next;
+        img.style.transition = 'none'; img.style.transform = 'none';
+        ov.remove();
+      };
+      ov.addEventListener('transitionend', fin);
+      setTimeout(fin, 1150);
+    }); });
+  }
+  function show(i) {
+    var n = srcs.length;
+    var target = (i + n) % n;
+    if (target === cur) { paint(); return; }
+    var raw = target - cur; if (raw > n / 2) raw -= n; if (raw < -n / 2) raw += n;
+    var dir = raw >= 0 ? 1 : -1;
+    cur = target;
+    var token = ++showToken;
+    var next = srcs[cur];
+    var pre = new Image();
+    pre.src = next;
+    var go = function () {
+      if (token !== showToken) return;
+      if (!REDUCE) slideTo(next, dir, token);
+      else img.src = next;
+    };
+    if (pre.decode) pre.decode().then(go, go); else { pre.onload = go; pre.onerror = go; }
+    paint();
+  }
+  warmRing();
+  thumbs.addEventListener('click', function (e) {
+    var b = e.target.closest('.thumbbtn');
+    if (b) show(btns.indexOf(b));
+  });
+  document.addEventListener('click', function (e) {
+    var nav = e.target.closest('[data-nav]');
+    if (nav) { show(cur + parseInt(nav.dataset.nav, 10)); return; }
+    var side = e.target.closest('[data-goto]');
+    if (side) {
+      show(parseInt(side.dataset.goto, 10));
+      var main = document.querySelector('.vp-main');
+      if (main) main.scrollIntoView({ block: 'nearest' });
+    }
+  });
+  // Floorplan carousel: continuous one-direction loop (first slide cloned at the end,
+  // snap back invisibly after the clone), soft ease, pauses on hover/touch/off-screen.
+  var car = document.querySelector('.fp-car');
+  if (car) {
+    var track = car.querySelector('.fp-track');
+    var dots = Array.prototype.slice.call(car.querySelectorAll('.fp-dot'));
+    var n = dots.length, fi = 0, timer = null, snapping = false;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (n > 1) track.appendChild(track.children[0].cloneNode(true));
+    var EASE = 'transform 1.1s cubic-bezier(.45,.05,.15,1)';
+    track.style.transition = EASE;
+    function paint() {
+      dots.forEach(function (d, j) { d.style.background = j === (fi % n) ? 'var(--svink)' : '#fff'; });
+    }
+    function go(i) {
+      fi = i;
+      track.style.transform = 'translateX(-' + (fi * 100) + '%)';
+      paint();
+    }
+    track.addEventListener('transitionend', function () {
+      if (fi === n) {
+        snapping = true;
+        track.style.transition = 'none';
+        fi = 0;
+        track.style.transform = 'translateX(0%)';
+        void track.offsetWidth;
+        track.style.transition = EASE;
+        snapping = false;
+        paint();
+      }
+    });
+    function start() { if (!reduce && n > 1 && !timer) timer = setInterval(function () { if (!snapping) go(fi + 1); }, 4200); }
+    function stop() { clearInterval(timer); timer = null; }
+    car.addEventListener('mouseenter', stop);
+    car.addEventListener('mouseleave', start);
+    car.addEventListener('touchstart', stop, { passive: true });
+    function step(dir) {
+      stop();
+      if (dir < 0 && fi === 0) {
+        track.style.transition = 'none';
+        fi = n;
+        track.style.transform = 'translateX(-' + (n * 100) + '%)';
+        void track.offsetWidth;
+        track.style.transition = EASE;
+        go(n - 1);
+      } else {
+        go(fi + dir);
+      }
+    }
+    car.addEventListener('click', function (e) {
+      var d = e.target.closest('.fp-dot');
+      if (d) { stop(); go(parseInt(d.dataset.fp, 10)); return; }
+      var nav = e.target.closest('[data-fpnav]');
+      if (nav) step(parseInt(nav.dataset.fpnav, 10));
+    });
+    // Swipe between floorplan views on touch devices
+    var fsx = null;
+    car.addEventListener('touchstart', function (e) { fsx = e.touches[0].clientX; }, { passive: true });
+    car.addEventListener('touchend', function (e) {
+      if (fsx === null) return;
+      var dx = e.changedTouches[0].clientX - fsx;
+      if (Math.abs(dx) > 40) step(dx < 0 ? 1 : -1);
+      fsx = null;
+    }, { passive: true });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es[0].isIntersecting ? start() : stop();
+      }, { threshold: 0.2 }).observe(car);
+    } else { start(); }
+  }
+  // Exclusive spec accordion: opening one section closes the open one, both animated.
+  var accs = Array.prototype.slice.call(document.querySelectorAll('.spec-acc'));
+  accs.forEach(function (acc) {
+    acc.querySelector('.spec-head').addEventListener('click', function () {
+      var isOpen = acc.classList.contains('open');
+      if (isOpen && window.matchMedia('(min-width: 901px)').matches) return; // desktop tabs: one always open
+      accs.forEach(function (a) {
+        a.classList.remove('open');
+        a.querySelector('.spec-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        acc.classList.add('open');
+        acc.querySelector('.spec-head').setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+
+/* on phones the buy/warranty sidebar sits above Similar vans in stock */
+(function () {
+  var aside = document.querySelector('.detailside'), sim = document.querySelector('.vp-simblock');
+  if (!aside || !sim) return;
+  var home = aside.parentElement, mq = matchMedia('(max-width:900px)');
+  function place() {
+    if (mq.matches) sim.parentNode.insertBefore(aside, sim);
+    else home.appendChild(aside);
+  }
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place);
+})();
+
+/* Specifications-at-a-glance rail: switch the visible category table. */
+(function () {
+  var rail = document.querySelector('.sg-rail');
+  if (!rail) return;
+  rail.addEventListener('click', function (e) {
+    var b = e.target.closest('.sg-item');
+    if (!b) return;
+    Array.prototype.forEach.call(rail.querySelectorAll('.sg-item'), function (x) {
+      var on = x === b;
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.sg-panel'), function (p) {
+      p.classList.toggle('on', p.getAttribute('data-tab') === b.getAttribute('data-tab'));
+    });
+  });
+})();
+
+</script>
