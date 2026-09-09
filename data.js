@@ -396,7 +396,7 @@ const DATA = {
    "layout": "Couples",
    "state": "New South Wales",
    "used": false,
-   "price": 145000,
+   "price": 144990,
    "images": [
     "assets/vans/WL1180/01.jpg",
     "assets/vans/WL1180/02.jpg",
@@ -426,7 +426,7 @@ const DATA = {
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2100Q-M-XLE.png",
-   "was": null,
+   "was": 156656,
    "floorplans": [
     "assets/layouts/2100Q-M-XLE_tilt.png",
     "assets/layouts/2100Q-M-XLE_top.png",
@@ -542,8 +542,8 @@ const DATA = {
    "length": "21'00\"",
    "layout": "Family",
    "state": "New South Wales",
-   "used": false,
-   "price": 166000,
+   "used": true,
+   "price": 164990,
    "images": [
     "assets/vans/WL1002/01.jpg",
     "assets/vans/WL1002/02.jpg",
@@ -578,7 +578,7 @@ const DATA = {
    "sleeps": 4,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2100K1-F2-0.png",
-   "was": 213733,
+   "was": 188693,
    "floorplans": [
     "assets/layouts/2100K1-F2-0_tilt.png",
     "assets/layouts/2100K1-F2-0_top.png",
@@ -963,7 +963,7 @@ const DATA = {
    "layout": "Couples",
    "state": "Victoria",
    "used": false,
-   "price": 136999.0,
+   "price": 134990,
    "images": [
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993428.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=UWSBu58O4YHBXyKodIw0col%2BStb2J2OzP0O7uEJhoJk%3D",
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993588.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=SOCziFA4Lcvn1rINPqXP2pwMXDZt6K2smKH2AtTsPHc%3D",
@@ -998,7 +998,7 @@ const DATA = {
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/1906Q-M-C.png",
-   "was": null,
+   "was": 148570,
    "floorplans": [
     "assets/layouts/1906Q-M-C_tilt.png",
     "assets/layouts/1906Q-M-C_top.png",
@@ -1252,7 +1252,7 @@ const DATA = {
    "layout": "Couples",
    "state": "Queensland",
    "used": false,
-   "price": 139159.0,
+   "price": 137159,
    "images": [
     "https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-01-1.jpg",
     "https://aussieescapecaravans.com.au/wp-content/uploads/2026/04/2025-Wonderland-Amaroo-Rear-Club-01.jpg",
@@ -1281,11 +1281,11 @@ const DATA = {
    "listing": "https://aussieescapecaravans.com.au/caravan/2025-wonderland-rv-amaroo-22ft-rear-club/",
    "tare": 2879,
    "atm": 3500,
-   "ball": null,
+   "ball": 220,
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2200Q-RC.png",
-   "was": 147373,
+   "was": 147897,
    "floorplans": [
     "assets/layouts/2200Q-RC_tilt.png",
     "assets/layouts/2200Q-RC_top.png",
@@ -1303,7 +1303,7 @@ const DATA = {
    "layout": "Couples",
    "state": "Western Australia",
    "used": false,
-   "price": 137999.0,
+   "price": 129990,
    "images": [
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/16789660.jpg?sv=2023-11-03&se=2027-01-04T12%3A06%3A46Z&sr=b&sp=r&sig=3rwoGa7W45upVMfIMjBACavsZFwdUlxYphr4JUaeeRk%3D",
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/16861232.jpg?sv=2023-11-03&se=2027-01-04T12%3A08%3A49Z&sr=b&sp=r&sig=8oPhCY5CiIS0brDM1d6SM%2FVDyeSukV0O2DLusMjSAKw%3D",
@@ -1338,7 +1338,7 @@ const DATA = {
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2100Q-M-XLE.png",
-   "was": 141935,
+   "was": 151730,
    "floorplans": [
     "assets/layouts/2100Q-M-XLE_tilt.png",
     "assets/layouts/2100Q-M-XLE_top.png",
