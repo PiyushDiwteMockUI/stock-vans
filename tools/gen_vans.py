@@ -118,7 +118,12 @@ def gallery(v):
 
 def spec_glance(v):
     """Range-page style: left category rail + bordered spec table (desktop)."""
-    chev = '<svg class="sg-chev" viewBox="0 0 8 14" width="9" height="15" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    # Both chevron icons from the live range page's Elementor tab rail, verbatim:
+    # inactive = solid black left chevron, active = thin orange right stroke.
+    chev = ('<span class="sg-ico" aria-hidden="true">'
+            '<svg xmlns="http://www.w3.org/2000/svg" width="10" height="15" viewBox="0 0 10 15" fill="none"><path d="M0.0920042 7.90871L7.7467 14.9087L9.90894 12.9314L2.25424 5.93141L0.0920042 7.90871Z" fill="black"/><path d="M2.25424 9.88524L9.90894 2.88525L7.7467 0.90796L0.0920051 7.90795L2.25424 9.88524Z" fill="black"/></svg>'
+            '<svg xmlns="http://www.w3.org/2000/svg" width="9.022" height="15.09" viewBox="0 0 9.022 15.09"><path d="M7692.17-10548.4l7.41-7.128-7.41-6.872" transform="translate(-7691.65 10562.948)" fill="none" stroke="#db7627" stroke-width="1.5"/></svg>'
+            '</span>')
     if v.get('spec_override'):
         groups = [(tab, [(None, it) for it in items]) for tab, items in v['spec_override']]
     else:
@@ -134,10 +139,10 @@ def spec_glance(v):
             if k is None:
                 trs.append(f'<tr><td colspan="2">{val}</td></tr>')
             else:
-                trs.append(f'<tr><td class="l">{k}</td><td>{val}</td></tr>')
+                trs.append(f'<tr><td>{k}</td><td>{val}</td></tr>')
         panels.append(f'''<div class="sg-panel{on}" data-tab="{tab}">
-          <div class="av sg-kicker">Standard {tab}</div>
-          <div class="sg-scroll"><table class="sg-table"><tbody>{''.join(trs)}</tbody></table></div>
+          <p class="sg-kicker">STANDARD {tab.upper()}</p>
+          <div class="sg-scroll"><table class="specs-table"><tbody>{''.join(trs)}</tbody></table></div>
         </div>''')
     return f'<div class="sg"><nav class="sg-rail" aria-label="Specification categories">{"".join(rail)}</nav><div class="sg-panels">{"".join(panels)}</div></div>'
 
