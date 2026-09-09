@@ -1004,7 +1004,7 @@ const DATA = {
     "assets/layouts/1906Q-M-C_top.png",
     "assets/layouts/1906Q-M-C_tag.png"
    ],
-   "travel": 8.4
+   "travel": 8.2
   },
   {
    "chassis": "WL1184",
@@ -1434,6 +1434,30 @@ const DATA = {
    "floorplan": null,
    "was": null,
    "travel": 9.3
+  },
+  {
+   "chassis": "WL1296",
+   "model": "Amaroo",
+   "code": "1907Q1-F3.0",
+   "name": "Amaroo 1907 Triple Bunk Family",
+   "year": "2026",
+   "length": "19'07\"",
+   "layout": "Family",
+   "state": "New South Wales",
+   "used": false,
+   "price": 156990,
+   "images": [
+    "assets/photo-coming-soon.jpg"
+   ],
+   "listing": null,
+   "tare": 2803,
+   "atm": 3500,
+   "ball": 235,
+   "sleeps": 5,
+   "axle": "Tandem axle",
+   "floorplan": null,
+   "was": 162322,
+   "travel": 8.4
   }
  ],
  "modelSpecs": {

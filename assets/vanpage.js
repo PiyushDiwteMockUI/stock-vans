@@ -202,3 +202,21 @@
   place();
   if (mq.addEventListener) mq.addEventListener('change', place);
 })();
+
+/* Specifications-at-a-glance rail: switch the visible category table. */
+(function () {
+  var rail = document.querySelector('.sg-rail');
+  if (!rail) return;
+  rail.addEventListener('click', function (e) {
+    var b = e.target.closest('.sg-item');
+    if (!b) return;
+    Array.prototype.forEach.call(rail.querySelectorAll('.sg-item'), function (x) {
+      var on = x === b;
+      x.classList.toggle('on', on);
+      x.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.sg-panel'), function (p) {
+      p.classList.toggle('on', p.getAttribute('data-tab') === b.getAttribute('data-tab'));
+    });
+  });
+})();

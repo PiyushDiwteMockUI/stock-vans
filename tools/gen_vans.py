@@ -116,6 +116,31 @@ def gallery(v):
     <div class="vp-sidegrid" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px">{side}</div></div>
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div></div>'''
 
+def spec_glance(v):
+    """Range-page style: left category rail + bordered spec table (desktop)."""
+    chev = '<svg class="sg-chev" viewBox="0 0 8 14" width="9" height="15" aria-hidden="true"><path d="M1 1l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    if v.get('spec_override'):
+        groups = [(tab, [(None, it) for it in items]) for tab, items in v['spec_override']]
+    else:
+        specs = DATA['modelSpecs'].get(v['model'], {})
+        groups = [(tab, rows) for tab, rows in specs.items()]
+    if not groups: return ''
+    rail, panels = [], []
+    for i, (tab, rows) in enumerate(groups):
+        on = ' on' if i == 0 else ''
+        rail.append(f'<button type="button" class="sg-item{on}" data-tab="{tab}" aria-expanded="{"true" if i==0 else "false"}"><span>{tab}</span>{chev}</button>')
+        trs = []
+        for k, val in rows:
+            if k is None:
+                trs.append(f'<tr><td colspan="2">{val}</td></tr>')
+            else:
+                trs.append(f'<tr><td class="l">{k}</td><td>{val}</td></tr>')
+        panels.append(f'''<div class="sg-panel{on}" data-tab="{tab}">
+          <div class="av sg-kicker">Standard {tab}</div>
+          <div class="sg-scroll"><table class="sg-table"><tbody>{''.join(trs)}</tbody></table></div>
+        </div>''')
+    return f'<div class="sg"><nav class="sg-rail" aria-label="Specification categories">{"".join(rail)}</nav><div class="sg-panels">{"".join(panels)}</div></div>'
+
 def spec_sections(v):
     if v.get('spec_override'):
         out = []
@@ -269,7 +294,7 @@ def van_page(v):
         </button>
         <div class="spec-panel"><div class="spec-inner"><div class="spec-body">{facts}</div></div></div>
       </div>
-      <div class="spec-tabs">{spec_sections(v)}</div>
+      <div class="spec-tabs">{spec_glance(v)}{spec_sections(v)}</div>
     </div>
     <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:38px 0">
       <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
