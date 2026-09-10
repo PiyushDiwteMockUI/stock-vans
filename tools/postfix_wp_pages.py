@@ -51,7 +51,8 @@ for f in sorted(glob.glob('wp-pages/*.html')):
     if 'id="wlstock"' not in s:
         s=fix_div_balance(s)
         s=re.sub(r'(<style>)(.*?)(</style>)', lambda m: m.group(1)+scope_css(m.group(2))+m.group(3), s, flags=re.S)
-        s='<div id="wlstock">\n'+s+'\n</div>'
+        reset='<style>#wlstock h1,#wlstock h2,#wlstock h3,#wlstock h4,#wlstock h5,#wlstock h6{color:inherit}</style>'
+        s='<div id="wlstock">\n'+reset+'\n'+s+'\n</div>'
     for old,new in FONT_MAP.items():
         s=s.replace(f'url("{old}") format("opentype")', f'url("{new}") format("woff2")')
     for w in ('Light','Regular','Medium'):
