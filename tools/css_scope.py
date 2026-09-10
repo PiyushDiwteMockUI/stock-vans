@@ -39,6 +39,7 @@ def _split_selectors(text):
     return parts
 
 def scope_css(css):
+    css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
     out, i, n = [], 0, len(css)
     def block_end(j):  # j at '{'; return index after matching '}'
         d = 0

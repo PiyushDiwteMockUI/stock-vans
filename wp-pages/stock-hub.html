@@ -101,8 +101,8 @@ html, #wlstock{margin:0;padding:0}
   #wlstock #page-index > div{padding-left:20px!important;padding-right:20px!important}
   }
 
-#wlstock /* ---- Enquire now form (scoped, underline system) ---- */
-.enq2{display:flex;flex-direction:column;min-width:0;font-family:'Gordita',sans-serif}
+
+#wlstock .enq2{display:flex;flex-direction:column;min-width:0;font-family:'Gordita',sans-serif}
 #wlstock .enq2-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:26px;row-gap:28px}
 #wlstock .enq2-f{position:relative;min-width:0}
 #wlstock .enq2-wide{grid-column:1 / -1}
@@ -127,14 +127,14 @@ html, #wlstock{margin:0;padding:0}
   #wlstock .enq2-pills{grid-template-columns:1fr 1fr}
 }
 
-#wlstock /* Hover states only on devices that can hover (touch taps otherwise stick). */
+
 @media (hover:hover) and (pointer:fine){
-  .card:hover{box-shadow:0 16px 44px rgba(12,15,18,.14);transform:translateY(-3px)}
-  .simcard:hover{border-color:var(--svink)}
-  .btn-dark:hover{background:#fff;color:var(--svink)}
-  .btn-line:hover{background:#F2EEE8}
-  .btn-orange:hover{background:#fff;color:var(--svorange)}
-  .pill:hover span{border-color:var(--svorange)}
+  #wlstock .card:hover{box-shadow:0 16px 44px rgba(12,15,18,.14);transform:translateY(-3px)}
+  #wlstock .simcard:hover{border-color:var(--svink)}
+  #wlstock .btn-dark:hover{background:#fff;color:var(--svink)}
+  #wlstock .btn-line:hover{background:#F2EEE8}
+  #wlstock .btn-orange:hover{background:#fff;color:var(--svorange)}
+  #wlstock .pill:hover span{border-color:var(--svorange)}
 }
 #wlstock a, #wlstock .linkbtn{transition:color .15s ease}
 #wlstock .thumbbtn{transition:border-color .15s ease,opacity .15s ease}
@@ -146,13 +146,13 @@ html, #wlstock{margin:0;padding:0}
 #wlstock .useg{transition:color .18s ease,border-color .18s ease}
 #wlstock .enq2-submit:active{transform:scale(.98)}
 
-#wlstock /* Content shell: same centred column as the header (.header-inner uses width:var(--col)). */
+
 @media (min-width:901px){
-  .shell{width:var(--col);max-width:100%;margin-inline:auto}
-  .shell aside.rail{padding-left:0}
-  .shell main.list{padding-right:0}
-  .shell .detailwrap > div{padding-left:0!important;padding-right:0!important}
-  .gutter.shellpad{padding-left:calc((100% - var(--col)) / 2);padding-right:calc((100% - var(--col)) / 2)}
+  #wlstock .shell{width:var(--col);max-width:100%;margin-inline:auto}
+  #wlstock .shell aside.rail{padding-left:0}
+  #wlstock .shell main.list{padding-right:0}
+  #wlstock .shell .detailwrap > div{padding-left:0!important;padding-right:0!important}
+  #wlstock .gutter.shellpad{padding-left:calc((100% - var(--col)) / 2);padding-right:calc((100% - var(--col)) / 2)}
 }
 
 #wlstock button, #wlstock a, #wlstock select, #wlstock input[type=range]{touch-action:manipulation}
@@ -173,8 +173,8 @@ html, #wlstock{margin:0;padding:0}
 
 @media (hover:hover) and (pointer:fine){#wlstock .galbtn:hover{background:var(--svorange);border-color:var(--svorange);color:#fff}}
 
-#wlstock /* Connected intent bar with sliding thumb (reference contact-form behaviour) */
-.enq2-seg{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;border:1px solid var(--svink);border-radius:28px;padding:5px;min-width:0}
+
+#wlstock .enq2-seg{position:relative;display:grid;grid-template-columns:repeat(4,1fr);margin-top:34px;border:1px solid var(--svink);border-radius:28px;padding:5px;min-width:0}
 #wlstock .enq2-thumb{position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px) / 4);background:var(--svorange);border-radius:22px;transition:transform .3s cubic-bezier(.23,1,.32,1);will-change:transform;z-index:0}
 #wlstock .enq2-thumb.moving{transform-origin:center;animation:thumbsquash .3s cubic-bezier(.23,1,.32,1)}
 @keyframes thumbsquash{50%{scale:1 .9}}
@@ -192,26 +192,26 @@ html, #wlstock{margin:0;padding:0}
   #wlstock .seg input:checked + span{background:var(--svorange);border-color:var(--svorange)}
 }
 
-#wlstock /* Results area never collapses under the user mid-filter (keeps the sticky rail put). */
-main.list{min-height:100vh}
 
-#wlstock /* COTY ribbon on catalogue cards: desktop +15%, #wlstock tablet +50% (mobile tuned later) */
-.coty-card{position:absolute;top:0;right:16px;width:55px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))}
+#wlstock main.list{min-height:100vh}
+
+
+#wlstock .coty-card{position:absolute;top:0;right:16px;width:55px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))}
 @media (min-width:601px) and (max-width:1100px){#wlstock .coty-card{width:72px}}
 @media (max-width:600px){#wlstock .coty-card{width:48px}}
 
-#wlstock /* Van pages on mobile: single sliding photo, #wlstock tighter type */
+
 @media (max-width:900px){
-  .vp-lower{padding-left:16px!important;padding-right:16px!important}
-  .vp-left{padding:0 16px!important}
-  .detailside{padding:0 16px 40px!important;max-width:none!important}
-  .vp-left h1{font-size:27px!important;line-height:1.1!important}
-  .vp-left > p{font-size:15px!important}
-  .vp-mediarow{grid-template-columns:1fr!important}
-  .vp-sidegrid{display:none!important}
-  #vp-thumbs{display:none!important}
-  .vp-wrap{margin-bottom:24px}
-  .galbtn{width:42px;height:42px;font-size:26px}
+  #wlstock .vp-lower{padding-left:16px!important;padding-right:16px!important}
+  #wlstock .vp-left{padding:0 16px!important}
+  #wlstock .detailside{padding:0 16px 40px!important;max-width:none!important}
+  #wlstock .vp-left h1{font-size:27px!important;line-height:1.1!important}
+  #wlstock .vp-left > p{font-size:15px!important}
+  #wlstock .vp-mediarow{grid-template-columns:1fr!important}
+  #wlstock .vp-sidegrid{display:none!important}
+  #wlstock #vp-thumbs{display:none!important}
+  #wlstock .vp-wrap{margin-bottom:24px}
+  #wlstock .galbtn{width:42px;height:42px;font-size:26px}
 }
 
 @media (max-width:900px){
@@ -222,11 +222,11 @@ main.list{min-height:100vh}
   #wlstock .vp-celld{display:none!important}
 }
 
-#wlstock /* Reference chips inside our page: never wider than the form column on small screens */
-.enquiry .chips{max-width:100%}
 
-#wlstock /* Side photo grid always matches the hero height: tiles crop, #wlstock never stretch the row. */
-.vp-mediarow{align-items:stretch}
+#wlstock .enquiry .chips{max-width:100%}
+
+
+#wlstock .vp-mediarow{align-items:stretch}
 #wlstock .vp-sidegrid{height:100%;min-height:0}
 #wlstock .vp-side{position:relative;overflow:hidden}
 #wlstock .vp-side img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -234,8 +234,8 @@ main.list{min-height:100vh}
 #wlstock .vp-main img.coty-vp{position:absolute;top:0;right:24px;left:auto;bottom:auto;width:80px;height:auto;object-fit:contain;filter:drop-shadow(0 5px 12px rgba(0,0,0,.42));z-index:2}
 @media (max-width:900px){#wlstock .vp-main img.coty-vp{width:38px;right:12px}}
 
-#wlstock /* Specification accordion (native details): same pattern on desktop and touch */
-.spec-acc{border-bottom:1px solid var(--line)}
+
+#wlstock .spec-acc{border-bottom:1px solid var(--line)}
 #wlstock .spec-acc summary{display:flex;align-items:center;gap:14px;padding:18px 2px;cursor:pointer;list-style:none;min-height:48px;color:var(--svink)}
 #wlstock .spec-acc summary::-webkit-details-marker{display:none}
 #wlstock .spec-acc summary .spec-chev{margin-left:auto;flex:none;transition:transform .22s cubic-bezier(.23,1,.32,1);color:var(--svink)}
@@ -248,8 +248,8 @@ main.list{min-height:100vh}
 }
 @keyframes specin{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 
-#wlstock /* Specification accordion: exclusive, #wlstock soft grid-rows animation (Safari-safe) */
-.spec-acc{border-bottom:1px solid var(--line)}
+
+#wlstock .spec-acc{border-bottom:1px solid var(--line)}
 #wlstock .spec-head{display:flex;align-items:center;gap:14px;width:100%;padding:18px 2px;cursor:pointer;background:none;border:0;min-height:48px;color:var(--svink);text-align:left}
 #wlstock .spec-head .spec-chev{margin-left:auto;flex:none;transition:transform .3s cubic-bezier(.23,1,.32,1);color:var(--svink)}
 #wlstock .spec-acc.open .spec-head .spec-chev{transform:rotate(180deg)}
@@ -261,8 +261,8 @@ main.list{min-height:100vh}
 #wlstock .spec-acc.open .spec-body{opacity:1;transform:none}
 #wlstock .spec-body > div:last-child{border-bottom:none}
 
-#wlstock /* Anchor-styled buttons: class owns text colour so hover inversions always stay readable */
-a.btn-orange{color:#fff}
+
+#wlstock a.btn-orange{color:#fff}
 #wlstock a.btn-dark{color:#fff}
 #wlstock a.btn-line{color:var(--svink)}
 @media (hover:hover) and (pointer:fine){
@@ -270,15 +270,15 @@ a.btn-orange{color:#fff}
   #wlstock a.btn-dark:hover{color:var(--svink)}
 }
 
-#wlstock /* Similar vans on mobile: soft horizontal snap strip instead of a stack */
+
 @media (max-width:900px){
-  .sim-row{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:8px;scrollbar-width:none}
-  .sim-row::-webkit-scrollbar{display:none}
-  .sim-row > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
+  #wlstock .sim-row{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;gap:14px;padding-bottom:8px;scrollbar-width:none}
+  #wlstock .sim-row::-webkit-scrollbar{display:none}
+  #wlstock .sim-row > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
 }
 
-#wlstock /* buy strip under the gallery: desktop/tablet show price + one Call now button on the right; phones stack the CTAs and hide the sidebar price block */
-.vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px 20px;margin-bottom:24px}
+
+#wlstock .vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px 20px;margin-bottom:24px}
 #wlstock .vpb-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 #wlstock .vpb-call{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
 #wlstock .vpb-ctas{display:none}
@@ -289,8 +289,8 @@ a.btn-orange{color:#fff}
   #wlstock .detailside .side-price, #wlstock .detailside .side-ctas{display:none}
 }
 
-#wlstock /* value tiles: span the page column edge to edge, #wlstock matching the header ruler */
-.valband{width:var(--col);margin:0 auto;display:flex;justify-content:space-between;align-items:start;gap:34px;flex-wrap:wrap}
+
+#wlstock .valband{width:var(--col);margin:0 auto;display:flex;justify-content:space-between;align-items:start;gap:34px;flex-wrap:wrap}
 #wlstock .valband>div{flex:0 1 auto}
 @media (max-width:900px){
   #wlstock .valband{width:100%;display:flex;flex-wrap:nowrap;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -298,24 +298,24 @@ a.btn-orange{color:#fff}
   #wlstock .valband>div{flex:0 0 100%;scroll-snap-align:center}
 }
 
-#wlstock /* key details live in the sidebar on desktop, #wlstock inside Specifications on phones */
-.spec-acc-key{display:none}
+
+#wlstock .spec-acc-key{display:none}
 @media (max-width:900px){
   #wlstock .spec-acc-key{display:block}
   #wlstock .detailside .side-facts{display:none}
 }
 
-#wlstock /* van page: sidebar never wraps below the content on desktop; on phones it moves above Similar vans (vanpage.js) */
+
 @media (min-width:901px){
-  .wrap:has(.detailside){flex-wrap:nowrap;gap:34px}
-  .wrap:has(.detailside) > main, .wrap:has(.detailside) > div:first-child{min-width:0}
+  #wlstock .wrap:has(.detailside){flex-wrap:nowrap;gap:34px}
+  #wlstock .wrap:has(.detailside) > main, #wlstock .wrap:has(.detailside) > div:first-child{min-width:0}
 }
 @media (max-width:900px){
   #wlstock .detailside{position:static!important;max-width:none!important;width:100%;padding-bottom:34px!important}
 }
 
-#wlstock /* styled van dropdown (desktop); phones keep the native picker */
-.vandrop{display:none}
+
+#wlstock .vandrop{display:none}
 @media (min-width:901px){
   #wlstock .dropified select{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none}
   #wlstock .dropified > .chev{display:none}
@@ -340,19 +340,19 @@ a.btn-orange{color:#fff}
 }
 @media (prefers-reduced-motion: reduce){#wlstock .vandrop-panel, #wlstock .vandrop-btn svg{transition:none}}
 
-#wlstock /* COTY ribbon on similar-van cards, #wlstock top-aligned like the catalogue cards */
-.simcard>div:first-child{overflow:hidden}
+
+#wlstock .simcard>div:first-child{overflow:hidden}
 #wlstock img.coty-sim{position:absolute;top:0;right:12px;width:40px;height:auto;z-index:2;filter:drop-shadow(0 2px 6px rgba(6,9,12,.25))}
 @media (max-width:900px){#wlstock img.coty-sim{width:36px}}
 
-#wlstock /* next-band: trimmed, #wlstock the old height left a long empty stretch of road under the copy */
-section.next-band{height:5.9rem}
+
+#wlstock section.next-band{height:5.9rem}
 @media (max-width:900px){#wlstock section.next-band{height:auto;min-height:0;max-height:none}
   #wlstock section.next-band .next-copy{min-height:300px;padding:44px 24px}}
 #wlstock section.next-band .media img{width:100%;height:100%;object-fit:cover;object-position:center 32%}
 
-#wlstock /* stat band (from the reference home page) */
-section.stat-band{width:100vw;margin-left:calc(50% - 50vw);height:3.03rem;background:#D57114;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.10rem;text-align:center}
+
+#wlstock section.stat-band{width:100vw;margin-left:calc(50% - 50vw);height:3.03rem;background:#D57114;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.10rem;text-align:center}
 #wlstock section.stat-band .stat-number{font-family:'Gordita',sans-serif;font-weight:700;font-size:.75rem;line-height:1;color:#fff}
 #wlstock section.stat-band .stat-label{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:.40rem;line-height:1;letter-spacing:.77em;text-indent:.77em;color:#FFEBCC}
 @media (max-width:900px){
@@ -360,8 +360,8 @@ section.stat-band{width:100vw;margin-left:calc(50% - 50vw);height:3.03rem;backgr
   #wlstock section.stat-band .stat-number{font-size:44px}
   #wlstock section.stat-band .stat-label{font-size:12px;letter-spacing:.3em;text-indent:.3em}
 }
-#wlstock /* review cards: equal height, #wlstock quote body fills so all cards match */
-section.service .service-quote{display:flex;flex-direction:column;justify-content:center}
+
+#wlstock section.service .service-quote{display:flex;flex-direction:column;justify-content:center}
 @media (max-width:900px){
   #wlstock section.service .service-quote{min-height:280px;justify-content:flex-start}
   #wlstock section.service .service-quote p{flex:1}
@@ -369,23 +369,23 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
   #wlstock section.service .service-media img{width:100%;height:100%;object-fit:cover}
 }
 
-#wlstock /* Specifications: range-page style side tabs on desktop, #wlstock accordion stays on phones */
-.spec-kicker{display:none}
+
+#wlstock .spec-kicker{display:none}
 
 #wlstock .spec-tab-t{font-size:15px;letter-spacing:.08em;text-transform:uppercase}
 
 @media (min-width:901px){
   #wlstock .spec-tabs + *{margin-top:0}
-  #wlstock /* Desktop type scale matched to wonderlandrv.com.au/range/solara/: section H2 32px aviano 900, #wlstock body 18px Gordita */
-  .spec-h2, #wlstock .sec-h2{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:32px!important;letter-spacing:.02em!important;line-height:1.05}
+  
+  #wlstock .spec-h2, #wlstock .sec-h2{font-family:'aviano-sans',sans-serif;font-weight:900;font-size:32px!important;letter-spacing:.02em!important;line-height:1.05}
   #wlstock h1.vp-h1{font-size:34px!important;line-height:1.12!important}
   #wlstock .wrap p{font-size:18px;line-height:1.5}
   #wlstock p[style*="max-width:60ch"]{font-size:18px!important;line-height:1.5!important}
   #wlstock p[style*="max-width:62ch"]{font-size:18px!important;line-height:1.5!important}
 }
 
-#wlstock /* Specifications at a glance — markup + styling lifted from the live range pages */
-.sg{display:grid;grid-template-columns:minmax(230px,300px) 1fr;gap:0 54px;align-items:start;margin-top:16px}
+
+#wlstock .sg{display:grid;grid-template-columns:minmax(230px,300px) 1fr;gap:0 54px;align-items:start;margin-top:16px}
 #wlstock .sg-rail{display:block;position:sticky;top:96px}
 #wlstock .sg-item{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;padding:16px 0;background:#fff;border:0;border-bottom:1px solid #1D1D1B;cursor:pointer;text-align:left;font:500 19px/1.5 'Gordita',sans-serif;color:#1D1D1B;-webkit-tap-highlight-color:transparent}
 #wlstock .sg-ico{flex:none;display:inline-flex;align-items:center}
@@ -413,19 +413,9 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 
 </style>
 <style>
-#wlstock /* ==========================================================================
-   Wonderland RV — Contact Us
-   Built 1:1 from the Figma export "Contact Us page-2.svg" (2376 × 6199).
 
-   SCALING MODEL
-   -------------
-   The design canvas is 2376 px wide. `html { font-size }#wlstock ` is set so that
-   1rem === 100 design px at any viewport width, #wlstock so every measurement below is
-   just the SVG coordinate divided by 100. That reproduces the artboard
-   proportionally at any screen size. The page stops growing past 2376 px.
-   ========================================================================== */
 
-/* ------------------------------------------------------------------ fonts */
+
 @font-face {
   font-family: "Aviano Sans";
   src: url("https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-font-AvianoSans-Black.woff2") format("woff2");
@@ -447,38 +437,35 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
   font-weight: 700; font-style: normal; font-display: swap;
 }
 
-#wlstock /* ----------------------------------------------------------------- tokens */
+
 :root {
-  --orange:       #E37921;   /* accent / buttons                */
-  --orange-deep:  #D57114;   /* header CTA, quote, headings     */
-  --blush:        #D99B88;   /* "your rules" band               */
-  --grey:         #B7B7B7;   /* form placeholders               */
-  --red:          #E61010;   /* required asterisk               */
+  --orange:       #E37921;   
+  --orange-deep:  #D57114;   
+  --blush:        #D99B88;   
+  --grey:         #B7B7B7;   
+  --red:          #E61010;   
   --ink:          #000;
 
-  /* strength of the gradient that keeps white type readable over a photo.
-     Set to 0 to show the images completely untouched. */
+  
   --scrim: 1;
 
   --aviano: "Aviano Sans", "Trebuchet MS", sans-serif;
   --gordita: "Gordita", "Helvetica Neue", Arial, sans-serif;
 
-  /* breathing room above and below every text section */
+  
   --section-gap: 1.20rem;
-  /* one spacing value for every item in the header bar */
-  --bar-gap: 0.39rem;   /* x1.5 */
+  
+  --bar-gap: 0.39rem;   
 
-  /* Page margins cut to 3/4 of the original 501.5, so the content column
-     grows 1373 -> 1624. Everything inside keeps its own size. */
+  
   --page-margin: 3.76rem;
   --col: 16.24rem;
   --gutter: 5.015rem;
 
-  /* Type scale — four tiers, reviews deliberately excluded and tuned apart.
-       heading 56 · subheading 40 · body 28 · caption 20               */
+  
   --t-heading: 0.56rem;
   --t-sub:     0.32rem;
-  --t-cta:     0.30rem;   /* between subheading and body */
+  --t-cta:     0.30rem;   
   --t-body:    0.28rem;
   --t-caption: 0.20rem;
   --lh-sub:     0.42rem;
@@ -486,11 +473,11 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
   --lh-caption: 0.30rem;
 }
 
-#wlstock /* ------------------------------------------------------------------- base */
-*, #wlstock *::before, #wlstock *::after { box-sizing: border-box; }
+
+#wlstock, #wlstock *, #wlstock *::before, #wlstock *::after { box-sizing: border-box; }
 
 html {
-  /* 1rem = 100 design px */
+  
   font-size: min(calc(100vw / 23.76), 100px);
   -webkit-text-size-adjust: 100%;
 }
@@ -511,8 +498,8 @@ html {
 #wlstock p { margin: 0; }
 #wlstock h1, #wlstock h2, #wlstock h3, #wlstock h4 { margin: 0; font-weight: 400; }
 
-#wlstock /* Display headings are set in Aviano Sans Black */
-.hero h1, #wlstock .enquiry-title, #wlstock .unseen-title, #wlstock .experience-title { font-weight: 900; }
+
+#wlstock .hero h1, #wlstock .enquiry-title, #wlstock .unseen-title, #wlstock .experience-title { font-weight: 900; }
 #wlstock ul { margin: 0; padding: 0; list-style: none; }
 #wlstock button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 
@@ -526,10 +513,8 @@ html {
   margin-inline: auto;
 }
 
-#wlstock /* --------------------------------------------------- image placeholders --
-   Any <img> that resolves removes nothing; a missing file removes itself
-   (inline onerror) and leaves this labelled placeholder visible.           */
-.ph {
+
+#wlstock .ph {
   position: relative;
   background:
     repeating-linear-gradient(45deg, #ececec 0 0.14rem, #f5f5f5 0.14rem 0.28rem);
@@ -549,9 +534,8 @@ html {
 #wlstock .ph > img { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
 #wlstock .media > img, #wlstock .media > video { width: 100%; height: 100%; object-fit: cover; }
 
-#wlstock /* Photos carry white headings at the bottom edge, #wlstock so the foreground gets a
-   gradient to hold contrast. Governed by --scrim; 0 disables it entirely. */
-.hero .media::before {
+
+#wlstock .hero .media::before {
   content: "";
   position: absolute; inset: 0; z-index: 2;
   pointer-events: none;
@@ -561,19 +545,14 @@ html {
     rgba(0,0,0,0) 44%);
 }
 
-#wlstock /* Text stops growing past 2376, #wlstock but the photography and video should never
-   leave white bars at the edges — so the full-bleed bands break out of the
-   capped body and always span the viewport. Their inner .container still
-   centres on the same axis, #wlstock since body is centred too. */
-.hero, #wlstock .video-band, #wlstock .experience, #wlstock .rules-band, #wlstock .next-band, #wlstock .site-header {
+
+#wlstock .hero, #wlstock .video-band, #wlstock .experience, #wlstock .rules-band, #wlstock .next-band, #wlstock .site-header {
   width: 100vw;
   margin-left: calc(50% - 50vw);
 }
 
-#wlstock /* ==========================================================================
-   HEADER   (y 0 – 143)
-   ========================================================================== */
-.site-header {
+
+#wlstock .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
@@ -586,11 +565,11 @@ html {
   margin-inline: auto;
   height: 100%;
   display: flex;
-  align-items: center;          /* everything centres on the bar's midline */
+  align-items: center;          
 }
 
-#wlstock .logo { flex: none; width: 3.595rem; }   #wlstock /* 359.506 × 67 */
-.logo img { width: 100%; height: auto; }
+#wlstock .logo { flex: none; width: 3.595rem; }   
+#wlstock .logo img { width: 100%; height: auto; }
 
 #wlstock .main-nav {
   display: flex;
@@ -598,7 +577,7 @@ html {
   gap: var(--bar-gap);
   margin-left: auto;
   font-family: var(--aviano);
-  font-size: 0.216rem;          /* x1.2 */
+  font-size: 0.216rem;          
   line-height: 1;
   white-space: nowrap;
 }
@@ -623,8 +602,8 @@ html {
   background: var(--orange-deep);
   color: #fff;
   font-family: var(--aviano);
-  /* moves with the nav links so the bar stays one size, as it is today */
-  font-size: 0.216rem;          /* x1.2 */
+  
+  font-size: 0.216rem;          
   font-weight: 900;
   line-height: 0.46rem;
   text-align: center;
@@ -637,10 +616,8 @@ html {
 
 #wlstock .nav-toggle { display: none; }
 
-#wlstock /* ==========================================================================
-   HERO   (y 143 – 1024, image 2378 × 881)
-   ========================================================================== */
-.hero { position: relative; height: 8.81rem; }
+
+#wlstock .hero { position: relative; height: 8.81rem; }
 #wlstock .hero .media { position: absolute; inset: 0; }
 #wlstock .hero .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
 
@@ -651,7 +628,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 0.984rem;     /* last baseline 914.4 → 1024 */
+  padding-bottom: 0.984rem;     
   color: #fff;
 }
 #wlstock .hero h1 {
@@ -659,7 +636,7 @@ html {
   font-size: 0.96rem;
   line-height: 1;
   letter-spacing: -0.05em;
-  margin-bottom: 0.20rem;       /* SVG had these almost touching; opened up */
+  margin-bottom: 0.20rem;       
 }
 #wlstock .hero-sub {
   font-family: var(--aviano);
@@ -667,10 +644,8 @@ html {
   line-height: 1;
 }
 
-#wlstock /* ==========================================================================
-   READY FOR ADVENTURE + FORM   (y 1024 – 2293)
-   ========================================================================== */
-.enquiry { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+
+#wlstock .enquiry { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
 
 #wlstock .enquiry-title {
   font-family: var(--aviano);
@@ -680,51 +655,38 @@ html {
 
 #wlstock .enquiry-grid {
   display: grid;
-  /* The artboard had these two columns meeting with no gutter and filling the
-     content column exactly. Cutting the margins widened that column from
-     13.805 to 16.24, so both columns and everything sized inside the form are
-     scaled by the same 1.17639 to fill it again. Every proportion inside the
-     form is preserved — only the scale changes, the same treatment the
-     homepage grids got when the margins moved. Type sizes are untouched.
-     The copy's line breaks are hand-set, so the left column can widen without
-     re-wrapping a word. */
-  /* The gap between the copy and the form is set from the reference: it runs
-     from where the copy text ends, at 712, to the form's left edge, which puts
-     the form on 841 and makes the gap 129. The left column is 4.65 to land it
-     there; the form takes 11.483 so the chips pill still finishes on the right
-     margin. Every width inside the form scales by the same 1.24275, so its
-     proportions hold and the type is untouched. The copy's line breaks are
-     hand-set, so its column can change width without re-wrapping a word. */
+  
+  
   grid-template-columns: 4.65rem 11.483rem;
   padding-top: 0.706rem;
 }
 
-#wlstock /* -------------------------------------------------------- left column ---- */
-.enquiry-copy { display: flex; flex-direction: column; }
+
+#wlstock .enquiry-copy { display: flex; flex-direction: column; }
 
 #wlstock .enquiry-copy .lede {
   font-family: var(--gordita);
   font-size: 0.36rem;
   line-height: 0.44rem;
 }
-#wlstock .enquiry-copy .lede + .lede { margin-top: 0.44rem; }   #wlstock /* the blank line */
-.lede-accent { color: var(--orange); font-weight: 500; }
+#wlstock .enquiry-copy .lede + .lede { margin-top: 0.44rem; }   
+#wlstock .lede-accent { color: var(--orange); font-weight: 500; }
 
 #wlstock .reachout {
-  margin-top: auto;             /* bottom-aligns with the Submit button */
+  margin-top: auto;             
   color: var(--orange);
   font-weight: 500;
   font-size: 0.24rem;
   line-height: 0.32rem;
 }
 
-#wlstock /* -------------------------------------------------------------- form ---- */
-.enquiry-form { padding-top: 0.165rem; }
+
+#wlstock .enquiry-form { padding-top: 0.165rem; }
 
 #wlstock .field-grid {
   display: grid;
-  grid-template-columns: 5.3562rem 5.493rem;   /* x1.24275 */
-  grid-template-rows: 0.40rem 1.08rem 1.0925rem;  /* rules on 1385.5 / 1493.5 / 1602.6 */
+  grid-template-columns: 5.3562rem 5.493rem;   
+  grid-template-rows: 0.40rem 1.08rem 1.0925rem;  
   column-gap: 0.3604rem;
   align-items: end;
   padding-left: 0.1864rem;
@@ -736,7 +698,7 @@ html {
   display: block;
   width: 100%;
   height: 0.40rem;
-  padding: 0 0.24rem 0.134rem 0.12rem;   /* lifts the label off the rule */
+  padding: 0 0.24rem 0.134rem 0.12rem;   
   font-family: var(--gordita);
   font-size: 0.24rem;
   line-height: 1;
@@ -759,8 +721,8 @@ html {
   pointer-events: none;
 }
 
-#wlstock /* State — rounded select, #wlstock sits 14 px left of the underline fields */
-.field--select {
+
+#wlstock .field--select {
   margin-left: -0.174rem;
   width: 5.5302rem;
 }
@@ -768,7 +730,7 @@ html {
   -webkit-appearance: none; appearance: none;
   display: block;
   width: 100%;
-  height: 0.6925rem;            /* 69.25 */
+  height: 0.6925rem;            
   padding: 0 0.60rem 0 0.26rem;
   font-family: var(--gordita);
   font-size: 0.24rem;
@@ -780,17 +742,15 @@ html {
 #wlstock .field--select select:valid { color: var(--ink); }
 #wlstock .field--select .chev {
   position: absolute;
-  left: 1.02rem; top: 0.335rem;   /* starting x; script re-places it per value */
+  left: 1.02rem; top: 0.335rem;   
   width: 0.14rem; height: 0.08rem;
   pointer-events: none;
   transition: left .18s;
 }
 #wlstock .field--select .req { right: 0.22rem; top: 0.30rem; }
 
-#wlstock /* Autofill stays available, #wlstock but Chrome's contacts button is suppressed so it
-   can't collide with the required asterisk, #wlstock and the yellow autofill wash is
-   held off with a transition that never lands. */
-input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-auto-fill-button {
+
+#wlstock input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-auto-fill-button {
   display: none !important;
   visibility: hidden;
   pointer-events: none;
@@ -804,16 +764,16 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   transition: background-color 9999s ease-in-out 0s;
 }
 
-#wlstock /* focus: no browser-blue ring, #wlstock brand orange instead */
-.field input:focus, #wlstock .field select:focus, #wlstock .field textarea:focus { outline: none; }
+
+#wlstock .field input:focus, #wlstock .field select:focus, #wlstock .field textarea:focus { outline: none; }
 #wlstock .field--line input:focus { box-shadow: 0 1px 0 var(--orange); border-bottom-color: var(--orange); }
 #wlstock .field--select select:focus, #wlstock .field--area textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 1px var(--orange); }
 
-#wlstock /* --------------------------------------------------- enquiry-type chips -- */
-.chips {
+
+#wlstock .chips {
   margin: 0.396rem 0 0 -0.1118rem;
-  width: 11.6974rem;                /* the pill still overhangs the fields as drawn */
-  height: 1.10rem;                /* trimmed; two-line options set the floor */
+  width: 11.6974rem;                
+  height: 1.10rem;                
   padding: 0.08rem 0;
   border: 0.0075rem solid var(--ink);
   border-radius: 0.353rem;
@@ -822,8 +782,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 }
 #wlstock .chips legend { display: none; }
 
-#wlstock /* One indicator that travels between cells, #wlstock rather than each cell lighting up */
-.chips-thumb {
+
+#wlstock .chips-thumb {
   position: absolute;
   top: 0.08rem; bottom: 0.08rem;
   left: 0; width: 0;
@@ -838,18 +798,18 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
     transform .46s cubic-bezier(.65, 0, .35, 1);
 }
 #wlstock .chips-thumb.is-init { transition: none; }
-#wlstock .chips-thumb.is-moving { transform: scaleY(0.90); }   #wlstock /* squashes as it travels */
+#wlstock .chips-thumb.is-moving { transform: scaleY(0.90); }   
 
-.chip {
+#wlstock .chip {
   flex: 1 1 0;
-  min-width: 0;                 /* without this, min-content keeps cells uneven */
+  min-width: 0;                 
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
-#wlstock .chip + .chip::before {          /* cell divider, overhanging the pill slightly */
+#wlstock .chip + .chip::before {          
   content: "";
   position: absolute; left: 0; top: -0.00875rem;
   width: 1px; height: calc(100% + 0.0175rem);
@@ -857,30 +817,30 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 }
 #wlstock .chip input { position: absolute; opacity: 0; pointer-events: none; }
 
-#wlstock /* the pill itself is inset inside its cell so it never touches a divider */
-.chip > span {
+
+#wlstock .chip > span {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: calc(100% - 0.16rem);    /* 8 clear on each side, matching top/bottom */
+  width: calc(100% - 0.16rem);    
   height: 100%;
   border-radius: 0.246rem;
-  font-size: 0.32rem;             /* +33% */
+  font-size: 0.32rem;             
   line-height: 0.38rem;
   transition: color .28s ease, font-weight .28s;
 }
 #wlstock .chip:has(input:checked) > span { color: #fff; font-weight: 700; }
 #wlstock .chip:has(input:focus-visible) > span { box-shadow: 0 0 0 2px var(--orange-deep); }
 
-#wlstock /* --------------------------------------------------------------- notes -- */
-.field--area { margin-top: 0.3375rem; }   #wlstock /* 1739.6 → 1773.4 */
-.field--area textarea {
+
+#wlstock .field--area { margin-top: 0.3375rem; }   
+#wlstock .field--area textarea {
   display: block;
   width: 11.4737rem;
-  height: 1.3225rem;            /* 132.25 */
+  height: 1.3225rem;            
   padding: 0.134rem 0.26rem 0.20rem 0.199rem;
   font-family: var(--gordita);
   font-size: 0.24rem;
@@ -896,14 +856,14 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   display: flex;
   align-items: flex-start;
   gap: 0.145rem;
-  margin-top: 0.247rem;         /* 1905.6 → 1930.4 */
+  margin-top: 0.247rem;         
   padding-left: 0.0135rem;
 }
 #wlstock .consent input[type="checkbox"] {
   -webkit-appearance: none; appearance: none;
   flex: none;
   margin: 0.045rem 0 0;
-  width: 0.2825rem; height: 0.2825rem;   /* r = 14.125 */
+  width: 0.2825rem; height: 0.2825rem;   
   border: 0.0075rem solid var(--ink);
   border-radius: 50%;
   cursor: pointer;
@@ -914,7 +874,7 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 52%;          /* keeps the tick clear of the circumference */
+  background-size: 52%;          
 }
 #wlstock .consent label {
   font-size: 0.24rem;
@@ -929,13 +889,13 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 }
 
 #wlstock .btn-submit {
-  margin-top: 0.350rem;         /* → y 2052 */
-  margin-left: 0.01rem;         /* 958 → 959 */
+  margin-top: 0.350rem;         
+  margin-left: 0.01rem;         
   width: 3.14rem; height: 0.70rem;
   background: var(--orange);
   color: #fff;
   font-family: var(--aviano);
-  font-weight: 900;             /* Aviano Sans Black, as the other CTAs */
+  font-weight: 900;             
   font-size: 0.18rem;
   line-height: 0.70rem;
   text-align: center;
@@ -946,14 +906,11 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .btn-submit:hover, #wlstock .btn-submit:focus-visible { background: #fff; color: var(--btn-fill); }
 #wlstock .btn-submit:active { background: var(--btn-fill); color: #fff; }
 
-#wlstock /* ==========================================================================
-   VIDEO   (y 2293 – 3477, full bleed 2389 × 1184)
-   ========================================================================== */
-.video-frame {
+
+#wlstock .video-frame {
   position: relative;
   width: 100%;
-  /* Back to the artboard band. The clip is 16:9, so filling this loses a
-     little top and bottom rather than leaving bars down the sides. */
+  
   aspect-ratio: 2389 / 1184;
   overflow: hidden;
   background-color: #111;
@@ -963,22 +920,19 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  height: 56.25vw;              /* 16:9 of the band width, so it fills and the
-                                   crop falls on the top and bottom edges */
+  height: 56.25vw;              
   min-height: 100%;
   border: 0;
   object-fit: cover;
   z-index: 2;
 }
 
-#wlstock /* --- video controls: mute and captions, #wlstock top right, #wlstock on hover --------------- */
-.video-controls {
+
+#wlstock .video-controls {
   position: absolute;
   top: 88%; left: 50%;
-  transform: translate(-50%, -50%);   /* centred across, low in the frame */
-  /* Above .home-hero-copy, which is also 4. Tied z-indexes fall back to DOM
-     order and the copy comes second, so at 4 the hero's controls painted (and
-     clicked) underneath it. */
+  transform: translate(-50%, -50%);   
+  
   z-index: 6;
   display: flex;
   gap: 0.12rem;
@@ -1004,19 +958,17 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .video-ctl[aria-pressed="true"] { background: var(--orange-deep); }
 #wlstock .video-poster { width: 100%; height: 100%; object-fit: cover; }
 
-#wlstock /* --------------------------------------------------- "Tap for sound" ------
-   Appears three seconds after the video has been on screen and only while it
-   is still muted, #wlstock sitting just under the sound button it points at. */
-.video-nudge {
+
+#wlstock .video-nudge {
   position: absolute;
   top: 0.24rem; left: 50%;
   z-index: 4;
-  padding: 0.27rem 0.48rem;     /* x3 */
+  padding: 0.27rem 0.48rem;     
   border-radius: 0.18rem;
   background: rgba(0, 0, 0, 0.62);
   color: #fff;
   font-family: var(--gordita);
-  font-size: 0.42rem;           /* x3 */
+  font-size: 0.42rem;           
   line-height: 1;
   letter-spacing: 0.02em;
   white-space: nowrap;
@@ -1027,14 +979,12 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   transition: opacity .45s ease, transform .45s ease;
 }
 #wlstock .video-nudge.is-on { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
-#wlstock /* the buttons fade in on hover, #wlstock but the prompt has to be able to stand alone */
-.video-frame:has(.video-nudge.is-on) .video-controls { opacity: 1; }
 
-#wlstock /* ==========================================================================
-   THINGS YOU CAN'T SEE   (y 3477 – 4187)
-   ========================================================================== */
-/* the video band and this block are one section, #wlstock so they sit at half a gap */
-.unseen { padding-top: calc(var(--section-gap) / 2); padding-bottom: var(--section-gap); }
+#wlstock .video-frame:has(.video-nudge.is-on) .video-controls { opacity: 1; }
+
+
+
+#wlstock .unseen { padding-top: calc(var(--section-gap) / 2); padding-bottom: var(--section-gap); }
 
 #wlstock .unseen-title {
   font-family: var(--aviano);
@@ -1042,24 +992,24 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   line-height: 1;
 }
 #wlstock .unseen-sub {
-  margin-top: 0.16rem;          /* clear gap under the heading */
+  margin-top: 0.16rem;          
   font-family: var(--aviano);
   font-size: 0.40rem;
   line-height: 1;
   color: var(--orange-deep);
 }
-#wlstock /* CTA, #wlstock so it weights up on hover rather than drawing a rule */
-.unseen-sub a { font-weight: 400; }
+
+#wlstock .unseen-sub a { font-weight: 400; }
 #wlstock .unseen-sub a:hover, #wlstock .unseen-sub a:focus-visible { font-weight: 900; }
 
 #wlstock .quote-block {
   position: relative;
-  margin-top: 1.214rem;         /* → the divider band, y 3794 */
+  margin-top: 1.214rem;         
   padding-top: 0.210rem;
   display: grid;
-  grid-template-columns: 4.33rem 9.40rem;   /* split on the rule at x 934.5 */
+  grid-template-columns: 4.33rem 9.40rem;   
 }
-#wlstock .quote-block::before {          /* vertical rule, x 934.5, y 3794 – 4014 */
+#wlstock .quote-block::before {          
   content: "";
   position: absolute;
   left: 4.33rem; top: 0;
@@ -1078,17 +1028,17 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .quote-left {
   margin: 0;
   font-size: 0.48rem;
-  line-height: 0.5746rem;       /* 0.52 +30% then -15% */
+  line-height: 0.5746rem;       
   color: var(--orange-deep);
 }
 #wlstock .quote-right {
-  padding-left: 0.245rem;       /* rule at 934.5 → text at 959 */
+  padding-left: 0.245rem;       
   font-size: 0.32rem;
   line-height: 0.44rem;
 }
 
 #wlstock .quote-attr {
-  margin-top: 0.430rem;         /* 3958.2 → 4036.6 */
+  margin-top: 0.430rem;         
   color: var(--orange-deep);
   font-size: 0.24rem;
   line-height: 0.32rem;
@@ -1096,10 +1046,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .quote-name { display: block; font-weight: 700; }
 #wlstock .quote-role { display: block; }
 
-#wlstock /* ==========================================================================
-   THE WONDERLAND EXPERIENCE   (y 4187 – 4956, image 2389 × 769)
-   ========================================================================== */
-.experience {
+
+#wlstock .experience {
   position: relative;
   height: 7.69rem;
   border-radius: 0.15rem;
@@ -1119,21 +1067,19 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .experience-title a:hover, #wlstock .experience-title a:focus-visible { color: var(--orange); }
 #wlstock .experience-title {
   font-family: var(--aviano);
-  font-size: 0.80rem;           /* 96 would need 1574 on one line; column is 1373 */
+  font-size: 0.80rem;           
   line-height: 0.83rem;
   white-space: nowrap;
 }
 #wlstock .experience-body {
-  margin-top: 0.34rem;          /* close enough to read with the title */
+  margin-top: 0.34rem;          
   font-weight: 500;
   font-size: 0.36rem;
   line-height: 0.39rem;
 }
 
-#wlstock /* ==========================================================================
-   YOUR TRAVELS / YOUR RULES   (y 4956 – 5177)
-   ========================================================================== */
-.rules-band {
+
+#wlstock .rules-band {
   height: 2.21rem;
   background: var(--blush);
   display: flex;
@@ -1150,13 +1096,11 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   text-align: center;
 }
 
-#wlstock /* ==========================================================================
-   WHERE TO NEXT   — carried over from the live site's contact page
-   ========================================================================== */
-.next-band { position: relative; height: 8.26rem; }   #wlstock /* was 10.70 */
-.next-band .media { position: absolute; inset: 0; }
-#wlstock .next-band .media video { object-position: center 20%; }   #wlstock /* clip's sea/sky sits in its top ~20% — a centred crop shows none of it */
-.next-band .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
+
+#wlstock .next-band { position: relative; height: 8.26rem; }   
+#wlstock .next-band .media { position: absolute; inset: 0; }
+#wlstock .next-band .media video { object-position: center 20%; }   
+#wlstock .next-band .media::after { color: #fff; text-shadow: 0 0 0.06rem rgba(0,0,0,.5); }
 
 #wlstock .next-copy {
   position: relative;
@@ -1183,7 +1127,7 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   background: #DB7627;
   color: #fff;
   font-family: var(--aviano);
-  font-weight: 900;             /* Aviano Sans Black, as the other CTAs */
+  font-weight: 900;             
   font-size: 0.18rem;
   line-height: 1;
   padding: 0.30rem 0.62rem;
@@ -1195,17 +1139,15 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .btn-next:hover, #wlstock .btn-next:focus-visible { background: #fff; color: var(--btn-fill); }
 #wlstock .btn-next:active { background: var(--btn-fill); color: #fff; }
 
-#wlstock /* ==========================================================================
-   FOOTER   (y 5177 – 6199)
-   ========================================================================== */
-.site-footer {
+
+#wlstock .site-footer {
   padding-top: 0.99rem;
   padding-bottom: 0.41rem;
   font-size: 0.19rem;
   line-height: 0.29rem;
 }
 #wlstock .footer-inner {
-  width: var(--col);            /* same column as the rest of the page */
+  width: var(--col);            
   margin-inline: auto;
   display: grid;
   grid-template-columns: 6.61rem 9.63rem;
@@ -1242,12 +1184,12 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 
 #wlstock .made-in { width: 3.12rem; height: auto; margin-top: 0.67rem; }
 
-#wlstock /* ---------------------------------------------------------- right side -- */
-.newsletter .footer-head { margin-top: 0.49rem; margin-bottom: 0; }
+
+#wlstock .newsletter .footer-head { margin-top: 0.49rem; margin-bottom: 0; }
 
 #wlstock .newsletter-form {
   display: grid;
-  grid-template-columns: 7.49rem 1.70rem;   /* Subscribe aligns to LOCATIONS */
+  grid-template-columns: 7.49rem 1.70rem;   
   column-gap: 0.44rem;
   align-items: end;
   margin-top: 0.29rem;
@@ -1282,24 +1224,16 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .link-col li { line-height: 0.27rem; margin-bottom: 0.19rem; }
 #wlstock .link-col a:hover { color: var(--orange-deep); }
 
-#wlstock /* ------------------------------------------------------------- legal ---- */
-.footer-legal-left { font-size: 0.16rem; line-height: 0.315rem; color: #444; }
+
+#wlstock .footer-legal-left { font-size: 0.16rem; line-height: 0.315rem; color: #444; }
 #wlstock .footer-legal-left a:hover { color: var(--orange-deep); }
 #wlstock .footer-legal-right { font-size: 0.156rem; line-height: 0.265rem; color: #444; }
 #wlstock .footer-legal-right p + p { margin-top: 0.13rem; }
 
-#wlstock /* ==========================================================================
-   RESPONSIVE
-   Below 900 px the 2376-wide artboard is no longer legible when scaled, #wlstock so
-   the page switches to a stacked layout with real type sizes.
-   ========================================================================== */
-/* ==========================================================================
-   LEGENDARY SERVICE   — reviews on a slider. Shared, #wlstock because the homepage and
-   the contact page both carry this section, #wlstock so neither stylesheet owns it
-   ========================================================================== */
-/* A full section gap either side by default. On the homepage the neighbouring
-   sections already carry their own, #wlstock so homepage.css tightens it back there. */
-.service { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
+
+
+
+#wlstock .service { padding-top: var(--section-gap); padding-bottom: var(--section-gap); }
 #wlstock .service-head { text-align: center; }
 #wlstock .service-title {
   font-family: var(--aviano);
@@ -1323,7 +1257,7 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   margin-left: calc(50% - 50vw);
   margin-top: 0.55rem;
 }
-#wlstock .service-band::before {                 /* the #FFF2DC panel behind the slides */
+#wlstock .service-band::before {                 
   content: "";
   position: absolute;
   left: 0; right: 0; top: 0.61rem;
@@ -1347,8 +1281,7 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   width: 56.9%;
   height: 6.74rem;
   flex: none;
-  /* lifts the photo off the cream panel: offset right, negative spread keeps
-     it from spilling along the top and bottom edges */
+  
   box-shadow: 0.16rem 0 0.34rem -0.10rem rgba(0, 0, 0, 0.30);
 }
 #wlstock .service-media img { width: 100%; height: 100%; object-fit: cover; }
@@ -1356,20 +1289,19 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   position: relative;
   z-index: 1;
   flex: none;
-  /* media 56.9% + this 4.6% gap + 22.68% lands the right edge on the content
-     column (84.18% of the band), so reviews can't run past the margin */
+  
   width: 22.68%;
   margin: 0 0 0 4.6%;
-  padding-top: 0.10rem;         /* review + attribution drop 10 */
+  padding-top: 0.10rem;         
   color: var(--orange-deep);
 }
 #wlstock .service-quote p {
-  font-size: 0.28rem;           /* review reads larger than the name */
+  font-size: 0.28rem;           
   font-style: italic;
-  line-height: 0.42rem;         /* opened up; the reviews run several lines */
+  line-height: 0.42rem;         
 }
-#wlstock /* the mark reads orange here, #wlstock against darker review text */
-.service-quote .qmark { width: 1.01376rem; fill: var(--orange); }
+
+#wlstock .service-quote .qmark { width: 1.01376rem; fill: var(--orange); }
 #wlstock .service-name { display: block; margin-top: 0.42rem; font-size: 0.21rem; font-weight: 700; line-height: 0.28rem; }
 #wlstock .service-role { display: block; font-size: 0.21rem; line-height: 0.28rem; }
 
@@ -1391,8 +1323,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 #wlstock .service-arrow--prev { left: 0.87rem; }
 #wlstock .service-arrow--next { right: 0.83rem; }
 
-#wlstock /* The mark is a trimmed outline, #wlstock so the element's box is the mark itself. */
-.qmark {
+
+#wlstock .qmark {
   position: absolute;
   right: calc(100% - 0.15rem);
   bottom: 100%;
@@ -1405,17 +1337,12 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 
 @media (max-width: 900px) {
   html { font-size: 16px; }
-  #wlstock /* body's own size is a literal rem from the artboard, #wlstock which lands at 3.84px
-     once rem is flat 16 — harmless where a child sets its own size, #wlstock poison for
-     anything inheriting or using em. It joins the scale here. */
-  body { max-width: none; font-size: var(--t-body); line-height: var(--lh-body); }
+  
+  #wlstock { max-width: none; font-size: var(--t-body); line-height: var(--lh-body); }
 
-  #wlstock /* ---- mobile type ----------------------------------------------------
-     The artboard scale stops here: rem is a flat 16px, #wlstock so every 0.xx rem
-     size would collapse to a few pixels. The four tiers get real phone
-     sizes instead, #wlstock and nothing is allowed below the 11px floor. */
+  
   :root {
-    --t-display: 34px;          /* the hero line, and nothing else */
+    --t-display: 34px;          
     --t-heading: 30px;
     --t-sub:     16px;
     --t-cta:     16px;
@@ -1427,36 +1354,26 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
     --lh-body:   23px;
     --lh-caption:18px;
     --page-margin: 24px;
-    --radius: 10px;             /* one curvature: the sheets carried ten */
+    --radius: 10px;             
   }
 
-  #wlstock /* ---- hard breaks -----------------------------------------------------
-     The prose carries line breaks hand-set for the 2376 artboard. Honoured
-     on a 342 column they produce lines a third of the measure wide, #wlstock which is
-     what reads as broken text. Prose wraps to the column here instead. The
-     footer's address keeps its breaks, #wlstock because there the line IS the data, #wlstock and so does the hero, #wlstock which is a two-line lockup by design. */
-  .pull-quote p br, #wlstock .testi-quote p br, #wlstock .intro p br, #wlstock .solara-lede br, #wlstock .solara-body br, #wlstock .range-lede br, #wlstock .why-text br, #wlstock .home-contact-lede br, #wlstock .enquiry-copy .lede br, #wlstock .reachout br, #wlstock .quote-left br, #wlstock .quote-right br, #wlstock .experience-body br { display: none; }
+  
+  #wlstock .pull-quote p br, #wlstock .testi-quote p br, #wlstock .intro p br, #wlstock .solara-lede br, #wlstock .solara-body br, #wlstock .range-lede br, #wlstock .why-text br, #wlstock .home-contact-lede br, #wlstock .enquiry-copy .lede br, #wlstock .reachout br, #wlstock .quote-left br, #wlstock .quote-right br, #wlstock .experience-body br { display: none; }
 
   #wlstock .container, #wlstock .header-inner, #wlstock .footer-inner { width: auto; margin-inline: 0; padding-inline: 24px; }
 
-  #wlstock /* Full-bleed sections break out with 100vw, #wlstock which counts the scrollbar the
-     viewport does not give back — 16px of sideways scroll on a phone. They are
-     already the full width here, #wlstock so the break-out is simply switched off. */
-  .pull, #wlstock .testi, #wlstock .stat-band, #wlstock .service-band, #wlstock .brand-marquee, #wlstock .band, #wlstock .next-band, #wlstock .experience, #wlstock .rules-band, #wlstock .coty-figure, #wlstock .site-header {
+  
+  #wlstock .pull, #wlstock .testi, #wlstock .stat-band, #wlstock .service-band, #wlstock .brand-marquee, #wlstock .band, #wlstock .next-band, #wlstock .experience, #wlstock .rules-band, #wlstock .coty-figure, #wlstock .site-header {
     width: 100%; margin-left: 0;
   }
 
-  #wlstock /* ---- header ---- */
-  .site-header { height: 64px; border-bottom: 1px solid #eee; }
+  
+  #wlstock .site-header { height: 64px; border-bottom: 1px solid #eee; }
   #wlstock .header-inner { padding-top: 0; }
-  #wlstock /* +25%, #wlstock 150 to 188. The mark is 359.5 x 67, #wlstock so it stands 35 in the 64 bar, #wlstock centred by .header-inner's align-items with 14 clear above and below the
-     white. (No display rule needed on the image: img is already block from the
-     reset, so the link box is the artwork's height with no baseline gap.) */
-  .logo { width: 188px; }
-  #wlstock /* The panel is full width and the items centre on it. align-items places each
-     link's box, #wlstock text-align handles the inside of that box -- a box wider than
-     its word would otherwise leave the word ragged within it. */
-  .main-nav {
+  
+  #wlstock .logo { width: 188px; }
+  
+  #wlstock .main-nav {
     position: absolute; left: 0; right: 0; top: 64px; z-index: 30;
     flex-direction: column; align-items: center; gap: 0;
     text-align: center;
@@ -1475,53 +1392,39 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   }
   #wlstock .nav-toggle span { display: block; height: 2px; background: #000; margin: 5px 0; }
 
-  #wlstock /* ---- hero ---- */
-  .hero { height: 62vw; min-height: 320px; }
+  
+  #wlstock .hero { height: 62vw; min-height: 320px; }
   #wlstock .hero-copy { padding-bottom: 32px; }
   #wlstock .hero h1 { font-size: var(--t-display); letter-spacing: -0.03em; margin-bottom: 8px; }
   #wlstock .hero-sub { font-size: var(--t-sub); line-height: var(--lh-sub); }
 
-  #wlstock /* ---- enquiry ---- */
-  .enquiry { padding: 48px 0 56px; }
-  #wlstock /* Two lines, #wlstock placed rather than left to the column width. At 375 it happened
-     to break after "for"; at 430 it broke after "Adventure" and left the
-     question mark alone on line two. The spans stay inline on desktop, #wlstock so the
-     heading there is untouched. */
-  .enquiry-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
+  
+  #wlstock .enquiry { padding: 48px 0 56px; }
+  
+  #wlstock .enquiry-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
   #wlstock .enquiry-title .ln { display: block; }
-  #wlstock /* The reach-out line reads as an answer to the submit button, #wlstock so on a phone
-     it goes after it rather than above the whole form. .enquiry-copy drops to
-     display:contents so its three paragraphs become items of this grid
-     alongside the form, #wlstock and order does the moving -- no markup change, #wlstock and the
-     desktop two-column layout keeps the copy as its left column untouched.
-     The grid's own gap goes to 0 so each step is set on its own. */
-  .enquiry-grid { grid-template-columns: 1fr; gap: 0; padding-top: 28px; }
+  
+  #wlstock .enquiry-grid { grid-template-columns: 1fr; gap: 0; padding-top: 28px; }
   #wlstock .enquiry-copy { display: contents; }
   #wlstock .enquiry-copy .lede { order: 1; font-size: var(--t-sub); line-height: var(--lh-sub); }
   #wlstock .enquiry-copy .lede + .lede { margin-top: 28px; }
   #wlstock .enquiry-form { order: 2; margin-top: 40px; }
-  #wlstock /* half the step it had: it belongs to the submit above it, #wlstock not to the
-     section below, #wlstock and 40 read as a separation rather than an answer */
-  .reachout { order: 3; margin-top: 20px;
+  
+  #wlstock .reachout { order: 3; margin-top: 20px;
               font-size: var(--t-body); line-height: var(--lh-body); }
 
   #wlstock .enquiry-form { padding-top: 0; }
-  #wlstock /* The fields short enough to share a line do. Source order is already
-     first / last / email / phone / state / postcode, #wlstock so the two full-width
-     ones are simply children 3 and 4. */
-  /* grid-template-rows has to be released too. The desktop template is in rem, #wlstock so against the 16px phone base its three rows collapsed to 6.4, #wlstock 17.3 and
-     17.5 -- and the 48 tall fields inside them overflowed, #wlstock which is what put
-     the rows 8 and 9 on top of each other instead of 22 apart. */
-  .field-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto;
+  
+  
+  #wlstock .field-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto;
                 padding-left: 0; row-gap: 22px; column-gap: 14px; }
   #wlstock .field-grid > .field:nth-child(3), #wlstock .field-grid > .field:nth-child(4) { grid-column: 1 / -1; }
-  #wlstock /* 48, #wlstock not 40: six of the seven controls were under the 44 a finger needs */
-  .field--line input { height: 48px; font-size: 16px; padding: 0 20px 8px 0; }
+  
+  #wlstock .field--line input { height: 48px; font-size: 16px; padding: 0 20px 8px 0; }
   #wlstock .field .req { font-size: 16px; top: 4px; right: 0; }
   #wlstock .field--select { margin-left: 0; width: 100%; }
-  #wlstock /* The state field was a boxed control in a form of underlined ones. Ruled
-     like the rest here, #wlstock so the row it shares with Post Code reads as one row. */
-  .field--select select {
+  
+  #wlstock .field--select select {
     height: 48px; font-size: 16px; padding: 0 24px 8px 0;
     background: none; border: 0; border-bottom: 1px solid var(--ink);
     border-radius: 0;
@@ -1529,16 +1432,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   #wlstock .field--select .chev { left: auto; right: 4px; top: 20px; width: 12px; height: 7px; }
   #wlstock .field--select .req { right: 0; top: 4px; }
 
-  #wlstock /* The pill, #wlstock built the way desktop builds it: one outlined container, #wlstock four
-     cells in a row, #wlstock one indicator that travels between them. It had been
-     flattened into a stacked grid of separate boxes here, #wlstock which left the thumb
-     nothing to slide along.
-
-     Clearance comes from the same two places as on desktop -- 4 top and bottom
-     from the container's padding, #wlstock 4 either side from the span's own inset -- so
-     the pill sits an even 4 off whatever bounds it, #wlstock never touches a divider, #wlstock and every divider stays drawn. The script already measures the span, #wlstock so it
-     needs no phone case. Radii are concentric: 14 outside, #wlstock 14 - 4 = 10. */
-  .chips {
+  
+  #wlstock .chips {
     margin: 22px 0 0; width: 100%; height: auto; padding: 4px 0;
     border-radius: 14px; border-width: 1px;
     display: flex;
@@ -1547,8 +1442,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   #wlstock .chip { padding: 12px 0; border-radius: 0; }
   #wlstock .chip > span { width: calc(100% - 8px); border-radius: 10px;
                  font-size: 11px; line-height: 14px; }
-  #wlstock /* spans the inner box exactly, #wlstock padding edge to padding edge */
-  .chip + .chip::before { display: block; left: 0; top: -4px;
+  
+  #wlstock .chip + .chip::before { display: block; left: 0; top: -4px;
                           width: 1px; height: calc(100% + 8px); }
 
   #wlstock .field--area { margin-top: 22px; }
@@ -1558,24 +1453,18 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   }
 
   #wlstock .consent { margin-top: 22px; gap: 12px; padding-left: 0; }
-  #wlstock /* Size and border only. The checked state is left entirely to the desktop
-     rule -- orange fill with the white tick at 52% -- because a 4px white inset
-     ring here was painting over that tick and leaving a small orange dot in the
-     middle of the circle instead. 52% of 20 is a 10.4 tick, #wlstock the same proportion
-     the desktop circle carries. */
-  .consent input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; border-width: 1px; }
+  
+  #wlstock .consent input[type="checkbox"] { width: 20px; height: 20px; margin-top: 2px; border-width: 1px; }
   #wlstock .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
   #wlstock .fineprint { font-size: 12px; line-height: 18px; margin-top: 6px; }
   #wlstock .btn-submit { margin: 22px 0 0; width: 100%; max-width: none; height: 54px; font-size: 16px; line-height: 54px; }
 
-  #wlstock /* ---- video ---- */
-  .video-frame { aspect-ratio: 16 / 9; }
-  #wlstock /* the controls size off rem, #wlstock so they need real numbers here — and a 44px
-     target, #wlstock which is the smallest a finger can reliably hit */
-  .video-controls { gap: 12px; }
-  #wlstock /* :hover never happens on a touch screen, #wlstock so the controls would sit at
-     opacity 0 forever. Shown outright here. */
-  .video-controls { opacity: 1; }
+  
+  #wlstock .video-frame { aspect-ratio: 16 / 9; }
+  
+  #wlstock .video-controls { gap: 12px; }
+  
+  #wlstock .video-controls { opacity: 1; }
   #wlstock .video-ctl { width: 44px; height: 44px; font-size: var(--t-caption); }
   #wlstock .video-ctl svg { width: 20px; height: 20px; }
   #wlstock .video-nudge {
@@ -1584,78 +1473,57 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   }
   #wlstock .video-nudge.is-on { transform: translate(-50%, 0); }
 
-  #wlstock /* ---- unseen ---- */
-  .unseen { padding: 48px 0 56px; }
+  
+  #wlstock .unseen { padding: 48px 0 56px; }
   #wlstock .unseen-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
-  #wlstock /* The sub was carrying --lh-sub, #wlstock 24 on 16px type, #wlstock so 4 of box leading sat on
-     top of the 10 margin and the pair read apart. Desktop sets line-height 1 on
-     this line for exactly that reason; the phone now does the same, #wlstock and the
-     margin is the whole of the gap rather than most of it. */
-  .unseen-sub { margin-top: 10px; font-size: var(--t-sub); line-height: 1; }
+  
+  #wlstock .unseen-sub { margin-top: 10px; font-size: var(--t-sub); line-height: 1; }
   #wlstock .quote-block { grid-template-columns: 1fr; margin-top: 36px; padding-top: 0; gap: 24px; }
   #wlstock .quote-block::before { display: none; }
   #wlstock .quote-mark { display: none; }
-  #wlstock /* The spec comes before the quote on a phone: the panel detail answers "book
-     a factory tour", #wlstock and the line about cost answers the panel detail. Source
-     order is the desktop column order, #wlstock so it is swapped here rather than in the
-     markup. */
-  .quote-right { order: 1; padding-left: 0; font-size: var(--t-body); line-height: var(--lh-body); }
+  
+  #wlstock .quote-right { order: 1; padding-left: 0; font-size: var(--t-body); line-height: var(--lh-body); }
   #wlstock .quote-left { order: 2; font-size: var(--t-sub); line-height: var(--lh-sub); }
-  #wlstock /* Two lines, #wlstock with the break placed rather than left to the column width: the
-     brs are hidden here with the rest of the prose, #wlstock so each half is a span that
-     becomes a block. */
-  .quote-left .ln { display: block; }
-  #wlstock /* The attribution is the quote's signature, #wlstock not a third statement. At the
-     same 24 that separates the panel spec from the quote it read as one more
-     item in a list; 14 binds it to the line above -- the step this page already
-     uses between a heading and the content it introduces. */
-  .quote-attr { margin-top: 14px; font-size: var(--t-caption); line-height: var(--lh-caption); }
+  
+  #wlstock .quote-left .ln { display: block; }
+  
+  #wlstock .quote-attr { margin-top: 14px; font-size: var(--t-caption); line-height: var(--lh-caption); }
 
-  #wlstock /* ---- experience ---- */
-  .experience { height: auto; min-height: 520px; border-radius: 0; }
-  #wlstock /* space-between pinned the sentence to the foot of a 520 band, #wlstock 294 below its
-     own heading, #wlstock so the two read as unrelated. The pair closes up and the rest
-     of the band is picture. */
-  .experience-copy { padding: 56px 24px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 520px; }
-  #wlstock /* nowrap on the desktop title carried the link 492 wide inside a 327 column, #wlstock 165 past the container. Released here, #wlstock like every other pinned title. */
-  .experience-title { font-size: var(--t-heading); line-height: var(--lh-heading);
+  
+  #wlstock .experience { height: auto; min-height: 520px; border-radius: 0; }
+  
+  #wlstock .experience-copy { padding: 56px 24px; display: flex; flex-direction: column; justify-content: flex-start; min-height: 520px; }
+  
+  #wlstock .experience-title { font-size: var(--t-heading); line-height: var(--lh-heading);
                       white-space: normal; }
   #wlstock .experience-body { margin-top: 14px; font-size: var(--t-sub); line-height: var(--lh-sub); }
 
-  #wlstock /* ---- rules band ---- */
-  .rules-band { height: auto; padding: 32px 24px; }
+  
+  #wlstock .rules-band { height: auto; padding: 32px 24px; }
   #wlstock .rules-band p { font-size: var(--t-sub); line-height: var(--lh-sub); letter-spacing: 0.08em; }
 
-  #wlstock /* CTAs need a finger-sized target */
-  .btn-next, #wlstock .btn-submit, #wlstock .btn-subscribe, #wlstock .btn-solid { min-height: 48px; }
+  
+  #wlstock .btn-next, #wlstock .btn-submit, #wlstock .btn-subscribe, #wlstock .btn-solid { min-height: 48px; }
 
-  #wlstock /* ---- legendary service -----------------------------------------------
-     Each review becomes an inset card: photograph on top, #wlstock cream panel beneath, #wlstock both rounded, #wlstock with the quote mark straddling the join between them.
-     !important on the padding because a desktop rule in homepage.css loads
-     after this file and was winning, #wlstock leaving the heading 8.8 off the band. */
-  /* The section ends on a dot rail, #wlstock which carries almost no weight, #wlstock so a full
-     48 under it plus Queen of Hearts' own 48 read as a hole. 24 here, #wlstock 72 in
-     total. */
-  .service { padding-top: 48px !important; padding-bottom: 24px !important; }
+  
+  
+  #wlstock .service { padding-top: 48px !important; padding-bottom: 24px !important; }
   #wlstock .service-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
   #wlstock .service-kicker { font-size: 12px; letter-spacing: 0.3em; text-indent: 0.3em; }
   #wlstock .service-band { flex-direction: column; margin-top: 26px; min-height: 0; }
   #wlstock .service-band::before { display: none; }
   #wlstock .service-slide { flex-direction: column; min-height: 0;
                    scroll-snap-align: start; scroll-snap-stop: always; }
-  #wlstock /* photo first here, #wlstock then the review — this is the one section where the
-     picture earns the lead, #wlstock because the face belongs with the words */
-  .service-media { order: 1; width: auto; height: auto; margin: 0 24px;
+  
+  #wlstock .service-media { order: 1; width: auto; height: auto; margin: 0 24px;
                    aspect-ratio: 16 / 9; overflow: hidden;
                    border-radius: var(--radius) var(--radius) 0 0; box-shadow: none; }
   #wlstock .service-quote { order: 2; position: relative; margin: 0 24px; width: auto;
                    padding: 34px 24px 26px; background: #FFF2DC;
                    border-radius: 0 0 var(--radius) var(--radius); }
   #wlstock .service-quote p { position: static; font-size: var(--t-sub); line-height: 24px; }
-  #wlstock /* Anchored to the top of the cream, #wlstock then lifted half its own height, #wlstock so the
-     mark sits exactly half on the photograph and half on the panel at any
-     width — measured off the join rather than from a fixed distance. */
-  .service-quote .qmark {
+  
+  #wlstock .service-quote .qmark {
     display: block; top: 0; bottom: auto; left: 24px; right: auto;
     transform: translateY(-50%); width: calc(var(--t-sub) * 3.1301);
   }
@@ -1668,8 +1536,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   }
   #wlstock .service-viewport::-webkit-scrollbar { display: none; }
   #wlstock .service-track { transform: none !important; transition: none !important; }
-  #wlstock /* the desktop loop's wrap-around copy is a duplicate slide here */
-  .service-slide.is-clone { display: none; }
+  
+  #wlstock .service-slide.is-clone { display: none; }
 
   #wlstock .service-rail { display: flex; align-items: center; gap: 9px; padding: 18px 24px 0; }
   #wlstock .service-dot { width: 6px; height: 6px; border-radius: 50%; background: #D9D3C8;
@@ -1678,33 +1546,18 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   #wlstock .service-count { margin-left: auto; font-size: var(--t-caption);
                    letter-spacing: 0.12em; color: #8A8A8A; }
 
-  #wlstock /* ---- where to next ---- */
-  .next-band { height: auto; min-height: 420px; }
+  
+  #wlstock .next-band { height: auto; min-height: 420px; }
   #wlstock .next-copy { padding: 48px 24px; gap: 24px; height: auto; min-height: 420px; }
   #wlstock .next-title { font-size: var(--t-heading); line-height: var(--lh-heading); }
-  #wlstock /* The two share their row, #wlstock at the position they already sit -- the title is
-     still 48 off the top of the band and the actions 24 under it. Two buttons
-     in a 327 column with an 11 gap are 158 each; at 15px with 30 of side
-     padding "EXPLORE THE RANGE" needs about 210 and does not fit, #wlstock so the type
-     comes down to 13 and the side padding to 8. Both still clear the 48 a
-     finger needs. */
-  .next-actions { flex-direction: row; align-items: stretch; gap: 11px; width: 100%; }
+  
+  #wlstock .next-actions { flex-direction: row; align-items: stretch; gap: 11px; width: 100%; }
   #wlstock .btn-next { flex: 1 1 0; min-width: 0;
               display: flex; align-items: center; justify-content: center;
               font-size: 13px; padding: 14px 8px; text-align: center; }
 
-  #wlstock /* ---- footer -----------------------------------------------------------
-     Every line-height in here was still the desktop rem value. Against the
-     16px phone base .footer-head resolved to 4.16 on 15px type and .link-col li
-     to 4.32 -- lines sitting almost on top of each other -- and two paragraph
-     margins came out at 2.7 and 2.1. Only the font sizes had been carried over, #wlstock never the leading, #wlstock so it is set explicitly here on everything.
-
-     Four steps, #wlstock and nothing else:
-       48  between the footer's own sections
-       32  between blocks inside a section
-       14  from a heading to the content it introduces
-       10  between lines within a block                                    */
-  .site-footer { padding: 56px 0 40px; font-size: 15px; line-height: 24px; }
+  
+  #wlstock .site-footer { padding: 56px 0 40px; font-size: 15px; line-height: 24px; }
   #wlstock .footer-inner { grid-template-columns: 1fr; row-gap: 48px; }
   #wlstock .footer-logo { width: 190px; margin-bottom: 32px; }
   #wlstock .footer-blurb { width: auto; }
@@ -1713,11 +1566,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 
   #wlstock .footer-head { font-size: 15px; line-height: 20px; margin-bottom: 14px; }
   #wlstock .footer-brand .footer-head { margin-top: 32px; margin-bottom: 14px; }
-  #wlstock /* The three contact lines become ruled rows with a glyph each -- same
-     hairline as the link accordion below, #wlstock so the whole footer is one stack.
-     Phone and email are links and carry the weight; the address is not a link
-     and is not dressed as one. */
-  .foot-contact { margin-top: 14px; }
+  
+  #wlstock .foot-contact { margin-top: 14px; }
   #wlstock .foot-row { display: flex; align-items: center; gap: 13px; min-height: 52px;
               padding: 6px 0; border-top: 1px solid #e4e2de;
               color: inherit; text-decoration: none; }
@@ -1729,11 +1579,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   #wlstock a.foot-row .t { font-weight: 700; }
   #wlstock a.foot-row:hover .t { color: var(--orange-deep); }
 
-  #wlstock /* No discs. The boxes stay 44 so the target holds, #wlstock the glyph sits 35 inside, #wlstock and space-between pins the row to both edges of the same 327 the rules
-     above it measure. The outer two are pulled by (44 - 35) / 2 so it is the
-     GLYPH that lands flush, #wlstock not its box. The gap is then the remainder --
-     (327 - 5x35) / 4 = 38 -- even by construction. */
-  .socials { justify-content: space-between; gap: 0; margin-top: 26px; }
+  
+  #wlstock .socials { justify-content: space-between; gap: 0; margin-top: 26px; }
   #wlstock .socials a { display: grid; place-items: center; width: 44px; height: 44px; }
   #wlstock .socials svg { width: 35px; height: 35px; display: block; }
   #wlstock .socials li:first-child { margin-left: -4.5px; }
@@ -1744,15 +1591,11 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
   #wlstock .newsletter .footer-head { margin-top: 0; margin-bottom: 14px; }
   #wlstock .newsletter-form { grid-template-columns: 1fr; row-gap: 14px; }
   #wlstock .newsletter-form .field--line input { height: 38px; font-size: 16px; }
-  #wlstock /* side to side, #wlstock like every other CTA on the phone */
-  .btn-subscribe { height: 50px; font-size: 15px; max-width: none; }
+  
+  #wlstock .btn-subscribe { height: 50px; font-size: 15px; max-width: none; }
 
-  #wlstock /* The five link groups become an accordion -- 982 as one column, #wlstock 266 closed.
-     Same ruled stack as the accordions in Build your dream van and Why choose
-     us: the #e4e2de hairline, #wlstock and orange for the open state. The rule sits on
-     .link-cols so the stack closes correctly across the three columns, #wlstock which
-     go to display:contents and stop being boxes. */
-  .link-cols { display: block; border-bottom: 1px solid #e4e2de; }
+  
+  #wlstock .link-cols { display: block; border-bottom: 1px solid #e4e2de; }
   #wlstock .link-col { display: contents; }
   #wlstock .link-col .footer-head { margin-bottom: 14px; }
   #wlstock .link-col li { line-height: 22px; margin-bottom: 10px; }
@@ -1769,8 +1612,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
     content: ""; position: absolute; left: 0; top: 6px; width: 13px; height: 1.5px;
     background: var(--orange-deep); transition: transform .28s ease;
   }
-  #wlstock .foot-acc-sign::after { transform: rotate(90deg); }   #wlstock /* the plus closes to a minus */
-  .foot-acc.is-on .foot-acc-sign::after { transform: rotate(0deg); }
+  #wlstock .foot-acc-sign::after { transform: rotate(90deg); }   
+  #wlstock .foot-acc.is-on .foot-acc-sign::after { transform: rotate(0deg); }
   #wlstock .foot-acc-body { overflow: hidden; height: 0;
                    transition: height .3s cubic-bezier(.4, 0, .2, 1); }
   #wlstock .foot-acc-body ul { padding-bottom: 6px; }
@@ -1781,9 +1624,8 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 }
 
 @media (max-width: 520px) {
-  #wlstock /* .chips was a stacked grid here once; it is a flex row of cells now, #wlstock so a
-     column template would be inert. Dropped rather than left to mislead. */
-  .link-cols { grid-template-columns: 1fr; }
+  
+  #wlstock .link-cols { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1792,102 +1634,67 @@ input::-webkit-contacts-auto-fill-button, #wlstock input::-webkit-credentials-au
 
 </style>
 <style>
-#wlstock /* ==========================================================================
-   COMPACT TYPE SCALE  —  loaded by compact.html on top of styles.css
 
-   THE MATH
-   --------
-   Anchor: "Our experts will reach out / to you within 24 hours / on Business
-   days." goes 24 → 14, #wlstock so the factor is 14 / 24 = 0.5833 (a 41.7% reduction).
-
-   Floor: nothing renders below 11, #wlstock so anything that would land under it is
-   clamped there — nav, #wlstock footer links, #wlstock footer headings and the legal lines all
-   sit at 11 rather than 10.5 / 9.3 / 9.1.
-
-   Exception: the unsubscribe line is exempt, #wlstock as instructed, #wlstock and follows the
-   raw factor down to 9.
-
-   Line-heights carry the same 0.5833 so every paragraph keeps its existing
-   ratio. Nothing else moves — every margin, #wlstock padding, #wlstock section gap and box
-   height is inherited untouched from styles.css, #wlstock which is what opens up the
-   extra breathing space.
-
-     96 → 56    36 → 21    19 → 11
-     56 → 33    32 → 19    18 → 11 (floor)
-     48 → 28    28 → 16    16 → 11 (floor)
-     40 → 23    24 → 14    14 →  9 (exception)
-
-   The header bar is excluded entirely and matches index.html.
-
-   Scoped above the mobile breakpoint so the 900px rules in styles.css keep
-   their own sizes.
-   ========================================================================== */
 
 @media (min-width: 901px) {
 
-  /* ------------------------------------------------------------- base --- */
-  body { font-size: var(--t-body); line-height: var(--lh-body); }
-  .ph::after { font-size: 0.13rem; }
+  
+  #wlstock { font-size: var(--t-body); line-height: var(--lh-body); }
+  #wlstock .ph::after { font-size: 0.13rem; }
 
-  /* The header bar is deliberately NOT rescaled — it stays identical to
-     index.html so the two versions share one taskbar. The orange CTAs are
-     excluded for the same reason: they all match "Build your Caravan". */
+  
 
-  /* ------------------------------------------------------------- hero --- */
-  .hero h1 { font-size: 0.56rem; }
-  .hero-sub { font-size: var(--t-sub); }
+  
+  #wlstock .hero h1 { font-size: 0.56rem; }
+  #wlstock .hero-sub { font-size: var(--t-sub); }
 
-  /* -------------------------------------------------- enquiry + form --- */
-  .enquiry-title { font-size: 0.56rem; }
-  .enquiry-copy .lede { font-size: var(--t-body); line-height: var(--lh-body); }
-  .reachout { font-size: var(--t-body); line-height: var(--lh-body); }
+  
+  #wlstock .enquiry-title { font-size: 0.56rem; }
+  #wlstock .enquiry-copy .lede { font-size: var(--t-body); line-height: var(--lh-body); }
+  #wlstock .reachout { font-size: var(--t-body); line-height: var(--lh-body); }
 
-  .field--line input { font-size: var(--t-body); }
-  .field .req { font-size: var(--t-body); }
-  .field--select select { font-size: var(--t-body); }
-  .chip > span { font-size: 0.19rem; line-height: 0.22rem; }
-  .field--area textarea { font-size: var(--t-body); line-height: var(--lh-body); }
-  .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
-  .fineprint { font-size: var(--t-caption); line-height: var(--lh-caption); }   /* the exception */
+  #wlstock .field--line input { font-size: var(--t-body); }
+  #wlstock .field .req { font-size: var(--t-body); }
+  #wlstock .field--select select { font-size: var(--t-body); }
+  #wlstock .chip > span { font-size: 0.19rem; line-height: 0.22rem; }
+  #wlstock .field--area textarea { font-size: var(--t-body); line-height: var(--lh-body); }
+  #wlstock .consent label { font-size: var(--t-body); line-height: var(--lh-body); }
+  #wlstock .fineprint { font-size: var(--t-caption); line-height: var(--lh-caption); }   
 
-  /* -------------------------------------------- things you can't see --- */
-  .unseen-title { font-size: 0.56rem; }
-  .unseen-sub { font-size: var(--t-sub); }
-  .quote-mark { font-size: 2.04rem; left: -0.72rem; top: -0.658rem; }
-  .quote-left { font-size: 0.28rem; line-height: 0.335rem; }
-  .quote-right { font-size: var(--t-body); line-height: var(--lh-body); }
-  .quote-attr { font-size: var(--t-caption); line-height: var(--lh-caption); }
-  /* rule keeps its 21 above / 43 below overhang around the shorter quote */
-  .quote-block::before { height: 1.645rem; }
+  
+  #wlstock .unseen-title { font-size: 0.56rem; }
+  #wlstock .unseen-sub { font-size: var(--t-sub); }
+  #wlstock .quote-mark { font-size: 2.04rem; left: -0.72rem; top: -0.658rem; }
+  #wlstock .quote-left { font-size: 0.28rem; line-height: 0.335rem; }
+  #wlstock .quote-right { font-size: var(--t-body); line-height: var(--lh-body); }
+  #wlstock .quote-attr { font-size: var(--t-caption); line-height: var(--lh-caption); }
+  
+  #wlstock .quote-block::before { height: 1.645rem; }
 
-  /* ------------------------------------------------------- experience --- */
-  .experience-title { font-size: 0.56rem; line-height: 0.484rem; }
-  .experience-body { font-size: var(--t-body); line-height: var(--lh-body); }
-  .rules-band p { font-size: var(--t-sub); line-height: 0.44rem; }
+  
+  #wlstock .experience-title { font-size: 0.56rem; line-height: 0.484rem; }
+  #wlstock .experience-body { font-size: var(--t-body); line-height: var(--lh-body); }
+  #wlstock .rules-band p { font-size: var(--t-sub); line-height: 0.44rem; }
 
-  /* ---------------------------------------------------- where to next --- */
-  /* a section heading, not a subheading — matches the other page headings */
-  .next-title { font-size: var(--t-heading); }
+  
+  
+  #wlstock .next-title { font-size: var(--t-heading); }
 
-  /* ----------------------------------------------------------- footer --- */
-  .site-footer { font-size: var(--t-caption); line-height: 0.30rem; }
-  .footer-head { font-size: var(--t-caption); line-height: 0.28rem; }
-  .footer-contact { line-height: 0.34rem; }
-  .newsletter-form .field--line input { font-size: var(--t-caption); }
-  .link-col li { line-height: 0.20rem; }
-  .footer-legal-left { font-size: var(--t-caption); line-height: 0.32rem; }
-  .footer-legal-right { font-size: var(--t-caption); line-height: 0.30rem; }
+  
+  #wlstock .site-footer { font-size: var(--t-caption); line-height: 0.30rem; }
+  #wlstock .footer-head { font-size: var(--t-caption); line-height: 0.28rem; }
+  #wlstock .footer-contact { line-height: 0.34rem; }
+  #wlstock .newsletter-form .field--line input { font-size: var(--t-caption); }
+  #wlstock .link-col li { line-height: 0.20rem; }
+  #wlstock .footer-legal-left { font-size: var(--t-caption); line-height: 0.32rem; }
+  #wlstock .footer-legal-right { font-size: var(--t-caption); line-height: 0.30rem; }
 
-  /* Blocks that wrap on their own rather than on a <br> get their measure
-     re-set, so the shorter lines can't leave a single word stranded. */
-  .footer-blurb { width: 3.30rem; }
-  /* logo eases back so it reads in proportion to the larger footer type */
-  .footer-logo { width: 3.40rem; }
-  /* Was 6.40, which stopped the disclaimer and the photo credit 196 short of
-     the right margin while their own column already ended on it. They fill the
-     column now, so the right edge lands on the margin like everything else in
-     the footer. */
-  .footer-legal-right p { max-width: none; }
+  
+  #wlstock .footer-blurb { width: 3.30rem; }
+  
+  #wlstock .footer-logo { width: 3.40rem; }
+  
+  #wlstock .footer-legal-right p { max-width: none; }
 }
 
 </style>
