@@ -30,6 +30,10 @@ for f in sorted(glob.glob('wp-pages/*.html')):
         s=re.sub(r'@font-face\s*\{[^}]*'+re.escape(d)+r'[^}]*\}\s*','',s)
     for old,new in FONT_MAP.items():
         s=s.replace(f'url("{old}") format("opentype")', f'url("{new}") format("woff2")')
+    for w in ('Light','Regular','Medium'):
+        s=s.replace(f"url('fonts/Gordita-{w}.woff2')", f"url('{UP}2022/11/Gordita-{w}.woff2')")
+    s=s.replace("return u.replace(/\\.(jpg|png)$/, '_sm.$1');",
+                "return u.endsWith('-rotated.jpg') ? u.replace(/-rotated\\.jpg$/, '_sm-rotated.jpg') : u.replace(/\\.(jpg|png)$/, '_sm.$1');")
     open(f,'w',encoding='utf-8').write(s)
 
 # verification
@@ -44,6 +48,8 @@ for f in sorted(glob.glob('wp-pages/*.html')):
       'replica-hdr': re.findall(r'<header class="site-header"', s),
       'replica-ftr': re.findall(r'<footer class="site-footer"', s),
       'otf-fonts': re.findall(r'\.\./fonts/', s),
+      'rel-fonts': re.findall(r"url\('fonts/", s),
+      'bad-sm-derive': ([] if "endsWith('-rotated.jpg')" in s or 'stockpg-' not in s else ['unpatched']) if "_sm.$1" in s else [],
       'browse-link': re.findall(r'Browse as pages', s),
     }
     for k,v in checks.items():
