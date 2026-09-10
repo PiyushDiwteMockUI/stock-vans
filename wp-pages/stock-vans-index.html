@@ -1716,6 +1716,18 @@ html {
 #wlstock .field--van .chev{left:auto;right:calc(0.26 * var(--wlrem, 1rem))}
 @media (max-width:900px){#wlstock .field-grid > .field--select{grid-column:1 / -1}}
 #wlstock .consent input{width:20px;height:20px;flex:none}
+
+#wlstock .enquiry-done{grid-column:2;align-self:start;padding-top:calc(0.165 * var(--wlrem, 1rem))}
+#wlstock .enq-done-eyebrow{font-family:var(--gordita);font-weight:500;font-size:calc(0.2 * var(--wlrem, 1rem));line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 calc(0.18 * var(--wlrem, 1rem))}
+#wlstock .enq-done-head{font-family:var(--aviano);font-size:calc(0.62 * var(--wlrem, 1rem));line-height:1;text-transform:uppercase;color:var(--ink);margin:0 0 calc(0.26 * var(--wlrem, 1rem))}
+#wlstock .enq-done-msg{font-family:var(--gordita);font-size:calc(0.28 * var(--wlrem, 1rem));line-height:calc(0.4 * var(--wlrem, 1rem));color:var(--ink);margin:0 0 calc(0.3 * var(--wlrem, 1rem))}
+#wlstock .enq-done-msg strong{font-weight:600}
+#wlstock .enq-done-recap{margin:0 0 calc(0.32 * var(--wlrem, 1rem));padding:0;border-top:1px solid var(--ink)}
+#wlstock .enq-done-recap>div{display:flex;justify-content:space-between;gap:calc(0.24 * var(--wlrem, 1rem));padding:calc(0.13 * var(--wlrem, 1rem)) 0;border-bottom:1px solid rgba(0,0,0,.12)}
+#wlstock .enq-done-recap dt{font-family:var(--gordita);font-size:calc(0.22 * var(--wlrem, 1rem));line-height:1.2;color:var(--grey);margin:0}
+#wlstock .enq-done-recap dd{font-family:var(--gordita);font-weight:500;font-size:calc(0.22 * var(--wlrem, 1rem));line-height:1.2;color:var(--ink);margin:0;text-align:right}
+#wlstock .enq-done-foot{font-family:var(--gordita);font-weight:500;font-size:calc(0.24 * var(--wlrem, 1rem));line-height:calc(0.32 * var(--wlrem, 1rem));color:var(--orange);margin:0}
+@media (max-width:900px){#wlstock .enquiry-done{grid-column:1;order:2;margin-top:40px;padding-top:0}#wlstock .enq-done-head{font-size:34px}#wlstock .enq-done-msg{font-size:16px;line-height:24px}#wlstock .enq-done-recap dt, #wlstock .enq-done-recap dd{font-size:14px}#wlstock .enq-done-foot{font-size:15px;line-height:22px}#wlstock .enq-done-eyebrow{font-size:12px}}
 </style>
 
 <a href="#railbox" class="skiplink">Skip to stock filters</a>
@@ -1860,6 +1872,13 @@ html {
         <button class="btn-submit" type="submit">Submit</button>
         <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
       </form>
+      <div class="enquiry-done" id="enqdone" hidden>
+        <p class="enq-done-eyebrow">Stock van enquiry</p>
+        <h3 class="enq-done-head" id="enqdone-head">We&rsquo;ve got your enquiry</h3>
+        <p class="enq-done-msg" id="enqdone-msg"></p>
+        <dl class="enq-done-recap" id="enqdone-recap"></dl>
+        <p class="enq-done-foot">Our experts will reach out to you within 24 hours on business days.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -4893,10 +4912,42 @@ const SV = {
       if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent });
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt || 'Not specified', enquiry_type: intent });
     } catch (e) {}
-    const st = document.getElementById('enqstatus');
-    st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
-    st.style.color = '#2E7D32';
-    f.reset();
+    // Post-submit: hide the form and show a confirmation panel (mirrors the Melbourne show form).
+    // This also avoids the stale-thumb bug that f.reset() caused on the chips control.
+    const done = document.getElementById('enqdone');
+    if (done) {
+      const nm = g('first-name').value.trim();
+      const em = g('email').value.trim();
+      const hd = document.getElementById('enqdone-head');
+      if (hd) hd.textContent = nm ? ('We’ve got your enquiry, ' + nm) : 'We’ve got your enquiry';
+      const mg = document.getElementById('enqdone-msg');
+      if (mg) {
+        mg.textContent = 'Thanks ' + (nm || 'there') + '. Your enquiry is on its way to ';
+        const b = document.createElement('strong'); b.textContent = em; mg.appendChild(b);
+        mg.appendChild(document.createTextNode('. We will be in touch within 24 hours on business days.'));
+      }
+      const rc = document.getElementById('enqdone-recap');
+      if (rc) {
+        rc.textContent = '';
+        [['Name', (g('first-name').value + ' ' + g('last-name').value).trim()],
+         ['Email', em],
+         ['Van', vanTxt],
+         ['Request', intent]].forEach(row => {
+          const d = document.createElement('div');
+          const dt = document.createElement('dt'); dt.textContent = row[0];
+          const dd = document.createElement('dd'); dd.textContent = row[1];
+          d.appendChild(dt); d.appendChild(dd); rc.appendChild(d);
+        });
+      }
+      f.hidden = true;
+      done.hidden = false;
+      try { done.setAttribute('tabindex', '-1'); done.focus({ preventScroll: true }); done.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
+    } else {
+      const st = document.getElementById('enqstatus');
+      st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
+      st.style.color = '#2E7D32';
+      f.reset();
+    }
     return false;
   },
 

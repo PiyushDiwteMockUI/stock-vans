@@ -49,6 +49,18 @@ fbq('track','PageView');
 .field--van .chev{left:auto;right:0.26rem}
 @media (max-width:900px){.field-grid > .field--select{grid-column:1 / -1}}
 .consent input{width:20px;height:20px;flex:none}
+/* Post-submit confirmation panel — replaces the form on success (mirrors the Melbourne show form) */
+.enquiry-done{grid-column:2;align-self:start;padding-top:0.165rem}
+.enq-done-eyebrow{font-family:var(--gordita);font-weight:500;font-size:0.2rem;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 0.18rem}
+.enq-done-head{font-family:var(--aviano);font-size:0.62rem;line-height:1;text-transform:uppercase;color:var(--ink);margin:0 0 0.26rem}
+.enq-done-msg{font-family:var(--gordita);font-size:0.28rem;line-height:0.4rem;color:var(--ink);margin:0 0 0.3rem}
+.enq-done-msg strong{font-weight:600}
+.enq-done-recap{margin:0 0 0.32rem;padding:0;border-top:1px solid var(--ink)}
+.enq-done-recap>div{display:flex;justify-content:space-between;gap:0.24rem;padding:0.13rem 0;border-bottom:1px solid rgba(0,0,0,.12)}
+.enq-done-recap dt{font-family:var(--gordita);font-size:0.22rem;line-height:1.2;color:var(--grey);margin:0}
+.enq-done-recap dd{font-family:var(--gordita);font-weight:500;font-size:0.22rem;line-height:1.2;color:var(--ink);margin:0;text-align:right}
+.enq-done-foot{font-family:var(--gordita);font-weight:500;font-size:0.24rem;line-height:0.32rem;color:var(--orange);margin:0}
+@media (max-width:900px){.enquiry-done{grid-column:1;order:2;margin-top:40px;padding-top:0}.enq-done-head{font-size:34px}.enq-done-msg{font-size:16px;line-height:24px}.enq-done-recap dt,.enq-done-recap dd{font-size:14px}.enq-done-foot{font-size:15px;line-height:22px}.enq-done-eyebrow{font-size:12px}}
 </style>
 </head>
 <body>
@@ -219,6 +231,13 @@ fbq('track','PageView');
         <button class="btn-submit" type="submit">Submit</button>
         <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
       </form>
+      <div class="enquiry-done" id="enqdone" hidden>
+        <p class="enq-done-eyebrow">Stock van enquiry</p>
+        <h3 class="enq-done-head" id="enqdone-head">We&rsquo;ve got your enquiry</h3>
+        <p class="enq-done-msg" id="enqdone-msg"></p>
+        <dl class="enq-done-recap" id="enqdone-recap"></dl>
+        <p class="enq-done-foot">Our experts will reach out to you within 24 hours on business days.</p>
+      </div>
     </div>
   </div>
 </section>

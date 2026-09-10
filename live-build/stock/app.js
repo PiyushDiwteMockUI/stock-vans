@@ -393,10 +393,42 @@ const SV = {
       if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent });
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt || 'Not specified', enquiry_type: intent });
     } catch (e) {}
-    const st = document.getElementById('enqstatus');
-    st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
-    st.style.color = '#2E7D32';
-    f.reset();
+    // Post-submit: hide the form and show a confirmation panel (mirrors the Melbourne show form).
+    // This also avoids the stale-thumb bug that f.reset() caused on the chips control.
+    const done = document.getElementById('enqdone');
+    if (done) {
+      const nm = g('first-name').value.trim();
+      const em = g('email').value.trim();
+      const hd = document.getElementById('enqdone-head');
+      if (hd) hd.textContent = nm ? ('We’ve got your enquiry, ' + nm) : 'We’ve got your enquiry';
+      const mg = document.getElementById('enqdone-msg');
+      if (mg) {
+        mg.textContent = 'Thanks ' + (nm || 'there') + '. Your enquiry is on its way to ';
+        const b = document.createElement('strong'); b.textContent = em; mg.appendChild(b);
+        mg.appendChild(document.createTextNode('. We will be in touch within 24 hours on business days.'));
+      }
+      const rc = document.getElementById('enqdone-recap');
+      if (rc) {
+        rc.textContent = '';
+        [['Name', (g('first-name').value + ' ' + g('last-name').value).trim()],
+         ['Email', em],
+         ['Van', vanTxt],
+         ['Request', intent]].forEach(row => {
+          const d = document.createElement('div');
+          const dt = document.createElement('dt'); dt.textContent = row[0];
+          const dd = document.createElement('dd'); dd.textContent = row[1];
+          d.appendChild(dt); d.appendChild(dd); rc.appendChild(d);
+        });
+      }
+      f.hidden = true;
+      done.hidden = false;
+      try { done.setAttribute('tabindex', '-1'); done.focus({ preventScroll: true }); done.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
+    } else {
+      const st = document.getElementById('enqstatus');
+      st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
+      st.style.color = '#2E7D32';
+      f.reset();
+    }
     return false;
   },
 
