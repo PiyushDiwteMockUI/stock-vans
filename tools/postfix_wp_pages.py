@@ -21,6 +21,23 @@ hdr_re=re.compile(r'<header class="site-header">.*?</header>\s*', re.S)
 ftr_re=re.compile(r'<footer class="site-footer">.*?</footer>\s*', re.S)
 browse_re=re.compile(r'<a class="linkbtn"[^>]*>Browse as pages</a>\s*')
 
+
+def fix_div_balance(s):
+    """Remove </div> closes that would go below depth 0 (harmless strays in staging body,
+    but they close the #wlstock wrapper early in WP)."""
+    spans=[(m.start(),m.end()) for m in re.finditer(r'<script\b.*?</script>|<style\b.*?</style>|<!--.*?-->', s, re.S|re.I)]
+    def masked(i): return any(a<=i<b for a,b in spans)
+    depth=0; remove=[]
+    for m in re.finditer(r'<div\b[^>]*>|</div>', s):
+        if masked(m.start()): continue
+        if m.group(0).startswith('</'):
+            if depth==0: remove.append((m.start(),m.end()))
+            else: depth-=1
+        else: depth+=1
+    for a,b in reversed(remove):
+        s=s[:a]+s[b:]
+    return s
+
 rename_pairs=[(re.sub(r'-(rotated|scaled)(\.[a-z]+)$', r'\2', n), n) for n in RENAMED]
 
 for f in sorted(glob.glob('wp-pages/*.html')):
@@ -32,6 +49,7 @@ for f in sorted(glob.glob('wp-pages/*.html')):
     for d in DROP_FACES:
         s=re.sub(r'@font-face\s*\{[^}]*'+re.escape(d)+r'[^}]*\}\s*','',s)
     if 'id="wlstock"' not in s:
+        s=fix_div_balance(s)
         s=re.sub(r'(<style>)(.*?)(</style>)', lambda m: m.group(1)+scope_css(m.group(2))+m.group(3), s, flags=re.S)
         s='<div id="wlstock">\n'+s+'\n</div>'
     for old,new in FONT_MAP.items():
