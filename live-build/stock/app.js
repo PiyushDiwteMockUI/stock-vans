@@ -30,6 +30,7 @@ const imgSm = u => {
 const imgSrcset = u => u.includes('pxcrush.net') || u.startsWith('/stock/assets/')
   ? `${imgSm(u)} 640w, ${u} 1600w` : '';
 const fullName = v => v.name.startsWith(v.model) ? v.name : v.model + ' ' + v.name;
+window.WLVANS=VANS;window.WLOR=OR_TOKEN;window.WLimgSm=imgSm;window.WLfullName=fullName;
 const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
 const DEALER = {'New South Wales':'Off Grid Outfitters - NSW','Queensland':'Aussie Escape Caravans - QLD','Victoria':'Outbound RVs - VIC','Western Australia':'Outbound RVs - WA'};
@@ -527,7 +528,6 @@ const SV = {
         setTimeout(() => { grp.style.minHeight = ''; }, 250);
       }
     });
-    document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
     // Reference chips-thumb: position over the checked chip, squash while travelling.
     const chips = document.querySelector('.enquiry-form .chips');
     if (chips) {
@@ -631,8 +631,4 @@ function makeDrop(sel) {
   });
   return { build: build };
 }
-(function () {
-  var vd = makeDrop(document.getElementById('vanselect'));
-  if (vd) window.syncVandrop = vd.build;
-  makeDrop(document.getElementById('state'));
-})();
+/* enquiry selects kept native for the new design */

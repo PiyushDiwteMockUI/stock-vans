@@ -80,6 +80,119 @@ fbq('track','PageView');
 @keyframes enqFall{0%{opacity:0;transform:translate3d(0,-10%,0) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate3d(var(--x,0),115%,0) rotate(var(--r,540deg))}}
 @media (prefers-reduced-motion:reduce){.enq-confetti{display:none}.enquiry-done,.enq-done-check{animation:none}}
 @media (max-width:900px){.enquiry-done{grid-column:1;order:2;margin-top:40px;padding-top:0}.enq-done-head{font-size:34px}.enq-done-msg{font-size:16px;line-height:24px}.enq-done-steps{gap:12px}.enq-done-steps .enq-step-tx{font-size:12px}.enq-done-steps .enq-step-tx b{font-size:14px}.enq-done-steps .enq-step-n{width:24px;height:24px;font-size:12px}.enq-done-recap dt{font-size:13px}.enq-done-recap dd{font-size:14px}.enq-done-cta{font-size:15px;padding:14px 22px}}
+
+/* ===== new enquiry section ===== */
+#nqenq{
+  --ink:#12171C; --body:#3D464D; --mut:#5A646B; --line:#EDEAE5; --line2:#9A9A96;
+  --ochre:#DB7627; --ochre-deep:#B4611B; --green:#3E7A4A; --err:#C0392B; --bg:#FFFFFF;
+  --aviano:"Aviano Sans","Trebuchet MS",sans-serif;
+  --gordita:"Gordita","Helvetica Neue",Arial,sans-serif;
+}
+#nqenq .enq{display:grid;grid-template-columns:.62fr 1.38fr;gap:64px;align-items:stretch}
+@media(max-width:900px){#nqenq .enq{grid-template-columns:1fr;gap:40px}}
+
+
+#nqenq .enq-copy{display:flex;flex-direction:column}
+#nqenq .enq-copy h2{font-size:clamp(30px,3.4vw,40px);line-height:1;margin-bottom:26px}
+#nqenq .enq-copy p{max-width:22ch;margin:0 0 20px}
+#nqenq .enq-copy .p1{color:var(--body);font-size:16px}
+#nqenq .enq-copy .p2{color:var(--body);font-size:16px}
+#nqenq .enq-copy .p2 .hi{color:var(--ochre);font-weight:500}
+#nqenq .enq-copy .p3{margin-top:auto;margin-bottom:0;color:var(--ochre);font-weight:500}
+
+
+#nqenq .enq-panel{position:relative;min-width:0}
+
+
+#nqenq .enq-form{display:flex;flex-direction:column;gap:24px;transition:opacity .3s ease}
+#nqenq .enq-form[hidden]{display:none}
+#nqenq .sent[hidden]{display:none}
+#nqenq .enq-form.sending{opacity:.42;pointer-events:none}
+#nqenq .row2{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px}
+@media(max-width:560px){#nqenq .row2{grid-template-columns:1fr}}
+#nqenq .field{position:relative}
+#nqenq .field input{width:100%;font:400 17px/1.4 var(--gordita);color:var(--ink);background:none;border:0;
+  border-bottom:1px solid var(--body);padding:8px 22px 10px 0;border-radius:0}
+#nqenq .field input::placeholder{color:var(--mut);opacity:1}
+#nqenq .field input:focus{outline:none;border-bottom-color:var(--ochre)}
+#nqenq .field .ast{position:absolute;right:2px;top:0;color:var(--err);font-size:15px;line-height:1;pointer-events:none}
+#nqenq .field.bad input{border-bottom-color:var(--err)}
+
+#nqenq .selrow{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px}
+@media(max-width:560px){#nqenq .selrow{grid-template-columns:1fr}}
+#nqenq .sel{position:relative}
+#nqenq .sel select{width:100%;height:62px;font:400 16px/1 var(--gordita);color:var(--ink);background:var(--bg);
+  border:1px solid var(--line2);border-radius:10px;padding:0 46px 0 16px;-webkit-appearance:none;appearance:none;cursor:pointer}
+#nqenq .sel select:invalid{color:var(--mut)}
+#nqenq .sel select:focus{outline:none;border-color:var(--ochre)}
+#nqenq .sel .chev{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:14px;height:8px;pointer-events:none;color:var(--body)}
+
+
+#nqenq .req{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line2);border-radius:10px;padding:5px}
+@media(max-width:560px){#nqenq .req{grid-template-columns:1fr 1fr}}
+#nqenq .req-cell{position:relative;border:0;background:transparent;font:500 14px/1.2 var(--gordita);color:var(--ink);
+  padding:14px 6px;border-radius:7px;cursor:pointer;min-height:44px;text-align:center;
+  transition:background-color .19s ease,color .19s ease,box-shadow .19s ease}
+#nqenq .req-cell:not(:first-child)::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:1px;background:var(--line2);transition:opacity .19s ease}
+@media(max-width:560px){#nqenq .req-cell:nth-child(3)::before{display:none}}
+#nqenq .req-cell.is-on{background:var(--ochre);color:#fff;box-shadow:0 7px 18px -7px rgba(219,118,39,.55)}
+#nqenq .req-cell.is-on::before, #nqenq .req-cell.is-on + .req-cell::before{opacity:0}
+
+#nqenq .ta{width:100%;font:400 15px/1.6 var(--gordita);color:var(--ink);background:var(--bg);
+  border:1px solid var(--line2);border-radius:10px;padding:14px 16px;min-height:98px;resize:vertical}
+#nqenq .ta::placeholder{color:var(--mut);opacity:1}
+#nqenq .ta:focus{outline:none;border-color:var(--ochre)}
+#nqenq .consent{font-size:14px;color:var(--mut);margin:-6px 0 0}
+#nqenq .err-note{font:500 14px/1.4 var(--gordita);color:var(--err);margin:0}
+
+#nqenq .submit-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+#nqenq .submit{height:58px;padding:0 36px;background:var(--ochre);color:#fff;font-family:var(--aviano);font-weight:900;
+  font-size:13px;letter-spacing:.16em;text-transform:uppercase;border:0;border-radius:3px;cursor:pointer;transition:background .18s}
+#nqenq .submit:hover{background:var(--ochre-deep)}
+#nqenq .enq-form.sending .submit{background:var(--ochre-deep)}
+#nqenq .callat{font:500 15px/1 var(--gordita);color:var(--body)}
+#nqenq .callat a{color:var(--body);text-decoration:none;border-bottom:1px solid var(--line2)}
+#nqenq .callat a:hover{color:var(--ochre);border-bottom-color:var(--ochre)}
+
+
+#nqenq .sent{opacity:0;transform:translateY(10px);transition:opacity .42s cubic-bezier(.23,1,.32,1),transform .42s cubic-bezier(.23,1,.32,1)}
+#nqenq .sent.in{opacity:1;transform:none}
+#nqenq .sent-top{display:flex;align-items:center;gap:13px;margin-bottom:22px}
+#nqenq .sent-tick{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+#nqenq .sent-tick svg{width:22px;height:22px}
+#nqenq .sent-ey{font-family:var(--gordita);font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+#nqenq .sent-h{font-size:clamp(28px,3.6vw,40px);line-height:1;margin-bottom:16px}
+#nqenq .sent-msg{max-width:46ch;font-size:16px;color:var(--body);margin:0 0 28px}
+
+#nqenq .sent-card{display:flex;align-items:center;gap:18px;border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:32px}
+#nqenq .sent-thumb{width:112px;height:80px;object-fit:cover;border-radius:8px;flex:none;background:var(--line)}
+#nqenq .sent-cardbody{display:flex;flex-direction:column;gap:4px;min-width:0}
+#nqenq .sent-ref{font:600 11px/1.2 var(--gordita);letter-spacing:.1em;text-transform:uppercase;color:var(--ochre-deep)}
+#nqenq .sent-van{font-family:var(--aviano);font-weight:900;text-transform:uppercase;font-size:17px;line-height:1.05;color:var(--ink)}
+#nqenq .sent-req{font:500 14px/1.3 var(--gordita);color:var(--mut)}
+
+#nqenq .sent-next{margin-bottom:32px}
+#nqenq .next-h{font-family:var(--gordita);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin:0 0 16px}
+#nqenq .next-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+#nqenq .next-list li{display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start}
+#nqenq .next-list .num{width:30px;height:30px;border-radius:50%;background:var(--ochre);color:#fff;display:flex;align-items:center;justify-content:center;font:700 14px/1 var(--gordita);flex:none}
+#nqenq .next-list li>span:last-child{font-size:15px;line-height:1.55;color:var(--body);max-width:46ch;padding-top:5px}
+
+#nqenq .sent-btns{display:flex;gap:14px;flex-wrap:wrap}
+#nqenq .btn-ochre{height:52px;padding:0 28px;display:inline-flex;align-items:center;background:var(--ochre);color:#fff;
+  font-family:var(--aviano);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border:0;border-radius:3px;cursor:pointer;text-decoration:none;transition:background .18s}
+#nqenq .btn-ochre:hover{background:var(--ochre-deep)}
+#nqenq .btn-out{height:52px;padding:0 28px;display:inline-flex;align-items:center;background:none;color:var(--ink);
+  font-family:var(--aviano);font-weight:900;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--ink);border-radius:3px;cursor:pointer;transition:background .18s,color .18s}
+#nqenq .btn-out:hover{background:var(--ink);color:#fff}
+
+@media (prefers-reduced-motion:reduce){#nqenq *{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+#nqenq *{box-sizing:border-box}
+#nqenq h2,#nqenq h3{font-family:"Aviano Sans","Trebuchet MS",sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.01em;color:var(--ink);margin:0}
+#nqenq :focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+#nqenq{font-family:"Gordita","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:var(--body)}
+
 </style>
 </head>
 <body>
@@ -166,109 +279,74 @@ fbq('track','PageView');
 
 
 <section class="enquiry" id="enquire">
-  <div class="container">
-    <h2 class="enquiry-title"><span class="ln">Enquire</span> <span class="ln">now</span></h2>
-    <div class="enquiry-grid">
-      <div class="enquiry-copy">
-        <p class="lede">Tell us which van<br>
-          caught your eye and<br>
-          we will send the full spec,<br>
-          the photos and the real<br>
-          drive-away number.</p>
-        <p class="lede">We&rsquo;ll confirm it is<br>
-          still on the lot,<br>
-          <span class="lede-accent">then get you<br>
-          on the road.</span></p>
-        <p class="reachout">Our experts will reach out<br>
-          to you within 24 hours<br>
-          on Business days.</p>
-      </div>
-      <form class="enquiry-form" id="enqform" action="#" method="post" autocomplete="off" novalidate>
-        <div class="field-grid">
-          <div class="field field--line">
-            <input id="first-name" name="first-name" type="text" placeholder="First Name" required autocomplete="given-name">
-            <span class="req" aria-hidden="true">*</span>
+<div id="nqenq">
+<div class="enq">
+    <section class="enq-copy">
+      <h2>Enquire now</h2>
+      <p class="p1">Tell us which van caught your eye and we will send the full spec, the photos and the real drive-away number.</p>
+      <p class="p2">We will confirm it is still on the lot, <span class="hi">then get you on the road.</span></p>
+      <p class="p3">Our experts will reach out to you within 24 hours on business days.</p>
+    </section>
+
+    <section class="enq-panel">
+      <form class="enq-form" id="enqf" novalidate autocomplete="on">
+        <div class="row2">
+          <div class="field"><input id="fn" name="fname" type="text" placeholder="First Name" autocomplete="given-name" required><span class="ast" aria-hidden="true">*</span></div>
+          <div class="field"><input id="ln" name="lname" type="text" placeholder="Last Name" autocomplete="family-name" required><span class="ast" aria-hidden="true">*</span></div>
+          <div class="field"><input id="em" name="email" type="email" placeholder="Email" autocomplete="email" spellcheck="false" required><span class="ast" aria-hidden="true">*</span></div>
+          <div class="field"><input id="ph" name="phone" type="tel" placeholder="Phone" autocomplete="tel" required><span class="ast" aria-hidden="true">*</span></div>
+        </div>
+        <div class="selrow">
+          <div class="sel">
+            <select id="state" aria-label="Your state" required><option value="" selected disabled>State</option><option value="Victoria">VIC</option><option value="New South Wales / ACT">NSW / ACT</option><option value="Queensland">QLD</option><option value="South Australia">SA / NT</option><option value="Western Australia">WA</option><option value="Tasmania">TAS</option><svg class="chev" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
-          <div class="field field--line">
-            <input id="last-name" name="last-name" type="text" placeholder="Last Name" required autocomplete="family-name">
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--line">
-            <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email" spellcheck="false">
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--line">
-            <input id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="tel">
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--select">
-            <select id="state" name="state" autocomplete="off" required>
-              <option value="" selected disabled>State</option>
-              <option value="Victoria">VIC</option>
-              <option value="New South Wales / ACT">NSW / ACT</option>
-              <option value="Queensland">QLD</option>
-              <option value="South Australia">SA</option>
-              <option value="Western Australia">WA</option>
-              <option value="Tasmania">TAS</option>
-              <option value="Northern Territory">NT</option>
-            </select>
-            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--select field--van">
-            <select id="vanselect" name="van" autocomplete="off" aria-label="Which van are you asking about?">
-              <option value="">Which van?</option>
-            </select>
-            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
+          <div class="sel">
+            <select id="vanselect" aria-label="Which van are you asking about?"><option value="">General stock van enquiry</option></select><svg class="chev" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
         </div>
-        <fieldset class="chips">
-          <legend class="sr-only">What would you like to do?</legend>
-          <span class="chips-thumb is-init" aria-hidden="true"></span>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Call back" checked>
-            <span>Call back</span>
-          </label>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Book a viewing">
-            <span>Book a<br>viewing</span>
-          </label>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Get a quote">
-            <span>Get a Quote</span>
-          </label>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Hold this van">
-            <span>Hold<br>this van</span>
-          </label>
-        </fieldset>
-        <div class="field field--area">
-          <label class="sr-only" for="message">Something else you want to tell us…</label>
-          <textarea id="message" name="message" placeholder="Something else you want to tell us..."></textarea>
+        <div class="req" role="radiogroup" aria-label="What would you like us to do?">
+          <button type="button" role="radio" aria-checked="true" class="req-cell is-on" data-val="Call back">Call back</button>
+          <button type="button" role="radio" aria-checked="false" class="req-cell" data-val="Book a viewing">Book a viewing</button>
+          <button type="button" role="radio" aria-checked="false" class="req-cell" data-val="Get a quote">Get a quote</button>
+          <button type="button" role="radio" aria-checked="false" class="req-cell" data-val="Hold this van">Hold this van</button>
         </div>
-        <p class="fineprint" style="margin:0 0 4px">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>
-        <button class="btn-submit" type="submit">Submit</button>
-        <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
+        <textarea class="ta" id="msg" placeholder="Something else you want to tell us…" aria-label="Anything else you want to tell us"></textarea>
+        <p class="consent">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>
+        <p class="err-note" id="err" role="alert" hidden></p>
+        <div class="submit-row">
+          <button class="submit" type="submit" id="sub">Submit enquiry</button>
+          <span class="callat">or call <a href="tel:+61399586708">(03) 9958 6708</a></span>
+        </div>
       </form>
-      <div class="enquiry-done" id="enqdone" hidden>
-        <div class="enq-done-top">
-          <span class="enq-done-check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
-          </span>
-          <p class="enq-done-eyebrow">Enquiry received</p>
+
+      <div class="sent" id="sent" role="status" aria-live="polite" hidden>
+        <div class="sent-top"><span class="sent-tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg></span><span class="sent-ey">Enquiry sent</span></div>
+        <h3 class="sent-h">Thanks, <span id="sName">there</span>.</h3>
+        <p class="sent-msg">Your enquiry is on its way. We will be in touch within 24 hours on business days, and we will confirm the van is still on the lot before anything else.</p>
+        <div class="sent-card">
+          <img class="sent-thumb" id="sThumb" src="" alt="">
+          <div class="sent-cardbody">
+            <span class="sent-ref">Your enquiry · <span id="sRef">WRV-00000</span></span>
+            <span class="sent-van" id="sVan">General stock van enquiry</span>
+            <span class="sent-req" id="sReq">Call back</span>
+          </div>
         </div>
-        <h3 class="enq-done-head" id="enqdone-head">Thanks, we&rsquo;re on it</h3>
-        <p class="enq-done-msg" id="enqdone-msg"></p>
-        <ol class="enq-done-steps">
-          <li class="is-now"><span class="enq-step-n">1</span><span class="enq-step-tx"><b>Enquiry sent</b>You&rsquo;re here</span></li>
-          <li><span class="enq-step-n">2</span><span class="enq-step-tx"><b>We call you</b>Within 24 hours, business days</span></li>
-          <li><span class="enq-step-n">3</span><span class="enq-step-tx"><b>Take it home</b>Secure it with a deposit</span></li>
-        </ol>
-        <dl class="enq-done-recap" id="enqdone-recap"></dl>
-        <a class="enq-done-cta" href="tel:+61399586708">Can&rsquo;t wait? Call (03) 9958 6708</a>
+        <div class="sent-next">
+          <p class="next-h">What happens next</p>
+          <ol class="next-list">
+            <li><span class="num">1</span><span>We check the van is still on the lot and confirm its drive-away number today.</span></li>
+            <li><span class="num">2</span><span>A product specialist calls you within 24 hours on business days.</span></li>
+            <li><span class="num">3</span><span>We book a walk-through in person or on video, whichever suits you.</span></li>
+          </ol>
+        </div>
+        <div class="sent-btns">
+          <a class="btn-ochre" href="tel:+61399586708">Call us now</a>
+          <button type="button" class="btn-out" id="again">Send another</button>
+        </div>
       </div>
-    </div>
+    </section>
   </div>
+</div>
 </section>
 
 <section class="video-band" id="video">
@@ -581,5 +659,71 @@ fbq('track','PageView');
 <script src="/stock/assets/ref/js/footer.js"></script>
 
 
+<script>
+(function(){
+  function boot(){
+    var f=document.getElementById('enqf'), sent=document.getElementById('sent'), err=document.getElementById('err');
+    if(!f||!sent) return;
+    var group=f.querySelector('.req'), cells=[].slice.call(f.querySelectorAll('.req-cell'));
+    function reqVal(){var on=f.querySelector('.req-cell.is-on');return on?on.dataset.val:'Call back';}
+    function selectCell(c){cells.forEach(function(x){var on=x===c;x.classList.toggle('is-on',on);x.setAttribute('aria-checked',on?'true':'false');x.tabIndex=on?0:-1;});}
+    cells.forEach(function(c,i){c.tabIndex=c.classList.contains('is-on')?0:-1;
+      c.addEventListener('click',function(){selectCell(c);});
+      c.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:((e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0);if(d){e.preventDefault();var n=cells[(i+d+cells.length)%cells.length];selectCell(n);n.focus();}});
+    });
+    function ref(){return 'WRV-'+Math.floor(10000+Math.random()*89999);}
+    function acPost(H){
+      var post=document.createElement('form');post.method='POST';
+      post.action='https://wonderlandrv.activehosted.com/proc.php';post.target='ac_sink';post.style.display='none';
+      for(var k in H){var i=document.createElement('input');i.type='hidden';i.name=k;i.value=H[k];post.appendChild(i);}
+      document.body.appendChild(post);post.submit();setTimeout(function(){post.remove();},3000);
+    }
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var need=[['fn','first name'],['ln','last name'],['em','email'],['ph','phone'],['state','state']];
+      var miss=null;
+      need.forEach(function(n){var el=document.getElementById(n[0]);var bad=!el.value.trim();var fld=el.closest('.field');if(fld)fld.classList.toggle('bad',bad);if(bad&&!miss)miss=[el,n[1]];});
+      if(miss){err.hidden=false;err.textContent='Please add your '+miss[1]+' and submit again.';miss[0].focus();return;}
+      err.hidden=true;
+      var sel=document.getElementById('vanselect');
+      var vans=window.WLVANS||[];
+      var vv=vans.filter(function(x){return x.chassis===sel.value;})[0];
+      var vanTxt=sel.value===''?'General stock van enquiry':(sel.value==='unsure'?'Not sure yet':(sel.value+' '+(vv&&window.WLfullName?window.WLfullName(vv):'')).trim());
+      var intent=reqVal();
+      var msg=(document.getElementById('msg').value||'').trim();
+      var phone=document.getElementById('ph').value.replace(/\s+/g,'');
+      if(/^0\d{9}$/.test(phone)) phone='+61'+phone.slice(1);
+      var ad='Stock Vans page | '+intent+' | Van: '+vanTxt+(msg?' | Note: '+msg.slice(0,300):'')+' | Newsletter: yes';
+      acPost({u:'47',f:'47',s:'',c:'0',m:'0',act:'sub',v:'2',or:window.WLOR||'',
+        firstname:document.getElementById('fn').value,lastname:document.getElementById('ln').value,
+        email:document.getElementById('em').value,phone:phone,'field[27]':document.getElementById('state').value,'field[86]':ad});
+      try{if(typeof gtag==='function')gtag('event','stock_vans_enquiry',{lead_source:'Stock Vans page',van:vanTxt,enquiry_type:intent});}catch(_){}
+      try{if(typeof fbq==='function')fbq('trackCustom','Stock Vans Enquiry',{van:vanTxt,enquiry_type:intent});}catch(_){}
+      var sub=document.getElementById('sub');f.classList.add('sending');sub.textContent='Sending…';
+      setTimeout(function(){
+        var fn=document.getElementById('fn').value.trim();
+        var sh=document.querySelector('.sent-h');
+        if(fn){sh.innerHTML='Thanks, <span id="sName"></span>.';document.getElementById('sName').textContent=fn;}
+        else{sh.textContent='Thanks for getting in touch.';}
+        document.getElementById('sRef').textContent=ref();
+        var card=document.querySelector('.sent-card'), thumb=document.getElementById('sThumb');
+        if(vv&&window.WLimgSm){card.style.display='';thumb.style.display='';thumb.src=window.WLimgSm(vv.img);thumb.alt=window.WLfullName(vv);
+          document.getElementById('sVan').textContent=window.WLfullName(vv);}
+        else{if(card)card.style.display='none';}
+        document.getElementById('sReq').textContent=intent;
+        f.hidden=true;f.classList.remove('sending');sub.textContent='Submit enquiry';
+        sent.hidden=false;requestAnimationFrame(function(){sent.classList.add('in');});
+      },1100);
+    });
+    document.getElementById('again').addEventListener('click',function(){
+      sent.classList.remove('in');sent.hidden=true;f.hidden=false;f.reset();selectCell(cells[0]);
+      var c=document.querySelector('.sent-card');if(c)c.style.display='';
+      document.getElementById('fn').focus();
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot); else boot();
+})();
+
+</script>
 </body>
 </html>
