@@ -50,17 +50,36 @@ fbq('track','PageView');
 @media (max-width:900px){.field-grid > .field--select{grid-column:1 / -1}}
 .consent input{width:20px;height:20px;flex:none}
 /* Post-submit confirmation panel — replaces the form on success (mirrors the Melbourne show form) */
-.enquiry-done{grid-column:2;align-self:start;padding-top:0.165rem}
-.enq-done-eyebrow{font-family:var(--gordita);font-weight:500;font-size:0.2rem;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0 0 0.18rem}
-.enq-done-head{font-family:var(--aviano);font-size:0.62rem;line-height:1;text-transform:uppercase;color:var(--ink);margin:0 0 0.26rem}
-.enq-done-msg{font-family:var(--gordita);font-size:0.28rem;line-height:0.4rem;color:var(--ink);margin:0 0 0.3rem}
+.enquiry-done{grid-column:2;align-self:start;padding-top:0.165rem;position:relative;animation:enqDoneIn .5s cubic-bezier(.23,1,.32,1) both}
+@keyframes enqDoneIn{from{opacity:0;transform:translateY(0.18rem)}to{opacity:1;transform:none}}
+.enq-done-top{display:flex;align-items:center;gap:0.16rem;margin:0 0 0.2rem}
+.enq-done-check{width:0.5rem;height:0.5rem;background:var(--orange);display:flex;align-items:center;justify-content:center;flex:none;animation:enqCheckPop .45s cubic-bezier(.34,1.56,.64,1) .12s both}
+.enq-done-check svg{width:0.3rem;height:0.3rem}
+@keyframes enqCheckPop{0%{transform:scale(0.4);opacity:0}100%{transform:scale(1);opacity:1}}
+.enq-done-eyebrow{font-family:var(--gordita);font-weight:500;font-size:0.2rem;line-height:1;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin:0}
+.enq-done-head{font-family:var(--aviano);font-size:0.62rem;line-height:1.02;text-transform:uppercase;color:var(--ink);margin:0 0 0.22rem}
+.enq-done-msg{font-family:var(--gordita);font-size:0.28rem;line-height:0.4rem;color:var(--ink);margin:0 0 0.36rem}
 .enq-done-msg strong{font-weight:600}
-.enq-done-recap{margin:0 0 0.32rem;padding:0;border-top:1px solid var(--ink)}
+.enq-done-steps{list-style:none;margin:0 0 0.36rem;padding:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.18rem}
+.enq-done-steps li{position:relative;padding:0.22rem 0 0;border-top:2px solid rgba(0,0,0,.12)}
+.enq-done-steps li.is-now{border-top-color:var(--orange)}
+.enq-done-steps .enq-step-n{position:absolute;top:0;left:0;transform:translateY(-52%);width:0.34rem;height:0.34rem;background:#fff;border:2px solid rgba(0,0,0,.16);color:var(--grey);font-family:var(--gordita);font-weight:600;font-size:0.17rem;display:flex;align-items:center;justify-content:center}
+.enq-done-steps li.is-now .enq-step-n{background:var(--orange);border-color:var(--orange);color:#fff}
+.enq-done-steps .enq-step-tx{display:flex;flex-direction:column;font-family:var(--gordita);font-size:0.17rem;line-height:1.25;color:var(--grey)}
+.enq-done-steps .enq-step-tx b{font-weight:600;font-size:0.2rem;color:var(--ink);margin-bottom:0.05rem}
+.enq-done-steps li.is-now .enq-step-tx{color:var(--orange)}
+.enq-done-recap{margin:0 0 0.34rem;padding:0;border-top:1px solid var(--ink)}
 .enq-done-recap>div{display:flex;justify-content:space-between;gap:0.24rem;padding:0.13rem 0;border-bottom:1px solid rgba(0,0,0,.12)}
-.enq-done-recap dt{font-family:var(--gordita);font-size:0.22rem;line-height:1.2;color:var(--grey);margin:0}
+.enq-done-recap dt{font-family:var(--gordita);font-size:0.19rem;line-height:1.2;color:var(--grey);margin:0;text-transform:uppercase;letter-spacing:.06em}
 .enq-done-recap dd{font-family:var(--gordita);font-weight:500;font-size:0.22rem;line-height:1.2;color:var(--ink);margin:0;text-align:right}
-.enq-done-foot{font-family:var(--gordita);font-weight:500;font-size:0.24rem;line-height:0.32rem;color:var(--orange);margin:0}
-@media (max-width:900px){.enquiry-done{grid-column:1;order:2;margin-top:40px;padding-top:0}.enq-done-head{font-size:34px}.enq-done-msg{font-size:16px;line-height:24px}.enq-done-recap dt,.enq-done-recap dd{font-size:14px}.enq-done-foot{font-size:15px;line-height:22px}.enq-done-eyebrow{font-size:12px}}
+.enq-done-cta{display:inline-block;font-family:var(--aviano);font-size:0.22rem;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:var(--orange);padding:0.2rem 0.36rem;text-decoration:none;transition:background .2s ease}
+.enq-done-cta:hover,.enq-done-cta:focus{background:var(--ink)}
+/* confetti layer */
+.enq-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:6}
+.enq-confetti i{position:absolute;top:-8%;width:9px;height:14px;opacity:0;will-change:transform,opacity;animation:enqFall var(--d,2.6s) cubic-bezier(.29,.53,.45,1) var(--dl,0s) forwards}
+@keyframes enqFall{0%{opacity:0;transform:translate3d(0,-10%,0) rotate(0)}12%{opacity:1}100%{opacity:0;transform:translate3d(var(--x,0),115%,0) rotate(var(--r,540deg))}}
+@media (prefers-reduced-motion:reduce){.enq-confetti{display:none}.enquiry-done,.enq-done-check{animation:none}}
+@media (max-width:900px){.enquiry-done{grid-column:1;order:2;margin-top:40px;padding-top:0}.enq-done-head{font-size:34px}.enq-done-msg{font-size:16px;line-height:24px}.enq-done-steps{gap:12px}.enq-done-steps .enq-step-tx{font-size:12px}.enq-done-steps .enq-step-tx b{font-size:14px}.enq-done-steps .enq-step-n{width:24px;height:24px;font-size:12px}.enq-done-recap dt{font-size:13px}.enq-done-recap dd{font-size:14px}.enq-done-cta{font-size:15px;padding:14px 22px}}
 </style>
 </head>
 <body>
@@ -232,11 +251,21 @@ fbq('track','PageView');
         <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
       </form>
       <div class="enquiry-done" id="enqdone" hidden>
-        <p class="enq-done-eyebrow">Stock van enquiry</p>
-        <h3 class="enq-done-head" id="enqdone-head">We&rsquo;ve got your enquiry</h3>
+        <div class="enq-done-top">
+          <span class="enq-done-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg>
+          </span>
+          <p class="enq-done-eyebrow">Enquiry received</p>
+        </div>
+        <h3 class="enq-done-head" id="enqdone-head">Thanks, we&rsquo;re on it</h3>
         <p class="enq-done-msg" id="enqdone-msg"></p>
+        <ol class="enq-done-steps">
+          <li class="is-now"><span class="enq-step-n">1</span><span class="enq-step-tx"><b>Enquiry sent</b>You&rsquo;re here</span></li>
+          <li><span class="enq-step-n">2</span><span class="enq-step-tx"><b>We call you</b>Within 24 hours, business days</span></li>
+          <li><span class="enq-step-n">3</span><span class="enq-step-tx"><b>Take it home</b>Secure it with a deposit</span></li>
+        </ol>
         <dl class="enq-done-recap" id="enqdone-recap"></dl>
-        <p class="enq-done-foot">Our experts will reach out to you within 24 hours on business days.</p>
+        <a class="enq-done-cta" href="tel:+61399586708">Can&rsquo;t wait? Call (03) 9958 6708</a>
       </div>
     </div>
   </div>
