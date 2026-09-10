@@ -1755,6 +1755,8 @@ html {
   --aviano:"Aviano Sans","Trebuchet MS",sans-serif;
   --gordita:"Gordita","Helvetica Neue",Arial,sans-serif;
 }
+#wlstock #nqenq{box-sizing:border-box}
+@media(max-width:900px){#wlstock #nqenq{padding-left:20px;padding-right:20px}}
 #wlstock #nqenq .enq{display:grid;grid-template-columns:.62fr 1.38fr;gap:64px;align-items:stretch}
 @media(max-width:900px){#wlstock #nqenq .enq{grid-template-columns:1fr;gap:40px}}
 
@@ -1923,7 +1925,7 @@ html {
 
 
 <section class="enquiry" id="enquire">
-<div id="nqenq">
+<div id="nqenq" class="shell">
 <div class="enq">
     <section class="enq-copy">
       <h2>Enquire now</h2>
