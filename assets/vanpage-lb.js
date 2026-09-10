@@ -237,7 +237,7 @@
   if (!main.querySelector('.vp-zoomhint')) {
     var hint = document.createElement('div');
     hint.className = 'vp-zoomhint';
-    hint.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#12171C" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/><line x1="10.5" y1="7.5" x2="10.5" y2="13.5"/><line x1="7.5" y1="10.5" x2="13.5" y2="10.5"/></svg>';
+    hint.innerHTML = '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5"/><path d="M20 9V4h-5"/><path d="M4 15v5h5"/><path d="M20 15v5h-5"/></svg>';
     main.appendChild(hint);
   }
   var big = function (u) {
@@ -275,7 +275,7 @@
     '.wl-lb-close:active{transform:scale(.94)}',
     '.vp-main{position:relative}',
     '.vp-zoomhint{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.86);width:58px;height:58px;',
-      'border-radius:50%;background:rgba(255,255,255,.94);border:1px solid #E4E1DC;display:flex;align-items:center;justify-content:center;',
+      'border-radius:50%;background:rgba(219,118,39,.35);border:none;display:flex;align-items:center;justify-content:center;',
       'opacity:0;pointer-events:none;z-index:3;box-shadow:0 4px 18px rgba(8,10,12,.22);',
       'transition:opacity .2s cubic-bezier(.23,1,.32,1),transform .2s cubic-bezier(.23,1,.32,1)}',
     '.vp-main:hover .vp-zoomhint{opacity:1;transform:translate(-50%,-50%) scale(1)}',
