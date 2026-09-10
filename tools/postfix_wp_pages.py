@@ -38,11 +38,18 @@ def fix_div_balance(s):
         s=s[:a]+s[b:]
     return s
 
+# external CDN images re-hosted to WP (10 Sep 2026) — deterministic names from ext-manifest
+import os as _os
+_extman=json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),'..','email-prod','ext-manifest.json')))
+EXT_MAP={m['url']: 'https://wonderlandrv.com.au/wp-content/uploads/2026/09/'+m['name'] for m in _extman}
+EXT_KEYS=sorted(EXT_MAP, key=len, reverse=True)
+
 rename_pairs=[(re.sub(r'-(rotated|scaled)(\.[a-z]+)$', r'\2', n), n) for n in RENAMED]
 
 for f in sorted(glob.glob('wp-pages/*.html')):
     s=open(f,encoding='utf-8').read()
     for old,new in rename_pairs: s=s.replace(old,new)
+    for k in EXT_KEYS: s=s.replace(k, EXT_MAP[k])
     s=fbq_re.sub('',s); s=aw_re.sub('',s)
     s=hdr_re.sub('',s); s=ftr_re.sub('',s)
     s=browse_re.sub('',s)
@@ -83,6 +90,7 @@ for f in sorted(glob.glob('wp-pages/*.html')):
       'browse-link': re.findall(r'Browse as pages', s),
       'wlstock-missing': [] if 'id="wlstock"' in s else ['no wrapper'],
       'stock-vans-links': re.findall(r'href="[^"]*stock-vans[^"]*"', s),
+      'external-imgs': re.findall(r'https://(?:caravancampingsales\.pxcrush\.net|jealstorage\.blob)[^"\'\\\s)]{0,60}', s)[:3],
       'root-fontsize-leak': re.findall(r'html[^{}]*\{[^}]*font-size', s),
       'wlrem-missing': [] if '--wlrem' in s else ['no --wlrem'],
     }
