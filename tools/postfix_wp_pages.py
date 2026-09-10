@@ -46,6 +46,11 @@ for f in sorted(glob.glob('wp-pages/*.html')):
     s=fbq_re.sub('',s); s=aw_re.sub('',s)
     s=hdr_re.sub('',s); s=ftr_re.sub('',s)
     s=browse_re.sub('',s)
+    # final URL architecture: main page lives at /stock/ (no /stock-vans/ page exists)
+    s=s.replace('href="/stock-vans/','href="/stock/')
+    s=s.replace('href="https://wonderlandrv.com.au/stock-vans/"','href="https://wonderlandrv.com.au/stock/"')
+    s=s.replace('content="https://wonderlandrv.com.au/stock-vans/"','content="https://wonderlandrv.com.au/stock/"')
+    s=s.replace('<link rel="canonical" href="https://wonderlandrv.com.au/stock-vans/"','<link rel="canonical" href="https://wonderlandrv.com.au/stock/"')
     for d in DROP_FACES:
         s=re.sub(r'@font-face\s*\{[^}]*'+re.escape(d)+r'[^}]*\}\s*','',s)
     if 'id="wlstock"' not in s:
@@ -77,6 +82,7 @@ for f in sorted(glob.glob('wp-pages/*.html')):
       'bad-sm-derive': ([] if "endsWith('-rotated.jpg')" in s or 'stockpg-' not in s else ['unpatched']) if "_sm.$1" in s else [],
       'browse-link': re.findall(r'Browse as pages', s),
       'wlstock-missing': [] if 'id="wlstock"' in s else ['no wrapper'],
+      'stock-vans-links': re.findall(r'href="[^"]*stock-vans[^"]*"', s),
     }
     for k,v in checks.items():
         if v: problems.append((f,k,v[:2]))
