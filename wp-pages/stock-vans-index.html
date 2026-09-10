@@ -1795,15 +1795,15 @@ html {
 #wlstock #nqenq .sel .chev{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:14px;height:8px;pointer-events:none;color:var(--body)}
 
 
-#wlstock #nqenq .req{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line2);border-radius:10px;padding:5px}
-@media(max-width:560px){#wlstock #nqenq .req{grid-template-columns:1fr 1fr}}
-#wlstock #nqenq .req-cell{position:relative;border:0;background:transparent;font:500 14px/1.2 var(--gordita);color:var(--ink);
+#wlstock #nqenq .nqreq{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line2);border-radius:10px;padding:5px}
+@media(max-width:560px){#wlstock #nqenq .nqreq{grid-template-columns:1fr 1fr}}
+#wlstock #nqenq .nqreq-cell{position:relative;border:0;background:transparent;font:500 14px/1.2 var(--gordita);color:var(--ink);
   padding:14px 6px;border-radius:7px;cursor:pointer;min-height:44px;text-align:center;
   transition:background-color .19s ease,color .19s ease,box-shadow .19s ease}
-#wlstock #nqenq .req-cell:not(:first-child)::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:1px;background:var(--line2);transition:opacity .19s ease}
-@media(max-width:560px){#wlstock #nqenq .req-cell:nth-child(3)::before{display:none}}
-#wlstock #nqenq .req-cell.is-on{background:var(--ochre);color:#fff;box-shadow:0 7px 18px -7px rgba(219,118,39,.55)}
-#wlstock #nqenq .req-cell.is-on::before, #wlstock #nqenq .req-cell.is-on + .req-cell::before{opacity:0}
+#wlstock #nqenq .nqreq-cell:not(:first-child)::before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:1px;background:var(--line2);transition:opacity .19s ease}
+@media(max-width:560px){#wlstock #nqenq .nqreq-cell:nth-child(3)::before{display:none}}
+#wlstock #nqenq .nqreq-cell.is-on{background:var(--ochre);color:#fff;box-shadow:0 7px 18px -7px rgba(219,118,39,.55)}
+#wlstock #nqenq .nqreq-cell.is-on::before, #wlstock #nqenq .nqreq-cell.is-on + .nqreq-cell::before{opacity:0}
 
 #wlstock #nqenq .ta{width:100%;font:400 15px/1.6 var(--gordita);color:var(--ink);background:var(--bg);
   border:1px solid var(--line2);border-radius:10px;padding:14px 16px;min-height:98px;resize:vertical}
@@ -1945,11 +1945,11 @@ html {
             <select id="vanselect" aria-label="Which van are you asking about?"><option value="">General stock van enquiry</option></select><svg class="chev" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
         </div>
-        <div class="req" role="radiogroup" aria-label="What would you like us to do?">
-          <button type="button" role="radio" aria-checked="true" class="req-cell is-on" data-val="Call back">Call back</button>
-          <button type="button" role="radio" aria-checked="false" class="req-cell" data-val="Book a viewing">Book a viewing</button>
-          <button type="button" role="radio" aria-checked="false" class="req-cell" data-val="Get a quote">Get a quote</button>
-          <button type="button" role="radio" aria-checked="false" class="req-cell" data-val="Hold this van">Hold this van</button>
+        <div class="nqreq" role="radiogroup" aria-label="What would you like us to do?">
+          <button type="button" role="radio" aria-checked="true" class="nqreq-cell is-on" data-val="Call back">Call back</button>
+          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Book a viewing">Book a viewing</button>
+          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Get a quote">Get a quote</button>
+          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Hold this van">Hold this van</button>
         </div>
         <textarea class="ta" id="msg" placeholder="Something else you want to tell us…" aria-label="Anything else you want to tell us"></textarea>
         <p class="consent">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>
@@ -5803,8 +5803,8 @@ function buildControls(frame) {
   function boot(){
     var f=document.getElementById('enqf'), sent=document.getElementById('sent'), err=document.getElementById('err');
     if(!f||!sent) return;
-    var group=f.querySelector('.req'), cells=[].slice.call(f.querySelectorAll('.req-cell'));
-    function reqVal(){var on=f.querySelector('.req-cell.is-on');return on?on.dataset.val:'Call back';}
+    var group=f.querySelector('.nqreq'), cells=[].slice.call(f.querySelectorAll('.nqreq-cell'));
+    function reqVal(){var on=f.querySelector('.nqreq-cell.is-on');return on?on.dataset.val:'Call back';}
     function selectCell(c){cells.forEach(function(x){var on=x===c;x.classList.toggle('is-on',on);x.setAttribute('aria-checked',on?'true':'false');x.tabIndex=on?0:-1;});}
     cells.forEach(function(c,i){c.tabIndex=c.classList.contains('is-on')?0:-1;
       c.addEventListener('click',function(){selectCell(c);});
