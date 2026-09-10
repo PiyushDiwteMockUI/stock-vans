@@ -5817,9 +5817,9 @@ function buildControls(frame) {
       c.addEventListener('keydown',function(e){var d=(e.key==='ArrowRight'||e.key==='ArrowDown')?1:((e.key==='ArrowLeft'||e.key==='ArrowUp')?-1:0);if(d){e.preventDefault();var n=cells[(i+d+cells.length)%cells.length];selectCell(n);n.focus();}});
     });
     movePill();
-    requestAnimationFrame(function(){movePill();if(group)group.classList.remove('no-anim');});
+    setTimeout(function(){movePill();if(group)group.classList.remove('no-anim');},60);
     setTimeout(movePill,320);
-    window.addEventListener('resize',function(){if(group)group.classList.add('no-anim');movePill();requestAnimationFrame(function(){if(group)group.classList.remove('no-anim');});});
+    window.addEventListener('resize',function(){if(group)group.classList.add('no-anim');movePill();setTimeout(function(){if(group)group.classList.remove('no-anim');},60);});
     function ref(){return 'WRV-'+Math.floor(10000+Math.random()*89999);}
     function acPost(H){
       var post=document.createElement('form');post.method='POST';
