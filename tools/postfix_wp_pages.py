@@ -51,7 +51,7 @@ for f in sorted(glob.glob('wp-pages/*.html')):
     if 'id="wlstock"' not in s:
         s=fix_div_balance(s)
         s=re.sub(r'(<style>)(.*?)(</style>)', lambda m: m.group(1)+scope_css(m.group(2))+m.group(3), s, flags=re.S)
-        reset='<style>#wlstock h1,#wlstock h2,#wlstock h3,#wlstock h4,#wlstock h5,#wlstock h6{color:inherit;line-height:inherit}#wlstock input,#wlstock select,#wlstock textarea,#wlstock button{transition:all 0s;border-radius:0}#wlstock select{line-height:normal}#wlstock label{line-height:inherit}#wlstock table,#wlstock th,#wlstock td{font-size:inherit;line-height:inherit;border:none}#wlstock optgroup,#wlstock option{font-size:inherit;line-height:inherit}#wlstock input[type=range],#wlstock input[type=radio],#wlstock input[type=checkbox]{font:400 13.3333px Arial;line-height:normal}</style>'
+        reset='<style>#wlstock h1,#wlstock h2,#wlstock h3,#wlstock h4,#wlstock h5,#wlstock h6{color:inherit;line-height:inherit}#wlstock input,#wlstock select,#wlstock textarea,#wlstock button{transition:all 0s;border-radius:0}#wlstock select{line-height:normal}#wlstock label{line-height:inherit}#wlstock table,#wlstock th,#wlstock td{font-size:inherit;line-height:inherit}#wlstock optgroup,#wlstock option{font-size:inherit;line-height:inherit}#wlstock input[type=range],#wlstock input[type=radio],#wlstock input[type=checkbox]{font:400 13.3333px Arial;line-height:normal}</style>'
         s='<div id="wlstock">\n'+reset+'\n'+s+'\n</div>'
     for old,new in FONT_MAP.items():
         s=s.replace(f'url("{old}") format("opentype")', f'url("{new}") format("woff2")')
