@@ -2420,7 +2420,8 @@ html {
   if (!img || !thumbs) return;
   var btns = Array.prototype.slice.call(thumbs.querySelectorAll('.thumbbtn'));
   var toFull = function (u) {
-    u = u.replace(/pxc_size=\d+,\d+/, 'pxc_size=1024,683');
+    u = u.replace(/-640\.(jpg|png)$/, '-1600.$1');
+    u = u.replace(/_sm-rotated\.(jpg|png)$/, '-rotated.$1');
     return u.replace(/_sm\.(jpg|png)$/, '.$1');
   };
   var smalls = btns.map(function (b) {

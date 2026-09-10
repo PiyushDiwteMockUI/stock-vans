@@ -4524,7 +4524,7 @@ const VANS = DATA.vans.map((v, i) => {
 });
 const imgSm = u => {
   if (u.includes('pxcrush.net')) return u.replace(/pxc_size=\d+,\d+/, 'pxc_size=640,427');
-  if (u.startsWith('https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-')) return u.endsWith('-rotated.jpg') ? u.replace(/-rotated\.jpg$/, '_sm-rotated.jpg') : u.replace(/\.(jpg|png)$/, '_sm.$1');
+  if (u.startsWith('https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-')) { if (u.indexOf('/stockpg-cdn-') !== -1) return u.replace(/-1600\.(jpg|png)$/, '-640.$1'); if (u.indexOf('/stockpg-jl-') !== -1) return u; return u.endsWith('-rotated.jpg') ? u.replace(/-rotated\.jpg$/, '_sm-rotated.jpg') : u.replace(/\.(jpg|png)$/, '_sm.$1'); }
   return u;
 };
 const imgSrcset = u => u.includes('pxcrush.net') || u.startsWith('https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-')

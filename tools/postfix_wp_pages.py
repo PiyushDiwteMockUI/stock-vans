@@ -50,6 +50,9 @@ for f in sorted(glob.glob('wp-pages/*.html')):
     s=open(f,encoding='utf-8').read()
     for old,new in rename_pairs: s=s.replace(old,new)
     for k in EXT_KEYS: s=s.replace(k, EXT_MAP[k])
+    # van-page toFull(): upgrade re-hosted thumb names to their large variants
+    s=s.replace("u = u.replace(/pxc_size=\\d+,\\d+/, 'pxc_size=1024,683');",
+                "u = u.replace(/-640\\.(jpg|png)$/, '-1600.$1');\n    u = u.replace(/_sm-rotated\\.(jpg|png)$/, '-rotated.$1');")
     s=fbq_re.sub('',s); s=aw_re.sub('',s)
     s=hdr_re.sub('',s); s=ftr_re.sub('',s)
     s=browse_re.sub('',s)
@@ -70,7 +73,7 @@ for f in sorted(glob.glob('wp-pages/*.html')):
     for w in ('Light','Regular','Medium'):
         s=s.replace(f"url('fonts/Gordita-{w}.woff2')", f"url('{UP}2022/11/Gordita-{w}.woff2')")
     s=s.replace("return u.replace(/\\.(jpg|png)$/, '_sm.$1');",
-                "return u.endsWith('-rotated.jpg') ? u.replace(/-rotated\\.jpg$/, '_sm-rotated.jpg') : u.replace(/\\.(jpg|png)$/, '_sm.$1');")
+                "{ if (u.indexOf('/stockpg-cdn-') !== -1) return u.replace(/-1600\\.(jpg|png)$/, '-640.$1'); if (u.indexOf('/stockpg-jl-') !== -1) return u; return u.endsWith('-rotated.jpg') ? u.replace(/-rotated\\.jpg$/, '_sm-rotated.jpg') : u.replace(/\\.(jpg|png)$/, '_sm.$1'); }")
     open(f,'w',encoding='utf-8').write(s)
 
 # verification
