@@ -33,6 +33,10 @@
     track.style.transform = "translateX(" + (-i * 100) + "%)";
   }
 
+  function settle() {
+    if (i === n) { i = 0; show(false); }   // landed on the clone: reset unseen
+    busy = false;
+  }
   function go(dir) {
     if (busy || n < 2) return;
     busy = true;
@@ -41,10 +45,15 @@
     }
     i += dir;
     show(true);
-    setTimeout(function () {
-      if (i === n) { i = 0; show(false); }   // landed on the clone: reset unseen
-      busy = false;
-    }, RIDE);
+    var settled = false;
+    var onEnd = function (e) {
+      if (e && (e.target !== track || e.propertyName !== "transform")) return;
+      if (settled) return; settled = true;
+      track.removeEventListener("transitionend", onEnd);
+      settle();
+    };
+    track.addEventListener("transitionend", onEnd);
+    setTimeout(onEnd, RIDE + 250);   // safety net past the transition, not a race
   }
 
   function auto() { clearInterval(timer); timer = setInterval(function () { go(1); }, HOLD); }
