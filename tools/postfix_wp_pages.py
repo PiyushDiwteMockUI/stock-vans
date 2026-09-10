@@ -2,7 +2,7 @@
 import glob, re, json
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from css_scope import scope_css
+from css_scope import scope_css, rem_to_var
 
 RENAMED = """stockpg-vans-WL1223-25_sm-rotated.jpg stockpg-vans-WL1223-24_sm-rotated.jpg stockpg-vans-WL1223-24-rotated.jpg stockpg-vans-WL1223-23-rotated.jpg stockpg-vans-WL1223-22_sm-rotated.jpg stockpg-vans-WL1223-25-rotated.jpg stockpg-vans-WL1223-21_sm-rotated.jpg stockpg-vans-WL1223-23_sm-rotated.jpg stockpg-vans-WL1223-21-rotated.jpg stockpg-vans-WL1223-20-rotated.jpg stockpg-vans-WL1223-19_sm-rotated.jpg stockpg-vans-WL1223-22-rotated.jpg stockpg-vans-WL1223-18_sm-rotated.jpg stockpg-vans-WL1223-20_sm-rotated.jpg stockpg-vans-WL1223-18-rotated.jpg stockpg-vans-WL1223-17-rotated.jpg stockpg-vans-WL1223-16_sm-rotated.jpg stockpg-vans-WL1223-19-rotated.jpg stockpg-vans-WL1223-15_sm-rotated.jpg stockpg-vans-WL1223-17_sm-rotated.jpg stockpg-vans-WL1223-15-rotated.jpg stockpg-vans-WL1223-14-rotated.jpg stockpg-vans-WL1223-13_sm-rotated.jpg stockpg-vans-WL1223-16-rotated.jpg stockpg-vans-WL1223-12_sm-rotated.jpg stockpg-vans-WL1223-14_sm-rotated.jpg stockpg-vans-WL1223-12-rotated.jpg stockpg-vans-WL1223-11-rotated.jpg stockpg-vans-WL1223-10_sm-rotated.jpg stockpg-vans-WL1223-13-rotated.jpg stockpg-vans-WL1223-09_sm-rotated.jpg stockpg-vans-WL1223-11_sm-rotated.jpg stockpg-vans-WL1223-09-rotated.jpg stockpg-vans-WL1223-08-rotated.jpg stockpg-vans-WL1223-07_sm-rotated.jpg stockpg-vans-WL1223-10-rotated.jpg stockpg-vans-WL1223-06_sm-rotated.jpg stockpg-vans-WL1223-08_sm-rotated.jpg stockpg-vans-WL1223-06-rotated.jpg stockpg-vans-WL1223-04_sm-rotated.jpg stockpg-vans-WL1223-07-rotated.jpg stockpg-vans-WL1223-05_sm-rotated.jpg stockpg-vans-WL1223-05-rotated.jpg stockpg-vans-WL1223-03-rotated.jpg stockpg-vans-WL1223-03_sm-rotated.jpg stockpg-vans-WL1223-02-rotated.jpg stockpg-vans-WL1223-04-rotated.jpg stockpg-vans-WL1223-02_sm-rotated.jpg stockpg-vans-WL1223-01_sm-rotated.jpg stockpg-vans-WL1223-01-rotated.jpg stockpg-vans-WL1014-01_sm-rotated.jpg stockpg-vans-WL1014-01-rotated.jpg stockpg-ref-img-wonderland-rv-logo-scaled.png stockpg-ref-img-home-review-sandro-scaled.jpg stockpg-ref-img-home-review-julian-scaled.jpg stockpg-ref-img-home-review-mandi-scaled.jpg stockpg-ref-img-home-review-jasique-scaled.jpg stockpg-ref-img-experience-band-scaled.jpg""".split()
 
@@ -55,7 +55,7 @@ for f in sorted(glob.glob('wp-pages/*.html')):
         s=re.sub(r'@font-face\s*\{[^}]*'+re.escape(d)+r'[^}]*\}\s*','',s)
     if 'id="wlstock"' not in s:
         s=fix_div_balance(s)
-        s=re.sub(r'(<style>)(.*?)(</style>)', lambda m: m.group(1)+scope_css(m.group(2))+m.group(3), s, flags=re.S)
+        s=re.sub(r'(<style>)(.*?)(</style>)', lambda m: m.group(1)+rem_to_var(scope_css(m.group(2)))+m.group(3), s, flags=re.S)
         reset='<style>#wlstock h1,#wlstock h2,#wlstock h3,#wlstock h4,#wlstock h5,#wlstock h6{color:inherit;line-height:inherit}#wlstock input,#wlstock select,#wlstock textarea,#wlstock button{transition:all 0s;border-radius:0}#wlstock select{line-height:normal}#wlstock label{line-height:inherit}#wlstock p{line-height:inherit;margin:0}#wlstock table,#wlstock th,#wlstock td{font-size:inherit;line-height:inherit;margin:0}#wlstock optgroup,#wlstock option{font-size:inherit;line-height:inherit}#wlstock input[type=range],#wlstock input[type=radio],#wlstock input[type=checkbox]{font:400 13.3333px Arial;line-height:normal}#wlstock input[type=radio]{margin:3px 3px 0 5px}</style>'
         s='<div id="wlstock">\n'+reset+'\n'+s+'\n</div>'
     for old,new in FONT_MAP.items():
@@ -83,6 +83,8 @@ for f in sorted(glob.glob('wp-pages/*.html')):
       'browse-link': re.findall(r'Browse as pages', s),
       'wlstock-missing': [] if 'id="wlstock"' in s else ['no wrapper'],
       'stock-vans-links': re.findall(r'href="[^"]*stock-vans[^"]*"', s),
+      'root-fontsize-leak': re.findall(r'html[^{}]*\{[^}]*font-size', s),
+      'wlrem-missing': [] if '--wlrem' in s else ['no --wlrem'],
     }
     for k,v in checks.items():
         if v: problems.append((f,k,v[:2]))

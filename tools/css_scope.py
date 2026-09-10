@@ -72,6 +72,8 @@ def scope_css(css):
                 out.append(css[i:end]); i = end; continue
         end = block_end(j)
         body_ = css[j:end]
+        if re.match(r'^html\s*$', stripped) or re.match(r'^html\s*,', stripped):
+            body_ = re.sub(r'(?<![-\w])font-size(\s*:)', r'--wlrem\1', body_)
         new_sel = ', '.join(_prefix_selector(p) for p in _split_selectors(stripped))
         out.append(sel.replace(stripped, new_sel, 1) + body_)
         i = end
@@ -80,3 +82,9 @@ def scope_css(css):
 if __name__ == '__main__':
     t = "html{font-size:66px}:root{--x:1}body{color:#000}a{color:var(--olink)}@media(min-width:901px){html{font-size:10px}body.lock{overflow:hidden}body.lock .rail{top:0}.a,.b:hover{x:y}}@font-face{font-family:'G';src:url(x)}*{box-sizing:border-box}"
     print(scope_css(t))
+
+
+def rem_to_var(css):
+    """Convert every rem length to calc(x * var(--wlrem)) so the design scales
+    from the --wlrem custom property instead of the document root font-size."""
+    return re.sub(r'(-?(?:\d+\.?\d*|\.\d+))rem\b', r'calc(\1 * var(--wlrem, 1rem))', css)
