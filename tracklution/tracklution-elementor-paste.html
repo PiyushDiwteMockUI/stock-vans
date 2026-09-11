@@ -1,0 +1,189 @@
+<!-- ===== Tracklution — Wonderland RV (container LS-52382599-7). Paste this whole block into
+     Elementor > Custom Code (Location: <head>). Order matters: main script, PageView, then the bridge. ===== -->
+<script>
+    !function(t,l,r,o,c,k,s)
+    {if(t.tlq)return;c=t.tlq=function(){c.callMethod?
+        c.callMethod(arguments):c.queue.push(arguments)};
+        if(!t._tlq)t._tlq=c;c.push=c;c.loaded=!0;c.version='1.0';c.src=o;
+        c.queue=[];k=l.createElement(r);k.async=!0;c.pd = false;c.tools = null;
+        k.src=o;s=l.getElementsByTagName(r)[0];
+        s.parentNode.insertBefore(k,s);k.onerror=function(){
+        o='https://api.au-1.tracklution.com/js/script-dynamic.js?version=1789121598336';
+        t._tlq.src=o;k=l.createElement(r);k.async=!0;k.src=o;
+        s.parentNode.insertBefore(k, s)
+        }}(window,document,'script',
+        'https://tralut.wonderlandrv.com.au/js/script-dynamic.js?version=1789121598336')
+
+    tlq('init', 'LS-52382599-7');
+</script>
+
+<script>
+    tlq('track', 'PageView');
+</script>
+
+<script>
+/* Wonderland RV — Gravity Forms -> dataLayer bridge (for Tracklution Lead / ContactInfo tags)
+   Install as a GTM Custom HTML tag, trigger: All Pages (Page View). No theme edits.
+   Pushes ONE event per successful submission:
+     gf_lead       -> real enquiries (contact, brochures, virtual consults, configurator)
+     gf_subscribe  -> newsletter / mailing list
+     (skipped)     -> recruitment + giveaways
+   PII sits under `user` (namespaced) — Tracklution SHA-256 hashes it before it leaves. */
+(function () {
+  if (window.__wlGfBridge) return; window.__wlGfBridge = true;
+  window.dataLayer = window.dataLayer || [];
+
+  /* form id -> event + friendly name. Change a form's bucket here. */
+  var MAP = {
+    9:  ['gf_lead', 'Contact Us'],
+    5:  ['gf_lead', 'Main Contact Form'],
+    22: ['gf_lead', 'Solara Brochure Download'],
+    23: ['gf_lead', 'Amaroo Brochure Download'],
+    24: ['gf_lead', 'Hornet Brochure Download'],
+    12: ['gf_lead', 'XTR 2211 Brochure Download'],
+    11: ['gf_lead', 'Virtual Consult: Brisbane'],
+    18: ['gf_lead', 'Virtual Consult: Mackay'],
+    25: ['gf_lead', 'Virtual Consult: Melbourne'],
+    19: ['gf_lead', 'Virtual Consult: Sydney'],
+    20: ['gf_lead', 'Virtual Consult: Tasmania'],
+    29: ['gf_lead', 'Configurator 2026'],
+    1:  ['gf_lead', 'Configurator (archive)'],
+    26: ['gf_lead', 'Configurator (archive 2025)'],
+    8:  ['gf_subscribe', 'Newsletter'],
+    2:  ['gf_subscribe', 'Solara Mailing List']
+    /* 17 Join The Team, 3/4/7 giveaways: intentionally absent = not tracked */
+  };
+
+  var KEY = 'wl_gf_pending', TTL = 5 * 60 * 1000;
+
+  function val(el) { return el && el.value ? String(el.value).trim() : ''; }
+  function pick(form, sel) { var els = form.querySelectorAll(sel); for (var i = 0; i < els.length; i++) { if (val(els[i])) return val(els[i]); } return ''; }
+  function nameSub(form, sub) { /* GF name field sub-inputs: .3 = first, .6 = last */
+    var els = form.querySelectorAll('input[name$=".' + sub + '"]'); for (var i = 0; i < els.length; i++) { if (val(els[i])) return val(els[i]); } return '';
+  }
+  function formId(form) { var m = /^gform_(\d+)$/.exec(form.id || ''); return m ? +m[1] : null; }
+
+  function capture(form) {
+    var id = formId(form); if (id === null || !MAP[id]) return null;
+    return {
+      event: MAP[id][0], form_id: id, form_name: MAP[id][1],
+      lead_source: 'Website form', page_path: location.pathname,
+      user: {
+        email: pick(form, 'input[type="email"]'),
+        phone: pick(form, 'input[type="tel"]'),
+        firstName: nameSub(form, '3') || pick(form, 'input[placeholder="First Name"]'),
+        lastName:  nameSub(form, '6') || pick(form, 'input[placeholder="Last Name"]')
+      },
+      t: Date.now()
+    };
+  }
+
+  function push(p) { if (!p) return; delete p.t; window.dataLayer.push(p); }
+
+  function save(p) { try { sessionStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {} }
+  function load() { try { var p = JSON.parse(sessionStorage.getItem(KEY) || 'null'); return (p && Date.now() - p.t < TTL) ? p : null; } catch (e) { return null; } }
+  function clear() { try { sessionStorage.removeItem(KEY); } catch (e) {} }
+
+  /* 1) capture at submit time (form fields still readable), for every GF form on any page.
+        Listen natively AND via jQuery: Gravity Forms (multi-step / AJAX) can trigger the final
+        submit through jQuery, which native listeners never see. */
+  function onSubmit(f) { if (!f || !f.id || f.id.indexOf('gform_') !== 0) return; var p = capture(f); if (p) save(p); }
+  document.addEventListener('submit', function (e) { onSubmit(e.target); }, true);
+  if (window.jQuery) { window.jQuery(document).on('submit', 'form[id^="gform_"]', function (e) { onSubmit(e.currentTarget || e.target); }); }
+
+  /* 1b) phone call: any tel: link tap/click counts as a Lead (Piyush's call), number attached */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null; if (!a) return;
+    var num = (a.getAttribute('href') || '').replace(/^tel:/i, '').replace(/[\s()-]/g, '');
+    window.dataLayer.push({ event: 'phone_click', form_id: 0, form_name: 'Phone call', phone_number: num, lead_source: 'Website phone link', page_path: location.pathname });
+  }, true);
+
+  /* 2) AJAX forms: GF fires this on the confirmation. Fire now. */
+  function onAjaxConfirm(_, id) {
+    var p = load(); if (p && (+id === p.form_id)) { clear(); push(p); }
+  }
+  if (window.jQuery) { window.jQuery(document).on('gform_confirmation_loaded', onAjaxConfirm); }
+  else { document.addEventListener('gform_confirmation_loaded', function (ev) { onAjaxConfirm(null, ev && ev.detail && ev.detail.formId); }); }
+
+  /* 3) Page-reload forms: on the next load, fire only if the submission actually succeeded. */
+  function settle() {
+    var p = load(); if (!p) return;
+    var still = document.getElementById('gform_' + p.form_id);
+    var failed = still && still.querySelector('.gfield_error, .validation_error, .gform_validation_errors');
+    var confirmed = document.getElementById('gform_confirmation_wrapper_' + p.form_id) ||
+                    document.querySelector('#gform_confirmation_message_' + p.form_id + ', .gform_confirmation_message');
+    if (failed) { clear(); return; }          /* validation error -> not a lead */
+    if (confirmed || !still) { clear(); push(p); } /* confirmation shown, or form gone (redirect) -> lead */
+    /* else: same form re-rendered cleanly (e.g. user navigated back) -> leave pending until TTL */
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', settle); else settle();
+
+  /* 4) Custom ActiveCampaign forms that are NOT Gravity Forms. Capture at submit, fire only when
+        each page's own success state appears (never on validation errors / honeypot hits). */
+  function visible(el) { return !!(el && (el.offsetWidth || el.offsetHeight || el.getClientRects().length)); }
+  function customForms() {
+    /* Event landing pages (Ipswich Expo, Melbourne Leisurefest): #entryForm -> AC form 47, success reveals #done */
+    var LP = document.getElementById('entryForm'), done = document.getElementById('done');
+    if (LP && done) {
+      var lpName = /leisurefest/i.test(location.pathname) ? 'Melbourne Leisurefest LP' : (/ipswich/i.test(location.pathname) ? 'Ipswich Expo LP' : 'Event LP');
+      var pend = null, lpFired = false;
+      LP.addEventListener('submit', function () {
+        pend = { event: 'gf_lead', form_id: 47, form_name: lpName, lead_source: 'Event LP', page_path: location.pathname,
+          user: { email: pick(LP, 'input[type="email"],input[name="email"]'), phone: pick(LP, 'input[type="tel"],input[name="phone"]'),
+                  firstName: pick(LP, 'input[name="firstname"]'), lastName: pick(LP, 'input[name="lastname"]') } };
+      }, true);
+      var mo = new MutationObserver(function () { if (!lpFired && pend && visible(done)) { lpFired = true; mo.disconnect(); push(pend); } });
+      mo.observe(document.body, { attributes: true, childList: true, subtree: true, attributeFilter: ['class', 'style', 'hidden'] });
+    }
+    /* Newsletter popup (#wl-popup -> AC form 25): its own script sets data-state="done" only after a successful post */
+    var pop = document.getElementById('wl-popup');
+    if (pop) {
+      var pi = pop.querySelector('#wl-popup-email, .wl-popup__input'), pFired = false;
+      var mo2 = new MutationObserver(function () {
+        if (!pFired && pop.getAttribute('data-state') === 'done') { pFired = true; mo2.disconnect();
+          push({ event: 'gf_subscribe', form_id: 25, form_name: 'Newsletter popup', lead_source: 'Website popup', page_path: location.pathname,
+                 user: { email: val(pi), phone: '', firstName: '', lastName: '' } }); }
+      });
+      mo2.observe(pop, { attributes: true, attributeFilter: ['data-state'] });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', customForms); else customForms();
+})();
+</script>
+
+<script>
+/* Wonderland RV — dataLayer -> Tracklution forwarder (direct install, no GTM).
+   Listens to the events the bridge and the stock form already push, and sends them to Tracklution:
+     gf_lead, stock_vans_enquiry, phone_click            -> Lead      (+ ContactInfo when we have it)
+     gf_subscribe, wl_popup_signup, *_footer_subscribe   -> Subscribe (+ ContactInfo when we have it)
+   PageView is sent by Tracklution's own main script. Never throws; never blocks the page. */
+(function () {
+  if (window.__wlTlForward) return; window.__wlTlForward = true;
+  var LEAD = /^(gf_lead|stock_vans_enquiry|phone_click)$/, SUB = /^(gf_subscribe|wl_popup_signup|ipswich_footer_subscribe|leisurefest_footer_subscribe)$/;
+  var seen = [];
+  function send(p) {
+    try {
+      var ev = LEAD.test(p.event) ? 'Lead' : (SUB.test(p.event) ? 'Subscribe' : null); if (!ev) return;
+      var u = p.user || {};
+      if (u.email || u.phone) {
+        var ci = {}; if (u.email) ci.email = u.email; if (u.phone) ci.phoneNumber = u.phone;
+        if (u.firstName) ci.firstName = u.firstName; if (u.lastName) ci.lastName = u.lastName;
+        window.tlq('set', 'ContactInfo', ci);
+      }
+      var params = { source_event: p.event };
+      ['form_name', 'lead_source', 'enquiry_type', 'van', 'phone_number', 'page_path'].forEach(function (k) { if (p[k]) params[k] = p[k]; });
+      window.tlq('track', ev, params);
+    } catch (e) {}
+  }
+  function forward(p, tries) {
+    if (!p || typeof p !== 'object' || !p.event) return;
+    if (typeof window.tlq !== 'function') { if ((tries || 0) < 20) setTimeout(function () { forward(p, (tries || 0) + 1); }, 500); return; }
+    send(p);
+  }
+  window.dataLayer = window.dataLayer || [];
+  var dl = window.dataLayer, orig = dl.push;
+  dl.push = function () { var r = orig.apply(dl, arguments); for (var i = 0; i < arguments.length; i++) forward(arguments[i]); return r; };
+  /* events pushed before this script ran */
+  for (var i = 0; i < dl.length; i++) forward(dl[i]);
+})();
+</script>
