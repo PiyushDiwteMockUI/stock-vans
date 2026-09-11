@@ -81,7 +81,8 @@ html, #wlstock{margin:0;padding:0}
 #wlstock .modal-bg{position:fixed;inset:0;background:rgba(6,9,12,.5);z-index:940}
 #wlstock .mobpanel{position:fixed;left:0;top:0;bottom:0;width:318px;max-width:86vw;background:#fff;z-index:960;display:flex;flex-direction:column;box-shadow:20px 0 60px rgba(6,9,12,.34);transform:translateX(-14px);opacity:0;transition:transform .22s cubic-bezier(.23,1,.32,1),opacity .22s ease}
 #wlstock .mobpanel.in{transform:none;opacity:1}
-#wlstock .mobx{margin-left:auto;background:none;border:none;font-size:26px;line-height:1;color:rgba(255,255,255,.6);cursor:pointer;padding:0 2px}
+#wlstock .mobx{margin-left:auto;width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.16);border:none;border-radius:50%;font-size:26px;line-height:1;color:#fff;cursor:pointer;transition:background .18s ease}
+#wlstock .mobx:hover, #wlstock .mobx:active{background:rgba(255,255,255,.32)}
 #wlstock header.site{display:flex;align-items:center;gap:26px;padding:0 56px;height:84px;border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:40}
 #wlstock .mobfab{display:none}
 #wlstock .sortsel{width:auto;min-height:40px;border:1px solid var(--line2);border-radius:4px;font-size:12.5px}
@@ -1863,6 +1864,32 @@ html {
 #wlstock #nqenq h2, #wlstock #nqenq h3{font-family:"Aviano Sans","Trebuchet MS",sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.01em;color:var(--ink);margin:0}
 #wlstock #nqenq :focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 #wlstock #nqenq{font-family:"Gordita","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:var(--body)}
+
+
+@media(max-width:560px){
+  #wlstock .enquiry{padding-top:22px;padding-bottom:30px}
+  #wlstock #nqenq .enq{gap:18px}
+  #wlstock #nqenq .enq-copy h2{font-size:26px;margin-bottom:8px}
+  #wlstock #nqenq .enq-copy p{margin:0 0 6px;max-width:none}
+  #wlstock #nqenq .enq-copy .p1, #wlstock #nqenq .enq-copy .p2{font-size:14px;line-height:1.42}
+  #wlstock #nqenq .enq-copy .p3{font-size:13px;margin-top:8px}
+  #wlstock #nqenq .enq-form{gap:13px}
+  #wlstock #nqenq .row2{grid-template-columns:1fr 1fr;gap:11px 15px}
+  #wlstock #nqenq .selrow{grid-template-columns:1fr 1fr;gap:11px 15px}
+  #wlstock #nqenq .field input{font-size:15px;padding:4px 16px 6px 0}
+  #wlstock #nqenq .sel select{height:50px;font-size:14px}
+  #wlstock #nqenq .nqreq{padding:4px}
+  #wlstock #nqenq .nqreq-cell{min-height:40px;padding:8px 3px}
+  #wlstock #nqenq .ta{min-height:54px;padding:10px 14px;font-size:14px}
+  #wlstock #nqenq .consent{font-size:12px;line-height:1.4;margin:-2px 0 0}
+  #wlstock #nqenq .submit-row{gap:12px}
+  #wlstock #nqenq .submit{height:50px;padding:0 26px;font-size:12px}
+  #wlstock #nqenq .callat{font-size:13px}
+}
+
+@media(max-width:359px){
+  #wlstock #nqenq .row2, #wlstock #nqenq .selrow{grid-template-columns:1fr;gap:11px}
+}
 
 </style>
 

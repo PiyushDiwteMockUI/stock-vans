@@ -197,6 +197,32 @@ fbq('track','PageView');
 #nqenq :focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
 #nqenq{font-family:"Gordita","Helvetica Neue",Arial,sans-serif;font-weight:400;font-size:15px;line-height:1.6;color:var(--body)}
 
+/* ===== mobile: fit the heading, the copy under it, and the whole form on one screen ===== */
+@media(max-width:560px){
+  .enquiry{padding-top:22px;padding-bottom:30px}
+  #nqenq .enq{gap:18px}
+  #nqenq .enq-copy h2{font-size:26px;margin-bottom:8px}
+  #nqenq .enq-copy p{margin:0 0 6px;max-width:none}
+  #nqenq .enq-copy .p1,#nqenq .enq-copy .p2{font-size:14px;line-height:1.42}
+  #nqenq .enq-copy .p3{font-size:13px;margin-top:8px}
+  #nqenq .enq-form{gap:13px}
+  #nqenq .row2{grid-template-columns:1fr 1fr;gap:11px 15px}
+  #nqenq .selrow{grid-template-columns:1fr 1fr;gap:11px 15px}
+  #nqenq .field input{font-size:15px;padding:4px 16px 6px 0}
+  #nqenq .sel select{height:50px;font-size:14px}
+  #nqenq .nqreq{padding:4px}
+  #nqenq .nqreq-cell{min-height:40px;padding:8px 3px}
+  #nqenq .ta{min-height:54px;padding:10px 14px;font-size:14px}
+  #nqenq .consent{font-size:12px;line-height:1.4;margin:-2px 0 0}
+  #nqenq .submit-row{gap:12px}
+  #nqenq .submit{height:50px;padding:0 26px;font-size:12px}
+  #nqenq .callat{font-size:13px}
+}
+/* only the very narrow / older phones drop the paired fields to a single column */
+@media(max-width:359px){
+  #nqenq .row2,#nqenq .selrow{grid-template-columns:1fr;gap:11px}
+}
+
 </style>
 </head>
 <body>
