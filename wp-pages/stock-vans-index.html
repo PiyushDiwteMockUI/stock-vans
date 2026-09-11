@@ -1975,11 +1975,8 @@ html {
             <select id="vanselect" aria-label="Which van are you asking about?"><option value="">General stock van enquiry</option></select><svg class="chev" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
         </div>
-        <div class="nqreq no-anim" role="radiogroup" aria-label="What would you like us to do?">
-          <button type="button" role="radio" aria-checked="true" class="nqreq-cell is-on" data-val="Call back">Call back</button>
-          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Virtual consult">Virtual consult</button>
-          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Get a quote">Get a quote</button>
-          <span class="nqreq-pill" aria-hidden="true"></span>
+        <div class="sel">
+          <select id="reqsel" aria-label="What would you like us to do?"><option value="" selected disabled>What would you like us to do?</option><option value="Call back">Call back</option><option value="Virtual consult">Virtual consult</option><option value="Get a quote">Get a quote</option></select><svg class="chev" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <textarea class="ta" id="msg" placeholder="Something else you want to tell us…" aria-label="Anything else you want to tell us"></textarea>
         <p class="consent">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>
@@ -5834,7 +5831,7 @@ function buildControls(frame) {
     var f=document.getElementById('enqf'), sent=document.getElementById('sent'), err=document.getElementById('err');
     if(!f||!sent) return;
     var group=f.querySelector('.nqreq'), cells=[].slice.call(f.querySelectorAll('.nqreq-cell'));
-    function reqVal(){var on=f.querySelector('.nqreq-cell.is-on');return on?on.dataset.val:'Call back';}
+    function reqVal(){var el=document.getElementById('reqsel');return (el&&el.value)?el.value:'Call back';}
     var pill=group?group.querySelector('.nqreq-pill'):null;
     function movePill(){var on=f.querySelector('.nqreq-cell.is-on');if(on&&pill){var M=6;pill.style.left=(on.offsetLeft+M)+'px';pill.style.top=(on.offsetTop+M)+'px';pill.style.width=Math.max(0,on.offsetWidth-2*M)+'px';pill.style.height=Math.max(0,on.offsetHeight-2*M)+'px';}}
     function selectCell(c){cells.forEach(function(x){var on=x===c;x.classList.toggle('is-on',on);x.setAttribute('aria-checked',on?'true':'false');x.tabIndex=on?0:-1;});movePill();}
