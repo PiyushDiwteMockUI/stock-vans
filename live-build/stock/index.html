@@ -130,16 +130,15 @@ fbq('track','PageView');
 #nqenq .sel .chev{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:14px;height:8px;pointer-events:none;color:var(--body)}
 
 
-/* request selector — icon cards (2x2) */
-#nqenq .nqreq{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-#nqenq .nqreq-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;
-  border:1px solid var(--line2);background:#fff;border-radius:12px;padding:16px 10px;min-height:76px;
-  font:500 15px/1.15 var(--gordita);color:var(--ink);text-align:center;cursor:pointer;
-  transition:background-color .18s ease,border-color .18s ease,color .18s ease,box-shadow .18s ease}
-#nqenq .nqreq-cell svg{width:22px;height:22px;flex:none;color:var(--ochre);transition:color .18s ease}
-#nqenq .nqreq-cell:hover{border-color:var(--ochre)}
-#nqenq .nqreq-cell.is-on{background:var(--ochre);border-color:var(--ochre);color:#fff;box-shadow:0 8px 18px -8px rgba(219,118,39,.55)}
-#nqenq .nqreq-cell.is-on svg{color:#fff}
+/* request selector — segmented pill (3 options) */
+#nqenq .nqreq{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line2);border-radius:10px;padding:5px;position:relative}
+#nqenq .nqreq-pill{position:absolute;top:5px;left:0;width:0;height:0;background:var(--ochre);border-radius:7px;box-shadow:0 7px 18px -7px rgba(219,118,39,.55);pointer-events:none;z-index:0;transition:left .52s cubic-bezier(.22,1,.36,1),width .52s cubic-bezier(.22,1,.36,1)}
+#nqenq .nqreq.no-anim .nqreq-pill{transition:none}
+#nqenq .nqreq-cell{position:relative;z-index:1;border:0;background:transparent;font:500 14px/1.2 var(--gordita);color:var(--ink);
+  padding:14px 6px;border-radius:7px;cursor:pointer;min-height:44px;text-align:center;transition:color .2s ease}
+#nqenq .nqreq-cell:not(:first-child)::before{content:"";position:absolute;left:0;top:-5px;bottom:-5px;width:1px;background:var(--line2);transition:opacity .19s ease}
+#nqenq .nqreq-cell.is-on{color:#fff}
+#nqenq .nqreq-cell.is-on::before{opacity:0}
 
 #nqenq .ta{width:100%;font:400 15px/1.6 var(--gordita);color:var(--ink);background:var(--bg);
   border:1px solid var(--line2);border-radius:10px;padding:14px 16px;min-height:98px;resize:vertical}
@@ -205,13 +204,12 @@ fbq('track','PageView');
   /* trim the intro to the essentials on phones so the form gets the room */
   #nqenq .enq-copy .p1{font-size:14px;line-height:1.5}
   #nqenq .enq-copy .p2,#nqenq .enq-copy .p3{display:none}
-  #nqenq .nqreq{gap:11px}
   #nqenq .enq-form{gap:20px}
   #nqenq .row2{grid-template-columns:1fr 1fr;gap:18px 16px}
   #nqenq .selrow{grid-template-columns:1fr 1fr;gap:18px 16px}
   #nqenq .field input{font-size:15px;padding:9px 16px 11px 0}
   #nqenq .sel select{height:56px;font-size:14px}
-  #nqenq .nqreq-cell{min-height:72px;padding:15px 8px;font-size:14px}
+  #nqenq .nqreq-cell{min-height:48px;padding:13px 5px;font-size:13px}
   #nqenq .ta{min-height:78px;padding:13px 14px;font-size:14px}
   #nqenq .consent{font-size:12px;line-height:1.45;margin:0}
   #nqenq .submit-row{gap:14px}
@@ -334,11 +332,11 @@ fbq('track','PageView');
             <select id="vanselect" aria-label="Which van are you asking about?"><option value="">General stock van enquiry</option></select><svg class="chev" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6"/></svg>
           </div>
         </div>
-        <div class="nqreq" role="radiogroup" aria-label="What would you like us to do?">
-          <button type="button" role="radio" aria-checked="true" class="nqreq-cell is-on" data-val="Call back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span>Call back</span></button>
-          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Book a viewing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span>Book a viewing</span></button>
-          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Get a quote"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span>Get a quote</span></button>
-          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Hold this van"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4.5" y="11" width="15" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Hold this van</span></button>
+        <div class="nqreq no-anim" role="radiogroup" aria-label="What would you like us to do?">
+          <button type="button" role="radio" aria-checked="true" class="nqreq-cell is-on" data-val="Call back">Call back</button>
+          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Virtual tour">Virtual tour</button>
+          <button type="button" role="radio" aria-checked="false" class="nqreq-cell" data-val="Get a quote">Get a quote</button>
+          <span class="nqreq-pill" aria-hidden="true"></span>
         </div>
         <textarea class="ta" id="msg" placeholder="Something else you want to tell us…" aria-label="Anything else you want to tell us"></textarea>
         <p class="consent">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>
