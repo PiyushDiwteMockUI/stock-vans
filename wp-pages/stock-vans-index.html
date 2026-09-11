@@ -5870,6 +5870,9 @@ function buildControls(frame) {
         firstname:document.getElementById('fn').value,lastname:document.getElementById('ln').value,
         email:document.getElementById('em').value,phone:phone,'field[27]':document.getElementById('state').value,'field[86]':ad});
       try{if(typeof gtag==='function')gtag('event','stock_vans_enquiry',{lead_source:'Stock Vans page',van:vanTxt,enquiry_type:intent});}catch(_){}
+      /* GTM-readable event for Tracklution (Lead + ContactInfo tags); PII namespaced under user, hashed by Tracklution before it leaves */
+      try{window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'stock_vans_enquiry',form_name:'Stock van enquiry',lead_source:'Stock Vans page',van:vanTxt,enquiry_type:intent,page_path:location.pathname,
+        user:{email:document.getElementById('em').value.trim(),phone:phone,firstName:document.getElementById('fn').value.trim(),lastName:document.getElementById('ln').value.trim()}});}catch(_){}
       try{if(typeof fbq==='function')fbq('trackCustom','Stock Vans Enquiry',{van:vanTxt,enquiry_type:intent});}catch(_){}
       var sub=document.getElementById('sub');f.classList.add('sending');sub.textContent='Sending…';
       setTimeout(function(){
