@@ -3,10 +3,6 @@
   "title": "XTR 21ft Double Bunk King Bed WL1002",
   "slug": "wl1002"
  },
- "wl1014": {
-  "title": "Amaroo 1906 Couple Van WL1014",
-  "slug": "wl1014"
- },
  "wl1086": {
   "title": "XTR 2311 Triple Bunk with Storage WL1086",
   "slug": "wl1086"
@@ -18,10 +14,6 @@
  "wl1100": {
   "title": "Amaroo 2100 XL Ensuite Couples WL1100",
   "slug": "wl1100"
- },
- "wl1171": {
-  "title": "Solara 1709 Composite Single Axle WL1171",
-  "slug": "wl1171"
  },
  "wl1172": {
   "title": "Solara Composite 21ft Twin Family Van WL1172",
@@ -66,6 +58,10 @@
  "wl1228": {
   "title": "Amaroo 1906 Aluminium Frame WL1228",
   "slug": "wl1228"
+ },
+ "wl1231-preview": {
+  "title": "Amaroo 23ft Double Rear Bunk WL1231",
+  "slug": "wl1231-preview"
  },
  "wl1231": {
   "title": "Amaroo 23ft Double Rear Bunk WL1231",
