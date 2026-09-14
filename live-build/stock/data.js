@@ -3364,8 +3364,8 @@ const DATA = {
    "used": false,
    "price": 156990,
    "images": [
-    "/stock/assets/vans/WL1296/01.jpg",
     "/stock/assets/vans/WL1296/02.jpg",
+    "/stock/assets/vans/WL1296/01.jpg",
     "/stock/assets/vans/WL1296/03.jpg",
     "/stock/assets/vans/WL1296/04.jpg",
     "/stock/assets/vans/WL1296/05.jpg",
