@@ -46,6 +46,12 @@ EXT_KEYS=sorted(EXT_MAP, key=len, reverse=True)
 
 rename_pairs=[(re.sub(r'-(rotated|scaled)(\.[a-z]+)$', r'\2', n), n) for n in RENAMED]
 
+# Fullscreen gallery lightbox + zoom cursor (approved 10 Sep 2026, was appended live by hand; now part of every build)
+LB='<script>\n'+open('tools/lightbox.js').read()+'\n</script>'
+for f in sorted(glob.glob('wp-pages/wl*.html')):
+    s=open(f).read()
+    if 'vp-zoomhint' not in s:
+        open(f,'w').write(s.rstrip()+'\n'+LB+'\n')
 for f in sorted(glob.glob('wp-pages/*.html')):
     s=open(f,encoding='utf-8').read()
     for old,new in rename_pairs: s=s.replace(old,new)
