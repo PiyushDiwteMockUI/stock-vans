@@ -192,14 +192,17 @@ def main(write=False):
             sl = num(f.get('Sleeps'));
             if sl and int(sl) != v.get('sleeps'): diffs.append(f"sleeps {v.get('sleeps')} -> {int(sl)} (Ana)"); v['sleeps'] = int(sl)
             # report-only conflicts (locked sources win)
-            for key, label in [('Length', 'travel'), ('Travel Length', 'travel')]:
+            # Piyush 14 Sep 2026: "ana sheet is correct use that" -> her length, weights and layout code win
+            for key in ('Length', 'Travel Length'):
                 if key in f and num(f[key]) and abs(num(f[key]) - (v.get('travel') or 0)) > 0.05:
-                    diffs.append(f"FLAG travel: page {v.get('travel')} m (MD sheet) vs Ana {f[key]} - kept page")
+                    diffs.append(f"travel {v.get('travel')} -> {num(f[key])} (Ana)"); v['travel'] = num(f[key])
             for key, fld in [('Tare', 'tare'), ('ATM', 'atm'), ('Ball weight', 'ball')]:
                 if key in f and num(f[key]) and abs(num(f[key]) - (v.get(fld) or 0)) > 0.5:
-                    diffs.append(f"FLAG {fld}: page {v.get(fld)} (weighbridge) vs Ana {f[key]} - kept page")
-            if f.get('Layout code') and f['Layout code'].replace('_', '-').upper() != v['code'].upper():
-                diffs.append(f"FLAG code: page {v['code']} vs Ana {f['Layout code']} - kept page")
+                    diffs.append(f"{fld} {v.get(fld)} -> {int(num(f[key]))} (Ana)"); v[fld] = int(num(f[key]))
+            if f.get('Layout code'):
+                code = f['Layout code'].replace('_', '-').strip()
+                if code.upper() != v['code'].upper():
+                    diffs.append(f"code {v['code']} -> {code} (Ana)"); v['code'] = code
             if f.get('Stock no') and f['Stock no'] != ch: diffs.append(f"FLAG Ana stock-no cell says {f['Stock no']} (sheet is {ch}) - typo in sheet")
             if a.get('rename'): diffs.append(f"rename -> {a['rename']}")
             report.append(f"ANA    {ch} {v['model']} {v['code']}: sections {[ (s, len(i)) for s, i in secs ]}; " + ('; '.join(diffs) or 'facts match'))

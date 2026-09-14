@@ -821,7 +821,7 @@ const DATA = {
   {
    "chassis": "WL1180",
    "model": "Amaroo",
-   "code": "2100M-XL",
+   "code": "2100Q-XL",
    "name": "Amaroo 21ft Couples Extra Large Ensuite",
    "year": "2025",
    "length": "21'00\"",
@@ -1081,7 +1081,7 @@ const DATA = {
   {
    "chassis": "WL1002",
    "model": "XTR",
-   "code": "2100K1-F2",
+   "code": "2100K1-F2.0",
    "name": "XTR 21ft Double Bunk King Bed",
    "year": "2024",
    "length": "21'00\"",
@@ -2840,7 +2840,7 @@ const DATA = {
   {
    "chassis": "WL1090",
    "model": "Amaroo",
-   "code": "2200Q-RC",
+   "code": "2200Q-RCA",
    "name": "Amaroo 2200 Rear Club Lounge",
    "year": "2025",
    "length": "22'00\"",
@@ -2874,7 +2874,7 @@ const DATA = {
     "https://aussieescapecaravans.com.au/wp-content/uploads/2026/08/2022-Wonderland-RV-2311-Quad-BUNK-XTR.jpg"
    ],
    "listing": "https://aussieescapecaravans.com.au/caravan/2025-wonderland-rv-amaroo-22ft-rear-club/",
-   "tare": 2879,
+   "tare": 2880,
    "atm": 3500,
    "ball": 220,
    "sleeps": 2,
@@ -2886,7 +2886,7 @@ const DATA = {
     "/stock/assets/layouts/2200Q-RC_top.png",
     "/stock/assets/layouts/2200Q-RC_tag.png"
    ],
-   "travel": 9.1,
+   "travel": 8.9,
    "spec_override": [
     [
      "Construction",
@@ -2964,7 +2964,7 @@ const DATA = {
   {
    "chassis": "WL1100",
    "model": "Amaroo",
-   "code": "2100QMXLE",
+   "code": "2100Q-XL",
    "name": "Amaroo 2100 XL Ensuite Couples",
    "year": "2025",
    "length": "21'00\"",
@@ -3392,7 +3392,7 @@ const DATA = {
    "axle": "Tandem axle",
    "floorplan": null,
    "was": 162322,
-   "travel": 8.4,
+   "travel": 8.2,
    "spec_override": [
     [
      "Construction",

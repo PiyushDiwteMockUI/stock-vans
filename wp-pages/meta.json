@@ -2,22 +2,22 @@
  "wl1002": {
   "title": "XTR 21ft Double Bunk King Bed WL1002 | Wonderland RV",
   "slug": "wl1002",
-  "len": 184278
+  "len": 184288
  },
  "wl1086": {
   "title": "XTR 2311 Triple Bunk with Storage WL1086 | Wonderland RV",
   "slug": "wl1086",
-  "len": 194641
+  "len": 194643
  },
  "wl1090": {
   "title": "Amaroo 2200 Rear Club Lounge WL1090 | Wonderland RV",
   "slug": "wl1090",
-  "len": 185350
+  "len": 185355
  },
  "wl1100": {
   "title": "Amaroo 2100 XL Ensuite Couples WL1100 | Wonderland RV",
   "slug": "wl1100",
-  "len": 189162
+  "len": 189157
  },
  "wl1172": {
   "title": "Solara Composite 21ft Twin Family Van WL1172 | Wonderland RV",
@@ -52,7 +52,7 @@
  "wl1222": {
   "title": "XTR 1906 East-West Triple Bunk Family WL1222 | Wonderland RV",
   "slug": "wl1222",
-  "len": 195294
+  "len": 195296
  },
  "wl1223": {
   "title": "Solara Full Composite 2006 Couple Van WL1223 | Wonderland RV",
@@ -122,17 +122,17 @@
  "wl491": {
   "title": "XTR 22ft Family Twin Bunk WL491 | Wonderland RV",
   "slug": "wl491",
-  "len": 194145
+  "len": 194147
  },
  "wl684": {
   "title": "XTR 2311 Quad Bunk WL684 | Wonderland RV",
   "slug": "wl684",
-  "len": 194144
+  "len": 194146
  },
  "wl901": {
   "title": "XTR 2100 Twin Bunk Family WL901 | Wonderland RV",
   "slug": "wl901",
-  "len": 195333
+  "len": 195335
  },
  "stock-hub": {
   "title": "Stock van pages | Wonderland RV",
@@ -142,6 +142,6 @@
  "stock-vans-index": {
   "title": "Caravans In Stock | Wonderland RV",
   "slug": "stock-vans",
-  "len": 434400
+  "len": 434402
  }
 }
