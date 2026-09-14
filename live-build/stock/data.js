@@ -51,7 +51,92 @@ const DATA = {
     "/stock/assets/layouts/2100Q1-F2-0_top.png",
     "/stock/assets/layouts/2100Q1-F2-0_tag.png"
    ],
-   "travel": 9.0
+   "travel": 9.0,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Frameless composite sandwich panel construction",
+      "PP honeycomb floor",
+      "Incorporated in sandwich panel (XPS Insulation)",
+      "White 1850×622 CaraD Dometic door"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & Double 4+4″ Chassis & Wheelbox Riser (Flat Floor)",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension Kit, 4.5T Load Capacity",
+      "12″ drum brakes",
+      "Chassis finish: Hot-dip galvanised or Textured 2K PU black coating",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4-arm bumper bar",
+      "Dirty-Life Theory 16″ 6×139 ET20 & 285/75R16 Cooper AT3",
+      "Caravan jack and brace"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Redarc Alpha 75 off-grid system with a behind-the-fridge installation, providing 75A via solar/DC/AC, 3000W inverter, 1000W solar, and 400Ah lithium; or Nexus & Victron off-grid system with Touch70 display and behind-the-fridge installation. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, and 400Ah lithium battery for advanced energy control",
+      "1 x Grey Anderson Plug & 1 x Grey 12V / Yellow 24V / Blue 48V Portable Solar Input",
+      "Dual 240V GPOs above tunnel boot and drop down picnic table",
+      "6 External Lights: 17” light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, bathroom sink light, shower light and roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smart phone connectivity; 2 x Fusion internal speakers and Fusion soundpanel external speaker",
+      "Mood lighting & step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV Antenna",
+      "USB & USB-C at seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank (above axles)",
+      "1 x 100L grey water tank",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Portable induction Cooktop with Multi-Function Cooker / Fryer / Microwave in Base Cabinet & Drawer",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x Sirocco fans",
+      "Awning: Large Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls.",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Chrome Ensuite Tap, Chrome Shower Rail & Brushed Stainless Bathroom Accessories",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white ceramic round ensuite bowl",
+      "Tapware: Brushed stainless bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1225",
@@ -104,7 +189,92 @@ const DATA = {
     "/stock/assets/layouts/2006Q-R-C_top.png",
     "/stock/assets/layouts/2006Q-R-C_tag.png"
    ],
-   "travel": 8.9
+   "travel": 8.9,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Frameless composite sandwich panel construction",
+      "PP honeycomb floor",
+      "Incorporated in sandwich panel (XPS Insulation)",
+      "White 1850×622 CaraD Dometic door"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & Double 4+4″ Chassis & Wheelbox Riser (Flat Floor)",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension Kit, 4.5T Load Capacity",
+      "12″ drum brakes",
+      "Chassis finish: Hot-dip galvanised or Textured 2K PU black coating",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4-arm bumper bar",
+      "Dirty-Life Theory 16″ 6×139 ET20 & 285/75R16 Cooper AT3",
+      "Caravan jack and brace"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Redarc Alpha 75 off-grid system with a behind-the-fridge installation, providing 75A via solar/DC/AC, 3000W inverter, 1000W solar, and 400Ah lithium; or Nexus & Victron off-grid system with Touch70 display and behind-the-fridge installation. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, and 400Ah lithium battery for advanced energy control",
+      "1 x Grey Anderson Plug & 1 x Grey 12V / Yellow 24V / Blue 48V Portable Solar Input",
+      "Dual 240V GPOs above tunnel boot and drop down picnic table",
+      "6 External Lights: 17” light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, bathroom sink light, shower light and roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smart phone connectivity; 2 x Fusion internal speakers and Fusion soundpanel external speaker",
+      "Mood lighting & step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV Antenna",
+      "USB & USB-C at seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank (above axles)",
+      "1 x 100L grey water tank",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Portable induction Cooktop with Multi-Function Cooker / Fryer / Microwave in Base Cabinet & Drawer",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x Sirocco fans",
+      "Awning: Large Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls.",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Chrome Ensuite Tap, Chrome Shower Rail & Brushed Stainless Bathroom Accessories",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white ceramic round ensuite bowl",
+      "Tapware: Brushed stainless bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1227",
@@ -176,7 +346,7 @@ const DATA = {
       "6″ Extended A Frame, 1950mm long",
       "Toughcoat Chassis Finish",
       "Cruisemaster XT Level 3 Manual Airbag Suspension",
-      "Brakes: Disc or Drum",
+      "Brakes - Disc or Drum",
       "Cruisemaster DO-35 hitch",
       "Large toolbox with slides & Anderson plug"
      ]
@@ -184,7 +354,7 @@ const DATA = {
     [
      "Electrical",
      [
-      "Redarc Alpha 75 off-grid system delivering 75A solar/AC, 50A DC, 2600W inverter, 800W solar, and 400Ah lithium",
+      "Redarc Alpha 75 off-grid system delivering 75A solar/AC, 50A DC, 2600W inverter, 800W solar, and 400Ah lithium.",
       "1 x portable solar input Anderson plug",
       "Anderson plug in toolbox for portable fridge"
      ]
@@ -194,41 +364,42 @@ const DATA = {
      [
       "2 x 90L to 100L fresh water tanks",
       "1 x 90L dedicated drinking water tank",
-      "1 x 100L grey water tank with by pass",
+      "1 x 100L grey water tank with bypass",
       "Quick fill and mains connection and 1 separate filler and cap",
-      "2 x 4kg gas bottles, gas bayonet & cold tap on A frame",
+      "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
       "Outdoor shower"
      ]
     ],
     [
      "Appliances",
      [
-      "Dometic FreshJet Z, 7 series lite 3kW air conditioner",
+      "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
       "Multi-function cooker, fryer, grill & microwave",
       "Portable induction cooktop",
       "Swift flush mount recessed rangehood with dual fan",
       "216L Dometic compressor fridge",
       "3kg washing machine",
       "CS pressure, 12V powered dust reduction",
-      "Thetford separating toilet",
+      "Thetford Separating toilet",
       "Outdoor pantry with drop down picnic table",
-      "Dometic manual awning",
+      "Dometic Manual Awning",
       "Reverse camera",
-      "TV 24″ Smart TV & Starlink connection",
+      "TV 24″ Smart TV & Starlink Connection",
       "Fusion audio and speakers"
      ]
     ],
     [
      "Optional upgrades fitted",
      [
-      "Rear bumper box with drawers, 2 jerry can holders, wood box & spare wheel",
+      "Rear bumper box with drawers, 2 jerry can holder, wood box & spare wheel",
       "Soft close drawers",
       "K5i external kitchen",
       "Instant hot water",
       "5 x sirocco fans"
      ]
     ]
-   ]
+   ],
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1231",
@@ -281,7 +452,94 @@ const DATA = {
     "/stock/assets/layouts/2300Q1-F2-4_top.png",
     "/stock/assets/layouts/2300Q1-F2-4_tag.png"
    ],
-   "travel": 9.4
+   "travel": 9.4,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Tandem axle",
+      "3.7T Cruisemaster XT Coil or 3.7T Tuff-Ride Coil, Airbag Ready",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Grid 16″ 6×139 ET0 & 265/75R16 All Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1228",
@@ -334,7 +592,94 @@ const DATA = {
     "/stock/assets/layouts/1906Q-R-L_top.png",
     "/stock/assets/layouts/1906Q-R-L_tag.png"
    ],
-   "travel": 8.4
+   "travel": 8.4,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Tandem axle",
+      "3.7T Cruisemaster XT Coil or 3.7T Tuff-Ride Coil, Airbag Ready",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Grid 16″ 6×139 ET0 & 265/75R16 All Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1261",
@@ -384,7 +729,94 @@ const DATA = {
     "/stock/assets/layouts/1906Q-M-C_top.png",
     "/stock/assets/layouts/1906Q-M-C_tag.png"
    ],
-   "travel": 8.4
+   "travel": 8.4,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Tandem axle",
+      "3.7T Cruisemaster XT Coil or 3.7T Tuff-Ride Coil, Airbag Ready",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Grid 16″ 6×139 ET0 & 265/75R16 All Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1180",
@@ -432,7 +864,83 @@ const DATA = {
     "/stock/assets/layouts/2100Q-M-XLE_top.png",
     "/stock/assets/layouts/2100Q-M-XLE_tag.png"
    ],
-   "travel": 8.8
+   "travel": 8.8,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Aluminium Henrob Rivet Frame",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS Insulation",
+      "DiBond marine grade cladding",
+      "850mm black plate protection"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "4.5t Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extnded A Frame, 1950mm long",
+      "Black Chassis Finish",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension",
+      "12″ Drum Brakes",
+      "Cruisemaster DO-35 hitch",
+      "Large toolbox with slides & anderson plug"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 Battery managemnt system with 400Ah lihtum, 2600w inverter & 800w solar",
+      "1 x portable solar input anderson plug",
+      "Anderson plug in toolbox for portable fridge"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 100L grey water tank with bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, Gas bayonett & Cold hot/ cold tap on A frame",
+      "Outdoor shower"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW Air conditoner",
+      "Portable induciton cooktop & microwave",
+      "Swift flush mount recessed rangehood with dual fan",
+      "216L Dometic compressor fridge",
+      "3.5kg washing machine",
+      "CS pressure, 12V powered dust reduction",
+      "Thetford Seperating toilet",
+      "Diesel heater & hot water unit",
+      "Dometic Manual Awning",
+      "Reverse camera",
+      "TV 24″ Smart TV & Starlink Connection",
+      "Fusion audio and speakers",
+      "12V fans",
+      "Outdoor pantry"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Soft close drawers",
+      "Wood box/ carrier",
+      "Slide out BBQ tray",
+      "12v Dust reduction fan",
+      "Pull out rubish",
+      "Diesel heater & hot water unit",
+      "White sink & brass tapware"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1244",
@@ -481,57 +989,94 @@ const DATA = {
     "/stock/assets/layouts/1709Q-R-L_top.png",
     "/stock/assets/layouts/1709Q-R-L_tag.png"
    ],
-   "travel": 7.8
-  },
-  {
-   "chassis": "WL1171",
-   "model": "Solara",
-   "code": "1709Q-R-L",
-   "name": "Solara 1709 Composite Single Axle",
-   "year": "2026",
-   "length": "17'09\"",
-   "layout": "Couples",
-   "state": "New South Wales",
-   "used": false,
-   "price": 160500,
-   "images": [
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/am3ta15xkbxwologmq43ios3d.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/51hq4x9m0rid8717zibp5zc4x.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3wtbdzp75p80zlja1svounqeb.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1u1auras0krfqb45x15sz5io1.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1938bk2gk9kn5253irng6o12z.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/eq28lhvrpbgh7po1ql708ptpy.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1inf01lx54642k5t4krvowmea.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3plkklolhqss8j4chpvsvnukw.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/2kruwiu3g7236oqptxkhjxwcn.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/eyfmvj7rei6xipkvqlssxbs97.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/b2yx5kw4p3ioz8qd7r3vi05lx.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1miy6ihlocndkr64jnofs95nd.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/cjxn5ntt23y90c8vcup51l5qe.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/bq3drj1sbmdf5fsm1ubkepipc.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4luxqxoc62fs3o4uvxoam5eh3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/dnpgyffn5tpr5vuppyc1ds42g.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ey1i4ptjfd5pzpqyl0ow07av3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ch3ndcemo3ul6n8679rn2k752.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/c5gwggcsb9wexmahcb0uecqyx.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/9gag724aee7ysyv8omdyli12a.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4zx7ca6coaozs2z4v28bxblpu.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7scvhsgsosmpbqgpnu9hn75cu.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
+   "travel": 7.8,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Single axle",
+      "3.0T Cruisemaster ATX Coil",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Toro 16″ 6×139 ET0 & 285/75R16 Mud Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
    ],
-   "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-solara-1709ft-composite-single-axle/OAG-AD-25826194/",
-   "tare": 2426,
-   "atm": 2995,
-   "ball": 198,
-   "sleeps": 2,
-   "axle": "Single axle",
-   "floorplan": "/stock/assets/layouts/1709Q-R-L.png",
-   "was": 162280,
-   "floorplans": [
-    "/stock/assets/layouts/1709Q-R-L_tilt.png",
-    "/stock/assets/layouts/1709Q-R-L_top.png",
-    "/stock/assets/layouts/1709Q-R-L_tag.png"
-   ],
-   "travel": null
+   "spec_source": "range"
   },
   {
    "chassis": "WL1002",
@@ -584,7 +1129,76 @@ const DATA = {
     "/stock/assets/layouts/2100K1-F2-0_top.png",
     "/stock/assets/layouts/2100K1-F2-0_tag.png"
    ],
-   "travel": 9.0
+   "travel": 9.0,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "CNC Ply walls",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS Insulation",
+      "DiBond marine grade cladding",
+      "850mm X-Guard PU textured flat plate in black"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "4.5t Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extended A Frame, 2000mm long",
+      "MIPA toughcoat, black finish",
+      "Cruisemaster ATX Level 5 BCS Airbag Suspension System",
+      "Disc brakes",
+      "Cruisemaster DO-45 hitch",
+      "Large toolbox with slides & Anderson plug",
+      "BOS jockey wheel",
+      "Wood box"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Enerdrive Simarine behind the fridge electrical system",
+      "600Ah Lithium",
+      "1200w solar",
+      "3000 inverter",
+      "Anderson plug for portable solar"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank",
+      "1 x 100L grey water tank with bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
+      "Outdoor shower & water filter"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
+      "Multi-function cooker, fryer, grill & microwave",
+      "Portable induction cooktop",
+      "Swift flush mount recessed rangehood with dual fans",
+      "Dometic compressor fridge",
+      "3kg washing machine",
+      "CS pressure, 12V powered dust reduction",
+      "OGO composting toilet",
+      "Dometic Manual Awning",
+      "Reverse camera",
+      "Fusion audio and speakers",
+      "TV 24″ Smart TV & Starlink Connection",
+      "Hydronic diesel hot water service and heater (gasless)",
+      "K5i Weber BBQ provision, sink & portable induction in black"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1086",
@@ -637,55 +1251,95 @@ const DATA = {
     "/stock/assets/layouts/2311K1-F3-3_top.png",
     "/stock/assets/layouts/2311K1-F3-3_tag.png"
    ],
-   "travel": 9.9
-  },
-  {
-   "chassis": "WL1014",
-   "model": "Amaroo",
-   "code": "1906Q-R-L",
-   "name": "Amaroo 1906 Couple Van",
-   "year": "2024",
-   "length": "19'06\"",
-   "layout": "Couples",
-   "state": "Queensland",
-   "used": false,
-   "price": null,
-   "images": [
-    "/stock/assets/vans/WL1014/12.jpg",
-    "/stock/assets/vans/WL1014/02.jpg",
-    "/stock/assets/vans/WL1014/03.jpg",
-    "/stock/assets/vans/WL1014/04.jpg",
-    "/stock/assets/vans/WL1014/05.jpg",
-    "/stock/assets/vans/WL1014/06.jpg",
-    "/stock/assets/vans/WL1014/07.jpg",
-    "/stock/assets/vans/WL1014/08.jpg",
-    "/stock/assets/vans/WL1014/09.jpg",
-    "/stock/assets/vans/WL1014/10.jpg",
-    "/stock/assets/vans/WL1014/11.jpg",
-    "/stock/assets/vans/WL1014/13.jpg",
-    "/stock/assets/vans/WL1014/14.jpg",
-    "/stock/assets/vans/WL1014/15.jpg",
-    "/stock/assets/vans/WL1014/16.jpg",
-    "/stock/assets/vans/WL1014/17.jpg",
-    "/stock/assets/vans/WL1014/18.jpg",
-    "/stock/assets/vans/WL1014/19.jpg",
-    "/stock/assets/vans/WL1014/20.jpg",
-    "/stock/assets/vans/WL1014/01.jpg"
+   "travel": 9.9,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "850mm X-Guard PU textured flat plate in black",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ extended A-frame, 12″ truss chassis",
+      "Tandem axle",
+      "Cruisemaster ATX Level 5 BCS Airbag Suspension System, 4.5T Load Capacity",
+      "Disc brakes",
+      "Chassis finish: Textured 2K PU black coating or Hot-dip galvanised",
+      "DO45 by Cruisemaster recessed and 4.5T chains",
+      "BOS 60mm black ops 3 rib jockey unit with 8″ double wheel or BOS 50mm 3 rib jockey unit with 8″ double wheel",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "Rear bumper box with drawer, 2 x jerry can holders, woodbox and taillights (where available)",
+      "2 x chassis skid plates and recovery points",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Victron 12V off-grid system with Touch70 display. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, 900Ah lithium battery, with a behind-the-fridge installation; or Victron 24V off-grid system with Touch70 display. Features 100/50A MPPT, 30A DC charger, 120A / 5000VA inverter-charger, 1000W solar, and 11kWh battery, with a behind-the-fridge installation",
+      "1 x grey Anderson plug, 1 x yellow portable solar input",
+      "Dual 240V GPOs above tunnel boot and picnic table",
+      "6 External Lights: 17″ light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smartphone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "At seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Separate water tank filler & cap per tank (where available)",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas bottles",
+      "1 x gas bayonet plus 1 x cold tap and 1 x hot tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Dometic 8700 grey awning with black arms",
+      "Outdoor pantry with drop down picnic table, GPO & USB, entertainment pack and airbag controls if applicable",
+      "K5i Weber BBQ provision, sink & portable induction in black",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, black",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Ceramic black or white ensuite bowl, round",
+      "Tapware: Bathroom mixer tap in brushed stainless, black, white, brass gold and rose gold colours."
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
    ],
-   "listing": "https://www.caravancampingsales.com.au/items/details/2024-wonderland-rv-amaroo-1906-couple-van/OAG-AD-24353434/?gts=OAG-AD-24353434&amp;gtsSaleId=OAG-AD-24353434&amp;gtsViewType=showcase&amp;rankingType=showcase",
-   "tare": 2680,
-   "atm": 3495,
-   "ball": 160,
-   "sleeps": 2,
-   "axle": "Tandem axle",
-   "floorplan": "/stock/assets/layouts/1906Q-R-L.png",
-   "was": null,
-   "floorplans": [
-    "/stock/assets/layouts/1906Q-R-L_tilt.png",
-    "/stock/assets/layouts/1906Q-R-L_top.png",
-    "/stock/assets/layouts/1906Q-R-L_tag.png"
-   ],
-   "travel": 8.4
+   "spec_source": "range"
   },
   {
    "chassis": "WL684",
@@ -738,7 +1392,95 @@ const DATA = {
     "/stock/assets/layouts/2311Q-F4-3_top.png",
     "/stock/assets/layouts/2311Q-F4-3_tag.png"
    ],
-   "travel": 9.9
+   "travel": 9.9,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "850mm X-Guard PU textured flat plate in black",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ extended A-frame, 12″ truss chassis",
+      "Tandem axle",
+      "Cruisemaster ATX Level 5 BCS Airbag Suspension System, 4.5T Load Capacity",
+      "Disc brakes",
+      "Chassis finish: Textured 2K PU black coating or Hot-dip galvanised",
+      "DO45 by Cruisemaster recessed and 4.5T chains",
+      "BOS 60mm black ops 3 rib jockey unit with 8″ double wheel or BOS 50mm 3 rib jockey unit with 8″ double wheel",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "Rear bumper box with drawer, 2 x jerry can holders, woodbox and taillights (where available)",
+      "2 x chassis skid plates and recovery points",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Victron 12V off-grid system with Touch70 display. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, 900Ah lithium battery, with a behind-the-fridge installation; or Victron 24V off-grid system with Touch70 display. Features 100/50A MPPT, 30A DC charger, 120A / 5000VA inverter-charger, 1000W solar, and 11kWh battery, with a behind-the-fridge installation",
+      "1 x grey Anderson plug, 1 x yellow portable solar input",
+      "Dual 240V GPOs above tunnel boot and picnic table",
+      "6 External Lights: 17″ light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smartphone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "At seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Separate water tank filler & cap per tank (where available)",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas bottles",
+      "1 x gas bayonet plus 1 x cold tap and 1 x hot tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Dometic 8700 grey awning with black arms",
+      "Outdoor pantry with drop down picnic table, GPO & USB, entertainment pack and airbag controls if applicable",
+      "K5i Weber BBQ provision, sink & portable induction in black",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, black",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Ceramic black or white ensuite bowl, round",
+      "Tapware: Bathroom mixer tap in brushed stainless, black, white, brass gold and rose gold colours."
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL491",
@@ -791,7 +1533,95 @@ const DATA = {
     "/stock/assets/layouts/2200Q-F2-0_top.png",
     "/stock/assets/layouts/2200Q-F2-0_tag.png"
    ],
-   "travel": 9.3
+   "travel": 9.3,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "850mm X-Guard PU textured flat plate in black",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ extended A-frame, 12″ truss chassis",
+      "Tandem axle",
+      "Cruisemaster ATX Level 5 BCS Airbag Suspension System, 4.5T Load Capacity",
+      "Disc brakes",
+      "Chassis finish: Textured 2K PU black coating or Hot-dip galvanised",
+      "DO45 by Cruisemaster recessed and 4.5T chains",
+      "BOS 60mm black ops 3 rib jockey unit with 8″ double wheel or BOS 50mm 3 rib jockey unit with 8″ double wheel",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "Rear bumper box with drawer, 2 x jerry can holders, woodbox and taillights (where available)",
+      "2 x chassis skid plates and recovery points",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Victron 12V off-grid system with Touch70 display. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, 900Ah lithium battery, with a behind-the-fridge installation; or Victron 24V off-grid system with Touch70 display. Features 100/50A MPPT, 30A DC charger, 120A / 5000VA inverter-charger, 1000W solar, and 11kWh battery, with a behind-the-fridge installation",
+      "1 x grey Anderson plug, 1 x yellow portable solar input",
+      "Dual 240V GPOs above tunnel boot and picnic table",
+      "6 External Lights: 17″ light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smartphone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "At seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Separate water tank filler & cap per tank (where available)",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas bottles",
+      "1 x gas bayonet plus 1 x cold tap and 1 x hot tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Dometic 8700 grey awning with black arms",
+      "Outdoor pantry with drop down picnic table, GPO & USB, entertainment pack and airbag controls if applicable",
+      "K5i Weber BBQ provision, sink & portable induction in black",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, black",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Ceramic black or white ensuite bowl, round",
+      "Tapware: Bathroom mixer tap in brushed stainless, black, white, brass gold and rose gold colours."
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1172",
@@ -844,7 +1674,92 @@ const DATA = {
     "/stock/assets/layouts/2100Q1-F2-0_top.png",
     "/stock/assets/layouts/2100Q1-F2-0_tag.png"
    ],
-   "travel": 9.0
+   "travel": 9.0,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Frameless composite sandwich panel construction",
+      "PP honeycomb floor",
+      "Incorporated in sandwich panel (XPS Insulation)",
+      "White 1850×622 CaraD Dometic door"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & Double 4+4″ Chassis & Wheelbox Riser (Flat Floor)",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension Kit, 4.5T Load Capacity",
+      "12″ drum brakes",
+      "Chassis finish: Hot-dip galvanised or Textured 2K PU black coating",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4-arm bumper bar",
+      "Dirty-Life Theory 16″ 6×139 ET20 & 285/75R16 Cooper AT3",
+      "Caravan jack and brace"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Redarc Alpha 75 off-grid system with a behind-the-fridge installation, providing 75A via solar/DC/AC, 3000W inverter, 1000W solar, and 400Ah lithium; or Nexus & Victron off-grid system with Touch70 display and behind-the-fridge installation. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, and 400Ah lithium battery for advanced energy control",
+      "1 x Grey Anderson Plug & 1 x Grey 12V / Yellow 24V / Blue 48V Portable Solar Input",
+      "Dual 240V GPOs above tunnel boot and drop down picnic table",
+      "6 External Lights: 17” light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, bathroom sink light, shower light and roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smart phone connectivity; 2 x Fusion internal speakers and Fusion soundpanel external speaker",
+      "Mood lighting & step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV Antenna",
+      "USB & USB-C at seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank (above axles)",
+      "1 x 100L grey water tank",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Portable induction Cooktop with Multi-Function Cooker / Fryer / Microwave in Base Cabinet & Drawer",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x Sirocco fans",
+      "Awning: Large Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls.",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Chrome Ensuite Tap, Chrome Shower Rail & Brushed Stainless Bathroom Accessories",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white ceramic round ensuite bowl",
+      "Tapware: Brushed stainless bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1267",
@@ -897,7 +1812,94 @@ const DATA = {
     "/stock/assets/layouts/2106EW-F2-4_top.png",
     "/stock/assets/layouts/2106EW-F2-4_tag.png"
    ],
-   "travel": 9.0
+   "travel": 9.0,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Tandem axle",
+      "3.7T Cruisemaster XT Coil or 3.7T Tuff-Ride Coil, Airbag Ready",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Grid 16″ 6×139 ET0 & 265/75R16 All Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1223",
@@ -951,7 +1953,92 @@ const DATA = {
     "/stock/assets/layouts/2006Q-R-SC_tag.png"
    ],
    "ball_empty": 160,
-   "travel": 8.9
+   "travel": 8.9,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Frameless composite sandwich panel construction",
+      "PP honeycomb floor",
+      "Incorporated in sandwich panel (XPS Insulation)",
+      "White 1850×622 CaraD Dometic door"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & Double 4+4″ Chassis & Wheelbox Riser (Flat Floor)",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension Kit, 4.5T Load Capacity",
+      "12″ drum brakes",
+      "Chassis finish: Hot-dip galvanised or Textured 2K PU black coating",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4-arm bumper bar",
+      "Dirty-Life Theory 16″ 6×139 ET20 & 285/75R16 Cooper AT3",
+      "Caravan jack and brace"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Redarc Alpha 75 off-grid system with a behind-the-fridge installation, providing 75A via solar/DC/AC, 3000W inverter, 1000W solar, and 400Ah lithium; or Nexus & Victron off-grid system with Touch70 display and behind-the-fridge installation. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, and 400Ah lithium battery for advanced energy control",
+      "1 x Grey Anderson Plug & 1 x Grey 12V / Yellow 24V / Blue 48V Portable Solar Input",
+      "Dual 240V GPOs above tunnel boot and drop down picnic table",
+      "6 External Lights: 17” light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, bathroom sink light, shower light and roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smart phone connectivity; 2 x Fusion internal speakers and Fusion soundpanel external speaker",
+      "Mood lighting & step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV Antenna",
+      "USB & USB-C at seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank (above axles)",
+      "1 x 100L grey water tank",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Portable induction Cooktop with Multi-Function Cooker / Fryer / Microwave in Base Cabinet & Drawer",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x Sirocco fans",
+      "Awning: Large Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls.",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Chrome Ensuite Tap, Chrome Shower Rail & Brushed Stainless Bathroom Accessories",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white ceramic round ensuite bowl",
+      "Tapware: Brushed stainless bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1181",
@@ -1004,7 +2091,77 @@ const DATA = {
     "/stock/assets/layouts/1906Q-M-C_top.png",
     "/stock/assets/layouts/1906Q-M-C_tag.png"
    ],
-   "travel": 8.2
+   "travel": 8.2,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Aluminium Henrob Rivet",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS insulation",
+      "Dibond marine grade cladding",
+      "850mm black plate protection"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "4.5t Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extended A Frame, 1950mm long",
+      "Black paint Chassis Finish",
+      "4.5t Cruisemaster XT Airbag Suspension with BCS Levelling",
+      "12″ Drum Brakes",
+      "Cruisemaster DO-35 hitch",
+      "Large toolbox with slides & Anderson plug"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system, providing 50A via solar/DC/AC, 300Ah Lithium battery, 2000W inverter, 600W solar"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 100L grey water tank with bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
+      "Outdoor shower & water filter"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
+      "Multi-function cooker, fryer, grill & microwave",
+      "Portable induction cooktop",
+      "Swift flush mount recessed rangehood with dual fans",
+      "216L Dometic compressor fridge",
+      "3kg washing machine",
+      "Thetford Separating toilet",
+      "Outdoor pantry with drop down picnic table",
+      "Dometic Manual Awning",
+      "Reverse camera",
+      "TV 24″ Smart TV & Starlink Connection",
+      "Fusion audio and speakers"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Diesel Heater",
+      "CS 12v Dust suppression",
+      "Dexter stability control",
+      "Cruisemaster XT Air with BCS",
+      "Instant hot water"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1184",
@@ -1045,7 +2202,95 @@ const DATA = {
     "/stock/assets/layouts/2304EW-F4-5_top.png",
     "/stock/assets/layouts/2304EW-F4-5_tag.png"
    ],
-   "travel": 9.7
+   "travel": 9.7,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame and double 4+4″ chassis and wheelbox Riser (flat floor)",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension Kit, 4.5T Load Capacity",
+      "12″ drum brakes",
+      "Chassis finish: Hot-dip galvanised or Toughcoat-MP",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "2 x chassis skid plates and recovery point",
+      "2 x rear bar water tank / jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 75 off-grid system with an under-the-lounge installation, delivering 75A solar/AC, 50A DC, 2600W inverter, 800W solar, and 400Ah lithium.",
+      "Grey anderson plug and 1 x Grey 12V / yellow 24V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "6 External Lights: 17” light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smart phone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack includes USB charger, coaxial antenna, 12V socket, TV bracket, double power point and audio return"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank (above axles)",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg or 9kg powdercoated gas cylinders",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill & 4 gas burner stove with 2 drawers & no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1222",
@@ -1098,7 +2343,95 @@ const DATA = {
     "/stock/assets/layouts/1906EW-F3-0_top.png",
     "/stock/assets/layouts/1906EW-F3-0_tag.png"
    ],
-   "travel": 8.5
+   "travel": 8.5,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "850mm X-Guard PU textured flat plate in black",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ extended A-frame, 12″ truss chassis",
+      "Tandem axle",
+      "Cruisemaster ATX Level 5 BCS Airbag Suspension System, 4.5T Load Capacity",
+      "Disc brakes",
+      "Chassis finish: Textured 2K PU black coating or Hot-dip galvanised",
+      "DO45 by Cruisemaster recessed and 4.5T chains",
+      "BOS 60mm black ops 3 rib jockey unit with 8″ double wheel or BOS 50mm 3 rib jockey unit with 8″ double wheel",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "Rear bumper box with drawer, 2 x jerry can holders, woodbox and taillights (where available)",
+      "2 x chassis skid plates and recovery points",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Victron 12V off-grid system with Touch70 display. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, 900Ah lithium battery, with a behind-the-fridge installation; or Victron 24V off-grid system with Touch70 display. Features 100/50A MPPT, 30A DC charger, 120A / 5000VA inverter-charger, 1000W solar, and 11kWh battery, with a behind-the-fridge installation",
+      "1 x grey Anderson plug, 1 x yellow portable solar input",
+      "Dual 240V GPOs above tunnel boot and picnic table",
+      "6 External Lights: 17″ light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smartphone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "At seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Separate water tank filler & cap per tank (where available)",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas bottles",
+      "1 x gas bayonet plus 1 x cold tap and 1 x hot tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Dometic 8700 grey awning with black arms",
+      "Outdoor pantry with drop down picnic table, GPO & USB, entertainment pack and airbag controls if applicable",
+      "K5i Weber BBQ provision, sink & portable induction in black",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, black",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Ceramic black or white ensuite bowl, round",
+      "Tapware: Bathroom mixer tap in brushed stainless, black, white, brass gold and rose gold colours."
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1233",
@@ -1134,7 +2467,94 @@ const DATA = {
     "/stock/assets/layouts/1709Q-R-L_top.png",
     "/stock/assets/layouts/1709Q-R-L_tag.png"
    ],
-   "travel": 7.8
+   "travel": 7.8,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Single axle",
+      "3.0T Cruisemaster ATX Coil",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Toro 16″ 6×139 ET0 & 285/75R16 Mud Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1260",
@@ -1187,7 +2607,94 @@ const DATA = {
     "/stock/assets/layouts/2107EW-F4-3_top.png",
     "/stock/assets/layouts/2107EW-F4-3_tag.png"
    ],
-   "travel": 9.0
+   "travel": 9.0,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Tandem axle",
+      "3.7T Cruisemaster XT Coil or 3.7T Tuff-Ride Coil, Airbag Ready",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Grid 16″ 6×139 ET0 & 265/75R16 All Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL901",
@@ -1240,7 +2747,95 @@ const DATA = {
     "/stock/assets/layouts/2100Q2-F2-0_top.png",
     "/stock/assets/layouts/2100Q2-F2-0_tag.png"
    ],
-   "travel": 9.0
+   "travel": 9.0,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "850mm X-Guard PU textured flat plate in black",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ extended A-frame, 12″ truss chassis",
+      "Tandem axle",
+      "Cruisemaster ATX Level 5 BCS Airbag Suspension System, 4.5T Load Capacity",
+      "Disc brakes",
+      "Chassis finish: Textured 2K PU black coating or Hot-dip galvanised",
+      "DO45 by Cruisemaster recessed and 4.5T chains",
+      "BOS 60mm black ops 3 rib jockey unit with 8″ double wheel or BOS 50mm 3 rib jockey unit with 8″ double wheel",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "Rear bumper box with drawer, 2 x jerry can holders, woodbox and taillights (where available)",
+      "2 x chassis skid plates and recovery points",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "One of: Victron 12V off-grid system with Touch70 display. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, 900Ah lithium battery, with a behind-the-fridge installation; or Victron 24V off-grid system with Touch70 display. Features 100/50A MPPT, 30A DC charger, 120A / 5000VA inverter-charger, 1000W solar, and 11kWh battery, with a behind-the-fridge installation",
+      "1 x grey Anderson plug, 1 x yellow portable solar input",
+      "Dual 240V GPOs above tunnel boot and picnic table",
+      "6 External Lights: 17″ light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smartphone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "At seats, robes, bunks and external entertainment pack"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Separate water tank filler & cap per tank (where available)",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas bottles",
+      "1 x gas bayonet plus 1 x cold tap and 1 x hot tap at tunnel boot",
+      "Hydronic diesel hot water service and heater (gasless)"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop",
+      "220L dual-hinge compressor fridge (2 way)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Dometic 8700 grey awning with black arms",
+      "Outdoor pantry with drop down picnic table, GPO & USB, entertainment pack and airbag controls if applicable",
+      "K5i Weber BBQ provision, sink & portable induction in black",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, black",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Ceramic black or white ensuite bowl, round",
+      "Tapware: Bathroom mixer tap in brushed stainless, black, white, brass gold and rose gold colours."
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1090",
@@ -1291,7 +2886,80 @@ const DATA = {
     "/stock/assets/layouts/2200Q-RC_top.png",
     "/stock/assets/layouts/2200Q-RC_tag.png"
    ],
-   "travel": 9.1
+   "travel": 9.1,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "CNC ply walls",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS insulation",
+      "Dibond marine grade cladding",
+      "850mm black plate protection"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extended A Frame, 1950mm long",
+      "Duragal -MIPA Chassis Finish",
+      "3.7T Cruisemaster XT Coil",
+      "12″ Drum Brakes",
+      "Cruisemaster DO-35 hitch",
+      "Large toolbox with slides & Anderson plug"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 battery manager 400Ah lithium, 800W solar, 2600W inverter"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 100L grey water tank with bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
+      "Outdoor shower & water filter"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
+      "Microwave",
+      "Gas cooktop",
+      "Swift flush mount recessed rangehood with dual fans",
+      "Dometic compressor fridge",
+      "3kg washing machine",
+      "Thetford cassette toilet",
+      "Outdoor pantry with drop down picnic table",
+      "Dometic Manual Awning",
+      "Reverse camera",
+      "TV 24″ Smart TV & Starlink Connection",
+      "Fusion audio and speakers",
+      "Full height pantry"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Dexter stability control",
+      "Stone Guard",
+      "70Lt dedicated drinking water tank",
+      "Instant hot water",
+      "Full oven",
+      "12v Dust suppression system",
+      "Water fall benchtop"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1100",
@@ -1344,7 +3012,81 @@ const DATA = {
     "/stock/assets/layouts/2100Q-M-XLE_top.png",
     "/stock/assets/layouts/2100Q-M-XLE_tag.png"
    ],
-   "travel": 8.8
+   "travel": 8.8,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "CNC Structural grade ply frame",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS Insulation",
+      "Di Bond marine grade cladding",
+      "850mm black plate protection"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extended A Frame, 1950mm long",
+      "Chassis Finish - MIPA Toughcoat in black",
+      "3.7t Teko Toughride Coil Suspension",
+      "12″ Drum Brakes",
+      "Cruisemaster DO-35 hitch",
+      "Large toolbox with slides & Anderson plug"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 Battery management system with 400Ah lithium, 2600w inverter & 800w solar",
+      "1 x portable solar input Anderson plug",
+      "Anderson plug in toolbox for portable fridge"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 100L grey water tank with bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, Gas bayonet & Cold hot/ cold tap on A frame",
+      "Outdoor shower"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic Freshet Z, 7 series lite 3kW Air conditioner",
+      "Portable induction cooktop & microwave",
+      "Swift flush mount recessed rangehood with dual fan",
+      "Dometic compressor fridge",
+      "3.5kg washing machine",
+      "Thetford toilet",
+      "Dometic Manual Awning",
+      "Reverse camera",
+      "TV 24″ Smart TV & Starlink Connection",
+      "Fusion audio and speakers",
+      "12V fans"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Stability control",
+      "Full oven",
+      "12V Dust suppression system",
+      "Victron 3000VA inverter, 1000w solar,400Ah,",
+      "Diesel heater",
+      "Instant hot water unit",
+      "Waterfall benchtop",
+      "Pull out bin"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1216",
@@ -1392,7 +3134,95 @@ const DATA = {
    "axle": "Tandem axle",
    "floorplan": null,
    "was": null,
-   "travel": 8.6
+   "travel": 8.6,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame and double 4+4″ chassis and wheelbox Riser (flat floor)",
+      "Cruisemaster XT Level 3 Manual Airbag Suspension Kit, 4.5T Load Capacity",
+      "12″ drum brakes",
+      "Chassis finish: Hot-dip galvanised or Toughcoat-MP",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "2 x chassis skid plates and recovery point",
+      "2 x rear bar water tank / jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 75 off-grid system with an under-the-lounge installation, delivering 75A solar/AC, 50A DC, 2600W inverter, 800W solar, and 400Ah lithium.",
+      "Grey anderson plug and 1 x Grey 12V / yellow 24V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "6 External Lights: 17” light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smart phone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack includes USB charger, coaxial antenna, 12V socket, TV bracket, double power point and audio return"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 90L drinking water tank (above axles)",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg or 9kg powdercoated gas cylinders",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill & 4 gas burner stove with 2 drawers & no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "CS pressure, 12V powered dust reduction",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1250",
@@ -1433,7 +3263,94 @@ const DATA = {
    "axle": "Tandem axle",
    "floorplan": null,
    "was": null,
-   "travel": 9.3
+   "travel": 9.3,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
+      "PP honeycomb floor",
+      "XPS insulation",
+      "850mm checkerplate in black or 850mm alloy in flat black plate",
+      "J-mould / truline mould with rubber insert",
+      "Black 1750×622 entry door with three locks, separate midge-screen security door and interior roller blind"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "6″ x 1950mm A-Frame & double 4+4″ chassis & wheelbox riser (flat floor)",
+      "Tandem axle",
+      "3.7T Cruisemaster XT Coil or 3.7T Tuff-Ride Coil, Airbag Ready",
+      "12″ drum brakes",
+      "Chassis finish: Painted black",
+      "DO35 by Cruisemaster recessed",
+      "AL-KO 8″ wide large clamp 629915",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "4 arm with taillights",
+      "Grid 16″ 6×139 ET0 & 265/75R16 All Terrain",
+      "2 x rear bar water tank/jerry can holders"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system with an under-the-lounge installation, providing 50A via solar/DC/AC, 2000W inverter, 600W solar, and 300Ah lithium battery for smooth, efficient power management.",
+      "Grey anderson plug and 1 x grey 12V portable solar input",
+      "Dual 240V GPOs above tunnel boot and outdoor pantry",
+      "17″ light bars front and rear, 3 x insect repellent 2 stage LED lights doorside inc. BBQ and 1 roadside",
+      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
+      "Media: Fusion audio and speakers (RA60) includes AM-FM radio, AUX, USB and Bluetooth, 2 x Fusion internal speakers, 2 x Fusion external speakers",
+      "Mood lighting and step light: Amber",
+      "Starlink internet provision",
+      "Tow plug: 12 pin",
+      "24″ Smart TV",
+      "Omni Winegard / Cowfish TV antenna",
+      "External entertainment pack, includes USB charger, coaxial antenna, 12V socket and TV bracket"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L freshwater tanks",
+      "1 x 100L grey water tank (at rear)",
+      "Grey water bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "Water tank gauge: 1 per tank",
+      "1 x external shower",
+      "2 x 4kg powdercoated gas cylinders",
+      "1 x gas bayonet plus 1 x cold tap at tunnel boot",
+      "Swift 28L dual gas and electric hot water service"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
+      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop, or Mini grill and 4 gas burner stove with 2 drawers and no microwave",
+      "216L compressor fridge (DC)",
+      "Swift flush mount recessed rangehood with dual fan",
+      "3kg to 3.5kg washing machine",
+      "2 x black or white Sirocco II fans",
+      "Awning: Dometic manual 8700 grey with black arms",
+      "Outdoor pantry with drop down picnic table. Complete with LED light, GPO, USB, entertainment pack & airbag controls (where possible & available with portable induction only)",
+      "1 x matching spare wheel with holder",
+      "Towel hooks, hand towel rails, bath towel rails, brushed chrome",
+      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
+      "Shower screen frame: Silver, black or white",
+      "Sink: Black or white round ceramic ensuite bowl",
+      "Tapware: Chrome bathroom mixer tap"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Fitted upgrades for this van to be confirmed with our team."
+     ]
+    ]
+   ],
+   "spec_source": "range"
   },
   {
    "chassis": "WL1296",
@@ -1457,7 +3374,81 @@ const DATA = {
    "axle": "Tandem axle",
    "floorplan": null,
    "was": 162322,
-   "travel": 8.4
+   "travel": 8.4,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Aluminium Henrob Rivet",
+      "One piece composite sandwich panel roof, front & back",
+      "Honeycomb floor",
+      "XPS Insulation",
+      "DiBond marine grade cladding",
+      "850mm black plate protection"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "4.5t Aussie Made Heavy Duty Off Road Chassis",
+      "Double box 4+4″ chassis and riser (flat floor)",
+      "6″ Extended A Frame, 1950mm long",
+      "Black paint Chassis Finish",
+      "4.5t Cruisemaster XT Level 3 Manual Airbag Suspension",
+      "12″ Drum Brakes",
+      "Cruisemaster DO-35 hitch",
+      "Large toolbox with slides & Anderson plug"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Redarc Alpha 50 off-grid system delivering 400Ah Lithium, 2600W Inverter, 800w solar",
+      "Anderson plug for portable solar"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "2 x 90L to 100L fresh water tanks",
+      "1 x 100L grey water tank with bypass",
+      "Quick fill and mains connection and 1 separate filler and cap",
+      "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
+      "Outdoor shower & water filter"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
+      "Multi-function cooker, fryer, grill & microwave",
+      "Portable induction cooktop",
+      "Swift flush mount recessed rangehood with dual fans",
+      "216L Dometic compressor fridge",
+      "3kg washing machine",
+      "CS pressure, 12V powered dust reduction",
+      "Thetford Separating toilet",
+      "Outdoor pantry with drop down picnic table",
+      "Dometic Manual Awning",
+      "Reverse camera",
+      "TV 24″ Smart TV & Starlink Connection",
+      "Fusion audio and speakers"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "4.5T Cruisemaster XT Level 3 Manual Airbag Suspension",
+      "Redarc Behind Fridge Electrical System",
+      "Soft Close Drawers",
+      "K5i external kitchen",
+      "Instant hot water",
+      "5 x sirocco fans",
+      "White sink & gold tapware"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   }
  ],
  "modelSpecs": {

@@ -23,6 +23,22 @@ headerV, footerV, nextV, reviewsV = rel(header), rel(footer), rel(nextband), rel
 kg = lambda n: format(n, ',').replace(',', ',') + ' kg'
 money = lambda n: 'Enquire for price' if n is None else '$' + format(round(n), ',')
 
+def chips(v):
+    import re as _re
+    secs = v.get('spec_override') or []
+    txt = {s: ' | '.join(i) for s, i in secs}
+    el = txt.get('Electrical', ''); ch = txt.get('Chassis & Suspension', ''); up = txt.get('Optional upgrades fitted', '')
+    c = []
+    m = _re.search(r'(Redarc Alpha \d+|Enerdrive|Victron)', el)
+    if m: c.append(f"{m.group(1)} off-grid power")
+    sus = ch + ' ' + up
+    if 'Cruisemaster' in sus:
+        kind = 'ATX' if 'ATX' in sus else 'XT'
+        c.append(f"Cruisemaster {kind} {'airbag' if _re.search(r'air', sus, _re.I) else 'coil'} suspension")
+    elif 'Tuff' in sus: c.append('Tuff-Ride coil suspension')
+    c.append('2 x 90-100L water tanks')
+    return c if len(c) == 3 else INCL.get(v['model'], c)
+
 INCL = {
  'XTR': ['Victron off-grid power', 'Cruisemaster ATX airbag suspension', '2 x 90-100L water tanks'],
  'Hornet': ['Redarc Alpha 75 off-grid power', 'Cruisemaster XT airbag suspension', '2 x 90-100L water tanks'],
@@ -116,6 +132,10 @@ def gallery(v):
     <div class="vp-sidegrid" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px">{side}</div></div>
     <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div></div>'''
 
+def kicker(v, tab):
+    if tab.startswith('Optional'): return 'FITTED TO THIS VAN'
+    return f"{tab.upper()} ON THIS VAN" if v.get('spec_source') == 'ana' else f"STANDARD {tab.upper()}"
+
 def spec_glance(v):
     """Range-page style: left category rail + bordered spec table (desktop)."""
     # Both chevron icons from the live range page's Elementor tab rail, verbatim:
@@ -141,7 +161,7 @@ def spec_glance(v):
             else:
                 trs.append(f'<tr><td>{k}</td><td>{val}</td></tr>')
         panels.append(f'''<div class="sg-panel{on}" data-tab="{tab}">
-          <p class="sg-kicker">STANDARD {tab.upper()}</p>
+          <p class="sg-kicker">{kicker(v, tab)}</p>
           <div class="sg-scroll"><table class="specs-table"><tbody>{''.join(trs)}</tbody></table></div>
         </div>''')
     return f'<div class="sg"><nav class="sg-rail" aria-label="Specification categories">{"".join(rail)}</nav><div class="sg-panels">{"".join(panels)}</div></div>'
@@ -158,7 +178,7 @@ def spec_sections(v):
                 <span style="font:400 12.5px/1 |G|,sans-serif;color:var(--mut)">{len(items)} items</span>
                 <svg class="spec-chev" viewBox="0 0 14 8" width="13" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
               </button>
-              <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">Standard {tab}</div><div class="spec-body">{rws}</div></div></div>
+              <div class="spec-panel"><div class="spec-inner"><div class="spec-kicker">{kicker(v, tab).capitalize()}</div><div class="spec-body">{rws}</div></div></div>
             </div>""".replace('|G|', chr(39)+'Gordita'+chr(39)))
         return ''.join(out)
     specs = DATA['modelSpecs'].get(v['model'], {})
@@ -213,7 +233,7 @@ def van_page(v):
         for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Travel length', f"{v['travel']} m" if v.get('travel') else '—', 'Overall towing length'),
                           ('Layout', v['layout'], 'Bunks on board' if v['layout'] == 'Family' else 'Two berth touring'),
                           ('Location', dealer(v['state']), 'Where it is now')])
-    incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in INCL.get(v['model'], []))
+    incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in chips(v))
     facts = ''.join(f'''<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
         <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">{k}</span>
         <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">{val}</span></div>'''
@@ -289,7 +309,7 @@ def van_page(v):
     {floor}
     <div style="margin-bottom:10px">
       <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
-      <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_override') else f"Standard specification for the {v['model']} range. This van may include additional optioned upgrades, confirm the exact build with our team."}</p>
+      <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_source') == 'ana' else f"Specification for this van, based on the {v['model']} range build. Confirm fitted upgrades with our team."}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px">{incl}</div>
       <div class="spec-acc spec-acc-key">
         <button type="button" class="spec-head" aria-expanded="false">

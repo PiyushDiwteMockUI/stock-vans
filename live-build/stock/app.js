@@ -30,7 +30,6 @@ const imgSm = u => {
 const imgSrcset = u => u.includes('pxcrush.net') || u.startsWith('/stock/assets/')
   ? `${imgSm(u)} 640w, ${u} 1600w` : '';
 const fullName = v => v.name.startsWith(v.model) ? v.name : v.model + ' ' + v.name;
-window.WLVANS=VANS;window.WLOR=OR_TOKEN;window.WLimgSm=imgSm;window.WLfullName=fullName;
 const MODELS = ['Solara', 'XTR', 'Hornet', 'Amaroo'];
 const STATES = [...new Set(VANS.map(v => v.state))];
 const DEALER = {'New South Wales':'Off Grid Outfitters - NSW','Queensland':'Aussie Escape Caravans - QLD','Victoria':'Outbound RVs - VIC','Western Australia':'Outbound RVs - WA'};
@@ -394,63 +393,10 @@ const SV = {
       if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent });
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt || 'Not specified', enquiry_type: intent });
     } catch (e) {}
-    // Post-submit: hide the form and show a confirmation panel (mirrors the Melbourne show form).
-    // This also avoids the stale-thumb bug that f.reset() caused on the chips control.
-    const done = document.getElementById('enqdone');
-    if (done) {
-      const nm = g('first-name').value.trim();
-      const em = g('email').value.trim();
-      const specificVan = vanSel !== 'unspecified' && vanSel !== 'unsure';
-      const hd = document.getElementById('enqdone-head');
-      if (hd) hd.textContent = nm ? ('Thanks, ' + nm + '.') : 'Thanks for your enquiry.';
-      const mg = document.getElementById('enqdone-msg');
-      if (mg) {
-        mg.textContent = '';
-        mg.appendChild(document.createTextNode(specificVan ? 'Your enquiry for the ' + vanTxt + ' is on its way to ' : 'Your enquiry is on its way to '));
-        const b = document.createElement('strong'); b.textContent = em; mg.appendChild(b);
-        mg.appendChild(document.createTextNode('. We will confirm it is still on the lot and call you within 24 hours on business days.'));
-      }
-      const rc = document.getElementById('enqdone-recap');
-      if (rc) {
-        rc.textContent = '';
-        [['Van', vanTxt], ['Request', intent], ['State', stateVal]].forEach(row => {
-          const d = document.createElement('div');
-          const dt = document.createElement('dt'); dt.textContent = row[0];
-          const dd = document.createElement('dd'); dd.textContent = row[1];
-          d.appendChild(dt); d.appendChild(dd); rc.appendChild(d);
-        });
-      }
-      f.hidden = true;
-      done.hidden = false;
-      // Soft confetti burst
-      try {
-        if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          const layer = document.createElement('div'); layer.className = 'enq-confetti';
-          const cols = ['#E37921', '#DB7627', '#12171C', '#F2B27C', '#FFFFFF'];
-          const N = 46;
-          for (let i = 0; i < N; i++) {
-            const p = document.createElement('i');
-            p.style.left = (Math.random() * 100) + '%';
-            p.style.background = cols[i % cols.length];
-            p.style.setProperty('--x', (Math.random() * 260 - 130) + 'px');
-            p.style.setProperty('--r', (Math.random() * 900 - 300) + 'deg');
-            p.style.setProperty('--d', (2.2 + Math.random() * 1.4).toFixed(2) + 's');
-            p.style.setProperty('--dl', (Math.random() * 0.45).toFixed(2) + 's');
-            const w = 6 + Math.random() * 6; p.style.width = w.toFixed(1) + 'px'; p.style.height = (w * 1.5).toFixed(1) + 'px';
-            if (i % 3 === 0) p.style.borderRadius = '50%';
-            layer.appendChild(p);
-          }
-          done.appendChild(layer);
-          setTimeout(() => { layer.remove(); }, 4200);
-        }
-      } catch (e) {}
-      try { done.setAttribute('tabindex', '-1'); done.focus({ preventScroll: true }); done.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) {}
-    } else {
-      const st = document.getElementById('enqstatus');
-      st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
-      st.style.color = '#2E7D32';
-      f.reset();
-    }
+    const st = document.getElementById('enqstatus');
+    st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
+    st.style.color = '#2E7D32';
+    f.reset();
     return false;
   },
 
@@ -528,6 +474,7 @@ const SV = {
         setTimeout(() => { grp.style.minHeight = ''; }, 250);
       }
     });
+    document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
     // Reference chips-thumb: position over the checked chip, squash while travelling.
     const chips = document.querySelector('.enquiry-form .chips');
     if (chips) {
@@ -631,4 +578,8 @@ function makeDrop(sel) {
   });
   return { build: build };
 }
-/* enquiry selects kept native for the new design */
+(function () {
+  var vd = makeDrop(document.getElementById('vanselect'));
+  if (vd) window.syncVandrop = vd.build;
+  makeDrop(document.getElementById('state'));
+})();
