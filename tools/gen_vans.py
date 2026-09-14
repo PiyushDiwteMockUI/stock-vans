@@ -69,6 +69,16 @@ DEALER = {'New South Wales': 'Off Grid Outfitters - NSW', 'Queensland': 'Aussie 
 def dealer(state):
     return DEALER.get(state, state)
 
+def bunks(v):
+    import re as _re
+    m = _re.search(r'F-?(\d)', v.get('code', ''))
+    n = int(m.group(1)) if m else (int(v['sleeps']) - 2 if v.get('sleeps') else None)
+    return n if n and n > 0 else None
+
+def bunks_note(v):
+    n = bunks(v)
+    return 'Bunks on board' if n is None else (f'{n} bunk on board' if n == 1 else f'{n} bunks on board')
+
 def full_name(v):
     return v['name'] if v['name'].startswith(v['model']) else v['model'] + ' ' + v['name']
 
@@ -231,7 +241,7 @@ def van_page(v):
         <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">{val}</div>
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
         for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Travel length', f"{v['travel']} m" if v.get('travel') else '—', 'Overall towing length'),
-                          ('Layout', v['layout'], 'Bunks on board' if v['layout'] == 'Family' else 'Two berth touring'),
+                          ('Layout', v['layout'], bunks_note(v) if v['layout'] == 'Family' else 'Two berth touring'),
                           ('Location', dealer(v['state']), 'Where it is now')])
     incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in chips(v))
     facts = ''.join(f'''<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
