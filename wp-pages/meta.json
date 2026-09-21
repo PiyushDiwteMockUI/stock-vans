@@ -2,12 +2,12 @@
  "wl1002": {
   "title": "XTR 21ft Double Bunk King Bed WL1002 | Wonderland RV",
   "slug": "wl1002",
-  "len": 184288
+  "len": 184403
  },
  "wl1086": {
   "title": "XTR 2311 Triple Bunk with Storage WL1086 | Wonderland RV",
   "slug": "wl1086",
-  "len": 194643
+  "len": 194758
  },
  "wl1090": {
   "title": "Amaroo 2200 Rear Club Lounge WL1090 | Wonderland RV",
@@ -19,15 +19,10 @@
   "slug": "wl1100",
   "len": 189157
  },
- "wl1172": {
-  "title": "Solara Composite 21ft Twin Family Van WL1172 | Wonderland RV",
-  "slug": "wl1172",
-  "len": 193692
- },
  "wl1173": {
   "title": "Solara Composite Double Bunk WL1173 | Wonderland RV",
   "slug": "wl1173",
-  "len": 194166
+  "len": 192857
  },
  "wl1180": {
   "title": "Amaroo 21ft Couples Extra Large Ensuite WL1180 | Wonderland RV",
@@ -42,32 +37,27 @@
  "wl1184": {
   "title": "Hornet 2304 Quad Bunk East-West WL1184 | Wonderland RV",
   "slug": "wl1184",
-  "len": 188896
- },
- "wl1216": {
-  "title": "Hornet 1907 Double Bunk Family WL1216 | Wonderland RV",
-  "slug": "wl1216",
-  "len": 191033
+  "len": 187754
  },
  "wl1222": {
   "title": "XTR 1906 East-West Triple Bunk Family WL1222 | Wonderland RV",
   "slug": "wl1222",
-  "len": 195296
+  "len": 195348
  },
  "wl1223": {
   "title": "Solara Full Composite 2006 Couple Van WL1223 | Wonderland RV",
   "slug": "wl1223",
-  "len": 192022
+  "len": 190713
  },
  "wl1225": {
   "title": "Solara 2006 Composite WL1225 | Wonderland RV",
   "slug": "wl1225",
-  "len": 194146
+  "len": 192835
  },
  "wl1227": {
   "title": "Hornet 21'07&quot; Quad Bunk Delete WL1227 | Wonderland RV",
   "slug": "wl1227",
-  "len": 186573
+  "len": 185431
  },
  "wl1228": {
   "title": "Amaroo 1906 Aluminium Frame WL1228 | Wonderland RV",
@@ -89,16 +79,6 @@
   "slug": "wl1233",
   "len": 187256
  },
- "wl1244": {
-  "title": "Amaroo 1709 Single Axle WL1244 | Wonderland RV",
-  "slug": "wl1244",
-  "len": 191645
- },
- "wl1250": {
-  "title": "Amaroo 2206 East-West Double Bunk Family WL1250 | Wonderland RV",
-  "slug": "wl1250",
-  "len": 188649
- },
  "wl1260": {
   "title": "Amaroo 2107 Quad Bunk East-West WL1260 | Wonderland RV",
   "slug": "wl1260",
@@ -117,31 +97,21 @@
  "wl1296": {
   "title": "Amaroo 1907 Triple Bunk Family WL1296 | Wonderland RV",
   "slug": "wl1296",
-  "len": 181368
- },
- "wl491": {
-  "title": "XTR 22ft Family Twin Bunk WL491 | Wonderland RV",
-  "slug": "wl491",
-  "len": 194147
- },
- "wl684": {
-  "title": "XTR 2311 Quad Bunk WL684 | Wonderland RV",
-  "slug": "wl684",
-  "len": 194146
+  "len": 181370
  },
  "wl901": {
   "title": "XTR 2100 Twin Bunk Family WL901 | Wonderland RV",
   "slug": "wl901",
-  "len": 195335
+  "len": 195412
  },
  "stock-hub": {
   "title": "Stock van pages | Wonderland RV",
   "slug": "stock",
-  "len": 173666
+  "len": 157155
  },
  "stock-vans-index": {
   "title": "Caravans In Stock | Wonderland RV",
   "slug": "stock-vans",
-  "len": 434402
+  "len": 381043
  }
 }
