@@ -22,7 +22,7 @@
  "wl1173": {
   "title": "Solara Composite Double Bunk WL1173 | Wonderland RV",
   "slug": "wl1173",
-  "len": 192857
+  "len": 191626
  },
  "wl1180": {
   "title": "Amaroo 21ft Couples Extra Large Ensuite WL1180 | Wonderland RV",
@@ -44,15 +44,10 @@
   "slug": "wl1222",
   "len": 195348
  },
- "wl1223": {
-  "title": "Solara Full Composite 2006 Couple Van WL1223 | Wonderland RV",
-  "slug": "wl1223",
-  "len": 190713
- },
  "wl1225": {
   "title": "Solara 2006 Composite WL1225 | Wonderland RV",
   "slug": "wl1225",
-  "len": 192835
+  "len": 191604
  },
  "wl1227": {
   "title": "Hornet 21'07&quot; Quad Bunk Delete WL1227 | Wonderland RV",
@@ -107,11 +102,11 @@
  "stock-hub": {
   "title": "Stock van pages | Wonderland RV",
   "slug": "stock",
-  "len": 157155
+  "len": 154228
  },
  "stock-vans-index": {
   "title": "Caravans In Stock | Wonderland RV",
   "slug": "stock-vans",
-  "len": 381043
+  "len": 374027
  }
 }
