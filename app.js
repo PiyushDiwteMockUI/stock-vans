@@ -391,6 +391,10 @@ const SV = {
     document.body.appendChild(post); post.submit();
     try {
       if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent });
+      /* GTM-readable event for the Tracklution forwarder (Lead + ContactInfo). No GTM tag listens to it, so GA4 still counts once via gtag above. */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'stock_vans_enquiry', form_name: 'Stock van enquiry', lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent, page_path: location.pathname,
+        user: { email: g('email').value.trim(), phone: phone, firstName: g('first-name').value.trim(), lastName: g('last-name').value.trim() } });
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt || 'Not specified', enquiry_type: intent });
     } catch (e) {}
     const st = document.getElementById('enqstatus');
