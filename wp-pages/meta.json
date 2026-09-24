@@ -2,7 +2,7 @@
  "wl1002": {
   "title": "XTR 21ft Double Bunk King Bed WL1002 | Wonderland RV",
   "slug": "wl1002",
-  "len": 184403
+  "len": 184405
  },
  "wl1086": {
   "title": "XTR 2311 Triple Bunk with Storage WL1086 | Wonderland RV",
@@ -22,7 +22,7 @@
  "wl1173": {
   "title": "Solara Composite Double Bunk WL1173 | Wonderland RV",
   "slug": "wl1173",
-  "len": 191626
+  "len": 189784
  },
  "wl1180": {
   "title": "Amaroo 21ft Couples Extra Large Ensuite WL1180 | Wonderland RV",
@@ -47,17 +47,17 @@
  "wl1225": {
   "title": "Solara 2006 Composite WL1225 | Wonderland RV",
   "slug": "wl1225",
-  "len": 191604
+  "len": 187171
  },
  "wl1227": {
   "title": "Hornet 21'07&quot; Quad Bunk Delete WL1227 | Wonderland RV",
   "slug": "wl1227",
-  "len": 185431
+  "len": 185419
  },
  "wl1228": {
   "title": "Amaroo 1906 Aluminium Frame WL1228 | Wonderland RV",
   "slug": "wl1228",
-  "len": 193176
+  "len": 189555
  },
  "wl1231-preview": {
   "title": "Amaroo 23ft Double Rear Bunk WL1231 | Wonderland RV",
@@ -67,7 +67,7 @@
  "wl1231": {
   "title": "Amaroo 23ft Double Rear Bunk WL1231 | Wonderland RV",
   "slug": "wl1231",
-  "len": 193187
+  "len": 189211
  },
  "wl1233": {
   "title": "Amaroo 1709 Rear Lounge Couples WL1233 | Wonderland RV",
@@ -82,7 +82,7 @@
  "wl1261": {
   "title": "Amaroo 1906 Aluminium Frame WL1261 | Wonderland RV",
   "slug": "wl1261",
-  "len": 192050
+  "len": 187568
  },
  "wl1267": {
   "title": "Amaroo 2106 Rear Twin Bunk Family WL1267 | Wonderland RV",
@@ -107,6 +107,6 @@
  "stock-vans-index": {
   "title": "Caravans In Stock | Wonderland RV",
   "slug": "stock-vans",
-  "len": 379150
+  "len": 372081
  }
 }

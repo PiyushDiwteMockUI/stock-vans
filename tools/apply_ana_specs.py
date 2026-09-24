@@ -7,9 +7,10 @@
 - Prices come from Ana's sheet (locked rule); travel length + weights stay as they are
   (MD dimensions sheet / weighbridge tickets) and conflicts are only reported.
 """
-import json, re, sys, openpyxl, html
+import json, re, sys, os, openpyxl, html
 
-XLSX = "/Users/piyushdiwte/Downloads/WL RV WEBSITE STOCK VAN LISTING TEMPATE (1).xlsx"
+# Pass the current workbook with ANA_XLSX=... (24 Sep 2026 sheet has no "(1)" in the name).
+XLSX = os.environ.get("ANA_XLSX", "/Users/piyushdiwte/Downloads/WL RV WEBSITE STOCK VAN LISTING TEMPATE (1).xlsx")
 SECT = ["Construction", "Chassis & Suspension", "Electrical", "Plumbing", "Appliances", "Optional upgrades fitted"]
 FACT_RE = r'^(RRP|Drive away|Location|Stock no|Layout code|Layout|Length|Travel|Sleeps|Tare|ATM|Ball|Payload|Axle|Condition|CHASSIS)'
 STATE = {'NSW': 'New South Wales', 'QLD': 'Queensland', 'VIC': 'Victoria', 'WA': 'Western Australia', 'PERTH': 'Western Australia', 'BRENDALE': 'Queensland'}
@@ -20,13 +21,32 @@ FIX = [
     (r'(\d+L) – (\d+L)', r'\1 to \2'), (r'(\d+kg) – (\d+(?:\.\d+)?kg)', r'\1 to \2'), (r'(\d+L)-(\d+L)', r'\1 to \2'), (r' – ', ', '), (r'–', ','), (r'—', ','),
     (r' -(\d)', r', \1'), (r'\s*,\s*,', ','), (r'Cold tap', 'cold tap'), (r'\bby pass\b', 'bypass'),
     (r'(\d)"', r'\1″'), (r'\s+$', ''), (r'^\s+', ''), (r'\bvan\b', 'van'),
+    # 24 Sep 2026 sheet typos
+    (r'\bBreaks\b', 'Brakes'), (r'\bruisemaster', 'Cruisemaster'), (r'Crusimaster', 'Cruisemaster'), (r'redution', 'reduction'),
+    (r'^(\d{3,4}) inverter', r'\1W inverter'), (r'^3\.5 [Ff]ront [Ll]oad(er)?', '3.5kg front loader'), (r'‐', '-'),
+    (r'\bBy Pass\b', 'Bypass'), (r'\bby [Pp]ass\b', 'bypass'), (r'Molded', 'Moulded'), (r'\bD0-?45\b', 'DO45'), (r'\bsirocco\b', 'Sirocco'),
+    (r'(\d)v\b', r'\1V'), (r'(\d)kw\b', r'\1kW'), (r'(\d)w\b', r'\1W'), (r'/ ', '/'), (r' - ', ', '),
 ]
+CAPS_WORDS = {'sirocco': 'Sirocco', 'dexter': 'Dexter', 'bbq': 'BBQ', 'cs': 'CS', '12v': '12V', 'x': 'x'}
+CAPS_FIX = {'Soft drawers': 'Soft close drawers', '4 x Sirocco': '4 x Sirocco fans'}
+
+def uncaps(s):
+    """Ana types some lines in ALL CAPS: turn them into sentence case, keeping brand words."""
+    letters = re.sub(r'[^A-Za-z]', '', s)
+    words = re.findall(r'[A-Za-z]{2,}', s)
+    up = [w for w in words if w.isupper()]
+    if not words or len(up) < max(1, len(words) - 1) or not any(len(w) >= 4 for w in up): return s
+    out = []
+    for i, w in enumerate(s.split(' ')):
+        lw = w.lower(); out.append(CAPS_WORDS.get(lw, lw.capitalize() if i == 0 else lw))
+    s = ' '.join(out)
+    return CAPS_FIX.get(s, s)
 
 def tidy(s):
     s = html.unescape(str(s))
     for a, b in FIX:
         s = re.sub(a, b, s)
-    return s
+    return uncaps(s)
 
 def parse_sheets():
     wb = openpyxl.load_workbook(XLSX, data_only=True)
@@ -200,7 +220,7 @@ def main(write=False):
                 if key in f and num(f[key]) and abs(num(f[key]) - (v.get(fld) or 0)) > 0.5:
                     diffs.append(f"{fld} {v.get(fld)} -> {int(num(f[key]))} (Ana)"); v[fld] = int(num(f[key]))
             if f.get('Layout code'):
-                code = f['Layout code'].replace('_', '-').strip()
+                code = f['Layout code'].replace('_', '-').replace('‐', '-').replace('–', '-').strip(' ()')
                 if code.upper() != v['code'].upper():
                     diffs.append(f"code {v['code']} -> {code} (Ana)"); v['code'] = code
             if f.get('Stock no') and f['Stock no'] != ch: diffs.append(f"FLAG Ana stock-no cell says {f['Stock no']} (sheet is {ch}) - typo in sheet")

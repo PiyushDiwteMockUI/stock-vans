@@ -2350,5 +2350,53 @@
   "name": "stockpg-vans-WL1296-19_sm.jpg",
   "type": "image/jpeg",
   "path": "/stock/assets/vans/WL1296/19_sm.jpg"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L.png",
+  "name": "stockpg-layouts-1906Q-M-L.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_sm.png",
+  "name": "stockpg-layouts-1906Q-M-L_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_sm.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_tag.png",
+  "name": "stockpg-layouts-1906Q-M-L_tag.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_tag.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_tag_sm.png",
+  "name": "stockpg-layouts-1906Q-M-L_tag_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_tag_sm.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_tilt.png",
+  "name": "stockpg-layouts-1906Q-M-L_tilt.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_tilt.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_tilt_sm.png",
+  "name": "stockpg-layouts-1906Q-M-L_tilt_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_tilt_sm.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_top.png",
+  "name": "stockpg-layouts-1906Q-M-L_top.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_top.png"
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/1906Q-M-L_top_sm.png",
+  "name": "stockpg-layouts-1906Q-M-L_top_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/1906Q-M-L_top_sm.png"
  }
 ]
