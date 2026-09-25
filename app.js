@@ -59,6 +59,19 @@ const SLIDERS = {
   len:   { lo: 'minLen', hi: 'maxLen', min: LEN_MIN, max: LEN_MAX, step: 1, title: 'Length', fmt: null, field: 'lenIn', icon: 'M2.5 7.5h15v5h-15v-5z M6 7.5v2.2 M9 7.5v3 M12 7.5v2.2 M15 7.5v3' }
 };
 
+/* Widen every slider to the stock data so no van is ever hidden by the default filters
+   (WL1228's 117 kg ball weight fell under the old 150 kg floor, 25 Sep 2026). */
+(function () {
+  for (const key in SLIDERS) {
+    const c = SLIDERS[key];
+    const vals = VANS.map(v => key === 'price' ? v.priceN : v[c.field]).filter(x => x != null && !isNaN(x));
+    if (!vals.length) continue;
+    c.min = Math.min(c.min, Math.floor(Math.min.apply(null, vals) / c.step) * c.step);
+    c.max = Math.max(c.max, Math.ceil(Math.max.apply(null, vals) / c.step) * c.step);
+  }
+})();
+function sliderDefaults() { const o = {}; for (const k in SLIDERS) { o[SLIDERS[k].lo] = SLIDERS[k].min; o[SLIDERS[k].hi] = SLIDERS[k].max; } return o; }
+
 const SAN = { ADD_ATTR: ['role', 'aria-checked', 'aria-label', 'aria-live', 'target'] };
 function put(el, markup) { el.innerHTML = DOMPurify.sanitize(markup, SAN); }
 
@@ -70,7 +83,7 @@ const SV = {
   set(k, v) { this.s[k] = v; this.render(); },
   toggleIn(k, val) { const a = this.s[k]; this.s[k] = a.includes(val) ? a.filter(x => x !== val) : a.concat([val]); this.render(); },
   clearAll() { Object.assign(this.s, { models: [], layouts: [], states: [], axles: [], status: 'all', minPrice: PRICE_MIN, maxPrice: PRICE_MAX,
-    minLen: LEN_MIN, maxLen: LEN_MAX, minTare: 2300, maxTare: 3700, minAtm: 2950, maxAtm: 4500, minBall: 150, maxBall: 450, minSleeps: 2, maxSleeps: 6 }); this.render(); },
+    minLen: LEN_MIN, maxLen: LEN_MAX, minTare: 2300, maxTare: 3700, minAtm: 2950, maxAtm: 4500, minBall: 150, maxBall: 450, minSleeps: 2, maxSleeps: 6 }, sliderDefaults()); this.render(); },
 
   matches(v, skip) {
     const s = this.s;
@@ -512,6 +525,7 @@ const SV = {
     }
   }
 };
+Object.assign(SV.s, sliderDefaults());
 SV.boot();
 
 /* value band: soft auto slideshow on phones, pauses on touch and off-screen */
