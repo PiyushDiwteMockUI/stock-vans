@@ -86,6 +86,13 @@ fbq('track','PageView');
   .hero.hero--top .hero-btn { flex: none; width: auto; min-width: 0; min-height: 48px; padding: 0 4px; font-size: 12.5px; white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) { .hero.hero--top .hero-btn { transition: none; } }
+/* Value band: all four tiles on one row at every desktop width (25 Sep 2026). Labels stay on one line and scale with the page column
+   (18px at 1920, about 17px at 1440, 15px at 1024); phones keep the swipe slideshow from site.css. */
+@media (min-width:901px) {
+  .valband { flex-wrap: nowrap; gap: 24px; }
+  .valband > div { flex: 0 1 auto; min-width: 0; }
+  .valband .av { font-size: min(18px, calc(var(--col) * .016)) !important; white-space: nowrap; }
+}
 </style>
 </head>
 <body>
