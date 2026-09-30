@@ -799,7 +799,7 @@ const DATA = {
    "layout": "Couples",
    "state": "New South Wales",
    "used": false,
-   "price": 144990,
+   "price": 144889,
    "images": [
     "/stock/assets/vans/WL1180/01.jpg",
     "/stock/assets/vans/WL1180/02.jpg",
@@ -829,7 +829,7 @@ const DATA = {
    "sleeps": 2,
    "axle": "Tandem axle",
    "floorplan": "/stock/assets/layouts/2100Q-M-XLE.png",
-   "was": 156656,
+   "was": 154889,
    "floorplans": [
     "/stock/assets/layouts/2100Q-M-XLE_tilt.png",
     "/stock/assets/layouts/2100Q-M-XLE_top.png",
@@ -1737,7 +1737,7 @@ const DATA = {
    "sleeps": 2,
    "axle": "Single axle",
    "floorplan": "/stock/assets/layouts/1709Q-R-L.png",
-   "was": null,
+   "was": 153400,
    "floorplans": [
     "/stock/assets/layouts/1709Q-R-L_tilt.png",
     "/stock/assets/layouts/1709Q-R-L_top.png",
