@@ -2374,7 +2374,7 @@ const DATA = {
    "layout": "Family",
    "state": "New South Wales",
    "used": false,
-   "price": 156990,
+   "price": 167060,
    "images": [
     "/stock/assets/vans/WL1296/02.jpg",
     "/stock/assets/vans/WL1296/01.jpg",
@@ -2403,7 +2403,6 @@ const DATA = {
    "sleeps": 5,
    "axle": "Tandem axle",
    "floorplan": null,
-   "was": 167060,
    "travel": 8.2,
    "spec_override": [
     [
