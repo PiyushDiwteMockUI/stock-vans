@@ -43,6 +43,9 @@ def tiltname(v):
     tilts=[p for p in (v.get('floorplans') or []) if p.endswith('_tilt.png')]
     if not tilts: return None, None
     code=tilts[0].split('/')[-1].replace('_tilt.png','')
+    if f"stockmail-tilt-{code}.png" not in URLS:
+        print(f"note: no email tilt image on WP for {v['chassis']} ({code}), the floorplan row is left out for that van")
+        return None, None
     return f"stockmail-tilt-{code}.png", code
 
 def spec(v):
@@ -51,7 +54,12 @@ def spec(v):
     return f(v.get('sleeps')), f(v.get('tare'),' kg'), f(v.get('atm'),' kg'), f(v.get('travel'),' m')
 
 def vanpage(v):
-    return f"https://wonderlandrv.com.au/stock/vans/{v['chassis'].lower()}.html"
+    return f"https://wonderlandrv.com.au/stock/{v['chassis'].lower()}/"
+
+# ---- every van needs its three email images on WP (build_email_assets.py + upload) ----
+missing=[v['chassis'] for v in vans if any(f"stockmail-{v['chassis']}-{k}" not in URLS for k in ('fade.gif','name.png','thumb.png'))]
+if missing:
+    raise SystemExit('Email images missing on WordPress for: '+', '.join(missing)+'. Run tools/build_email_assets.py, upload the gif/lockup/thumb to WP media, add their URLs to email-prod/wp-urls.json, then rerun.')
 
 # ---- build one van's email body from the template ----
 def build(v):
@@ -82,7 +90,8 @@ def build(v):
         h=h.replace('https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2006Q-R-SC_tilt.png', W(tilt_file))
         h=h.replace('alt="2006Q-R-SC floorplan, 3D view"', f'alt="{tilt_code} floorplan, 3D view"')
     else:
-        h=re.sub(r'<tr><td align="center" style="padding:20px 40px 0"><img src="https://piyushdiwtemockui\.github\.io/stock-vans/assets/layouts/2006Q-R-SC_tilt\.png"[^>]*></td></tr>\s*','',h)
+        h=re.sub(r'<tr><td align="center"[^>]*><img src="https://piyushdiwtemockui\.github\.io/stock-vans/assets/layouts/2006Q-R-SC_tilt\.png"[^>]*></td></tr>\s*','',h)
+        assert '2006Q-R-SC_tilt.png' not in h, 'template floorplan row not removed for '+ch
     # price cluster
     if v.get('price'):
         h=h.replace('>$172,999<', f'>{money(v["price"])}<')
@@ -118,7 +127,7 @@ def build(v):
     for old,new in swaps.items():
         h=h.replace(STAGING+old, W(new))
     # view-more link -> staging stock page
-    h=h.replace('<a href="#"><img src="'+W("stockmail-btn-viewmore.png"), '<a href="https://wonderlandrv.com.au/stock-vans/"><img src="'+W("stockmail-btn-viewmore.png"))
+    h=h.replace('<a href="#"><img src="'+W("stockmail-btn-viewmore.png"), '<a href="https://wonderlandrv.com.au/stock/"><img src="'+W("stockmail-btn-viewmore.png"))
     # body only (between <body> and </body>)
     m=re.search(r'<body[^>]*>(.*)</body>', h, re.S)
     return m.group(1)
@@ -131,9 +140,10 @@ for v in vans:
     blocks.append(f"%IF in_string('Van: {v['chassis']}', $AD_SOURCE)%\n{body}\n%/IF%")
 
 # generic fallback (Not sure yet / General enquiry): strip van-specific parts from a body
-g=bodies['WL1223']
+FB=vans[0]
+g=bodies[FB['chassis']]
 g=re.sub(r'<img[^>]*-fade\.gif[^>]*>\s*','',g,count=1)                             # gif inside intro run
-g=g.replace('We&rsquo;re glad to know you&rsquo;re interested in the <strong>'+ [v for v in vans if v['chassis']=='WL1223'][0]['name'].replace("'","&rsquo;") +'</strong>. This van is currently located at <strong>Aussie Escape Caravans</strong>, our Queensland dealer.',
+g=g.replace('We&rsquo;re glad to know you&rsquo;re interested in the <strong>'+ H.escape(FB['name']) +'</strong>. This van is currently located '+dealer(FB)[0]+'.',
             'We&rsquo;re glad to know you&rsquo;re interested in our stock vans.')
 g=g.replace('One of our team members will be in touch soon to talk you through it and answer any questions.',
             'One of our team members will be in touch soon to talk you through what&rsquo;s available and answer any questions.')
@@ -155,7 +165,7 @@ full=('<!DOCTYPE html>\n<html lang="en-AU">\n<head><meta charset="utf-8"><meta n
 open('email-prod/ac-message.html','w').write(full)
 print("message size:", len(full)//1024, "KB;", len(blocks), "van blocks")
 # sanity
-assert full.count('%/IF%')==30 and full.count("%IF in_string('Van:")==30
+assert full.count('%/IF%')==len(vans)+2 and full.count("%IF in_string('Van:")==len(vans)+2, 'block count mismatch'
 leftover=re.findall(r'piyushdiwtemockui\.github\.io/stock-vans/(?!vans/|$)[^"\s]*', full)
 from collections import Counter
 print("staging refs left (should be van pages + index only):", Counter(x.split('/')[1].split('.')[0] if '/' in x else x for x in leftover).most_common(5))

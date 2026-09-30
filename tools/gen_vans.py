@@ -290,6 +290,7 @@ def van_page(v):
       </div>
       <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61399586708">Call now</a>
       </div>
+      <p style="margin:8px 0 12px;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
       <div class="vpb-ctas">
         <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire now</a>
         <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
@@ -304,6 +305,7 @@ def van_page(v):
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
         <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
         {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
+        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
       </div>
       <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
         <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
