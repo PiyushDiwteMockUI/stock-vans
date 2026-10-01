@@ -25,6 +25,7 @@ def req(method, path, body=None):
         method=method, headers={'Authorization':AUTH,'User-Agent':UA,'Content-Type':'application/json','Accept':'application/json'})
     with urllib.request.urlopen(r, timeout=120) as resp: return json.load(resp)
 def build(slug): return open(os.path.join(ROOT,'wp-pages',slug+'.html')).read()
+META=json.load(open(os.path.join(ROOT,'wp-pages','meta.json'))) if os.path.exists(os.path.join(ROOT,'wp-pages','meta.json')) else {}
 def drift():
     bk=os.path.join(ROOT,'..','live-backup-'+datetime.date.today().isoformat()); os.makedirs(bk,exist_ok=True)
     for slug,pid in IDS.items():
@@ -37,11 +38,14 @@ def drift():
     print('live backup:',os.path.abspath(bk))
 def push(slugs):
     for slug in slugs:
-        pid=IDS[slug]; html=build(slug)
-        try: req('POST',f'wp/v2/pages/{pid}',{'content':html})
+        pid=IDS[slug]; html=build(slug); m=META.get(slug,{})
+        body={'content':html}
+        if m.get('title'): body['title']=m['title']
+        if m.get('excerpt'): body['excerpt']=m['excerpt']
+        try: req('POST',f'wp/v2/pages/{pid}',body)
         except urllib.error.HTTPError as e: print(slug,'FAILED',e.code,e.read()[:200]); continue
-        b=req('GET',f'wp/v2/pages/{pid}?context=edit&_fields=content,status,template')
-        print(slug,pid,'stored==build:',b['content']['raw'].strip()==html.strip(),b['status'],b['template'])
+        b=req('GET',f'wp/v2/pages/{pid}?context=edit&_fields=content,status,template,title,excerpt')
+        print(slug,pid,'stored==build:',b['content']['raw'].strip()==html.strip(),b['status'],b['template'],'| title:',b['title']['raw'][:50],'| excerpt set:',bool(b['excerpt']['raw']))
 def takedown(slugs):
     ex=req('GET','redirection/v1/redirect?per_page=200&filterBy%5Burl%5D=stock')['items']
     for slug in slugs:

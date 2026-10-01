@@ -85,9 +85,29 @@ f=f'{ROOT}/index.html'
 h=open(f).read(); h=map_paths(h); h=inline_assets(h,'.'); h=page_links(h); h=nav_fix(h,'index')
 pages['stock-vans-index']={'title':'Caravans In Stock | Wonderland RV', 'content': body_and_head(h), 'slug':'stock-vans'}
 
+# SEO (1 Oct 2026): Rank Math appends " | Wonderland RV" itself, so WP titles carry no suffix; and an excerpt per page
+# becomes the meta description (without one Rank Math auto-writes it from the inline CSS).
+_src=open('data.js').read(); _i=_src.find('{'); _d=0
+for _k in range(_i,len(_src)):
+    if _src[_k]=='{': _d+=1
+    elif _src[_k]=='}':
+        _d-=1
+        if _d==0: break
+_vans={v['chassis'].lower(): v for v in json.loads(_src[_i:_k+1])['vans']}
+_dealer={'New South Wales':'Off Grid Outfitters, NSW','Queensland':'Aussie Escape Caravans, QLD','Victoria':'Outbound RVs, VIC','Western Australia':'WA'}
+def _excerpt(name):
+    v=_vans.get(name)
+    if v:
+        used='Pre-loved' if v.get('used') else 'New'
+        return (f"{v['year']} Wonderland RV {v['name']}, stock {v['chassis']}, ${int(v['price']):,} drive away, {v['state']}. "
+                f"{used} {v['length']} {v['layout'].lower()} off-road caravan, tare {int(v['tare']):,} kg, ATM {int(v['atm']):,} kg, sleeps {v['sleeps']}. Ready for handover now.")
+    if name=='stock-vans-index': return "Wonderland RV caravans in stock and ready for handover now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and specs, in Victoria, New South Wales, Queensland and Western Australia."
+    if name=='stock-hub': return "Browse every Wonderland RV stock caravan page: ready-now Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos, floorplans and full specs."
+    return ''
 for k,v in pages.items():
+    v['title']=re.sub(r'\s*\|\s*Wonderland RV\s*$','',v['title']); v['excerpt']=_excerpt(k)
     open(f'{OUT}/{k}.html','w').write(v['content'])
-json.dump({k:{'title':v['title'],'slug':v['slug'],'len':len(v['content'])} for k,v in pages.items()}, open(f'{OUT}/meta.json','w'), indent=1)
+json.dump({k:{'title':v['title'],'slug':v['slug'],'excerpt':v['excerpt'],'len':len(v['content'])} for k,v in pages.items()}, open(f'{OUT}/meta.json','w'), indent=1)
 print("pages built:", len(pages))
 # residue check
 bad=0
