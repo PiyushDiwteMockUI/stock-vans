@@ -41,7 +41,7 @@ def fix_div_balance(s):
 # external CDN images re-hosted to WP (10 Sep 2026) — deterministic names from ext-manifest
 import os as _os
 _extman=json.load(open(_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),'..','email-prod','ext-manifest.json')))
-EXT_MAP={m['url']: 'https://wonderlandrv.com.au/wp-content/uploads/2026/09/'+m['name'] for m in _extman}
+EXT_MAP={m['url']: (m.get('wp') or 'https://wonderlandrv.com.au/wp-content/uploads/2026/09/'+m['name']) for m in _extman}
 EXT_KEYS=sorted(EXT_MAP, key=len, reverse=True)
 
 rename_pairs=[(re.sub(r'-(rotated|scaled)(\.[a-z]+)$', r'\2', n), n) for n in RENAMED]

@@ -37,7 +37,7 @@
  "wl1184": {
   "title": "Hornet 2304 Quad Bunk East-West WL1184 | Wonderland RV",
   "slug": "wl1184",
-  "len": 188383
+  "len": 189490
  },
  "wl1222": {
   "title": "XTR 1906 East-West Triple Bunk Family WL1222 | Wonderland RV",
@@ -52,7 +52,7 @@
  "wl1227": {
   "title": "Hornet 21'07&quot; Quad Bunk Delete WL1227 | Wonderland RV",
   "slug": "wl1227",
-  "len": 186048
+  "len": 187155
  },
  "wl1228": {
   "title": "Amaroo 1906 Aluminium Frame WL1228 | Wonderland RV",
@@ -89,10 +89,20 @@
   "slug": "wl1267",
   "len": 193887
  },
+ "wl1287": {
+  "title": "Amaroo 21ft Double Rear Bunk Family WL1287 | Wonderland RV",
+  "slug": "wl1287",
+  "len": 198436
+ },
  "wl1296": {
   "title": "Amaroo 1907 Triple Bunk Family WL1296 | Wonderland RV",
   "slug": "wl1296",
   "len": 181519
+ },
+ "wl1315": {
+  "title": "Hornet 1806 Rear Entry Door Couples WL1315 | Wonderland RV",
+  "slug": "wl1315",
+  "len": 195447
  },
  "wl901": {
   "title": "XTR 2100 Twin Bunk Family WL901 | Wonderland RV",
@@ -102,11 +112,11 @@
  "stock-hub": {
   "title": "Stock van pages | Wonderland RV",
   "slug": "stock",
-  "len": 154388
+  "len": 159795
  },
  "stock-vans-index": {
   "title": "Caravans In Stock | Wonderland RV",
   "slug": "stock-vans",
-  "len": 379364
+  "len": 398301
  }
 }

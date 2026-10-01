@@ -8,7 +8,7 @@ HOST='https://wonderlandrv.com.au'
 
 manifest=json.load(open('email-prod/page-upload-manifest.json'))
 # path (/stock/...) -> wp url
-urlmap={m['path']: WPU+m['name'] for m in manifest if m['name']!='stockpg-vans-'}
+urlmap={m['path']: (m.get('wp') or WPU+m['name']) for m in manifest if m['name']!='stockpg-vans-'}
 # longest first for safe replacement
 keys=sorted(urlmap, key=len, reverse=True)
 

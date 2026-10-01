@@ -2478,6 +2478,322 @@ const DATA = {
     ]
    ],
    "spec_source": "ana"
+  },
+  {
+   "chassis": "WL1315",
+   "model": "Hornet",
+   "code": "1806Q-R-L",
+   "name": "Hornet 1806 Rear Entry Door Couples",
+   "year": "2026",
+   "length": "18'06\"",
+   "layout": "Couples",
+   "state": "Victoria",
+   "used": false,
+   "price": 187999,
+   "images": [
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/a4dfmue0tvqyh8u2b3putgxhe.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/eg3kpluy5gwf6a0qokcjuevki.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6p3jap1pg70stjhug6p658d8j.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6wokfe764fxacfvfaqv1eugen.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ct1z7dp5kadkgw0q5grgk43xw.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4zg32jh7bb1xcqqf6wdbkzu81.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/86jioxamlhodl6lfj0mtue5vv.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/abo4xo6y5ugs5v3j6vbr8x7cy.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7fy9adxku6m00ntv1j0bgfmtu.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4fa8qywjpti8qryv5a0qb4ztx.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/bv3o937g5apmv3kkavkfva0qh.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/b5wk1f0ndle14f5o331n0quhm.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/eulqkfxo608ef08twbgn3mgf3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/dqhezu6077bdukjn3am7nu67u.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/2g9ejv67akdbno09e59u9tfie.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/dywoee6fu4kogwpaqz5jmdugm.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/en0attbas1eyfx12xuvttajmk.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/9o9iqbudlvnr6llzdy0o98tm7.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/2hq4rpxhe6v4qnqhhzkz6dia5.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ca4xnohjfujtftjyuuqndcxpi.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
+   ],
+   "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-hornet-1806-rear-entry-door/OAG-AD-26316896/",
+   "tare": 2827,
+   "atm": 3500,
+   "ball": 177,
+   "sleeps": 2,
+   "axle": "Tandem axle",
+   "floorplan": "assets/layouts/1806Q-R-L.png",
+   "was": null,
+   "floorplans": [
+    "assets/layouts/1806Q-R-L_tilt.png",
+    "assets/layouts/1806Q-R-L_top.png",
+    "assets/layouts/1806Q-R-L_tag.png"
+   ],
+   "travel": 8.2,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Aluminium Henrob riveted 25mm C-section frame",
+      "One piece 35mm sandwich panel composite roof that wraps around the front and back, no joins",
+      "XPS insulation",
+      "Honeycomb floor, lightweight, waterproof and one piece, no joins",
+      "DiBond marine grade aluminium composite cladding with 850mm protection plate",
+      "Aussie Traveller black 1750 x 622 entry door with security screen and triple locking mechanism",
+      "Large double glazed windows with dark tint, non-concertina fly screens and block-out blinds",
+      "Fully lined gal sheet tunnel boot with high access doors",
+      "CNC lightweight ply furniture, precision cut with no gaps",
+      "Lightweight European plywood laminate benchtops and doors"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "Heavy duty off-road chassis, Australian made RHS steel",
+      "6″ x 2100mm A-frame and double 4+4″ chassis",
+      "4.5T Cruisemaster XT airbag suspension with BCS",
+      "Disc brakes",
+      "Method 305 17″ wheels with 265/75R16 Yokohama tyres",
+      "Cruisemaster DO35 hitch",
+      "Chassis finish: MP Toughcoat",
+      "4-arm bumper bar with aluminium jerry can holder",
+      "Large toolbox with visor, large dual slides and 12V Anderson plug",
+      "Caravan jack and brace",
+      "AL-KO 8″ wide large clamp",
+      "Drop down corner stabilisers",
+      "Double aluminium step",
+      "Rear recovery points and skid plates"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Victron behind-fridge electrical system on Arizon board",
+      "600Ah lithium battery",
+      "1360W solar including rear solar wing",
+      "3000VA inverter charger",
+      "120W USB",
+      "1 x grey Anderson plug and 1 x portable solar input",
+      "CS pressure, 12V powered dust reduction",
+      "Fusion premium entertainment pack with indoor and outdoor speakers",
+      "Starlink provision",
+      "Multiple USB and USB-C outlets, TV points with 1 external and 1 internal TV bracket",
+      "6 external lights: 17″ light bar front and rear, 3 x insect repellent two-stage LED lights doorside including over the BBQ, 1 roadside",
+      "LED 3″ downlights and reading lights, LED taillights",
+      "12 pin tow plug",
+      "Breakaway, smoke detector, LPG detector, fire blanket and fire extinguisher"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "Autoterm 10kW hot water and heating",
+      "Roto moulded poly water tanks with brass fittings",
+      "2 x 100L fresh water tanks",
+      "1 x 70L isolated dedicated drinking water tank",
+      "1 x 100L grey water tank",
+      "Gal sheet water tank and plumbing protection",
+      "External hot and cold shower",
+      "2 x gas bayonets and 2 x gas bottles",
+      "1 x cold tap on A-frame",
+      "Quick fill and mains connection plus 1 separate filler and cap",
+      "3 way tall gooseneck kitchen tap with filter, gunmetal grey",
+      "One piece fibreglass shower"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet 3kW air conditioner",
+      "216L Dometic compressor fridge",
+      "Camec 3 in 1 multicooker",
+      "Portable induction cooktop",
+      "Swift recessed rangehood",
+      "3kg wall mounted washing machine",
+      "Looseal toilet",
+      "24″ Smart TV",
+      "Reverse camera and car monitor",
+      "Sirocco fans",
+      "Dometic electric awning",
+      "External pantry with light, GPO and USB",
+      "External entertainment points and speakers",
+      "Queen 6'3″ pillowtop mattress with bedhead and magazine pockets",
+      "Full height pantry with soft close drawers and large metal sided pot drawer",
+      "Firm back lounge seating with support and footrest, telescopic table leg",
+      "LED hatches with fans in bathroom, large roof hatches, roller blind on entry door"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "4.5T Cruisemaster XT airbag suspension with BCS",
+      "Disc brakes",
+      "Victron 600Ah lithium, 1360W solar with rear solar wing, 3000VA inverter charger",
+      "Autoterm 10kW hot water and heating",
+      "70L dedicated drinking water tank",
+      "Dometic electric awning",
+      "MP Toughcoat chassis finish"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
+  },
+  {
+   "chassis": "WL1287",
+   "model": "Amaroo",
+   "code": "2200Q3-F2",
+   "name": "Amaroo 21ft Double Rear Bunk Family",
+   "year": "2026",
+   "length": "21'00\"",
+   "layout": "Family",
+   "state": "Victoria",
+   "used": false,
+   "price": 164999,
+   "images": [
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/8vkm51mqijvnsed1r5p29531s.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/aorkmke6x18mqz34kdh3a6wsw.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4xms59g8edbhgankvcol8khpk.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/aagibj5dsh7setyzk625bcsyv.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/853gvdov374q5o1l9m0pphr14.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/21ftsr2o3v6cl685o802pxsb8.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/d7u70g7uf1fgna05majeq7awo.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/amilebr8w1ntk7m2us4wqb3al.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/b5qw53mijl961p3dedeolunj3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1g2t9ccmqqbt74agahuahjiop.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/34rbf95slhvhrx1y5fuop5h3d.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/a7ke0mivvku0pex35tc4fxq5l.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3dwpd20miu64bv5v8wx4s00fe.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/c0yqhgsiollnvgwlhwhsvukp3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/5zscoy744aaw2n62d0fynf3sw.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/31vc85xkzfloh3wwonehoa56d.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7prr7f4xwj8zdurxz7ge5biu1.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/5t6ch1o3zxqhot90jl18gyb9f.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/8mxoa8ly76pao1wtp3gwppoc4.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/8pam0xc78s95qh68h4l97yy4p.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/21y34ttvjnsqg7fk8mfc8n6f6.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/bvxc6v9fzkn6325ixe8x5r3ot.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1fyxwi9scrshr1yllc4tflpbg.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/bqoq3sy1ic8ed3y1y33blspbv.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4ngt7i7t74bkluzf83c750zut.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4xelk3ja381azoa2gxdabsf47.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7rfqr3nus0z7weqwfp408qnnv.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/psrrhu0qraatww7hk4uo6u5i.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7qynvv4ii4t56tr4xl2x5mncz.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/cxcmu8ol5e8u26o3yi0imttnz.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4ahessoik88ujflhezkkxikc2.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/c9wp7txnqd7fry4gaiskuotjs.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
+   ],
+   "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-amaroo-2-rear-bunk-layout/OAG-AD-26348565/",
+   "tare": 2874,
+   "atm": 3500,
+   "ball": 180,
+   "sleeps": 4,
+   "axle": "Tandem axle",
+   "floorplan": null,
+   "was": null,
+   "travel": 8.8,
+   "spec_override": [
+    [
+     "Construction",
+     [
+      "Aluminium Henrob riveted 25mm C-section frame",
+      "One piece 35mm sandwich panel composite roof that wraps around the front and back, no joins",
+      "XPS insulation",
+      "Honeycomb floor, lightweight, waterproof and one piece",
+      "DiBond marine grade composite panel with 850mm protection plate",
+      "Aussie Traveller black 1750 x 622 entry door with security screen and triple locking mechanism",
+      "Large double glazed windows with dark tint, non-concertina fly screens and block-out blinds",
+      "High access tunnel boot doors",
+      "CNC lightweight ply furniture, precision cut with no gaps",
+      "Lightweight European plywood laminate benchtops and doors, warm walnut doors with marble benchtop"
+     ]
+    ],
+    [
+     "Chassis & Suspension",
+     [
+      "Heavy duty off-road chassis, Australian made RHS steel, lightweight design engineered in Australia",
+      "6″ x 1950mm A-frame, 4″ chassis and 4″ riser",
+      "Cruisemaster 4.5T XT L3 manual airbag suspension",
+      "12″ drum brakes",
+      "Cruisemaster DO35 hitch",
+      "16″ 6x139 ET0 wheels with 265/75R16 MPC all terrain tyres",
+      "Large toolbox with dual slides and 12V Anderson plug",
+      "2 x jerry can holders",
+      "4-arm bumper bar with taillights",
+      "Double aluminium step"
+     ]
+    ],
+    [
+     "Electrical",
+     [
+      "Behind-fridge electrical system with Redarc Alpha 50 battery management",
+      "2600W full van inverter",
+      "1000W solar",
+      "600Ah battery",
+      "120W USB",
+      "1 x grey Anderson plug and 1 x portable solar input",
+      "Fusion entertainment unit and speakers",
+      "TV antenna, multiple USB and USB-C outlets, TV points with 1 external and 1 internal TV bracket",
+      "External lights: 17″ light bar front and rear, 3 x insect repellent two-stage LED lights doorside including BBQ, 1 roadside, LED taillights",
+      "Internal lighting: 3″ LED downlights, reading lights at beds and lounge",
+      "12 pin tow plug",
+      "Breakaway, smoke detector, LPG detector, fire blanket and fire extinguisher"
+     ]
+    ],
+    [
+     "Plumbing",
+     [
+      "Roto moulded poly water tanks with brass fittings",
+      "2 x 100L fresh water tanks",
+      "1 x 100L grey water tank with bypass",
+      "Gal sheet water tank and plumbing protection",
+      "External hot and cold shower",
+      "1 x gas bayonet and 2 x 4kg gas bottles",
+      "1 x cold tap on A-frame",
+      "Quick fill and mains connection plus 1 separate filler and cap",
+      "3 way tall gooseneck kitchen tap with filter",
+      "One piece fibreglass shower",
+      "Instant hot water"
+     ]
+    ],
+    [
+     "Appliances",
+     [
+      "Dometic FreshJet 3kW air conditioner",
+      "216L Dometic compressor fridge",
+      "Multi-function cooker",
+      "Portable induction cooktop",
+      "Recessed rangehood",
+      "3.5kg externally accessible washing machine with laundry chute and vent line",
+      "Thetford ceramic bowl cassette toilet",
+      "24″ Smart TV",
+      "Reverse camera and car windscreen monitor",
+      "4 x Sirocco fans",
+      "Dometic grey awning with black arms and awning support",
+      "External pantry with light, GPO and USB",
+      "External entertainment points and speakers",
+      "Queen 6'8″ pillowtop mattress with bedhead and magazine pockets",
+      "2 x 2m x 80cm bunks, 120kg loading, upholstered bed heads, reading lights and USB, built-in ladder with grab handle, sliding door into bunks",
+      "Kids study and desk area",
+      "Centre ensuite with mirrored shower door",
+      "Straight lounge, firm back seating with support and footrest, telescopic table leg",
+      "Full height pantry with soft close drawers and large metal sided pot drawer",
+      "LED hatches with fans in bathroom, large roof hatches, roller blind on entry door"
+     ]
+    ],
+    [
+     "Optional upgrades fitted",
+     [
+      "Cruisemaster 4.5T XT L3 manual airbag suspension",
+      "Lightweight chassis, designed and engineered in Australia",
+      "Behind-fridge electrical system, Redarc Alpha 50, 2600W inverter, 1000W solar, 600Ah battery, 120W USB",
+      "4 x Sirocco fans",
+      "Mirrored shower door",
+      "Straight lounge",
+      "Sliding doors into bunks and bathroom",
+      "3.5kg externally accessible washing machine with laundry chute and vent line",
+      "Instant hot water",
+      "Soft close drawers"
+     ]
+    ]
+   ],
+   "spec_source": "ana"
   }
  ],
  "modelSpecs": {
