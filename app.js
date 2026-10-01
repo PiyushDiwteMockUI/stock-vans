@@ -437,6 +437,12 @@ const SV = {
   },
 
   boot() {
+    const presetState = (document.getElementById('stock-state') || document.body).dataset.stockState || document.body.dataset.stockState;
+    // URL presets for deep links from range/dealer pages (1 Oct 2026): /stock/?model=Amaroo, /stock/?layout=Family, /stock/?state=Victoria
+    const qp = new URLSearchParams(location.search);
+    const qm = qp.get('model'); if (qm && VANS.some(v => v.model.toLowerCase() === qm.toLowerCase())) this.s.models = [VANS.find(v => v.model.toLowerCase() === qm.toLowerCase()).model];
+    const ql = qp.get('layout'); if (ql && LAYOUTS.some(l => l.toLowerCase() === ql.toLowerCase())) this.s.layouts = [LAYOUTS.find(l => l.toLowerCase() === ql.toLowerCase())];
+    const qs = qp.get('state'); if (qs && VANS.some(v => v.state.toLowerCase() === qs.toLowerCase())) this.s.states = [VANS.find(v => v.state.toLowerCase() === qs.toLowerCase()).state]; if (presetState && VANS.some(v => v.state === presetState)) this.s.states = [presetState];
     document.addEventListener('click', e => {
       const el = e.target.closest('[data-act]');
       if (el) this.act(el);

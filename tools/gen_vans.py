@@ -264,7 +264,18 @@ def van_page(v):
           <div style="margin-top:8px;font:400 12.5px/1 'Gordita',sans-serif;color:var(--body)">{x['state']}</div>
         </div></a>''' for x in similar)
     enq = f"../?van={v['chassis']}#enquire"
-    return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + headerV + f'''
+    # Product schema (1 Oct 2026): price + availability for Google rich results. Placed in <body> because the WP build only carries
+    # non-ld scripts from <head>. Rank Math emits Organization/LocalBusiness only, so there is no clash.
+    schema = json.dumps({"@context": "https://schema.org", "@type": "Product", "name": f"{v['year']} Wonderland RV {name}", "sku": v['chassis'],
+        "mpn": v['code'], "brand": {"@type": "Brand", "name": "Wonderland RV"}, "category": "Off-road caravan",
+        "image": [u if u.startswith('http') else '/stock/' + u for u in v['images'][:5]],
+        "description": f"{v['year']} Wonderland RV {name}, stock {v['chassis']}, {v['length']} {v['layout'].lower()} off-road caravan, tare {int(v['tare']):,} kg, ATM {int(v['atm']):,} kg, sleeps {v['sleeps']}. Located in {v['state']}, ready for handover now.",
+        "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
+        "offers": {"@type": "Offer", "url": f"https://wonderlandrv.com.au/stock/{v['chassis'].lower()}/", "price": int(v['price']), "priceCurrency": "AUD",
+                   "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
+                   "seller": {"@type": "Organization", "name": dealer(v['state'])}}}, ensure_ascii=False)
+    schema_tag = '<script type="application/ld+json">' + schema.replace('</', '<\\/') + '</script>'
+    return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + schema_tag + headerV + f'''
 <div style="padding-top:20px;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
   <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../">Stock vans</a>
   <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="./">Pages</a>

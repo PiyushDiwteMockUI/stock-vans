@@ -51,8 +51,19 @@ def takedown(slugs):
     for slug in slugs:
         pid=IDS[slug]; req('POST',f'wp/v2/pages/{pid}',{'status':'draft'})
         url=f'/stock/{slug}/'; msg='redirect exists'
+        # SEO (1 Oct 2026): send a sold van's URL to the closest live van of the same model (by price) so its ranking is not thrown away;
+        # the sold record must already be in sold.json and removed from data.js before running takedown.
+        target='/stock/'
+        try:
+            import re as _re
+            src=open(os.path.join(ROOT,'data.js')).read(); live=json.loads(_re.search(r'^const DATA = (\{.*?\});\s*\nconst OR_TOKEN', src, _re.S).group(1))['vans']
+            sold=[s for s in json.load(open(os.path.join(ROOT,'sold.json'))) if s['chassis'].lower()==slug]
+            if sold:
+                same=[v for v in live if v['model']==sold[0]['model']]
+                if same: target='/stock/'+min(same,key=lambda v:abs(v['price']-sold[0]['price']))['chassis'].lower()+'/'
+        except Exception as e: print('  target fallback /stock/ (',str(e)[:60],')')
         if not any(x['url']==url for x in ex):
-            req('POST','redirection/v1/redirect',{'url':url,'match_type':'url','action_type':'url','action_code':301,'action_data':{'url':'/stock/'},'group_id':1,'regex':False}); msg='redirect created'
+            req('POST','redirection/v1/redirect',{'url':url,'match_type':'url','action_type':'url','action_code':301,'action_data':{'url':target},'group_id':1,'regex':False}); msg='redirect created -> '+target
         print(slug,pid,req('GET',f'wp/v2/pages/{pid}?context=edit&_fields=status')['status'],msg)
 def clearcache(): print(req('POST','wpe/cache-plugin/v1/clear_all_caches',{}))
 if __name__=='__main__':

@@ -162,6 +162,43 @@ fbq('track','PageView');
   </div>
 </div>
 
+<!--WLABOUT--><section class="stock-about" id="about-stock">
+<style>
+.stock-about{background:#fff;border-top:1px solid var(--line);padding:64px 0 70px}
+.stock-about .sa-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:start}
+.stock-about h2{margin:0 0 18px;font-size:clamp(22px,2vw,30px);letter-spacing:.04em;text-transform:uppercase}
+.stock-about p{margin:0 0 14px;font:400 15px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch}
+.stock-about .sa-states{display:flex;flex-wrap:wrap;gap:10px;margin:6px 0 0}
+.stock-about .sa-states a{display:inline-block;padding:11px 16px;border:1px solid var(--svink);font:500 11.5px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--svink);text-decoration:none;background:#fff}
+.stock-about .sa-states a:hover,.stock-about .sa-states a:focus-visible{background:var(--svink);color:#fff}
+.stock-about h3{margin:0 0 10px;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.stock-about .sa-q{border-top:1px solid var(--line)}
+.stock-about .sa-q:last-child{border-bottom:1px solid var(--line)}
+.stock-about summary{cursor:pointer;list-style:none;padding:15px 28px 15px 0;position:relative;font:500 15px/1.4 'Gordita',sans-serif;color:var(--svink)}
+.stock-about summary::-webkit-details-marker{display:none}
+.stock-about summary::after{content:"+";position:absolute;right:2px;top:12px;font:400 20px/1 'Gordita',sans-serif;color:var(--svorange)}
+.stock-about details[open] summary::after{content:"\2013"}
+.stock-about .sa-q p{padding:0 0 16px;margin:0}
+@media (max-width:900px){.stock-about{padding:48px 0 52px}.stock-about .sa-grid{grid-template-columns:1fr;gap:34px}}
+</style>
+<div class="container">
+<div class="sa-grid">
+<div>
+<h2 class="av">Wonderland RV stock vans</h2>
+<p>Stock vans are Wonderland RV caravans that are built, finished and sitting with a dealer, ready to drive away. Most are brand new 2026 builds with popular upgrades already fitted. A few are pre-loved or demonstrator vans at a lower price.</p>
+<p>Every one is a full off-road, off-grid caravan built in our Campbellfield, Victoria factory, with the same three year warranty and dealer support as a custom build. The difference is the wait: a stock van can be yours in days.</p>
+<p>Prices are drive away. Filter by model, layout, state, axle and budget, or call the dealer closest to you. Each van page has the full as-built specification, photos and the fitted upgrades.</p>
+<h3 class="av" style="margin-top:22px">Browse by state</h3>
+<div class="sa-states"><a href="https://wonderlandrv.com.au/stock/vic/">Victoria</a><a href="https://wonderlandrv.com.au/stock/nsw/">New South Wales</a><a href="https://wonderlandrv.com.au/stock/qld/">Queensland</a><a href="https://wonderlandrv.com.au/stock/wa/">Western Australia</a></div>
+</div>
+<div>
+<h3 class="av">Common questions</h3>
+<details class="sa-q"><summary>How quickly can I pick up a stock van?</summary><p>Stock vans are already built and finished, so handover is usually a matter of days once the paperwork and payment are done, not the months a custom build takes. Your dealer confirms the date with you.</p></details><details class="sa-q"><summary>Can I still add options to a stock van?</summary><p>Most stock vans already have popular upgrades fitted, and you will see them listed on each van page. Some extras can be arranged before handover. Ask the dealer about the van you are looking at.</p></details><details class="sa-q"><summary>Are stock vans new?</summary><p>Most are brand new 2026 builds that have never been registered. A few are pre-loved or demonstrator vans at a lower price, and they are marked as such on the page.</p></details><details class="sa-q"><summary>What does drive away mean?</summary><p>The price shown is the drive away price in the state the van is listed in. The dealer confirms the final figure for you, including any extras you add.</p></details><details class="sa-q"><summary>Do stock vans come with a warranty?</summary><p>Yes. Every new Wonderland RV comes with the three year factory warranty, whether it is a stock van or a custom build, and ongoing support through the dealer network.</p></details>
+</div>
+</div>
+</div>
+</section><!--/WLABOUT-->
+
 
 
 <section class="enquiry" id="enquire">
@@ -557,5 +594,6 @@ fbq('track','PageView');
 <script src="assets/ref/js/footer.js"></script>
 
 
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How quickly can I pick up a stock van?", "acceptedAnswer": {"@type": "Answer", "text": "Stock vans are already built and finished, so handover is usually a matter of days once the paperwork and payment are done, not the months a custom build takes. Your dealer confirms the date with you."}}, {"@type": "Question", "name": "Can I still add options to a stock van?", "acceptedAnswer": {"@type": "Answer", "text": "Most stock vans already have popular upgrades fitted, and you will see them listed on each van page. Some extras can be arranged before handover. Ask the dealer about the van you are looking at."}}, {"@type": "Question", "name": "Are stock vans new?", "acceptedAnswer": {"@type": "Answer", "text": "Most are brand new 2026 builds that have never been registered. A few are pre-loved or demonstrator vans at a lower price, and they are marked as such on the page."}}, {"@type": "Question", "name": "What does drive away mean?", "acceptedAnswer": {"@type": "Answer", "text": "The price shown is the drive away price in the state the van is listed in. The dealer confirms the final figure for you, including any extras you add."}}, {"@type": "Question", "name": "Do stock vans come with a warranty?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every new Wonderland RV comes with the three year factory warranty, whether it is a stock van or a custom build, and ongoing support through the dealer network."}}]}</script>
 </body>
 </html>
