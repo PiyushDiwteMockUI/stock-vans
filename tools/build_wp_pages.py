@@ -99,6 +99,24 @@ for slug,state,abbr,dealer_txt in STATE_PAGES:
     s=s.replace('<p>Stock vans are Wonderland RV caravans that are built, finished and sitting with a dealer, ready to drive away.', f'<p>These are the Wonderland RV caravans in stock in {state} right now, held by {dealer_txt}, built, finished and ready to drive away.',1)
     assert f'data-stock-state="{state}"' in s and f'Stock Vans in {abbr}</h1>' in s
     pages['stock-'+slug]={'title':f'Caravans In Stock in {state}', 'content': body_and_head(s), 'slug':slug}
+# layout pages (1 Oct 2026): family / couples stock, same hub with the layout filter preset
+LAYOUT_PAGES=[('family','Family','Family Caravans For Sale, In Stock','Family stock vans','Wonderland RV family caravans in stock, ready for handover now'),
+              ('couples','Couples','Couples Caravans For Sale, In Stock','Couples stock vans','Wonderland RV couples caravans in stock, ready for handover now')]
+for slug,layout,title,h1,sub in LAYOUT_PAGES:
+    s=h
+    s=s.replace('<body>', f'<body><div id="stock-state" data-stock-layout="{layout}" hidden></div>',1)
+    s=s.replace('<h1>Stock Vans For Sale</h1>', f'<h1>{h1}</h1>',1)
+    s=s.replace('<p class="hero-sub">In Stock, Available For Immediate Delivery</p>', f'<p class="hero-sub">{sub}</p>',1)
+    s=re.sub(r'<link rel="canonical" href="[^"]*">', f'<link rel="canonical" href="{HOST}/stock/{slug}/">', s, count=1)
+    s=re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{HOST}/stock/{slug}/">', s, count=1)
+    s=s.replace('<meta property="og:title" content="Caravans In Stock | Wonderland RV">', f'<meta property="og:title" content="{title} | Wonderland RV">',1)
+    s=s.replace('<h2 class="av">Wonderland RV stock vans</h2>', f'<h2 class="av">Wonderland RV {layout.lower()} stock vans</h2>',1)
+    if layout=='Family':
+        s=s.replace('<p>Stock vans are Wonderland RV caravans that are built, finished and sitting with a dealer, ready to drive away.', '<p>These are the Wonderland RV family caravans in stock right now: bunk layouts with two, three or four bunks, a proper bathroom and a kitchen that feeds the whole crew, built, finished and ready to drive away.',1)
+    else:
+        s=s.replace('<p>Stock vans are Wonderland RV caravans that are built, finished and sitting with a dealer, ready to drive away.', '<p>These are the Wonderland RV couples caravans in stock right now: queen bed, full ensuite, rear club lounge or cafe dinette layouts, built, finished and ready to drive away.',1)
+    assert f'data-stock-layout="{layout}"' in s and f'<h1>{h1}</h1>' in s
+    pages['stock-'+slug]={'title':title, 'content': body_and_head(s), 'slug':slug}
 
 
 # SEO (1 Oct 2026): Rank Math appends " | Wonderland RV" itself, so WP titles carry no suffix; and an excerpt per page
@@ -118,6 +136,8 @@ def _excerpt(name):
         return (f"{v['year']} Wonderland RV {v['name']}, stock {v['chassis']}, ${int(v['price']):,} drive away, {v['state']}. "
                 f"{used} {v['length']} {v['layout'].lower()} off-road caravan, tare {int(v['tare']):,} kg, ATM {int(v['atm']):,} kg, sleeps {v['sleeps']}. Ready for handover now.")
     if name=='stock-vans-index': return "Wonderland RV caravans in stock and ready for handover now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and specs, in Victoria, New South Wales, Queensland and Western Australia."
+    for slug,layout,title,h1,sub in LAYOUT_PAGES:
+        if name=='stock-'+slug: return (f"Wonderland RV {layout.lower()} caravans for sale and in stock now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road {layout.lower()} layouts with drive away prices, photos and full specs, ready for handover in Victoria, New South Wales, Queensland and Western Australia.")
     for slug,state,abbr,dealer_txt in STATE_PAGES:
         if name=='stock-'+slug: return f"Wonderland RV caravans in stock in {state} and ready for handover now, held by {dealer_txt}: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and full specs."
     if name=='stock-hub': return "Browse every Wonderland RV stock caravan page: ready-now Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos, floorplans and full specs."

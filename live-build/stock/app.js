@@ -438,6 +438,7 @@ const SV = {
 
   boot() {
     const presetState = (document.getElementById('stock-state') || document.body).dataset.stockState || document.body.dataset.stockState;
+    const presetLayout = document.getElementById('stock-state')?.dataset.stockLayout; if (presetLayout && LAYOUTS.includes(presetLayout)) this.s.layouts = [presetLayout];
     // URL presets for deep links from range/dealer pages (1 Oct 2026): /stock/?model=Amaroo, /stock/?layout=Family, /stock/?state=Victoria
     const qp = new URLSearchParams(location.search);
     const qm = qp.get('model'); if (qm && VANS.some(v => v.model.toLowerCase() === qm.toLowerCase())) this.s.models = [VANS.find(v => v.model.toLowerCase() === qm.toLowerCase()).model];

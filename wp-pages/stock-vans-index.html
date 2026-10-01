@@ -1835,6 +1835,8 @@ html {
 <p>Stock vans are Wonderland RV caravans that are built, finished and sitting with a dealer, ready to drive away. Most are brand new 2026 builds with popular upgrades already fitted. A few are pre-loved or demonstrator vans at a lower price.</p>
 <p>Every one is a full off-road, off-grid caravan built in our Campbellfield, Victoria factory, with the same three year warranty and dealer support as a custom build. The difference is the wait: a stock van can be yours in days.</p>
 <p>Prices are drive away. Filter by model, layout, state, axle and budget, or call the dealer closest to you. Each van page has the full as-built specification, photos and the fitted upgrades.</p>
+<h3 class="av" style="margin-top:22px">Browse by layout</h3>
+<div class="sa-states"><a href="https://wonderlandrv.com.au/stock/family/">Family caravans</a><a href="https://wonderlandrv.com.au/stock/couples/">Couples caravans</a></div>
 <h3 class="av" style="margin-top:22px">Browse by state</h3>
 <div class="sa-states"><a href="https://wonderlandrv.com.au/stock/vic/">Victoria</a><a href="https://wonderlandrv.com.au/stock/nsw/">New South Wales</a><a href="https://wonderlandrv.com.au/stock/qld/">Queensland</a><a href="https://wonderlandrv.com.au/stock/wa/">Western Australia</a></div>
 </div>
@@ -6341,6 +6343,7 @@ const SV = {
 
   boot() {
     const presetState = (document.getElementById('stock-state') || document.body).dataset.stockState || document.body.dataset.stockState;
+    const presetLayout = document.getElementById('stock-state')?.dataset.stockLayout; if (presetLayout && LAYOUTS.includes(presetLayout)) this.s.layouts = [presetLayout];
     // URL presets for deep links from range/dealer pages (1 Oct 2026): /stock/?model=Amaroo, /stock/?layout=Family, /stock/?state=Victoria
     const qp = new URLSearchParams(location.search);
     const qm = qp.get('model'); if (qm && VANS.some(v => v.model.toLowerCase() === qm.toLowerCase())) this.s.models = [VANS.find(v => v.model.toLowerCase() === qm.toLowerCase()).model];
