@@ -992,5 +992,133 @@
    "reason": "sold",
    "by": "Ana email 23 Sep 2026"
   }
+ },
+ {
+  "chassis": "WL1181",
+  "model": "Amaroo",
+  "code": "1906Q-M-C",
+  "name": "Amaroo 1906 Mid Door Café",
+  "year": "2025",
+  "length": "19'06\"",
+  "layout": "Couples",
+  "state": "Victoria",
+  "used": false,
+  "price": 134990,
+  "images": [
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993428.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=UWSBu58O4YHBXyKodIw0col%2BStb2J2OzP0O7uEJhoJk%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993588.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=SOCziFA4Lcvn1rINPqXP2pwMXDZt6K2smKH2AtTsPHc%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993426.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=%2BfPpj9vI1tfDU1%2BKUCEeOX07QAYEYzPdIwgc%2Bw0etRQ%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993429.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=jQedRhwkdiBM3wM%2F%2Fo9LVs6rdj8ZhjFDyBycws%2FWY6s%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993430.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=zUIs31sso8qwQr5sj4U2aTw77u15EWqXa83BG3fBpzc%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993431.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=RGYwgq%2BzJPUzTTDu3rMG6IjYj5%2BpPD0YfRyJ%2F08w8tw%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993433.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=erU%2B0hbvOXPTF%2FSIFVu4FQe%2Bg3LrNfsDUY509ixAbCQ%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993436.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=H6pCT6I5IPEMFM9LdzCpCWiMLbJdEJZCxI4OE6hdLwk%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993438.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=jR2gVh53WIl%2FdOKOXLgBhD0bfJHtaCgAXgHJmaJUwJw%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993440.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=K56VKRawVvTpG%2F6ok7U94ffFUlcMih15j0jltzDHzAw%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993442.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=facVn5CJzFzUtQL8FqthvTDdZHCC9Adyc9v%2FC7ExzAM%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993447.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=2FIHgLTyUgu03mi26caHHsUMj4cC%2FVnrCPcr0KP1ukk%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993453.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=oUu6EViowkpuJen%2B%2B1GJucv4v2qJT3ngGk4FUMjVLBk%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993458.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=ZtUknaoBudgHvvJ2aoVmzYSoD1q%2BY%2BQ1He5Bk%2FjDDuI%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993461.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=wUV0nlSRGzNX0dNRTC8Obl5pGYKhO4dZ8DDfMpwcvPI%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993558.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=yadZ3cQeQXfWQLuVimrvbq0aSw%2BgzEpOOWZhFJ94QP0%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993561.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=K6Jg4YeAGB2IY91NodVQNwJvZUOouY2wyy1LmBteJns%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993562.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=uiBN9ytxvvfNOD6RlscsUdxRHGL0QIqrYT65HCdPzGI%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993563.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=JWLfbZv3OkswEhHVYjkt3hmOhB4DpcjvxCeuE%2FO5irM%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993564.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=%2BxypoP4K9QJR2%2FiKwcp3rua7TXMpaoE6K8tP5br%2Fq%2F0%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993567.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=Cf6ZeK36KPqpOf1lFtwEjL1%2Fk%2FurOf%2Fesxti1vrEn74%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993568.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=TJIXRuvU0MHbmUYvDi8eKbUwqe%2BHdiLFtK3VKYJyKXA%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993569.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=1LZbnK2Lg44gOLZJvofGhGOEt80wZXgtU%2BnXpxCNl5A%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993571.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=fqpPxwJNhJusUUnbueXe%2FusQNzfgMvbum29D9AFARKo%3D",
+   "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17993573.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A12Z&sr=b&sp=r&sig=TyXF4P76q5IPmNCKdUy4XtK6jnXopvP1bCCfgSbJCjI%3D"
+  ],
+  "listing": "https://www.outboundrvs.com.au/stock/2025-wonderlandrv-amaroo---1906middoorcafe-565749",
+  "tare": 2680,
+  "atm": 3500,
+  "ball": 220,
+  "sleeps": 2,
+  "axle": "Tandem axle",
+  "floorplan": "assets/layouts/1906Q-M-C.png",
+  "was": 148570,
+  "floorplans": [
+   "assets/layouts/1906Q-M-C_tilt.png",
+   "assets/layouts/1906Q-M-C_top.png",
+   "assets/layouts/1906Q-M-C_tag.png"
+  ],
+  "travel": 8.2,
+  "spec_override": [
+   [
+    "Construction",
+    [
+     "Aluminium Henrob Rivet",
+     "One piece composite sandwich panel roof, front & back",
+     "Honeycomb floor",
+     "XPS insulation",
+     "Dibond marine grade cladding",
+     "850mm black plate protection"
+    ]
+   ],
+   [
+    "Chassis & Suspension",
+    [
+     "4.5t Aussie Made Heavy Duty Off Road Chassis",
+     "Double box 4+4″ chassis and riser (flat floor)",
+     "6″ Extended A Frame, 1950mm long",
+     "Black paint Chassis Finish",
+     "4.5t Cruisemaster XT Airbag Suspension with BCS Levelling",
+     "12″ Drum Brakes",
+     "Cruisemaster DO-35 hitch",
+     "Large toolbox with slides & Anderson plug"
+    ]
+   ],
+   [
+    "Electrical",
+    [
+     "Redarc Alpha 50 off-grid system, providing 50A via solar/DC/AC, 300Ah Lithium battery, 2000W inverter, 600W solar"
+    ]
+   ],
+   [
+    "Plumbing",
+    [
+     "2 x 90L to 100L fresh water tanks",
+     "1 x 100L grey water tank with bypass",
+     "Quick fill and mains connection and 1 separate filler and cap",
+     "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
+     "Outdoor shower & water filter"
+    ]
+   ],
+   [
+    "Appliances",
+    [
+     "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
+     "Multi-function cooker, fryer, grill & microwave",
+     "Portable induction cooktop",
+     "Swift flush mount recessed rangehood with dual fans",
+     "216L Dometic compressor fridge",
+     "3kg washing machine",
+     "Thetford Separating toilet",
+     "Outdoor pantry with drop down picnic table",
+     "Dometic Manual Awning",
+     "Reverse camera",
+     "TV 24″ Smart TV & Starlink Connection",
+     "Fusion audio and speakers"
+    ]
+   ],
+   [
+    "Optional upgrades fitted",
+    [
+     "Diesel Heater",
+     "CS 12v Dust suppression",
+     "Dexter stability control",
+     "Cruisemaster XT Air with BCS",
+     "Instant hot water"
+    ]
+   ]
+  ],
+  "spec_source": "ana",
+  "removed": {
+   "date": "2026-10-05",
+   "reason": "sold",
+   "by": "Ana email 4 Oct 2026"
+  }
  }
 ]

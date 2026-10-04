@@ -35,12 +35,6 @@
   "excerpt": "2025 Wonderland RV Amaroo 21ft Couples Extra Large Ensuite, stock WL1180, $144,889 drive away, New South Wales. New 21'00\" couples off-road caravan, tare 2,940 kg, ATM 3,500 kg, sleeps 2. Ready for handover now.",
   "len": 186797
  },
- "wl1181": {
-  "title": "Amaroo 1906 Mid Door Caf\u00e9 WL1181",
-  "slug": "wl1181",
-  "excerpt": "2025 Wonderland RV Amaroo 1906 Mid Door Caf\u00e9, stock WL1181, $134,990 drive away, Victoria. New 19'06\" couples off-road caravan, tare 2,680 kg, ATM 3,500 kg, sleeps 2. Ready for handover now.",
-  "len": 190783
- },
  "wl1184": {
   "title": "Hornet 2304 Quad Bunk East-West WL1184",
   "slug": "wl1184",
@@ -135,48 +129,48 @@
   "title": "Stock van pages",
   "slug": "stock",
   "excerpt": "Browse every Wonderland RV stock caravan page: ready-now Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos, floorplans and full specs.",
-  "len": 159795
+  "len": 157072
  },
  "stock-vans-index": {
   "title": "Caravans In Stock",
   "slug": "stock-vans",
   "excerpt": "Wonderland RV caravans in stock and ready for handover now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and specs, in Victoria, New South Wales, Queensland and Western Australia.",
-  "len": 405496
+  "len": 397480
  },
  "stock-vic": {
   "title": "Caravans In Stock in Victoria",
   "slug": "vic",
   "excerpt": "Wonderland RV caravans in stock in Victoria and ready for handover now, held by Outbound RVs in Campbellfield: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and full specs.",
-  "len": 405696
+  "len": 397680
  },
  "stock-nsw": {
   "title": "Caravans In Stock in New South Wales",
   "slug": "nsw",
   "excerpt": "Wonderland RV caravans in stock in New South Wales and ready for handover now, held by Off Grid Outfitters: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and full specs.",
-  "len": 405721
+  "len": 397705
  },
  "stock-qld": {
   "title": "Caravans In Stock in Queensland",
   "slug": "qld",
   "excerpt": "Wonderland RV caravans in stock in Queensland and ready for handover now, held by Aussie Escape Caravans in Brendale: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and full specs.",
-  "len": 405711
+  "len": 397695
  },
  "stock-wa": {
   "title": "Caravans In Stock in Western Australia",
   "slug": "wa",
   "excerpt": "Wonderland RV caravans in stock in Western Australia and ready for handover now, held by Outbound RVs: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and full specs.",
-  "len": 405721
+  "len": 397705
  },
  "stock-family": {
   "title": "Family Caravans For Sale, In Stock",
   "slug": "family",
   "excerpt": "Wonderland RV family caravans for sale and in stock now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road family layouts with drive away prices, photos and full specs, ready for handover in Victoria, New South Wales, Queensland and Western Australia.",
-  "len": 405701
+  "len": 397685
  },
  "stock-couples": {
   "title": "Couples Caravans For Sale, In Stock",
   "slug": "couples",
   "excerpt": "Wonderland RV couples caravans for sale and in stock now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road couples layouts with drive away prices, photos and full specs, ready for handover in Victoria, New South Wales, Queensland and Western Australia.",
-  "len": 405673
+  "len": 397657
  }
 }
