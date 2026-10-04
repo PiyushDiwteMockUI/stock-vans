@@ -312,7 +312,7 @@ const DATA = {
    "sleeps": 5,
    "axle": "Tandem axle",
    "floorplan": "/stock/assets/layouts/2107EW-F3-3.png",
-   "was": 174684.52,
+   "was": 170191,
    "floorplans": [
     "/stock/assets/layouts/2107EW-F3-3_tilt.png",
     "/stock/assets/layouts/2107EW-F3-3_top.png",
@@ -670,7 +670,7 @@ const DATA = {
    "layout": "Couples",
    "state": "New South Wales",
    "used": false,
-   "price": 149032.55,
+   "price": 149033,
    "images": [
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3rbywaajnzblj8jr4qrpycv60.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1lh4cp7d1sbc5s634lputsaxw.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
