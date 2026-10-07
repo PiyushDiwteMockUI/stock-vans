@@ -2514,7 +2514,7 @@ const DATA = {
   {
    "chassis": "WL1287",
    "model": "Amaroo",
-   "code": "2200Q3-F2",
+   "code": "2110Q3-F2.4",
    "name": "Amaroo 21ft Double Rear Bunk Family",
    "year": "2026",
    "length": "21'00\"",
@@ -2562,7 +2562,7 @@ const DATA = {
    "ball": 180,
    "sleeps": 4,
    "axle": "Tandem axle",
-   "floorplan": null,
+   "floorplan": "/stock/assets/layouts/2110Q3-F2-4.png",
    "was": null,
    "travel": 8.8,
    "spec_override": [
@@ -2670,7 +2670,12 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "floorplans": [
+    "/stock/assets/layouts/2110Q3-F2-4_tilt.png",
+    "/stock/assets/layouts/2110Q3-F2-4_top.png",
+    "/stock/assets/layouts/2110Q3-F2-4_tag.png"
+   ]
   }
  ],
  "modelSpecs": {
