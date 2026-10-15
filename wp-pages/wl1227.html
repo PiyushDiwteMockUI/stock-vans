@@ -413,6 +413,71 @@ html, #wlstock{margin:0;padding:0}
 @media (max-width:900px){#wlstock .sg{display:none}}
 @media (min-width:901px){#wlstock .spec-tabs > .spec-acc{display:none}}
 
+
+#wlstock .side-enq{background:#fff;color:var(--svink);padding:24px 22px 0;margin:0}
+#wlstock .side-enq .se-kick{font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olink);margin:0 0 10px}
+#wlstock .side-enq .se-title{margin:0 0 8px;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
+#wlstock .side-enq .se-sub{margin:0 0 20px;font:400 13px/1.6 'Gordita',sans-serif;color:var(--body)}
+#wlstock .side-enq .se-form{margin:0;padding:0}
+#wlstock .side-enq .se-row{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+#wlstock .side-enq .se-f{position:relative;margin:0 0 16px}
+#wlstock .side-enq .se-f label{display:block;margin:0 0 7px;font:500 10.5px/1.2 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+#wlstock .side-enq .se-req{color:var(--svorange);margin-left:2px}
+#wlstock .side-enq .se-opt{margin-left:6px;letter-spacing:.06em;text-transform:none;font-weight:400;color:#8A939A}
+#wlstock .side-enq .se-f input, #wlstock .side-enq .se-f select, #wlstock .side-enq .se-f textarea{display:block;width:100%;box-sizing:border-box;margin:0;padding:12px 14px;min-height:48px;font:400 16px/1.35 'Gordita',sans-serif;color:var(--svink);background:#fff;border:1px solid #C9CED2;border-radius:0;box-shadow:none;outline:none;transition:border-color .18s ease,box-shadow .18s ease}
+#wlstock .side-enq .se-f textarea{resize:vertical;min-height:88px}
+#wlstock .side-enq .se-f input::placeholder, #wlstock .side-enq .se-f textarea::placeholder{color:#9AA2A8;opacity:1}
+#wlstock .side-enq .se-f input:focus, #wlstock .side-enq .se-f select:focus, #wlstock .side-enq .se-f textarea:focus{border-color:var(--svorange);box-shadow:0 0 0 1px var(--svorange)}
+#wlstock .side-enq .se-f input:-webkit-autofill, #wlstock .side-enq .se-f input:-webkit-autofill:focus{-webkit-text-fill-color:var(--svink);-webkit-box-shadow:0 0 0 40px #fff inset}
+#wlstock .side-enq .se-sel select{-webkit-appearance:none;appearance:none;padding-right:38px;cursor:pointer;color:#9AA2A8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M0 0L7 7L14 0' fill='none' stroke='%2312171C' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px 7px}
+#wlstock .side-enq .se-sel select:valid{color:var(--svink)}
+#wlstock .side-enq .se-sel option{color:var(--svink);background:#fff}
+#wlstock .side-enq .se-err{display:none;margin-top:6px;font:400 12px/1.35 'Gordita',sans-serif;color:#C0392B}
+#wlstock .side-enq .se-f.is-err input, #wlstock .side-enq .se-f.is-err select{border-color:#C0392B;box-shadow:0 0 0 1px #C0392B}
+#wlstock .side-enq .se-f.is-err .se-err{display:block}
+#wlstock .side-enq .se-chips{border:0;margin:4px 0 16px;padding:0;min-width:0}
+#wlstock .side-enq .se-chips legend{padding:0;margin:0 0 8px;font:500 10.5px/1.2 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+#wlstock .side-enq .se-chipgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#wlstock .side-enq .se-chip{position:relative;display:block;margin:0;cursor:pointer}
+#wlstock .side-enq .se-chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+#wlstock .side-enq .se-chip span{display:flex;align-items:center;justify-content:center;min-height:42px;padding:8px 6px;box-sizing:border-box;text-align:center;font:500 12.5px/1.25 'Gordita',sans-serif;color:var(--svink);background:#fff;border:1px solid #C9CED2;border-radius:0;transition:background .18s ease,color .18s ease,border-color .18s ease}
+#wlstock .side-enq .se-chip:hover span{border-color:var(--svink)}
+#wlstock .side-enq .se-chip input:checked + span{background:var(--svink);color:#fff;border-color:var(--svink)}
+#wlstock .side-enq .se-chip input:focus-visible + span{outline:2px solid var(--svorange);outline-offset:2px}
+#wlstock .side-enq .se-check{display:flex;align-items:center;gap:10px;margin:0 0 18px;cursor:pointer;font:400 13px/1.4 'Gordita',sans-serif;color:var(--body2)}
+#wlstock .side-enq .se-check input{-webkit-appearance:none;appearance:none;flex:none;width:18px;height:18px;margin:0;border:1px solid var(--svink);border-radius:0;background:#fff;cursor:pointer}
+#wlstock .side-enq .se-check input:checked{background:var(--svorange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat;border-color:var(--svorange)}
+#wlstock .side-enq .se-check input:focus-visible{outline:2px solid var(--svorange);outline-offset:2px}
+#wlstock .side-enq .se-submit{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin:0;padding:14px 20px;background:var(--svorange);color:#fff;border:1px solid var(--svorange);border-radius:0;box-shadow:none;font:400 15px/1.2 'aviano-sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s ease,color .2s ease,transform .12s cubic-bezier(.23,1,.32,1)}
+@media (hover:hover){#wlstock .side-enq .se-submit:hover{background:#fff;color:var(--svorange)}}
+#wlstock .side-enq .se-submit:active{transform:scale(.98)}
+#wlstock .side-enq .se-submit:focus-visible{outline:2px solid var(--svink);outline-offset:2px}
+#wlstock .side-enq .se-fine{margin:10px 0 0;font:400 11px/1.5 'Gordita',sans-serif;color:var(--mut)}
+#wlstock .side-enq .se-done{padding:6px 0 4px;outline:none}
+#wlstock .side-enq .se-tick{width:44px;height:44px;margin:0 0 16px;border-radius:50%;background:var(--svorange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/56% no-repeat}
+#wlstock .side-enq .se-done-t{margin:0 0 8px;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
+#wlstock .side-enq .se-call{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;min-height:44px;margin:6px 0 0;padding:0 0 14px;font:400 13px/1.3 'Gordita',sans-serif;color:var(--body);text-decoration:none}
+#wlstock .side-enq .se-call span{font-weight:500;color:var(--svink);border-bottom:1px solid var(--svorange)}
+#wlstock .side-enq .se-call:hover span{color:var(--olink)}
+
+#wlstock .side-enq.is-mobile{border:1px solid var(--line2);border-radius:4px;padding:22px 20px 2px;margin:0 0 38px;scroll-margin-top:84px}
+
+#wlstock .detailside .side-facts{background:var(--cream);border-top:1px solid var(--line2);padding:22px 22px 18px}
+#wlstock .detailside .side-facts .sf-head{margin:0 0 10px;padding:0;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
+#wlstock .detailside .side-facts > div{border-top-color:var(--line2)!important}
+#wlstock .detailside .side-facts .sf-head + div{border-top:0!important}
+
+@media (min-width:901px){
+  #wlstock .vp-left .sg{display:none}
+  #wlstock .vp-left .spec-tabs > .spec-acc{display:block}
+  #wlstock .vp-left .spec-tabs{margin-top:10px;border-top:1px solid var(--line)}
+}
+
+#wlstock:has(.detailside){overflow-x:clip}
+@media (max-width:420px){#wlstock .side-enq.is-mobile .se-title, #wlstock .side-enq.is-mobile .se-done-t{font-size:clamp(15px,5.4vw,18px);overflow-wrap:anywhere}}
+
+@media (max-width:480px){#wlstock .vpb-ctas{flex-direction:column}#wlstock .vpb-ctas a{flex:none;width:100%;white-space:nowrap;min-height:50px}}
+
 </style>
 <style>
 
@@ -1745,7 +1810,7 @@ html {
       </div>
       <p style="margin:8px 0 12px;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
       <div class="vpb-ctas">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="/stock/?van=WL1227#enquire">Enquire now</a>
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="#enquire-van" data-enq-intent="">Enquire now</a>
         <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
       </div>
     </div>
@@ -1765,51 +1830,6 @@ html {
     <div style="display:flex;align-items:center;gap:12px;padding:15px 18px;border:1px solid var(--line2);border-radius:4px;margin-bottom:38px">
           <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="flex:none;display:block"><path d="M2.5 12.5h11v-5h-11v5z M13.5 9.5h2.6l1.4 3h-4z M5.5 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z M15 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z" fill="none" stroke="#12171C" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>
           <span style="font:400 13.5px/1.5 'Gordita',sans-serif;color:var(--body2)">Tows behind most 3.5T-rated dual cab utes. Payload of 478 kg once you are loaded.</span></div>
-  </div>
-  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
-    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
-      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
-        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
-        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">$165,191</div>
-        <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 'Gordita',sans-serif;color:var(--mut);text-decoration:line-through">$170,191</span><span style="font:500 13px/1 'Gordita',sans-serif;color:var(--olink)">Save $5,000</span></div>
-        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
-      </div>
-      <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="/stock/?van=WL1227#enquire">Enquire about this van</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
-      </div>
-      <div class="side-facts" style="padding:0 22px 22px"><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Stock no</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">WL1227</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout code</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2107EWF-3.3</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Internal length</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">21'07"</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Family</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Sleeps</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">5</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Tare</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">3,022 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">ATM</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">3,500 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Ball weight (empty)</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">220 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Payload</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">478 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Axle</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Tandem axle</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Condition</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">New</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
-        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Location</span>
-        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Off Grid Outfitters - NSW</span></div></div>
-    </div>
-    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
-      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
-    </div>
-  </aside>
-</div>
-<div class="wrap shell vp-lower" style="display:block;padding:8px 0 0">
     <div style="margin-bottom:38px">
           <h2 class="av sec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
           <p style="margin:0 0 16px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">The 2107EWF-3.3 layout.</p>
@@ -1821,7 +1841,7 @@ html {
             </div>
             <div class="fp-dots" style="display:flex;gap:8px;justify-content:center;margin-top:12px"><button type="button" class="fp-dot" data-fp="0" aria-label="Floorplan view 1" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:var(--svink);padding:0;cursor:pointer"></button><button type="button" class="fp-dot" data-fp="1" aria-label="Floorplan view 2" style="width:9px;height:9px;border-radius:50%;border:1px solid var(--svink);background:#fff;padding:0;cursor:pointer"></button></div>
           </div></div>
-    <div style="margin-bottom:10px">
+    <div style="margin-bottom:38px" class="vp-specs">
       <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
       <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">Specification for this van as built, including fitted upgrades.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px"><span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 'Gordita',sans-serif;padding:8px 10px;border-radius:2px">Redarc Alpha 75 off-grid power</span><span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 'Gordita',sans-serif;padding:8px 10px;border-radius:2px">Cruisemaster XT airbag suspension</span><span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 'Gordita',sans-serif;padding:8px 10px;border-radius:2px">2 x 90-100L water tanks</span></div>
@@ -1959,7 +1979,7 @@ html {
               <span style="font:400 16px/1.6 'Gordita',sans-serif;color:var(--body2)">5 x Sirocco fans</span></div></div></div></div>
             </div></div>
     </div>
-    <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:38px 0">
+    <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:0 0 38px" class="vp-where">
       <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
         <div style="min-width:0">
           <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
@@ -1967,11 +1987,53 @@ html {
           <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our New South Wales dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
         </div>
         <div class="wi-btns" style="display:flex;flex-wrap:wrap;gap:10px;flex:0 1 auto;min-width:0;align-items:stretch">
-          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="/stock/?van=WL1227#enquire">Book a viewing</a>
+          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="Book a viewing">Book a viewing</a>
           <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
         </div>
       </div>
     </div>
+  </div>
+  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
+    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
+      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
+        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
+        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">$165,191</div>
+        <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 'Gordita',sans-serif;color:var(--mut);text-decoration:line-through">$170,191</span><span style="font:500 13px/1 'Gordita',sans-serif;color:var(--olink)">Save $5,000</span></div>
+        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
+      </div>
+      <div class="side-enq" id="enquire-van"><div class="se-kick">Stock no. WL1227</div><h2 class="av se-title">Enquire about this van</h2><p class="se-sub">Leave your details and our team will be in touch within 24 hours on business days.</p><form class="se-form" action="#" method="post" novalidate data-van="WL1227" data-vantxt="WL1227 Hornet 21'07&quot; Quad Bunk Delete" data-or="86f68712-ed10-4e64-8760-86ac3026dfc6"><div class="se-row"><div class="se-f"><label for="se-fn">First name<span class="se-req" aria-hidden="true">*</span></label><input id="se-fn" name="first-name" type="text" autocomplete="given-name" placeholder="First name" required aria-describedby="se-fn-err"><span class="se-err" id="se-fn-err">Tell us your first name.</span></div><div class="se-f"><label for="se-ln">Last name<span class="se-req" aria-hidden="true">*</span></label><input id="se-ln" name="last-name" type="text" autocomplete="family-name" placeholder="Last name" required aria-describedby="se-ln-err"><span class="se-err" id="se-ln-err">Tell us your last name.</span></div></div><div class="se-f"><label for="se-em">Email<span class="se-req" aria-hidden="true">*</span></label><input id="se-em" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="se-em-err" spellcheck="false"><span class="se-err" id="se-em-err">Add an email we can reply to.</span></div><div class="se-f"><label for="se-ph">Phone<span class="se-req" aria-hidden="true">*</span></label><input id="se-ph" name="phone" type="tel" autocomplete="tel" placeholder="Phone number" required aria-describedby="se-ph-err" inputmode="tel"><span class="se-err" id="se-ph-err">Add a phone number so we can call you.</span></div><div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span></label><select id="se-st" name="state" required aria-describedby="se-st-err"><option value="" selected disabled>Select your state</option><option value="Victoria">Victoria</option><option value="New South Wales / ACT">New South Wales / ACT</option><option value="Queensland">Queensland</option><option value="South Australia">South Australia</option><option value="Western Australia">Western Australia</option><option value="Tasmania">Tasmania</option><option value="Northern Territory">Northern Territory</option></select><span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div><fieldset class="se-chips"><legend>I would like to</legend><div class="se-chipgrid"><label class="se-chip"><input type="radio" name="enquiry-type" value="Call back" checked><span>Call back</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Get a quote"><span>Get a quote</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Hold this van"><span>Hold this van</span></label></div></fieldset><div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label><textarea id="se-msg" name="message" rows="2" placeholder="Finance, timing or questions about the van"></textarea></div><label class="se-check"><input type="checkbox" name="trade-in"><span>I have a van to trade in</span></label><button type="submit" class="se-submit">Send enquiry</button><p class="se-fine">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p></form><div class="se-done" hidden tabindex="-1"><div class="se-tick" aria-hidden="true"></div><div class="av se-done-t">Thanks<span class="se-done-name"></span></div><p class="se-sub">Your enquiry for WL1227 is on its way. Our team will be in touch within 24 hours on business days.</p></div><a class="se-call" href="tel:+61399586708">Prefer to talk? <span>Call (03) 9958 6708</span></a></div>
+      <div class="side-facts"><h3 class="av sf-head">Key details</h3><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Stock no</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">WL1227</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout code</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">2107EWF-3.3</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Internal length</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">21'07"</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Layout</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Family</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Sleeps</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">5</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Tare</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">3,022 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">ATM</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">3,500 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Ball weight (empty)</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">220 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Payload</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">478 kg</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Axle</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Tandem axle</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Condition</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">New</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
+        <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Location</span>
+        <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">Off Grid Outfitters - NSW</span></div></div>
+    </div>
+    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
+      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
+    </div>
+  </aside>
+</div>
+<div class="wrap shell vp-lower" style="display:block;padding:8px 0 0">
     <div class="vp-simblock" style="padding-bottom:66px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px">
         <h2 class="av sec-h2" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
@@ -2187,7 +2249,8 @@ html {
       <a class="btn-next" href="https://wonderlandrv.com.au/about-us/">meet the team</a>
     </div>
   </div>
-</section><script>
+</section><iframe name="ac_sink" title="hidden" style="display:none"></iframe>
+<script>
 /* ==========================================================================
    Legendary Service — the review slider.
    Its own file: the homepage and the contact page both carry the section, so
@@ -2582,6 +2645,129 @@ html {
       p.classList.toggle('on', p.getAttribute('data-tab') === b.getAttribute('data-tab'));
     });
   });
+})();
+
+/* Van page enquiry form (15 Oct 2026). Posts to ActiveCampaign form 47 the same way as the /stock/ form in app.js:
+   same fields, same Ad Source pattern ('Stock Vans page | intent | Van: WLxxxx Name ...'), same GA4 / dataLayer / Meta events,
+   with the van fixed to this page. On phones the panel moves below the Where it is box. */
+(function () {
+  var box = document.querySelector('.side-enq');
+  if (!box) return;
+  var f = box.querySelector('.se-form'), done = box.querySelector('.se-done');
+  var where = document.querySelector('.vp-where'), facts = document.querySelector('.detailside .side-facts');
+  var mq = matchMedia('(max-width:900px)');
+  function place() {
+    if (mq.matches && where) { where.parentNode.insertBefore(box, where.nextSibling); box.classList.add('is-mobile'); }
+    else if (facts) { facts.parentNode.insertBefore(box, facts); box.classList.remove('is-mobile'); }
+  }
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place);
+
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-enq-intent]');
+    if (!a) return;
+    e.preventDefault();
+    var want = a.getAttribute('data-enq-intent');
+    var r = want ? f.querySelector('input[name="enquiry-type"][value="' + want + '"]') : null;
+    if (r) r.checked = true;
+    goTo(box);
+    setTimeout(function () { var fn = f.querySelector('[name="first-name"]'); if (fn) fn.focus(); }, reduce ? 0 : 700);
+  });
+
+  // Scroll so el sits near the top of the screen. On desktop the sidebar is sticky, so measure where el sits
+  // with sticky switched off (its real place in the page) instead of where it happens to be drawn right now.
+  function goTo(el) {
+    var aside = el.closest('.detailside'), y;
+    if (aside && !box.classList.contains('is-mobile')) {
+      var pos = aside.style.position, top = aside.style.top;
+      aside.style.position = 'relative'; aside.style.top = '0px';
+      y = el.getBoundingClientRect().top + window.scrollY;
+      aside.style.position = pos; aside.style.top = top;
+    } else {
+      y = el.getBoundingClientRect().top + window.scrollY;
+    }
+    window.scrollTo({ top: Math.max(0, y - 110), behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  f.addEventListener('input', function (e) {
+    var w = e.target.closest('.se-f');
+    if (w) { w.classList.remove('is-err'); e.target.removeAttribute('aria-invalid'); }
+  });
+  f.addEventListener('change', function (e) {
+    var w = e.target.closest('.se-f');
+    if (w) { w.classList.remove('is-err'); e.target.removeAttribute('aria-invalid'); }
+  });
+
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var g = function (n) { return f.querySelector('[name="' + n + '"]'); };
+    var first = null;
+    ['first-name', 'last-name', 'email', 'phone', 'state'].forEach(function (n) {
+      var el = g(n), v = (el.value || '').trim();
+      var bad = !v || (n === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) || (n === 'phone' && v.replace(/\D/g, '').length < 8);
+      el.closest('.se-f').classList.toggle('is-err', bad);
+      if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+      if (bad && !first) first = el;
+    });
+    if (first) { first.focus(); return false; }
+    var phone = g('phone').value.replace(/\s+/g, '');
+    if (/^0\d{9}$/.test(phone)) phone = '+61' + phone.slice(1);
+    // AC field 27 has a combined NSW/ACT option (same map as app.js)
+    var stateMap = { 'New South Wales': 'New South Wales / ACT', 'Australian Capital Territory': 'New South Wales / ACT' };
+    var stateVal = stateMap[g('state').value] || g('state').value;
+    var vanTxt = f.getAttribute('data-vantxt');
+    var intentEl = f.querySelector('[name="enquiry-type"]:checked');
+    var intent = intentEl ? intentEl.value : 'Call back';
+    var msg = (g('message').value || '').trim();
+    var trade = g('trade-in').checked;
+    var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt + (trade ? ' | Trade-in: yes' : '') +
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + ' | Newsletter: yes | Form: van page';
+    var post = document.createElement('form');
+    post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
+    post.target = 'ac_sink'; post.style.display = 'none';
+    var H = { u: '47', f: '47', s: '', c: '0', m: '0', act: 'sub', v: '2', or: f.getAttribute('data-or'),
+      firstname: g('first-name').value.trim(), lastname: g('last-name').value.trim(), email: g('email').value.trim(),
+      phone: phone, 'field[27]': stateVal, 'field[86]': ad };
+    for (var k in H) {
+      var i = document.createElement('input');
+      i.type = 'hidden'; i.name = k; i.value = H[k];
+      post.appendChild(i);
+    }
+    document.body.appendChild(post); post.submit();
+    try {
+      if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt, enquiry_type: intent, form_location: 'van page' });
+      /* GTM-readable event for the Tracklution forwarder (Lead + ContactInfo), same shape as app.js */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'stock_vans_enquiry', form_name: 'Stock van enquiry', lead_source: 'Stock Vans page', van: vanTxt, enquiry_type: intent, page_path: location.pathname,
+        user: { email: g('email').value.trim(), phone: phone, firstName: g('first-name').value.trim(), lastName: g('last-name').value.trim() } });
+      if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt, enquiry_type: intent });
+    } catch (err) {}
+    var nm = done.querySelector('.se-done-name');
+    if (nm) nm.textContent = ', ' + g('first-name').value.trim();
+    f.hidden = true; done.hidden = false;
+    var rect = done.getBoundingClientRect();
+    if (rect.top < 90 || rect.bottom > window.innerHeight) goTo(done);
+    try { done.focus({ preventScroll: true }); } catch (err) { done.focus(); }
+    return false;
+  });
+})();
+
+/* desktop: the sidebar is taller than the screen now that it holds the form, so it sticks by its bottom edge
+   (scrolls with the page until Key details and the warranty note are in view, then holds) instead of hiding them */
+(function () {
+  var a = document.querySelector('.detailside');
+  if (!a) return;
+  var mq = matchMedia('(min-width:901px)');
+  function fit() {
+    if (!mq.matches) { a.style.top = ''; return; }
+    var h = a.offsetHeight, vh = window.innerHeight;
+    a.style.top = (h + 40 > vh ? Math.round(vh - h - 20) : 20) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(a);
 })();
 
 </script>

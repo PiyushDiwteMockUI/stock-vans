@@ -220,3 +220,126 @@
     });
   });
 })();
+
+/* Van page enquiry form (15 Oct 2026). Posts to ActiveCampaign form 47 the same way as the /stock/ form in app.js:
+   same fields, same Ad Source pattern ('Stock Vans page | intent | Van: WLxxxx Name ...'), same GA4 / dataLayer / Meta events,
+   with the van fixed to this page. On phones the panel moves below the Where it is box. */
+(function () {
+  var box = document.querySelector('.side-enq');
+  if (!box) return;
+  var f = box.querySelector('.se-form'), done = box.querySelector('.se-done');
+  var where = document.querySelector('.vp-where'), facts = document.querySelector('.detailside .side-facts');
+  var mq = matchMedia('(max-width:900px)');
+  function place() {
+    if (mq.matches && where) { where.parentNode.insertBefore(box, where.nextSibling); box.classList.add('is-mobile'); }
+    else if (facts) { facts.parentNode.insertBefore(box, facts); box.classList.remove('is-mobile'); }
+  }
+  place();
+  if (mq.addEventListener) mq.addEventListener('change', place);
+
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('[data-enq-intent]');
+    if (!a) return;
+    e.preventDefault();
+    var want = a.getAttribute('data-enq-intent');
+    var r = want ? f.querySelector('input[name="enquiry-type"][value="' + want + '"]') : null;
+    if (r) r.checked = true;
+    goTo(box);
+    setTimeout(function () { var fn = f.querySelector('[name="first-name"]'); if (fn) fn.focus(); }, reduce ? 0 : 700);
+  });
+
+  // Scroll so el sits near the top of the screen. On desktop the sidebar is sticky, so measure where el sits
+  // with sticky switched off (its real place in the page) instead of where it happens to be drawn right now.
+  function goTo(el) {
+    var aside = el.closest('.detailside'), y;
+    if (aside && !box.classList.contains('is-mobile')) {
+      var pos = aside.style.position, top = aside.style.top;
+      aside.style.position = 'relative'; aside.style.top = '0px';
+      y = el.getBoundingClientRect().top + window.scrollY;
+      aside.style.position = pos; aside.style.top = top;
+    } else {
+      y = el.getBoundingClientRect().top + window.scrollY;
+    }
+    window.scrollTo({ top: Math.max(0, y - 110), behavior: reduce ? 'auto' : 'smooth' });
+  }
+
+  f.addEventListener('input', function (e) {
+    var w = e.target.closest('.se-f');
+    if (w) { w.classList.remove('is-err'); e.target.removeAttribute('aria-invalid'); }
+  });
+  f.addEventListener('change', function (e) {
+    var w = e.target.closest('.se-f');
+    if (w) { w.classList.remove('is-err'); e.target.removeAttribute('aria-invalid'); }
+  });
+
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var g = function (n) { return f.querySelector('[name="' + n + '"]'); };
+    var first = null;
+    ['first-name', 'last-name', 'email', 'phone', 'state'].forEach(function (n) {
+      var el = g(n), v = (el.value || '').trim();
+      var bad = !v || (n === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) || (n === 'phone' && v.replace(/\D/g, '').length < 8);
+      el.closest('.se-f').classList.toggle('is-err', bad);
+      if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+      if (bad && !first) first = el;
+    });
+    if (first) { first.focus(); return false; }
+    var phone = g('phone').value.replace(/\s+/g, '');
+    if (/^0\d{9}$/.test(phone)) phone = '+61' + phone.slice(1);
+    // AC field 27 has a combined NSW/ACT option (same map as app.js)
+    var stateMap = { 'New South Wales': 'New South Wales / ACT', 'Australian Capital Territory': 'New South Wales / ACT' };
+    var stateVal = stateMap[g('state').value] || g('state').value;
+    var vanTxt = f.getAttribute('data-vantxt');
+    var intentEl = f.querySelector('[name="enquiry-type"]:checked');
+    var intent = intentEl ? intentEl.value : 'Call back';
+    var msg = (g('message').value || '').trim();
+    var trade = g('trade-in').checked;
+    var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt + (trade ? ' | Trade-in: yes' : '') +
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + ' | Newsletter: yes | Form: van page';
+    var post = document.createElement('form');
+    post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
+    post.target = 'ac_sink'; post.style.display = 'none';
+    var H = { u: '47', f: '47', s: '', c: '0', m: '0', act: 'sub', v: '2', or: f.getAttribute('data-or'),
+      firstname: g('first-name').value.trim(), lastname: g('last-name').value.trim(), email: g('email').value.trim(),
+      phone: phone, 'field[27]': stateVal, 'field[86]': ad };
+    for (var k in H) {
+      var i = document.createElement('input');
+      i.type = 'hidden'; i.name = k; i.value = H[k];
+      post.appendChild(i);
+    }
+    document.body.appendChild(post); post.submit();
+    try {
+      if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt, enquiry_type: intent, form_location: 'van page' });
+      /* GTM-readable event for the Tracklution forwarder (Lead + ContactInfo), same shape as app.js */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'stock_vans_enquiry', form_name: 'Stock van enquiry', lead_source: 'Stock Vans page', van: vanTxt, enquiry_type: intent, page_path: location.pathname,
+        user: { email: g('email').value.trim(), phone: phone, firstName: g('first-name').value.trim(), lastName: g('last-name').value.trim() } });
+      if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt, enquiry_type: intent });
+    } catch (err) {}
+    var nm = done.querySelector('.se-done-name');
+    if (nm) nm.textContent = ', ' + g('first-name').value.trim();
+    f.hidden = true; done.hidden = false;
+    var rect = done.getBoundingClientRect();
+    if (rect.top < 90 || rect.bottom > window.innerHeight) goTo(done);
+    try { done.focus({ preventScroll: true }); } catch (err) { done.focus(); }
+    return false;
+  });
+})();
+
+/* desktop: the sidebar is taller than the screen now that it holds the form, so it sticks by its bottom edge
+   (scrolls with the page until Key details and the warranty note are in view, then holds) instead of hiding them */
+(function () {
+  var a = document.querySelector('.detailside');
+  if (!a) return;
+  var mq = matchMedia('(min-width:901px)');
+  function fit() {
+    if (!mq.matches) { a.style.top = ''; return; }
+    var h = a.offsetHeight, vh = window.innerHeight;
+    a.style.top = (h + 40 > vh ? Math.round(vh - h - 20) : 20) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  if (window.ResizeObserver) new ResizeObserver(fit).observe(a);
+})();

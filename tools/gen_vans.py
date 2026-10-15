@@ -10,6 +10,7 @@ ASSET_V = hashlib.md5(open('assets/site.css','rb').read() + open('assets/vanpage
 
 src = open('data.js').read()
 DATA = json.loads(re.search(r'const DATA = ([\s\S]*?);\s*const OR_TOKEN', src).group(1))
+OR_TOKEN = re.search(r"const OR_TOKEN = '([^']+)'", src).group(1)
 idx = open('index.html').read()
 header = re.search(r'<!--WLHEADER-->([\s\S]*?)<!--/WLHEADER-->', idx).group(1)
 footer = re.search(r'<!--WLFOOTER-->([\s\S]*?)<!--/WLFOOTER-->', idx).group(1)
@@ -208,6 +209,47 @@ def spec_sections(v):
         </div>'''.replace('|G|', chr(39)+'Gordita'+chr(39)))
     return ''.join(out)
 
+def enq_form(v):
+    """Sidebar enquiry form (15 Oct 2026, Piyush: replace the two buttons with a branded form, specs below it).
+    Posts to ActiveCampaign form 47 exactly like the /stock/ form (vanpage.js), with the van fixed to this page.
+    data-vantxt matches app.js vanTxt ('WLxxxx ' + fullName) so message 262's in_string('Van: WLxxxx') blocks still fire."""
+    st = ''.join(f'<option value="{val}">{lbl}</option>' for val, lbl in [
+        ('Victoria', 'Victoria'), ('New South Wales / ACT', 'New South Wales / ACT'), ('Queensland', 'Queensland'),
+        ('South Australia', 'South Australia'), ('Western Australia', 'Western Australia'), ('Tasmania', 'Tasmania'),
+        ('Northern Territory', 'Northern Territory')])
+    chips = ''.join(f'<label class="se-chip"><input type="radio" name="enquiry-type" value="{x}"{" checked" if i == 0 else ""}><span>{x}</span></label>'
+                    for i, x in enumerate(['Call back', 'Book a viewing', 'Get a quote', 'Hold this van']))
+    def fld(fid, name, label, typ, ac, err, extra='', ph=''):
+        return (f'<div class="se-f"><label for="{fid}">{label}<span class="se-req" aria-hidden="true">*</span></label>'
+                f'<input id="{fid}" name="{name}" type="{typ}" autocomplete="{ac}" placeholder="{ph or label}" required aria-describedby="{fid}-err"{extra}>'
+                f'<span class="se-err" id="{fid}-err">{err}</span></div>')
+    return (f'<div class="side-enq" id="enquire-van">'
+            f'<div class="se-kick">Stock no. {v["chassis"]}</div>'
+            f'<h2 class="av se-title">Enquire about this van</h2>'
+            f'<p class="se-sub">Leave your details and our team will be in touch within 24 hours on business days.</p>'
+            f'<form class="se-form" action="#" method="post" novalidate data-van="{v["chassis"]}" data-vantxt="{v["chassis"]} {full_name(v)}" data-or="{OR_TOKEN}">'
+            f'<div class="se-row">'
+            + fld('se-fn', 'first-name', 'First name', 'text', 'given-name', 'Tell us your first name.')
+            + fld('se-ln', 'last-name', 'Last name', 'text', 'family-name', 'Tell us your last name.')
+            + '</div>'
+            + fld('se-em', 'email', 'Email', 'email', 'email', 'Add an email we can reply to.', ' spellcheck="false"', 'you@example.com')
+            + fld('se-ph', 'phone', 'Phone', 'tel', 'tel', 'Add a phone number so we can call you.', ' inputmode="tel"', 'Phone number')
+            + f'<div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span></label>'
+              f'<select id="se-st" name="state" required aria-describedby="se-st-err"><option value="" selected disabled>Select your state</option>{st}</select>'
+              f'<span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div>'
+            + f'<fieldset class="se-chips"><legend>I would like to</legend><div class="se-chipgrid">{chips}</div></fieldset>'
+            + f'<div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label>'
+              f'<textarea id="se-msg" name="message" rows="2" placeholder="Finance, timing or questions about the van"></textarea></div>'
+            + f'<label class="se-check"><input type="checkbox" name="trade-in"><span>I have a van to trade in</span></label>'
+            + f'<button type="submit" class="se-submit">Send enquiry</button>'
+            + f'<p class="se-fine">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>'
+            + f'</form>'
+            + f'<div class="se-done" hidden tabindex="-1"><div class="se-tick" aria-hidden="true"></div>'
+              f'<div class="av se-done-t">Thanks<span class="se-done-name"></span></div>'
+              f'<p class="se-sub">Your enquiry for {v["chassis"]} is on its way. Our team will be in touch within 24 hours on business days.</p></div>'
+            + f'<a class="se-call" href="tel:+61399586708">Prefer to talk? <span>Call (03) 9958 6708</span></a>'
+            + f'</div>')
+
 def van_page(v):
     name = full_name(v)
     clr = int(v.get('year') or 2026) < 2026
@@ -303,35 +345,14 @@ def van_page(v):
       </div>
       <p style="margin:8px 0 12px;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
       <div class="vpb-ctas">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire now</a>
+        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="#enquire-van" data-enq-intent="">Enquire now</a>
         <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
       </div>
     </div>
     <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
     {tow}
-  </div>
-  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
-    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
-      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
-        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
-        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
-        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
-        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
-      </div>
-      <div class="side-ctas" style="padding:20px 22px;display:flex;flex-direction:column;gap:9px">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="{enq}">Enquire about this van</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
-      </div>
-      <div class="side-facts" style="padding:0 22px 22px">{facts}</div>
-    </div>
-    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
-      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
-    </div>
-  </aside>
-</div>
-<div class="wrap shell vp-lower" style="display:block;padding:8px 0 0">
     {floor}
-    <div style="margin-bottom:10px">
+    <div style="margin-bottom:38px" class="vp-specs">
       <h2 class="av spec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Specifications</h2>
       <p style="margin:0 0 6px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">{"Specification for this van as built, including fitted upgrades." if v.get('spec_source') == 'ana' else f"Specification for this van, based on the {v['model']} range build. Confirm fitted upgrades with our team."}</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 6px">{incl}</div>
@@ -344,7 +365,7 @@ def van_page(v):
       </div>
       <div class="spec-tabs">{spec_glance(v)}{spec_sections(v)}</div>
     </div>
-    <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:38px 0">
+    <div style="background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:26px;margin:0 0 38px" class="vp-where">
       <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between">
         <div style="min-width:0">
           <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
@@ -352,11 +373,29 @@ def van_page(v):
           <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
         </div>
         <div class="wi-btns" style="display:flex;flex-wrap:wrap;gap:10px;flex:none;align-items:stretch">
-          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="{enq}">Book a viewing</a>
+          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="Book a viewing">Book a viewing</a>
           <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
         </div>
       </div>
     </div>
+  </div>
+  <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
+    <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
+      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
+        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
+        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
+        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
+        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
+      </div>
+      {enq_form(v)}
+      <div class="side-facts"><h3 class="av sf-head">Key details</h3>{facts}</div>
+    </div>
+    <div style="margin-top:14px;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:18px">
+      <div style="font:400 13.5px/1.65 'Gordita',sans-serif;color:var(--body)">Three year factory-backed warranty and aftersales support wherever you are in the country. Same as a custom build.</div>
+    </div>
+  </aside>
+</div>
+<div class="wrap shell vp-lower" style="display:block;padding:8px 0 0">
     <div class="vp-simblock" style="padding-bottom:66px">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:20px">
         <h2 class="av sec-h2" style="margin:0;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Similar vans in stock</h2>
@@ -367,6 +406,7 @@ def van_page(v):
   </div>
 </div>
 ''' + reviewsV + nextV + footerV + f'''
+<iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 <script src="../assets/ref/js/reviews.js?v={ASSET_V}"></script>
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
 </body>
