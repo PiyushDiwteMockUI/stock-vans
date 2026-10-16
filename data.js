@@ -1185,8 +1185,14 @@ const DATA = {
    "layout": "Family",
    "state": "Victoria",
    "used": false,
-   "price": 209999.0,
+   "price": 179999.0,
    "images": [
+    "assets/vans/WL1184/01.jpg",
+    "assets/vans/WL1184/02.jpg",
+    "assets/vans/WL1184/03.jpg",
+    "assets/vans/WL1184/04.jpg",
+    "assets/vans/WL1184/05.jpg",
+    "assets/vans/WL1184/06.jpg",
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17992553.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A10Z&sr=b&sp=r&sig=TPy7W3qfcgWFyPNeoPknJ836dyw8KMcizU6jreJWVbI%3D",
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17992577.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A10Z&sr=b&sp=r&sig=ac7TVibHcXF%2FgRcHoM9LVti0FeXnJD3t6ooLEl7qkMc%3D",
     "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/17992560.jpg?sv=2023-11-03&se=2027-01-04T12%3A41%3A10Z&sr=b&sp=r&sig=g0mPDMyupSnGoqpbqyTrcow4%2BZk2BkDTt4XSUgmbflU%3D",
@@ -1208,7 +1214,7 @@ const DATA = {
    "sleeps": 6,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2304EW-F4-5.png",
-   "was": null,
+   "was": 195600.0,
    "floorplans": [
     "assets/layouts/2304EW-F4-5_tilt.png",
     "assets/layouts/2304EW-F4-5_top.png",
@@ -1293,147 +1299,6 @@ const DATA = {
       "Shower screen frame: Silver, black or white",
       "Sink: Black or white round ceramic ensuite bowl",
       "Tapware: Chrome bathroom mixer tap"
-     ]
-    ],
-    [
-     "Optional upgrades fitted",
-     [
-      "Fitted upgrades for this van to be confirmed with our team."
-     ]
-    ]
-   ],
-   "spec_source": "range"
-  },
-  {
-   "chassis": "WL1222",
-   "model": "XTR",
-   "code": "1906EW-F3.0",
-   "name": "XTR 1906 East-West Triple Bunk Family",
-   "year": "2026",
-   "length": "19'06\"",
-   "layout": "Family",
-   "state": "Victoria",
-   "used": false,
-   "price": 211562.0,
-   "images": [
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330034.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=PExH6r4TX2ZTLYSFT%2F51hizkXSe7rNen6g2XCFUVIJo%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330031.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=649q6M%2BLxAvu7x%2FHBxe2e9FR81C8FYbEC11KklSr0rs%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330032.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=kgk2OsmTD1%2BiL%2FaOTkjZffC7ZD0a1QSnlTvSIkFek9k%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330033.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=%2FE2W7b0udc6qImHDYDNrSLjFh7gfUPQzxo5vpCIgC08%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330035.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=dATW6TRaeAI3e5mMwoFKcJDAPUBGc7MIYeTCoLwSvIA%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330036.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=Ao1%2F3ch2dvtH2tqwFBrizNKR8CDZfKEAoVBu%2Bfmhk8c%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330037.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=rYBh3pPsrlaQOVdPPosN8Oj%2BOt8M6U%2F4X2AfleHt9i0%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330038.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=rhRDkaYkliB%2FstaWHoeSWHgcL%2Bmytlr4ud8YpwNtREA%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330039.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=C3VxjMp%2F2NAzJpm8ft7CvPNIwnN9hMnAA4YFKjhKvvg%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330040.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=9XiU3eGS2QTsNCRTVnSID9xcE1xUtJx7n9PYoym48Q0%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330041.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=zc0W2CABmII1vrDMPJsD3pFS6rjZhHD%2FjV%2BaZjSHWFo%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330042.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=ami1bjG0Hm9eRueSIW7OwgjreK4WEwXvUVBHyq26v9I%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330043.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=sTqIs9Ae5nxFW%2FXU5bDa65zc49Lx8WiFrNFcHLuwbXU%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330044.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=TXiFHsyofJoscTjUXlPXVpl2ol3gfhDLjwbnM72oMn0%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330045.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=pQ5HNSX79IIF9Efli5LHVdTdCx1HFRy6HUlega0CFys%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330046.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=ibZs%2B1a7P%2BQviqDhrrZ4l5vXCeEFb%2BFPcUHd%2BJrW39Y%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330047.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=pe%2ByiCCwFyXSlPqfN24K8KNz8TG4AIT%2FgtRpD4J5Uac%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330048.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=R%2FIwCt3e%2F4WSHHzs9t%2FbmyzbfLlEpZ1a4ZjE%2Fb%2FQJa4%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330049.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=84TQRMje8M%2F4S1x0HQrhf65Vhbeacv%2BZXNUMzp3AJFo%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330050.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=j0nvUjjQjjL%2Fc3bb2r4CLSCAD2Opo8P2GJeu117ZmqU%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330051.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=qNORKKSKIbI2cwta99OA929uCbe3xayvfpbaRpbKIdA%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330052.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=EispP2RXv9Ifq%2BuG2qiRUSD95mdI5XVtjF%2BCjfD6jEU%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330053.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=0SJrGIUd6ZUfqnVkpwCnbQ0b0dVkZM74Hb%2FOCZIg3Qs%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330054.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=CToSvh5Jx%2FfpJcUaWi939B%2Fjp%2BnyOpIpjGFgwmmrr7I%3D",
-    "https://jealstorage.blob.core.windows.net/easycarsblobcontainer/383/stockphoto/18330055.jpg?sv=2023-11-03&se=2027-01-04T12%3A50%3A29Z&sr=b&sp=r&sig=hWkF8mxv9WK5yKvS4mT5w6qCXzbGI4IvBK7rgst%2F6EE%3D"
-   ],
-   "listing": "https://www.outboundrvs.com.au/stock/2026-wonderlandrv-xtr----550764",
-   "tare": 3201,
-   "atm": 4500,
-   "ball": 265,
-   "sleeps": 5,
-   "axle": "Tandem axle",
-   "floorplan": "assets/layouts/1906EW-F3-0.png",
-   "was": null,
-   "floorplans": [
-    "assets/layouts/1906EW-F3-0_tilt.png",
-    "assets/layouts/1906EW-F3-0_top.png",
-    "assets/layouts/1906EW-F3-0_tag.png"
-   ],
-   "travel": 8.5,
-   "spec_override": [
-    [
-     "Construction",
-     [
-      "Composite one-piece wrap-around front, roof and back wall, with SPR aluminium side frames",
-      "PP honeycomb floor",
-      "850mm X-Guard PU textured flat plate in black",
-      "Black 1750 × 622 entry door with three locks, separate midge-screen security door and concertina blind"
-     ]
-    ],
-    [
-     "Chassis & Suspension",
-     [
-      "6″ extended A-frame, 12″ truss chassis",
-      "Tandem axle",
-      "Cruisemaster ATX Level 5 BCS Airbag Suspension System, 4.5T Load Capacity",
-      "Disc brakes",
-      "Chassis finish: Textured 2K PU black coating or Hot-dip galvanised",
-      "DO45 by Cruisemaster recessed and 4.5T chains",
-      "BOS 60mm black ops 3 rib jockey unit with 8″ double wheel or BOS 50mm 3 rib jockey unit with 8″ double wheel",
-      "Drop down corner stabilisers",
-      "Double aluminium step",
-      "Rear bumper box with drawer, 2 x jerry can holders, woodbox and taillights (where available)",
-      "2 x chassis skid plates and recovery points",
-      "2 x rear bar water tank/jerry can holders"
-     ]
-    ],
-    [
-     "Electrical",
-     [
-      "One of: Victron 12V off-grid system with Touch70 display. Includes dual 50A MPPT, 50A DC charger, 120A AC / 3000VA inverter-charger, 1000W solar, 900Ah lithium battery, with a behind-the-fridge installation; or Victron 24V off-grid system with Touch70 display. Features 100/50A MPPT, 30A DC charger, 120A / 5000VA inverter-charger, 1000W solar, and 11kWh battery, with a behind-the-fridge installation",
-      "1 x grey Anderson plug, 1 x yellow portable solar input",
-      "Dual 240V GPOs above tunnel boot and picnic table",
-      "6 External Lights: 17″ light bars front and rear, 3 x insect repellent 2 stage LED lights on doorside including the BBQ and 1 on roadside",
-      "Kitchen sink light, Bathroom sink light, Shower light, Roof LED 3″ downlights",
-      "Media: Fusion audio and speakers (RA670) includes AM-FM radio, AUX, USB, Bluetooth and smartphone connectivity, 2 x Fusion internal speakers, Fusion soundpanel external speaker",
-      "Mood lighting and step light: Amber",
-      "Starlink internet provision",
-      "Tow plug: 12 pin",
-      "24″ Smart TV",
-      "Omni Winegard / Cowfish TV antenna",
-      "At seats, robes, bunks and external entertainment pack"
-     ]
-    ],
-    [
-     "Plumbing",
-     [
-      "2 x 90L to 100L fresh water tanks",
-      "1 x 90L drinking water tank",
-      "1 x 100L grey water tank (at rear)",
-      "Grey water bypass",
-      "Separate water tank filler & cap per tank (where available)",
-      "Water tank gauge: 1 per tank",
-      "1 x external shower",
-      "2 x 4kg powdercoated gas bottles",
-      "1 x gas bayonet plus 1 x cold tap and 1 x hot tap at tunnel boot",
-      "Hydronic diesel hot water service and heater (gasless)"
-     ]
-    ],
-    [
-     "Appliances",
-     [
-      "Dometic FreshJet Z, 7 series lite 3kW inverter roof-top air conditioner",
-      "Multi-function cooker, fryer, grill & microwave in base cupboards & portable induction cooktop",
-      "220L dual-hinge compressor fridge (2 way)",
-      "Swift flush mount recessed rangehood with dual fan",
-      "3kg to 3.5kg washing machine",
-      "2 x black or white Sirocco II fans",
-      "Dometic 8700 grey awning with black arms",
-      "Outdoor pantry with drop down picnic table, GPO & USB, entertainment pack and airbag controls if applicable",
-      "K5i Weber BBQ provision, sink & portable induction in black",
-      "CS pressure, 12V powered dust reduction",
-      "1 x matching spare wheel with holder",
-      "Towel hooks, hand towel rails, bath towel rails, black",
-      "2 x Ranger 12V shower hatches with LED lights, exhaust fans and removable fly screens",
-      "Shower screen frame: Silver, black or white",
-      "Sink: Ceramic black or white ensuite bowl, round",
-      "Tapware: Bathroom mixer tap in brushed stainless, black, white, brass gold and rose gold colours."
      ]
     ],
     [
