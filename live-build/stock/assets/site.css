@@ -207,7 +207,7 @@ main.list{min-height:100vh}
 }
 
 @media (max-width:900px){
-  .vp-strip{grid-template-columns:repeat(4,1fr)!important}
+  .vp-strip{grid-template-columns:repeat(4,minmax(0,1fr))!important}
   .vp-cell{padding:14px 8px!important;text-align:center}
   .vp-celll{font-size:8.5px!important;letter-spacing:.16em!important;margin-bottom:7px!important}
   .vp-cellv{font-size:13px!important;line-height:1.2!important}
@@ -269,16 +269,29 @@ a.btn-line{color:var(--svink)}
   .sim-row > *{flex:0 0 80%;scroll-snap-align:start;min-width:0}
 }
 
-/* buy strip under the gallery: desktop/tablet show price + one Call now button on the right; phones stack the CTAs and hide the sidebar price block */
+/* price box under the gallery: phones only (v4, 18 Oct 2026). Desktop shows the sidebar price alone; phones hide the sidebar price block, and the Hold bar + the form below carry the actions */
 .vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px 20px;margin-bottom:24px}
 .vpb-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.vpb-call{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
-.vpb-ctas{display:none}
+@media (min-width:901px){
+  .vp-mobilebuy{display:none}
+}
 @media (max-width:900px){
-  .vpb-call{display:none}
-  .vpb-ctas{display:flex;gap:8px;margin-top:14px}
-  .vpb-ctas a{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px}
+  .vp-mobilebuy{padding:16px 18px 12px}
   .detailside .side-price,.detailside .side-ctas{display:none}
+}
+/* hold line under the price, in both price boxes */
+/* price disclaimer, under the form's orange button */
+.side-enq .se-disc{margin:10px 0 22px;font:400 10.5px/1.5 'Gordita',sans-serif;color:#8A939A}
+/* Where it is: build link is a text link beside Book a viewing */
+/* phone action bar: Call + Hold this van, fixed to the bottom; slides away while the form is on screen */
+.vp-bar{display:none}
+@media (max-width:900px){
+  body.vp-has-bar{padding-bottom:78px}
+  .vp-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #E4E1DC;box-shadow:0 -8px 22px rgba(0,0,0,.09);transition:transform .25s ease}
+  .vp-bar.is-off{transform:translateY(110%)}
+  .vp-bar a{display:flex;align-items:center;justify-content:center;min-height:50px;box-sizing:border-box;text-decoration:none;font:400 13.5px/1.1 'aviano-sans',sans-serif;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:0 12px;border-radius:0}
+  .vp-bar a.vp-bar-call{flex:0 0 34%;background:#fff;color:var(--svink);border:1px solid var(--svink)}
+  .vp-bar a.vp-bar-hold{flex:1;background:var(--svorange);color:#fff;border:1px solid var(--svorange)}
 }
 
 /* value tiles: span the page column edge to edge, matching the header ruler */
@@ -449,8 +462,18 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 .side-enq .se-call{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;min-height:44px;margin:6px 0 0;padding:0 0 14px;font:400 13px/1.3 'Gordita',sans-serif;color:var(--body);text-decoration:none}
 .side-enq .se-call span{font-weight:500;color:var(--svink);border-bottom:1px solid var(--svorange)}
 .side-enq .se-call:hover span{color:var(--olink)}
+/* v3 form (18 Oct 2026): tap-to-call button under the sub-line, choices above the fields, hold chip full width, helper hints */
+.side-enq .se-sub{margin-bottom:16px}
+.side-enq .se-callbtn{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;min-height:50px;margin:0 0 18px;padding:6px 10px;box-sizing:border-box;border:1px solid var(--svink);border-radius:0;color:var(--svink);background:#fff;text-decoration:none;font:500 14px/1.2 'Gordita',sans-serif;text-align:center}
+.side-enq .se-callbtn-l{color:var(--mut);font-weight:400}
+@media (hover:hover){.side-enq .se-callbtn:hover{background:var(--svink)}.side-enq .se-callbtn:hover span{color:#fff}}
+.side-enq .se-chipgrid{gap:8px}
+.side-enq .se-chip-hold{grid-column:1 / -1}
+.side-enq .se-chip span{min-height:46px;font-size:13.5px}
+.side-enq .se-f label .se-hint{margin-left:6px;font-size:11px;color:var(--mut)}
+.side-enq .se-fine{margin-bottom:18px}
 /* phones (Piyush 15 Oct): the form sits below the Where it is box as its own card; the price box keeps Enquire now (jumps here) + Call */
-.side-enq.is-mobile{border:1px solid var(--line2);border-radius:4px;padding:22px 20px 2px;margin:0 0 38px;scroll-margin-top:84px}
+.side-enq.is-mobile{border:1px solid var(--line2);border-radius:0;padding:22px 20px 2px;margin:0 0 30px;scroll-margin-top:84px}
 /* key details: its own cream block under the form, full-width rule and a heading, so the form and the spec rows read as two sections */
 .detailside .side-facts{background:var(--cream);border-top:1px solid var(--line2);padding:22px 22px 18px}
 .detailside .side-facts .sf-head{margin:0 0 10px;padding:0;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
@@ -465,5 +488,4 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 /* van pages in WP: the #wlstock wrapper's overflow-x:hidden makes it a scroll box, which stops position:sticky; clip hides sideways overflow the same way without that */
 #wlstock:has(.detailside){overflow-x:clip}
 @media (max-width:420px){.side-enq.is-mobile .se-title,.side-enq.is-mobile .se-done-t{font-size:clamp(15px,5.4vw,18px);overflow-wrap:anywhere}}
-/* phones: the two price-box buttons stack full width so "Call (03) 9958 6708" stays on one line */
-@media (max-width:480px){.vpb-ctas{flex-direction:column}.vpb-ctas a{flex:none;width:100%;white-space:nowrap;min-height:50px}}
+

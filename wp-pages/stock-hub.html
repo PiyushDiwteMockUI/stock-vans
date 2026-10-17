@@ -216,7 +216,7 @@ html, #wlstock{margin:0;padding:0}
 }
 
 @media (max-width:900px){
-  #wlstock .vp-strip{grid-template-columns:repeat(4,1fr)!important}
+  #wlstock .vp-strip{grid-template-columns:repeat(4,minmax(0,1fr))!important}
   #wlstock .vp-cell{padding:14px 8px!important;text-align:center}
   #wlstock .vp-celll{font-size:8.5px!important;letter-spacing:.16em!important;margin-bottom:7px!important}
   #wlstock .vp-cellv{font-size:13px!important;line-height:1.2!important}
@@ -281,13 +281,26 @@ html, #wlstock{margin:0;padding:0}
 
 #wlstock .vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px 20px;margin-bottom:24px}
 #wlstock .vpb-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-#wlstock .vpb-call{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
-#wlstock .vpb-ctas{display:none}
+@media (min-width:901px){
+  #wlstock .vp-mobilebuy{display:none}
+}
 @media (max-width:900px){
-  #wlstock .vpb-call{display:none}
-  #wlstock .vpb-ctas{display:flex;gap:8px;margin-top:14px}
-  #wlstock .vpb-ctas a{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px}
+  #wlstock .vp-mobilebuy{padding:16px 18px 12px}
   #wlstock .detailside .side-price, #wlstock .detailside .side-ctas{display:none}
+}
+
+
+#wlstock .side-enq .se-disc{margin:10px 0 22px;font:400 10.5px/1.5 'Gordita',sans-serif;color:#8A939A}
+
+
+#wlstock .vp-bar{display:none}
+@media (max-width:900px){
+  body.vp-has-bar{padding-bottom:78px}
+  #wlstock .vp-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #E4E1DC;box-shadow:0 -8px 22px rgba(0,0,0,.09);transition:transform .25s ease}
+  #wlstock .vp-bar.is-off{transform:translateY(110%)}
+  #wlstock .vp-bar a{display:flex;align-items:center;justify-content:center;min-height:50px;box-sizing:border-box;text-decoration:none;font:400 13.5px/1.1 'aviano-sans',sans-serif;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:0 12px;border-radius:0}
+  #wlstock .vp-bar a.vp-bar-call{flex:0 0 34%;background:#fff;color:var(--svink);border:1px solid var(--svink)}
+  #wlstock .vp-bar a.vp-bar-hold{flex:1;background:var(--svorange);color:#fff;border:1px solid var(--svorange)}
 }
 
 
@@ -459,7 +472,17 @@ html, #wlstock{margin:0;padding:0}
 #wlstock .side-enq .se-call span{font-weight:500;color:var(--svink);border-bottom:1px solid var(--svorange)}
 #wlstock .side-enq .se-call:hover span{color:var(--olink)}
 
-#wlstock .side-enq.is-mobile{border:1px solid var(--line2);border-radius:4px;padding:22px 20px 2px;margin:0 0 38px;scroll-margin-top:84px}
+#wlstock .side-enq .se-sub{margin-bottom:16px}
+#wlstock .side-enq .se-callbtn{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;min-height:50px;margin:0 0 18px;padding:6px 10px;box-sizing:border-box;border:1px solid var(--svink);border-radius:0;color:var(--svink);background:#fff;text-decoration:none;font:500 14px/1.2 'Gordita',sans-serif;text-align:center}
+#wlstock .side-enq .se-callbtn-l{color:var(--mut);font-weight:400}
+@media (hover:hover){#wlstock .side-enq .se-callbtn:hover{background:var(--svink)}#wlstock .side-enq .se-callbtn:hover span{color:#fff}}
+#wlstock .side-enq .se-chipgrid{gap:8px}
+#wlstock .side-enq .se-chip-hold{grid-column:1 / -1}
+#wlstock .side-enq .se-chip span{min-height:46px;font-size:13.5px}
+#wlstock .side-enq .se-f label .se-hint{margin-left:6px;font-size:11px;color:var(--mut)}
+#wlstock .side-enq .se-fine{margin-bottom:18px}
+
+#wlstock .side-enq.is-mobile{border:1px solid var(--line2);border-radius:0;padding:22px 20px 2px;margin:0 0 30px;scroll-margin-top:84px}
 
 #wlstock .detailside .side-facts{background:var(--cream);border-top:1px solid var(--line2);padding:22px 22px 18px}
 #wlstock .detailside .side-facts .sf-head{margin:0 0 10px;padding:0;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
@@ -475,7 +498,6 @@ html, #wlstock{margin:0;padding:0}
 #wlstock:has(.detailside){overflow-x:clip}
 @media (max-width:420px){#wlstock .side-enq.is-mobile .se-title, #wlstock .side-enq.is-mobile .se-done-t{font-size:clamp(15px,5.4vw,18px);overflow-wrap:anywhere}}
 
-@media (max-width:480px){#wlstock .vpb-ctas{flex-direction:column}#wlstock .vpb-ctas a{flex:none;width:100%;white-space:nowrap;min-height:50px}}
 
 </style>
 <style>

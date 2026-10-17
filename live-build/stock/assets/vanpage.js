@@ -223,19 +223,38 @@
 
 /* Van page enquiry form (15 Oct 2026). Posts to ActiveCampaign form 47 the same way as the /stock/ form in app.js:
    same fields, same Ad Source pattern ('Stock Vans page | intent | Van: WLxxxx Name ...'), same GA4 / dataLayer / Meta events,
-   with the van fixed to this page. On phones the panel moves below the Where it is box. */
+   with the van fixed to this page. On phones the panel moves directly under the price box, and a Call / Hold bar is fixed to the bottom. */
 (function () {
   var box = document.querySelector('.side-enq');
   if (!box) return;
   var f = box.querySelector('.se-form'), done = box.querySelector('.se-done');
-  var where = document.querySelector('.vp-where'), facts = document.querySelector('.detailside .side-facts');
+  var specs = document.querySelector('.vp-specs'), facts = document.querySelector('.detailside .side-facts');
   var mq = matchMedia('(max-width:900px)');
   function place() {
-    if (mq.matches && where) { where.parentNode.insertBefore(box, where.nextSibling); box.classList.add('is-mobile'); }
-    else if (facts) { facts.parentNode.insertBefore(box, facts); box.classList.remove('is-mobile'); }
+    // phones: the form sits after the Specifications block (Piyush, 18 Oct 2026); the bottom bar jumps to it
+    if (mq.matches && specs) { specs.parentNode.insertBefore(box, specs.nextSibling); box.classList.add('is-mobile'); document.body.classList.add('vp-has-bar'); }
+    else if (facts) { facts.parentNode.insertBefore(box, facts); box.classList.remove('is-mobile'); document.body.classList.remove('vp-has-bar'); }
   }
   place();
   if (mq.addEventListener) mq.addEventListener('change', place);
+
+  // Phone bar slides out while the form is at least 25% in view, back when it leaves
+  var bar = document.getElementById('vp-bar');
+  if (bar && window.IntersectionObserver) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { bar.classList.toggle('is-off', e.isIntersecting); });
+    }, { threshold: 0.25 }).observe(box);
+  }
+
+  // Submit button follows the chosen chip (v3, 18 Oct 2026)
+  var sub = f.querySelector('.se-submit'), chassis = sub ? sub.getAttribute('data-chassis') : '';
+  var BTN = { 'Hold this van': 'Hold this van for me', 'Call back': 'Call me back', 'Book a viewing': 'Book my viewing' };
+  function syncBtn() {
+    var c = f.querySelector('input[name="enquiry-type"]:checked');
+    if (sub && c) sub.textContent = BTN[c.value] || BTN['Hold this van'];
+  }
+  syncBtn();
+  f.addEventListener('change', function (e) { if (e.target.name === 'enquiry-type') syncBtn(); });
 
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.addEventListener('click', function (e) {
@@ -244,7 +263,7 @@
     e.preventDefault();
     var want = a.getAttribute('data-enq-intent');
     var r = want ? f.querySelector('input[name="enquiry-type"][value="' + want + '"]') : null;
-    if (r) r.checked = true;
+    if (r) { r.checked = true; syncBtn(); }
     goTo(box);
     setTimeout(function () { var fn = f.querySelector('[name="first-name"]'); if (fn) fn.focus(); }, reduce ? 0 : 700);
   });
@@ -292,17 +311,19 @@
     var stateVal = stateMap[g('state').value] || g('state').value;
     var vanTxt = f.getAttribute('data-vantxt');
     var intentEl = f.querySelector('[name="enquiry-type"]:checked');
-    var intent = intentEl ? intentEl.value : 'Call back';
+    var intent = intentEl ? intentEl.value : 'Hold this van';
     var msg = (g('message').value || '').trim();
-    var trade = g('trade-in').checked;
-    var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt + (trade ? ' | Trade-in: yes' : '') +
-      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + ' | Newsletter: yes | Form: van page';
+    var subscribed = g('subscribe').checked;
+    var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (subscribed ? ' | Newsletter: yes' : '') + ' | Form: van page';
     var post = document.createElement('form');
     post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
     post.target = 'ac_sink'; post.style.display = 'none';
     var H = { u: '47', f: '47', s: '', c: '0', m: '0', act: 'sub', v: '2', or: f.getAttribute('data-or'),
       firstname: g('first-name').value.trim(), lastname: g('last-name').value.trim(), email: g('email').value.trim(),
       phone: phone, 'field[27]': stateVal, 'field[86]': ad };
+    // Subscribe to Marketing (AC field 24, checkbox): sent only when ticked, as the field's single option label
+    if (subscribed) H['field[24][]'] = 'I would like to receive marketing communications with discounts, updates, new releases and more. I understand I can unsubscribe at anytime.';
     for (var k in H) {
       var i = document.createElement('input');
       i.type = 'hidden'; i.name = k; i.value = H[k];
@@ -318,7 +339,11 @@
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt, enquiry_type: intent });
     } catch (err) {}
     var nm = done.querySelector('.se-done-name');
-    if (nm) nm.textContent = ', ' + g('first-name').value.trim();
+    if (nm) nm.textContent = ' ' + g('first-name').value.trim();
+    var dm = done.querySelector('.se-done-msg'), ch = done.getAttribute('data-chassis');
+    if (dm) dm.textContent = intent === 'Hold this van'
+      ? ch + ' is on hold for you for two business days. We will call you the same business day to confirm.'
+      : 'Got it. We will call you about ' + ch + ' the same business day.';
     f.hidden = true; done.hidden = false;
     var rect = done.getBoundingClientRect();
     if (rect.top < 90 || rect.bottom > window.innerHeight) goTo(done);

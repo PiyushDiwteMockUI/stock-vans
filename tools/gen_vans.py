@@ -21,6 +21,9 @@ def rel(html):
     return html.replace('src="assets/', 'src="../assets/').replace('href="assets/', 'href="../assets/')
 headerV, footerV, nextV, reviewsV = rel(header), rel(footer), rel(nextband), rel(reviews)
 
+# Dealer phone: data.js carries no per-dealer phone, so every state uses the Outbound RVs number (VIC/WA stock use it by rule)
+CALL_NUM, CALL_TEL = '(03) 9958 6708', 'tel:+61399586708'
+
 kg = lambda n: format(n, ',').replace(',', ',') + ' kg'
 money = lambda n: 'Enquire for price' if n is None else '$' + format(round(n), ',')
 
@@ -67,6 +70,7 @@ def asrc(u):
 
 DEALER = {'New South Wales': 'Off Grid Outfitters - NSW', 'Queensland': 'Aussie Escape Caravans - QLD',
           'Victoria': 'Outbound RVs - VIC', 'Western Australia': 'Outbound RVs - WA'}
+STATE_ABBR = {'New South Wales': 'NSW', 'Queensland': 'QLD', 'Victoria': 'VIC', 'Western Australia': 'WA', 'South Australia': 'SA', 'Tasmania': 'TAS', 'Northern Territory': 'NT'}
 def dealer(state):
     return DEALER.get(state, state)
 
@@ -217,37 +221,44 @@ def enq_form(v):
         ('Victoria', 'Victoria'), ('New South Wales / ACT', 'New South Wales / ACT'), ('Queensland', 'Queensland'),
         ('South Australia', 'South Australia'), ('Western Australia', 'Western Australia'), ('Tasmania', 'Tasmania'),
         ('Northern Territory', 'Northern Territory')])
-    chips = ''.join(f'<label class="se-chip"><input type="radio" name="enquiry-type" value="{x}"{" checked" if i == 0 else ""}><span>{x}</span></label>'
-                    for i, x in enumerate(['Call back', 'Book a viewing', 'Get a quote', 'Hold this van']))
-    def fld(fid, name, label, typ, ac, err, extra='', ph=''):
-        return (f'<div class="se-f"><label for="{fid}">{label}<span class="se-req" aria-hidden="true">*</span></label>'
+    sel_state = {'New South Wales': 'New South Wales / ACT', 'Australian Capital Territory': 'New South Wales / ACT'}.get(v.get('state'), v.get('state'))
+    st = st.replace(f'<option value="{sel_state}">', f'<option value="{sel_state}" selected>', 1) if sel_state else st
+    st_ph = '<option value="" disabled' + ('' if sel_state and f'value="{sel_state}" selected' in st else ' selected') + '>Select your state</option>'
+    ch = v['chassis']
+    chips = (f'<label class="se-chip se-chip-hold"><input type="radio" name="enquiry-type" value="Hold this van" checked><span>Hold it for me, 48 hours, no deposit</span></label>'
+             f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Call back"><span>Call me back</span></label>'
+             f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label>')
+    def fld(fid, name, label, typ, ac, err, extra='', ph='', hint=''):
+        h = f' <span class="se-opt se-hint">{hint}</span>' if hint else ''
+        return (f'<div class="se-f"><label for="{fid}">{label}<span class="se-req" aria-hidden="true">*</span>{h}</label>'
                 f'<input id="{fid}" name="{name}" type="{typ}" autocomplete="{ac}" placeholder="{ph or label}" required aria-describedby="{fid}-err"{extra}>'
                 f'<span class="se-err" id="{fid}-err">{err}</span></div>')
     return (f'<div class="side-enq" id="enquire-van">'
-            f'<div class="se-kick">Stock no. {v["chassis"]}</div>'
-            f'<h2 class="av se-title">Enquire about this van</h2>'
-            f'<p class="se-sub">Leave your details and our team will be in touch within 24 hours on business days.</p>'
-            f'<form class="se-form" action="#" method="post" novalidate data-van="{v["chassis"]}" data-vantxt="{v["chassis"]} {full_name(v)}" data-or="{OR_TOKEN}">'
-            f'<div class="se-row">'
+            f'<div class="se-kick">Stock no. {ch}</div>'
+            f'<h2 class="av se-title">Hold this van, no deposit</h2>'
+            f'<p class="se-sub">Built and in stock, delivered to any state. Say the word and we hold it for 48 hours.</p>'
+            f'<a class="se-callbtn" href="{CALL_TEL}"><span class="se-callbtn-l">Call about {ch}</span><span class="se-callbtn-n">{CALL_NUM}</span></a>'
+            f'<form class="se-form" action="#" method="post" novalidate data-van="{ch}" data-vantxt="{ch} {full_name(v)}" data-or="{OR_TOKEN}">'
+            + f'<fieldset class="se-chips"><legend>What would you like us to do</legend><div class="se-chipgrid">{chips}</div></fieldset>'
+            + f'<div class="se-row">'
             + fld('se-fn', 'first-name', 'First name', 'text', 'given-name', 'Tell us your first name.')
             + fld('se-ln', 'last-name', 'Last name', 'text', 'family-name', 'Tell us your last name.')
             + '</div>'
             + fld('se-em', 'email', 'Email', 'email', 'email', 'Add an email we can reply to.', ' spellcheck="false"', 'you@example.com')
-            + fld('se-ph', 'phone', 'Phone', 'tel', 'tel', 'Add a phone number so we can call you.', ' inputmode="tel"', 'Phone number')
-            + f'<div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span></label>'
-              f'<select id="se-st" name="state" required aria-describedby="se-st-err"><option value="" selected disabled>Select your state</option>{st}</select>'
+            + fld('se-ph', 'phone', 'Phone', 'tel', 'tel', 'Add a phone number so we can call you.', ' inputmode="numeric"', 'Phone number', 'So we can call you back')
+            + f'<div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span> <span class="se-opt se-hint">So the right dealer calls you</span></label>'
+              f'<select id="se-st" name="state" required aria-describedby="se-st-err">{st_ph}{st}</select>'
               f'<span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div>'
-            + f'<fieldset class="se-chips"><legend>I would like to</legend><div class="se-chipgrid">{chips}</div></fieldset>'
             + f'<div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label>'
-              f'<textarea id="se-msg" name="message" rows="2" placeholder="Finance, timing or questions about the van"></textarea></div>'
-            + f'<label class="se-check"><input type="checkbox" name="trade-in"><span>I have a van to trade in</span></label>'
-            + f'<button type="submit" class="se-submit">Send enquiry</button>'
-            + f'<p class="se-fine">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>'
+              f'<textarea id="se-msg" name="message" rows="2" placeholder="Ask us anything about {ch}, finance or delivery"></textarea></div>'
+            + f'<label class="se-check"><input type="checkbox" name="subscribe" checked><span>Keep me posted on new stock and exclusive offers</span></label>'
+            + f'<button type="submit" class="se-submit" data-chassis="{ch}">Hold this van for me</button>'
+            + f'<p class="se-fine">We reply the same business day. No deposit, nothing to sign.</p>'
+            + f'<p class="se-disc">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>'
             + f'</form>'
-            + f'<div class="se-done" hidden tabindex="-1"><div class="se-tick" aria-hidden="true"></div>'
+            + f'<div class="se-done" hidden tabindex="-1" data-chassis="{ch}"><div class="se-tick" aria-hidden="true"></div>'
               f'<div class="av se-done-t">Thanks<span class="se-done-name"></span></div>'
-              f'<p class="se-sub">Your enquiry for {v["chassis"]} is on its way. Our team will be in touch within 24 hours on business days.</p></div>'
-            + f'<a class="se-call" href="tel:+61399586708">Prefer to talk? <span>Call (03) 9958 6708</span></a>'
+              f'<p class="se-sub se-done-msg"></p></div>'
             + f'</div>')
 
 def van_page(v):
@@ -285,7 +296,7 @@ def van_page(v):
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
         for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Travel length', f"{v['travel']} m" if v.get('travel') else '—', 'Overall towing length'),
                           ('Layout', v['layout'], bunks_note(v) if v['layout'] == 'Family' else 'Two berth touring'),
-                          ('Location', dealer(v['state']), 'Where it is now')])
+                          ('Location', STATE_ABBR.get(v['state'], v['state']), 'With ' + dealer(v['state']).rsplit(' - ', 1)[0])])
     incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in chips(v))
     facts = ''.join(f'''<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
         <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">{k}</span>
@@ -341,15 +352,10 @@ def van_page(v):
           {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
         </div>
       </div>
-      <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61399586708">Call now</a>
       </div>
-      <p style="margin:8px 0 12px;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
-      <div class="vpb-ctas">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="#enquire-van" data-enq-intent="">Enquire now</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
-      </div>
+      <p style="margin:8px 0 0;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
     </div>
-    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
+    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(0,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px">{strip}</div>
     {tow}
     {floor}
     <div style="margin-bottom:38px" class="vp-specs">
@@ -370,22 +376,20 @@ def van_page(v):
         <div style="min-width:0">
           <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
           <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">{dealer(v['state'])}</div>
-          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
+          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call. You can also build your own caravan using our <a href="https://wonderlandrv.com.au/build-your-caravan/" style="color:var(--svink);border-bottom:1px solid var(--svorange);text-decoration:none">configurator</a>.</div>
         </div>
         <div class="wi-btns" style="display:flex;flex-wrap:wrap;gap:10px;flex:none;align-items:stretch">
           <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="Book a viewing">Book a viewing</a>
-          <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
         </div>
       </div>
     </div>
   </div>
   <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
-      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
+      <div class="side-price" style="padding:24px 22px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
         <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
         {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
-        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
       </div>
       {enq_form(v)}
       <div class="side-facts"><h3 class="av sf-head">Key details</h3>{facts}</div>
@@ -406,6 +410,7 @@ def van_page(v):
   </div>
 </div>
 ''' + reviewsV + nextV + footerV + f'''
+<div class="vp-bar" id="vp-bar"><a class="vp-bar-call" href="{CALL_TEL}">Call</a><a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Hold this van">Hold it, no deposit</a></div>
 <iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 <script src="../assets/ref/js/reviews.js?v={ASSET_V}"></script>
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>

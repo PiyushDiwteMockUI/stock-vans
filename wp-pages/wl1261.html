@@ -217,7 +217,7 @@ html, #wlstock{margin:0;padding:0}
 }
 
 @media (max-width:900px){
-  #wlstock .vp-strip{grid-template-columns:repeat(4,1fr)!important}
+  #wlstock .vp-strip{grid-template-columns:repeat(4,minmax(0,1fr))!important}
   #wlstock .vp-cell{padding:14px 8px!important;text-align:center}
   #wlstock .vp-celll{font-size:8.5px!important;letter-spacing:.16em!important;margin-bottom:7px!important}
   #wlstock .vp-cellv{font-size:13px!important;line-height:1.2!important}
@@ -282,13 +282,26 @@ html, #wlstock{margin:0;padding:0}
 
 #wlstock .vp-mobilebuy{display:block;border:1px solid var(--line2);border-radius:4px;background:#fff;padding:18px 20px;margin-bottom:24px}
 #wlstock .vpb-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-#wlstock .vpb-call{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap}
-#wlstock .vpb-ctas{display:none}
+@media (min-width:901px){
+  #wlstock .vp-mobilebuy{display:none}
+}
 @media (max-width:900px){
-  #wlstock .vpb-call{display:none}
-  #wlstock .vpb-ctas{display:flex;gap:8px;margin-top:14px}
-  #wlstock .vpb-ctas a{flex:1 1 0;min-width:0;padding-left:8px;padding-right:8px}
+  #wlstock .vp-mobilebuy{padding:16px 18px 12px}
   #wlstock .detailside .side-price, #wlstock .detailside .side-ctas{display:none}
+}
+
+
+#wlstock .side-enq .se-disc{margin:10px 0 22px;font:400 10.5px/1.5 'Gordita',sans-serif;color:#8A939A}
+
+
+#wlstock .vp-bar{display:none}
+@media (max-width:900px){
+  body.vp-has-bar{padding-bottom:78px}
+  #wlstock .vp-bar{position:fixed;left:0;right:0;bottom:0;z-index:9999;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid #E4E1DC;box-shadow:0 -8px 22px rgba(0,0,0,.09);transition:transform .25s ease}
+  #wlstock .vp-bar.is-off{transform:translateY(110%)}
+  #wlstock .vp-bar a{display:flex;align-items:center;justify-content:center;min-height:50px;box-sizing:border-box;text-decoration:none;font:400 13.5px/1.1 'aviano-sans',sans-serif;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:0 12px;border-radius:0}
+  #wlstock .vp-bar a.vp-bar-call{flex:0 0 34%;background:#fff;color:var(--svink);border:1px solid var(--svink)}
+  #wlstock .vp-bar a.vp-bar-hold{flex:1;background:var(--svorange);color:#fff;border:1px solid var(--svorange)}
 }
 
 
@@ -460,7 +473,17 @@ html, #wlstock{margin:0;padding:0}
 #wlstock .side-enq .se-call span{font-weight:500;color:var(--svink);border-bottom:1px solid var(--svorange)}
 #wlstock .side-enq .se-call:hover span{color:var(--olink)}
 
-#wlstock .side-enq.is-mobile{border:1px solid var(--line2);border-radius:4px;padding:22px 20px 2px;margin:0 0 38px;scroll-margin-top:84px}
+#wlstock .side-enq .se-sub{margin-bottom:16px}
+#wlstock .side-enq .se-callbtn{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;min-height:50px;margin:0 0 18px;padding:6px 10px;box-sizing:border-box;border:1px solid var(--svink);border-radius:0;color:var(--svink);background:#fff;text-decoration:none;font:500 14px/1.2 'Gordita',sans-serif;text-align:center}
+#wlstock .side-enq .se-callbtn-l{color:var(--mut);font-weight:400}
+@media (hover:hover){#wlstock .side-enq .se-callbtn:hover{background:var(--svink)}#wlstock .side-enq .se-callbtn:hover span{color:#fff}}
+#wlstock .side-enq .se-chipgrid{gap:8px}
+#wlstock .side-enq .se-chip-hold{grid-column:1 / -1}
+#wlstock .side-enq .se-chip span{min-height:46px;font-size:13.5px}
+#wlstock .side-enq .se-f label .se-hint{margin-left:6px;font-size:11px;color:var(--mut)}
+#wlstock .side-enq .se-fine{margin-bottom:18px}
+
+#wlstock .side-enq.is-mobile{border:1px solid var(--line2);border-radius:0;padding:22px 20px 2px;margin:0 0 30px;scroll-margin-top:84px}
 
 #wlstock .detailside .side-facts{background:var(--cream);border-top:1px solid var(--line2);padding:22px 22px 18px}
 #wlstock .detailside .side-facts .sf-head{margin:0 0 10px;padding:0;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
@@ -476,7 +499,6 @@ html, #wlstock{margin:0;padding:0}
 #wlstock:has(.detailside){overflow-x:clip}
 @media (max-width:420px){#wlstock .side-enq.is-mobile .se-title, #wlstock .side-enq.is-mobile .se-done-t{font-size:clamp(15px,5.4vw,18px);overflow-wrap:anywhere}}
 
-@media (max-width:480px){#wlstock .vpb-ctas{flex-direction:column}#wlstock .vpb-ctas a{flex:none;width:100%;white-space:nowrap;min-height:50px}}
 
 </style>
 <style>
@@ -1806,15 +1828,10 @@ html {
           
         </div>
       </div>
-      <a class="btn-dark vpb-call" style="text-decoration:none" href="tel:+61399586708">Call now</a>
       </div>
-      <p style="margin:8px 0 12px;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
-      <div class="vpb-ctas">
-        <a class="btn-orange" style="display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center" href="#enquire-van" data-enq-intent="">Enquire now</a>
-        <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none" href="tel:+61399586708">Call (03) 9958 6708</a>
-      </div>
+      <p style="margin:8px 0 0;font:400 10.5px/1.5 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
     </div>
-    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px"><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
+    <div class="vp-strip" style="display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(0,1fr));background:var(--svink);border-radius:4px;overflow:hidden;margin-bottom:38px"><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
         <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">Model</div>
         <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">Amaroo</div>
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Wonderland RV range</div></div><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
@@ -1825,8 +1842,8 @@ html {
         <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">Couples</div>
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Two berth touring</div></div><div class="vp-cell" style="padding:22px 20px;background:var(--svink)">
         <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">Location</div>
-        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">Off Grid Outfitters - NSW</div>
-        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">Where it is now</div></div></div>
+        <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">NSW</div>
+        <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">With Off Grid Outfitters</div></div></div>
     <div style="display:flex;align-items:center;gap:12px;padding:15px 18px;border:1px solid var(--line2);border-radius:4px;margin-bottom:38px">
           <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true" style="flex:none;display:block"><path d="M2.5 12.5h11v-5h-11v5z M13.5 9.5h2.6l1.4 3h-4z M5.5 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z M15 14.8a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8z" fill="none" stroke="#12171C" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"></path></svg>
           <span style="font:400 13.5px/1.5 'Gordita',sans-serif;color:var(--body2)">Tows behind most 3.5T-rated dual cab utes. Payload of 830 kg once you are loaded.</span></div>
@@ -1989,24 +2006,22 @@ html {
         <div style="min-width:0">
           <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
           <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Off Grid Outfitters - NSW</div>
-          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our New South Wales dealer. Enquire and we will set up a walkthrough in person or on a call.</div>
+          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our New South Wales dealer. Enquire and we will set up a walkthrough in person or on a call. You can also build your own caravan using our <a href="https://wonderlandrv.com.au/build-your-caravan/" style="color:var(--svink);border-bottom:1px solid var(--svorange);text-decoration:none">configurator</a>.</div>
         </div>
         <div class="wi-btns" style="display:flex;flex-wrap:wrap;gap:10px;flex:0 1 auto;min-width:0;align-items:stretch">
           <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="Book a viewing">Book a viewing</a>
-          <a class="btn-line" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="https://wonderlandrv.com.au/build-your-caravan/">Build your caravan</a>
         </div>
       </div>
     </div>
   </div>
   <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
-      <div class="side-price" style="padding:24px 22px;border-bottom:1px solid var(--line)">
+      <div class="side-price" style="padding:24px 22px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
         <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">$149,033</div>
         
-        <p style="margin:12px 0 0;font:400 11px/1.55 'Gordita',sans-serif;color:var(--mut)">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>
       </div>
-      <div class="side-enq" id="enquire-van"><div class="se-kick">Stock no. WL1261</div><h2 class="av se-title">Enquire about this van</h2><p class="se-sub">Leave your details and our team will be in touch within 24 hours on business days.</p><form class="se-form" action="#" method="post" novalidate data-van="WL1261" data-vantxt="WL1261 Amaroo 1906 Aluminium Frame" data-or="86f68712-ed10-4e64-8760-86ac3026dfc6"><div class="se-row"><div class="se-f"><label for="se-fn">First name<span class="se-req" aria-hidden="true">*</span></label><input id="se-fn" name="first-name" type="text" autocomplete="given-name" placeholder="First name" required aria-describedby="se-fn-err"><span class="se-err" id="se-fn-err">Tell us your first name.</span></div><div class="se-f"><label for="se-ln">Last name<span class="se-req" aria-hidden="true">*</span></label><input id="se-ln" name="last-name" type="text" autocomplete="family-name" placeholder="Last name" required aria-describedby="se-ln-err"><span class="se-err" id="se-ln-err">Tell us your last name.</span></div></div><div class="se-f"><label for="se-em">Email<span class="se-req" aria-hidden="true">*</span></label><input id="se-em" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="se-em-err" spellcheck="false"><span class="se-err" id="se-em-err">Add an email we can reply to.</span></div><div class="se-f"><label for="se-ph">Phone<span class="se-req" aria-hidden="true">*</span></label><input id="se-ph" name="phone" type="tel" autocomplete="tel" placeholder="Phone number" required aria-describedby="se-ph-err" inputmode="tel"><span class="se-err" id="se-ph-err">Add a phone number so we can call you.</span></div><div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span></label><select id="se-st" name="state" required aria-describedby="se-st-err"><option value="" selected disabled>Select your state</option><option value="Victoria">Victoria</option><option value="New South Wales / ACT">New South Wales / ACT</option><option value="Queensland">Queensland</option><option value="South Australia">South Australia</option><option value="Western Australia">Western Australia</option><option value="Tasmania">Tasmania</option><option value="Northern Territory">Northern Territory</option></select><span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div><fieldset class="se-chips"><legend>I would like to</legend><div class="se-chipgrid"><label class="se-chip"><input type="radio" name="enquiry-type" value="Call back" checked><span>Call back</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Get a quote"><span>Get a quote</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Hold this van"><span>Hold this van</span></label></div></fieldset><div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label><textarea id="se-msg" name="message" rows="2" placeholder="Finance, timing or questions about the van"></textarea></div><label class="se-check"><input type="checkbox" name="trade-in"><span>I have a van to trade in</span></label><button type="submit" class="se-submit">Send enquiry</button><p class="se-fine">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p></form><div class="se-done" hidden tabindex="-1"><div class="se-tick" aria-hidden="true"></div><div class="av se-done-t">Thanks<span class="se-done-name"></span></div><p class="se-sub">Your enquiry for WL1261 is on its way. Our team will be in touch within 24 hours on business days.</p></div><a class="se-call" href="tel:+61399586708">Prefer to talk? <span>Call (03) 9958 6708</span></a></div>
+      <div class="side-enq" id="enquire-van"><div class="se-kick">Stock no. WL1261</div><h2 class="av se-title">Hold this van, no deposit</h2><p class="se-sub">Built and in stock, delivered to any state. Say the word and we hold it for 48 hours.</p><a class="se-callbtn" href="tel:+61399586708"><span class="se-callbtn-l">Call about WL1261</span><span class="se-callbtn-n">(03) 9958 6708</span></a><form class="se-form" action="#" method="post" novalidate data-van="WL1261" data-vantxt="WL1261 Amaroo 1906 Aluminium Frame" data-or="86f68712-ed10-4e64-8760-86ac3026dfc6"><fieldset class="se-chips"><legend>What would you like us to do</legend><div class="se-chipgrid"><label class="se-chip se-chip-hold"><input type="radio" name="enquiry-type" value="Hold this van" checked><span>Hold it for me, 48 hours, no deposit</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Call back"><span>Call me back</span></label><label class="se-chip"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label></div></fieldset><div class="se-row"><div class="se-f"><label for="se-fn">First name<span class="se-req" aria-hidden="true">*</span></label><input id="se-fn" name="first-name" type="text" autocomplete="given-name" placeholder="First name" required aria-describedby="se-fn-err"><span class="se-err" id="se-fn-err">Tell us your first name.</span></div><div class="se-f"><label for="se-ln">Last name<span class="se-req" aria-hidden="true">*</span></label><input id="se-ln" name="last-name" type="text" autocomplete="family-name" placeholder="Last name" required aria-describedby="se-ln-err"><span class="se-err" id="se-ln-err">Tell us your last name.</span></div></div><div class="se-f"><label for="se-em">Email<span class="se-req" aria-hidden="true">*</span></label><input id="se-em" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="se-em-err" spellcheck="false"><span class="se-err" id="se-em-err">Add an email we can reply to.</span></div><div class="se-f"><label for="se-ph">Phone<span class="se-req" aria-hidden="true">*</span> <span class="se-opt se-hint">So we can call you back</span></label><input id="se-ph" name="phone" type="tel" autocomplete="tel" placeholder="Phone number" required aria-describedby="se-ph-err" inputmode="numeric"><span class="se-err" id="se-ph-err">Add a phone number so we can call you.</span></div><div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span> <span class="se-opt se-hint">So the right dealer calls you</span></label><select id="se-st" name="state" required aria-describedby="se-st-err"><option value="" disabled>Select your state</option><option value="Victoria">Victoria</option><option value="New South Wales / ACT" selected>New South Wales / ACT</option><option value="Queensland">Queensland</option><option value="South Australia">South Australia</option><option value="Western Australia">Western Australia</option><option value="Tasmania">Tasmania</option><option value="Northern Territory">Northern Territory</option></select><span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div><div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label><textarea id="se-msg" name="message" rows="2" placeholder="Ask us anything about WL1261, finance or delivery"></textarea></div><label class="se-check"><input type="checkbox" name="subscribe" checked><span>Keep me posted on new stock and exclusive offers</span></label><button type="submit" class="se-submit" data-chassis="WL1261">Hold this van for me</button><p class="se-fine">We reply the same business day. No deposit, nothing to sign.</p><p class="se-disc">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p></form><div class="se-done" hidden tabindex="-1" data-chassis="WL1261"><div class="se-tick" aria-hidden="true"></div><div class="av se-done-t">Thanks<span class="se-done-name"></span></div><p class="se-sub se-done-msg"></p></div></div>
       <div class="side-facts"><h3 class="av sf-head">Key details</h3><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
         <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">Stock no</span>
         <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">WL1261</span></div><div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
@@ -2261,7 +2276,8 @@ html {
       <a class="btn-next" href="https://wonderlandrv.com.au/about-us/">meet the team</a>
     </div>
   </div>
-</section><iframe name="ac_sink" title="hidden" style="display:none"></iframe>
+</section><div class="vp-bar" id="vp-bar"><a class="vp-bar-call" href="tel:+61399586708">Call</a><a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Hold this van">Hold it, no deposit</a></div>
+<iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 <script>
 /* ==========================================================================
    Legendary Service — the review slider.
@@ -2661,19 +2677,38 @@ html {
 
 /* Van page enquiry form (15 Oct 2026). Posts to ActiveCampaign form 47 the same way as the /stock/ form in app.js:
    same fields, same Ad Source pattern ('Stock Vans page | intent | Van: WLxxxx Name ...'), same GA4 / dataLayer / Meta events,
-   with the van fixed to this page. On phones the panel moves below the Where it is box. */
+   with the van fixed to this page. On phones the panel moves directly under the price box, and a Call / Hold bar is fixed to the bottom. */
 (function () {
   var box = document.querySelector('.side-enq');
   if (!box) return;
   var f = box.querySelector('.se-form'), done = box.querySelector('.se-done');
-  var where = document.querySelector('.vp-where'), facts = document.querySelector('.detailside .side-facts');
+  var specs = document.querySelector('.vp-specs'), facts = document.querySelector('.detailside .side-facts');
   var mq = matchMedia('(max-width:900px)');
   function place() {
-    if (mq.matches && where) { where.parentNode.insertBefore(box, where.nextSibling); box.classList.add('is-mobile'); }
-    else if (facts) { facts.parentNode.insertBefore(box, facts); box.classList.remove('is-mobile'); }
+    // phones: the form sits after the Specifications block (Piyush, 18 Oct 2026); the bottom bar jumps to it
+    if (mq.matches && specs) { specs.parentNode.insertBefore(box, specs.nextSibling); box.classList.add('is-mobile'); document.body.classList.add('vp-has-bar'); }
+    else if (facts) { facts.parentNode.insertBefore(box, facts); box.classList.remove('is-mobile'); document.body.classList.remove('vp-has-bar'); }
   }
   place();
   if (mq.addEventListener) mq.addEventListener('change', place);
+
+  // Phone bar slides out while the form is at least 25% in view, back when it leaves
+  var bar = document.getElementById('vp-bar');
+  if (bar && window.IntersectionObserver) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { bar.classList.toggle('is-off', e.isIntersecting); });
+    }, { threshold: 0.25 }).observe(box);
+  }
+
+  // Submit button follows the chosen chip (v3, 18 Oct 2026)
+  var sub = f.querySelector('.se-submit'), chassis = sub ? sub.getAttribute('data-chassis') : '';
+  var BTN = { 'Hold this van': 'Hold this van for me', 'Call back': 'Call me back', 'Book a viewing': 'Book my viewing' };
+  function syncBtn() {
+    var c = f.querySelector('input[name="enquiry-type"]:checked');
+    if (sub && c) sub.textContent = BTN[c.value] || BTN['Hold this van'];
+  }
+  syncBtn();
+  f.addEventListener('change', function (e) { if (e.target.name === 'enquiry-type') syncBtn(); });
 
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.addEventListener('click', function (e) {
@@ -2682,7 +2717,7 @@ html {
     e.preventDefault();
     var want = a.getAttribute('data-enq-intent');
     var r = want ? f.querySelector('input[name="enquiry-type"][value="' + want + '"]') : null;
-    if (r) r.checked = true;
+    if (r) { r.checked = true; syncBtn(); }
     goTo(box);
     setTimeout(function () { var fn = f.querySelector('[name="first-name"]'); if (fn) fn.focus(); }, reduce ? 0 : 700);
   });
@@ -2730,17 +2765,19 @@ html {
     var stateVal = stateMap[g('state').value] || g('state').value;
     var vanTxt = f.getAttribute('data-vantxt');
     var intentEl = f.querySelector('[name="enquiry-type"]:checked');
-    var intent = intentEl ? intentEl.value : 'Call back';
+    var intent = intentEl ? intentEl.value : 'Hold this van';
     var msg = (g('message').value || '').trim();
-    var trade = g('trade-in').checked;
-    var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt + (trade ? ' | Trade-in: yes' : '') +
-      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + ' | Newsletter: yes | Form: van page';
+    var subscribed = g('subscribe').checked;
+    var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (subscribed ? ' | Newsletter: yes' : '') + ' | Form: van page';
     var post = document.createElement('form');
     post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
     post.target = 'ac_sink'; post.style.display = 'none';
     var H = { u: '47', f: '47', s: '', c: '0', m: '0', act: 'sub', v: '2', or: f.getAttribute('data-or'),
       firstname: g('first-name').value.trim(), lastname: g('last-name').value.trim(), email: g('email').value.trim(),
       phone: phone, 'field[27]': stateVal, 'field[86]': ad };
+    // Subscribe to Marketing (AC field 24, checkbox): sent only when ticked, as the field's single option label
+    if (subscribed) H['field[24][]'] = 'I would like to receive marketing communications with discounts, updates, new releases and more. I understand I can unsubscribe at anytime.';
     for (var k in H) {
       var i = document.createElement('input');
       i.type = 'hidden'; i.name = k; i.value = H[k];
@@ -2756,7 +2793,11 @@ html {
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt, enquiry_type: intent });
     } catch (err) {}
     var nm = done.querySelector('.se-done-name');
-    if (nm) nm.textContent = ', ' + g('first-name').value.trim();
+    if (nm) nm.textContent = ' ' + g('first-name').value.trim();
+    var dm = done.querySelector('.se-done-msg'), ch = done.getAttribute('data-chassis');
+    if (dm) dm.textContent = intent === 'Hold this van'
+      ? ch + ' is on hold for you for two business days. We will call you the same business day to confirm.'
+      : 'Got it. We will call you about ' + ch + ' the same business day.';
     f.hidden = true; done.hidden = false;
     var rect = done.getBoundingClientRect();
     if (rect.top < 90 || rect.bottom > window.innerHeight) goTo(done);
