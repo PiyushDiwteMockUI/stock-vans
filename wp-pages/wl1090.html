@@ -2763,7 +2763,7 @@ html {
     var msg = (g('message').value || '').trim();
     var subscribed = g('subscribe').checked;
     var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
-      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (subscribed ? ' | Newsletter: yes' : '') + ' | Form: van page';
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (subscribed ? ' | Newsletter: yes' : ' | Newsletter: no') + ' | Form: van page';
     var post = document.createElement('form');
     post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
     post.target = 'ac_sink'; post.style.display = 'none';
