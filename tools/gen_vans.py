@@ -308,6 +308,8 @@ def van_page(v):
                        ('Payload', f"{v['atm']-v['tare']:,} kg" if v.get('atm') and v.get('tare') else '—'),
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', dealer(v['state']))])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
+    if not similar:  # 19 Oct 2026: no other van of this model in stock, fall back to the same layout type, closest price first
+        similar = sorted([x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['layout'] == v['layout']], key=lambda x: abs(x['price'] - v['price']))[:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
         <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="{asrc(img_sm(x['images'][0]))}" alt="{x['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">{'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-sim">' if x['model']=='Solara' else ''}</div>
         <div style="padding:15px">

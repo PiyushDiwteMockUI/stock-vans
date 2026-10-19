@@ -1,8 +1,4 @@
 {
- "wl1002": {
-  "title": "XTR 21ft Double Bunk King Bed WL1002",
-  "slug": "wl1002"
- },
  "wl1090": {
   "title": "Amaroo 2200 Rear Club Lounge WL1090",
   "slug": "wl1090"
@@ -10,10 +6,6 @@
  "wl1100": {
   "title": "Amaroo 2100 XL Ensuite Couples WL1100",
   "slug": "wl1100"
- },
- "wl1173": {
-  "title": "Solara Composite Double Bunk WL1173",
-  "slug": "wl1173"
  },
  "wl1180": {
   "title": "Amaroo 21ft Couples Extra Large Ensuite WL1180",
