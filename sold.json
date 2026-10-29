@@ -1683,5 +1683,135 @@
    "reason": "sold by the NSW dealer (Ana email 16 Oct 2026 2:26pm \"WL1173 & WL1002 have been sold bu NSW dealer so please remove from WL Stock listing\")",
    "by": "Fable on Piyush go 19 Oct 2026"
   }
+ },
+ {
+  "chassis": "WL1227",
+  "model": "Hornet",
+  "code": "2107EWF-3.3",
+  "name": "Hornet 21'07&quot; Quad Bunk Delete",
+  "year": "2026",
+  "length": "21'07\"",
+  "layout": "Family",
+  "state": "New South Wales",
+  "used": false,
+  "price": 165191.0,
+  "images": [
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/561tphcew787rjv03s276eci9.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/624k95ncvr87m3w27r674argt.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1a5pfy86xkf3y391vrpuw4grb.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/4jfnk3csj767niam7sgyxntfi.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/61h7351s1qh3n3yy9le717jdm.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/bj7m1dlyh2w677fem74052cns.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7di33f4d9snkjrzsyfdx46ixf.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/f33u981fm79ujw82p0wd2wsgb.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/a2nzquo4vdwqvxppvbeasfg4s.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/9hi3mrm4xzrc0qi9me89i8vt7.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/cepo3dds4uc9y6wvmabohrb17.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/cj1pqjzy2bb5kwqbq9yenee0d.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/vg58560io2rzez0g9fap299f.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/20zz6p95sfjbwur70x5vjarlz.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/59uic6sgmr1d78mgxxmr9ga1k.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1x0w0vf6b2certfmiha0658o3.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/2xb4dcyqxawgm2ra8kiqr9m3n.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/sn115lvkbqvngg74c99fgsrb.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7ivfrvr77zemgnpy57vn3nr93.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/deak1stz0kfykfwa04tj9wcz0.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/5erpm57fecpkqsy3402ec5wdp.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3pa5wm8dkbg81n04p2boz19h9.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
+   "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/71il1gvkslm42qdp2jwflrt5t.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
+  ],
+  "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-hornet-2107ft-triple-bunk-with-storage/OAG-AD-25819325/",
+  "tare": 3022,
+  "atm": 3500,
+  "ball": 220,
+  "sleeps": 5,
+  "axle": "Tandem axle",
+  "floorplan": "assets/layouts/2107EW-F3-3.png",
+  "was": 170191,
+  "floorplans": [
+   "assets/layouts/2107EW-F3-3_tilt.png",
+   "assets/layouts/2107EW-F3-3_top.png",
+   "assets/layouts/2107EW-F3-3_tag.png"
+  ],
+  "travel": 8.8,
+  "spec_override": [
+   [
+    "Construction",
+    [
+     "Aluminium Henrob Rivet",
+     "One piece composite sandwich panel roof, front & back",
+     "Honeycomb floor",
+     "XPS Insulation",
+     "DiBond marine grade cladding",
+     "850mm black plate protection"
+    ]
+   ],
+   [
+    "Chassis & Suspension",
+    [
+     "4.5t Aussie Made Heavy Duty Off Road Chassis",
+     "Double box 4+4″ chassis and riser (flat floor)",
+     "6″ Extended A Frame, 1950mm long",
+     "Toughcoat Chassis Finish",
+     "Cruisemaster XT Level 3 Manual Airbag Suspension",
+     "12″ drum Brakes",
+     "Cruisemaster DO-35 hitch",
+     "Large toolbox with slides & Anderson plug"
+    ]
+   ],
+   [
+    "Electrical",
+    [
+     "Redarc Alpha 75 off-grid system delivering 75A solar/AC, 50A DC, 2600W inverter, 800W solar, and 400Ah lithium.",
+     "1 x portable solar input Anderson plug",
+     "Anderson plug in toolbox for portable fridge"
+    ]
+   ],
+   [
+    "Plumbing",
+    [
+     "2 x 90L to 100L fresh water tanks",
+     "1 x 90L dedicated drinking water tank",
+     "1 x 100L grey water tank with bypass",
+     "Quick fill and mains connection and 1 separate filler and cap",
+     "2 x 4kg gas bottles, Gas bayonet & cold tap on A frame",
+     "Outdoor shower"
+    ]
+   ],
+   [
+    "Appliances",
+    [
+     "Dometic FreshJet Z, 7 series lite 3kW Air conditioner",
+     "Multi-function cooker, fryer, grill & microwave",
+     "Portable induction cooktop",
+     "Swift flush mount recessed rangehood with dual fan",
+     "216L Dometic compressor fridge",
+     "3kg washing machine",
+     "CS pressure, 12V powered dust reduction",
+     "Thetford Separating toilet",
+     "Outdoor pantry with drop down picnic table",
+     "Dometic Manual Awning",
+     "Reverse camera",
+     "TV 24″ Smart TV & Starlink Connection",
+     "Fusion audio and speakers"
+    ]
+   ],
+   [
+    "Optional upgrades fitted",
+    [
+     "Rear bumper box with drawers, 2 jerry can holder, wood box & spare wheel",
+     "Soft close drawers",
+     "K5i external kitchen",
+     "Instant hot water",
+     "5 x Sirocco fans"
+    ]
+   ]
+  ],
+  "spec_source": "ana",
+  "removed": {
+   "date": "2026-10-29",
+   "reason": "sold (Piyush 29 Oct 2026: \"WL1227 sold ... take them off the stock vans page\")",
+   "by": "Fable on Piyush go 29 Oct 2026"
+  }
  }
 ]

@@ -40,7 +40,9 @@ def chips(v):
         kind = 'ATX' if 'ATX' in sus else 'XT'
         c.append(f"Cruisemaster {kind} {'airbag' if _re.search(r'air', sus, _re.I) else 'coil'} suspension")
     elif 'Tuff' in sus: c.append('Tuff-Ride coil suspension')
-    c.append('2 x 90-100L water tanks')
+    pl = txt.get('Plumbing', '')
+    w = _re.search(r'(\d)\s*x\s*(\d+L(?:\s*(?:to|-)\s*\d+L)?)\s*fresh', pl, _re.I)
+    c.append(f"{w.group(1)} x {w.group(2)} fresh water tanks" if w else '2 x 90-100L water tanks')
     return c if len(c) == 3 else INCL.get(v['model'], c)
 
 INCL = {
@@ -294,7 +296,7 @@ def van_page(v):
         <div class="vp-celll" style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--peach);margin-bottom:11px">{k}</div>
         <div class="av vp-cellv" style="font-size:22px;line-height:1.1;letter-spacing:-.01em;color:#fff">{val}</div>
         <div class="vp-celld" style="margin-top:9px;font:400 12.5px/1.55 'Gordita',sans-serif;color:rgba(255,255,255,.76)">{d}</div></div>'''
-        for k, val, d in [('Model', v['model'], 'Wonderland RV range'), ('Travel length', f"{v['travel']} m" if v.get('travel') else '—', 'Overall towing length'),
+        for k, val, d in [('Model', v['model'], 'Wonderland RV range'), (('Travel length', f"{v['travel']} m", 'Overall towing length') if v.get('travel') else ('Length', v['length'], 'Internal length')),
                           ('Layout', v['layout'], bunks_note(v) if v['layout'] == 'Family' else 'Two berth touring'),
                           ('Location', STATE_ABBR.get(v['state'], v['state']), 'With ' + dealer(v['state']).rsplit(' - ', 1)[0])])
     incl = ''.join(f'<span style="background:var(--cream);border:1px solid var(--line);color:var(--body2);font:400 12.5px/1 \'Gordita\',sans-serif;padding:8px 10px;border-radius:2px">{t}</span>' for t in chips(v))
@@ -333,7 +335,7 @@ def van_page(v):
     return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + schema_tag + headerV + f'''
 <div style="padding-top:20px;display:flex;align-items:center;gap:10px;font:400 12px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)" class="gutter shellpad">
   <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../">Stock vans</a>
-  <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="./">Pages</a>
+  <span>/</span><a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase" href="../vans/">All vans</a>
   <span>/</span><span style="color:var(--svink)">{v['chassis']}</span>
 </div>
 <div class="wrap shell" style="padding:22px 0 0">
@@ -343,7 +345,7 @@ def van_page(v):
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. {v['chassis']}</span>
     </div>
     <h1 class="av vp-h1" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
-    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built, finished and located in {v['state']}, ready for handover.</p>
+    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built in our Campbellfield factory and ready for handover in&nbsp;{v['state'].replace(' ', '&nbsp;')}.</p>
     {gallery(v)}
     <div class="vp-mobilebuy">
       <div class="vpb-row">
