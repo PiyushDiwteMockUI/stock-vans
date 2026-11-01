@@ -2638,5 +2638,69 @@
   "path": "/stock/assets/vans/WL1184/06_sm.jpg",
   "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/10/stockpg-vans-WL1184-06_sm.jpg",
   "media_id": 14373
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC.png",
+  "name": "stockpg-layouts-2100Q-RC.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC.png",
+  "media_id": 14861
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_sm.png",
+  "name": "stockpg-layouts-2100Q-RC_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_sm.png",
+  "media_id": 14862
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_tilt.png",
+  "name": "stockpg-layouts-2100Q-RC_tilt.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_tilt.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_tilt.png",
+  "media_id": 14863
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_tilt_sm.png",
+  "name": "stockpg-layouts-2100Q-RC_tilt_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_tilt_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_tilt_sm.png",
+  "media_id": 14864
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_top.png",
+  "name": "stockpg-layouts-2100Q-RC_top.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_top.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_top.png",
+  "media_id": 14865
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_top_sm.png",
+  "name": "stockpg-layouts-2100Q-RC_top_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_top_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_top_sm.png",
+  "media_id": 14866
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_tag.png",
+  "name": "stockpg-layouts-2100Q-RC_tag.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_tag.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_tag.png",
+  "media_id": 14867
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2100Q-RC_tag_sm.png",
+  "name": "stockpg-layouts-2100Q-RC_tag_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2100Q-RC_tag_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2100Q-RC_tag_sm.png",
+  "media_id": 14868
  }
 ]

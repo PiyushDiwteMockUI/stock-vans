@@ -1,4 +1,12 @@
 {
+ "wl1000": {
+  "title": "XTR 2304 Twin Bunk Kids Retreat Family WL1000",
+  "slug": "wl1000"
+ },
+ "wl1027": {
+  "title": "Hornet 2100 Twin Bunk Family WL1027",
+  "slug": "wl1027"
+ },
  "wl1090": {
   "title": "Amaroo 2200 Rear Club Lounge WL1090",
   "slug": "wl1090"
@@ -6,6 +14,10 @@
  "wl1100": {
   "title": "Amaroo 2100 XL Ensuite Couples WL1100",
   "slug": "wl1100"
+ },
+ "wl1155": {
+  "title": "Solara 2100 Twin Bunk Family WL1155",
+  "slug": "wl1155"
  },
  "wl1180": {
   "title": "Amaroo 21ft Couples Extra Large Ensuite WL1180",
@@ -62,6 +74,10 @@
  "wl1315": {
   "title": "Hornet 1806 Rear Entry Door Couples WL1315",
   "slug": "wl1315"
+ },
+ "wl1337": {
+  "title": "Amaroo 2100 Rear Club Lounge WL1337",
+  "slug": "wl1337"
  },
  "wl901": {
   "title": "XTR 2100 Twin Bunk Family WL901",

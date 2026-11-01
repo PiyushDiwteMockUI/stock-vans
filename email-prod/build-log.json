@@ -5,9 +5,9 @@
   "thumb": "cached"
  },
  "WL1293": {
-  "gif": "926KB",
+  "gif": "cached",
   "lockup": "495x66",
-  "thumb": "ok"
+  "thumb": "cached"
  },
  "WL1231": {
   "gif": "cached",
@@ -78,5 +78,25 @@
   "gif": "cached",
   "lockup": "501x61",
   "thumb": "cached"
+ },
+ "WL1337": {
+  "gif": "923KB",
+  "lockup": "487x65",
+  "thumb": "ok"
+ },
+ "WL1155": {
+  "gif": "907KB",
+  "lockup": "481x66",
+  "thumb": "ok"
+ },
+ "WL1000": {
+  "gif": "779KB",
+  "lockup": "516x61",
+  "thumb": "ok"
+ },
+ "WL1027": {
+  "gif": "922KB",
+  "lockup": "484x66",
+  "thumb": "ok"
  }
 }
