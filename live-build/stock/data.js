@@ -1570,7 +1570,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   },
   {
    "chassis": "WL1090",
