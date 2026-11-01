@@ -998,7 +998,7 @@ const DATA = {
    "sleeps": 6,
    "axle": "Tandem axle",
    "floorplan": "assets/layouts/2304EW-F4-5.png",
-   "was": null,
+   "was": 195600.0,
    "floorplans": [
     "assets/layouts/2304EW-F4-5_tilt.png",
     "assets/layouts/2304EW-F4-5_top.png",
@@ -1395,6 +1395,11 @@ const DATA = {
    "used": true,
    "price": 149999.0,
    "images": [
+    "assets/vans/WL901/01.jpg",
+    "assets/vans/WL901/02.jpg",
+    "assets/vans/WL901/03.jpg",
+    "assets/vans/WL901/04.jpg",
+    "assets/vans/WL901/05.jpg",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7lgka32jqjl7uuemrhjgstw8j.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ani1n5o6k0kruyavtly0ad2eq.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/8z25df86yesg8fh6yc73uwyzd.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
@@ -2434,6 +2439,11 @@ const DATA = {
    "used": false,
    "price": 198452.0,
    "images": [
+    "assets/vans/WL1155/01.jpg",
+    "assets/vans/WL1155/02.jpg",
+    "assets/vans/WL1155/03.jpg",
+    "assets/vans/WL1155/04.jpg",
+    "assets/vans/WL1155/05.jpg",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ex0kgyzkz03i5pk3a8x0f5dm7.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/f3xe8ekkjiupkwix6le13v0tx.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1l7g4xi4019jmvak69lre2r5a.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
@@ -2636,7 +2646,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   },
   {
    "chassis": "WL1000",
@@ -2815,7 +2826,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   },
   {
    "chassis": "WL1027",
@@ -2829,6 +2841,11 @@ const DATA = {
    "used": true,
    "price": 134999.0,
    "images": [
+    "assets/vans/WL1027/01.jpg",
+    "assets/vans/WL1027/02.jpg",
+    "assets/vans/WL1027/03.jpg",
+    "assets/vans/WL1027/04.jpg",
+    "assets/vans/WL1027/05.jpg",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6noyovwb0hlom2h2kalssa996.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6xsr8r9baac5m9q87ruut16vn.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/645j9kxfp4cbdfyznogyywzlt.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
@@ -3025,7 +3042,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   }
  ],
  "modelSpecs": {

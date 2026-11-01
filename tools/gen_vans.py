@@ -263,9 +263,17 @@ def enq_form(v):
               f'<p class="se-sub se-done-msg"></p></div>'
             + f'</div>')
 
+def is_clearance(v):
+    """Clearance badge only when the dealer asked for it (explicit flag); default is the old year rule."""
+    return bool(v['clearance']) if v.get('clearance') is not None else int(v.get('year') or 2026) < 2026
+
+def show_was(v):
+    """RRP is kept in the data but only shown when it is above the drive-away price."""
+    return bool(v.get('was') and v.get('price') and v['was'] > v['price'])
+
 def van_page(v):
     name = full_name(v)
-    clr = int(v.get('year') or 2026) < 2026
+    clr = is_clearance(v)
     badge = ('<span class="badge-red">Clearance</span>' if clr else '<span class="badge-dark">Ready now</span>') + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
     tow = ''
     if v.get('atm'):
@@ -353,7 +361,7 @@ def van_page(v):
         <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-bottom:8px">Drive away</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
           <span class="av" style="font-size:26px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</span>
-          {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
+          {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) else ''}
         </div>
       </div>
       </div>
@@ -393,7 +401,7 @@ def van_page(v):
       <div class="side-price" style="padding:24px 22px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
         <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
-        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('was') and v.get('price') else ''}
+        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) else ''}
       </div>
       {enq_form(v)}
       <div class="side-facts"><h3 class="av sf-head">Key details</h3>{facts}</div>
@@ -425,12 +433,12 @@ def index_page():
     groups = [('Stock van', 'Stock vans'), ('Clearance', 'Clearance'), ('Pre-loved', 'Pre-loved')]
     out = []
     for key, title in groups:
-        vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else ('Clearance' if int(v.get('year') or 2026) < 2026 else 'Stock van')) == key]
+        vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else 'Stock van')) == key]
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" class="pagecard" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
             <img src="{asrc(img_sm(v['images'][0]))}" alt="{v['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
-            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if int(v.get('year') or 2026)<2026 else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if int(v.get('year') or 2026)<2026 else 'Ready now')}</span>
+            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if is_clearance(v) else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else 'Ready now')}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
             {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" style="position:absolute;top:0;right:14px;width:62px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))">' if v['model']=='Solara' else ''}
           </div>

@@ -3273,7 +3273,7 @@ const DATA = {
    "sleeps": 6,
    "axle": "Tandem axle",
    "floorplan": "https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2304EW-F4-5.png",
-   "was": null,
+   "was": 195600.0,
    "floorplans": [
     "https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2304EW-F4-5_tilt.png",
     "https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2304EW-F4-5_top.png",
@@ -3670,6 +3670,11 @@ const DATA = {
    "used": true,
    "price": 149999.0,
    "images": [
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL901-01.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL901-02.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL901-03.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL901-04.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL901-05.jpg",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/7lgka32jqjl7uuemrhjgstw8j.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ani1n5o6k0kruyavtly0ad2eq.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/8z25df86yesg8fh6yc73uwyzd.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
@@ -4709,6 +4714,11 @@ const DATA = {
    "used": false,
    "price": 198452.0,
    "images": [
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1155-01.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1155-02.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1155-03.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1155-04.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1155-05.jpg",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/ex0kgyzkz03i5pk3a8x0f5dm7.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/f3xe8ekkjiupkwix6le13v0tx.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1l7g4xi4019jmvak69lre2r5a.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
@@ -4911,7 +4921,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   },
   {
    "chassis": "WL1000",
@@ -5090,7 +5101,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   },
   {
    "chassis": "WL1027",
@@ -5104,6 +5116,11 @@ const DATA = {
    "used": true,
    "price": 134999.0,
    "images": [
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1027-01.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1027-02.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1027-03.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1027-04.jpg",
+    "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-vans-WL1027-05.jpg",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6noyovwb0hlom2h2kalssa996.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/6xsr8r9baac5m9q87ruut16vn.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/645j9kxfp4cbdfyznogyywzlt.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067",
@@ -5300,7 +5317,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "clearance": false
   }
  ],
  "modelSpecs": {
@@ -6241,8 +6259,8 @@ const VANS = DATA.vans.map((v, i) => {
     code: (v.code || '').replace(' ()', '').trim(),
     lenIn: lenN === 99 ? null : Math.floor(lenN) * 12 + Math.round((lenN % 1) * 100),
     axle: lenN < 18 ? 'Single axle' : 'Tandem axle',
-    status: v.used ? 'Pre-loved' : (v.year < 2026 ? 'Clearance' : 'Stock van'),
-    clearance: v.year < 2026,
+    status: v.used ? 'Pre-loved' : ((v.clearance != null ? v.clearance : v.year < 2026) ? 'Clearance' : 'Stock van'),
+    clearance: v.clearance != null ? !!v.clearance : v.year < 2026,
     img: v.images[0] || ''
   });
 });
@@ -6380,7 +6398,7 @@ const SV = {
         <div style="margin-top:auto">
           <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
             <span class="av" style="font-size:27px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
-            ${v.was && v.priceN ? '<span style="font:400 14px/1 \'Gordita\';color:var(--mut);text-decoration:line-through;font-variant-numeric:tabular-nums">' + money(v.was) + '</span><span style="font:500 12.5px/1 \'Gordita\';color:var(--olink);font-variant-numeric:tabular-nums">Save ' + money(v.was - v.priceN) + '</span>' : ''}
+            ${v.was && v.priceN && v.was > v.priceN ? '<span style="font:400 14px/1 \'Gordita\';color:var(--mut);text-decoration:line-through;font-variant-numeric:tabular-nums">' + money(v.was) + '</span><span style="font:500 12.5px/1 \'Gordita\';color:var(--olink);font-variant-numeric:tabular-nums">Save ' + money(v.was - v.priceN) + '</span>' : ''}
             ${v.priceN ? '<span style="font:400 12px/1 \'Gordita\';color:var(--mut)">drive away · ' + v.state + '</span>' : ''}
           </div>
           <div style="display:flex;gap:8px;margin-top:16px">

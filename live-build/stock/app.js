@@ -17,8 +17,8 @@ const VANS = DATA.vans.map((v, i) => {
     code: (v.code || '').replace(' ()', '').trim(),
     lenIn: lenN === 99 ? null : Math.floor(lenN) * 12 + Math.round((lenN % 1) * 100),
     axle: lenN < 18 ? 'Single axle' : 'Tandem axle',
-    status: v.used ? 'Pre-loved' : (v.year < 2026 ? 'Clearance' : 'Stock van'),
-    clearance: v.year < 2026,
+    status: v.used ? 'Pre-loved' : ((v.clearance != null ? v.clearance : v.year < 2026) ? 'Clearance' : 'Stock van'),
+    clearance: v.clearance != null ? !!v.clearance : v.year < 2026,
     img: v.images[0] || ''
   });
 });
@@ -156,7 +156,7 @@ const SV = {
         <div style="margin-top:auto">
           <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
             <span class="av" style="font-size:27px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
-            ${v.was && v.priceN ? '<span style="font:400 14px/1 \'Gordita\';color:var(--mut);text-decoration:line-through;font-variant-numeric:tabular-nums">' + money(v.was) + '</span><span style="font:500 12.5px/1 \'Gordita\';color:var(--olink);font-variant-numeric:tabular-nums">Save ' + money(v.was - v.priceN) + '</span>' : ''}
+            ${v.was && v.priceN && v.was > v.priceN ? '<span style="font:400 14px/1 \'Gordita\';color:var(--mut);text-decoration:line-through;font-variant-numeric:tabular-nums">' + money(v.was) + '</span><span style="font:500 12.5px/1 \'Gordita\';color:var(--olink);font-variant-numeric:tabular-nums">Save ' + money(v.was - v.priceN) + '</span>' : ''}
             ${v.priceN ? '<span style="font:400 12px/1 \'Gordita\';color:var(--mut)">drive away · ' + v.state + '</span>' : ''}
           </div>
           <div style="display:flex;gap:8px;margin-top:16px">
