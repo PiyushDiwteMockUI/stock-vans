@@ -148,7 +148,7 @@ def gallery(v):
       {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" class="coty-vp">' if v['model']=='Solara' else ''}
     </div>
     <div class="vp-sidegrid" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px">{side}</div></div>
-    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div></div>'''
+    <div style="display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-top:10px" id="vp-thumbs">{thumbs}</div>{'<p style="margin:10px 0 0;font:400 12.5px/1.5 |G|,sans-serif;color:var(--mut)">More photos coming soon. The 3D view shows this exact layout.</p>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if v.get('photos_note') else ''}</div>'''
 
 def kicker(v, tab):
     if tab.startswith('Optional'): return 'FITTED TO THIS VAN'
@@ -274,7 +274,9 @@ def show_was(v):
 def van_page(v):
     name = full_name(v)
     clr = is_clearance(v)
-    badge = ('<span class="badge-red">Clearance</span>' if clr else '<span class="badge-dark">Ready now</span>') + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
+    # eta (5 Nov 2026): upcoming stock vans carry eta = "December 2026" and show "Coming December" instead of "Ready now"
+    ready = f'<span class="badge-dark">Coming {v["eta"].split()[0]}</span>' if v.get('eta') else '<span class="badge-dark">Ready now</span>'
+    badge = ('<span class="badge-red">Clearance</span>' if clr else ready) + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
     tow = ''
     if v.get('atm'):
         note = 'Tows behind most 3.5T-rated dual cab utes.' if v['atm'] <= 3500 else 'Needs a 4.5T-rated tow vehicle.'
@@ -319,7 +321,7 @@ def van_page(v):
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', dealer(v['state']))])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
     if not similar:  # 19 Oct 2026: no other van of this model in stock, fall back to the same layout type, closest price first
-        similar = sorted([x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['layout'] == v['layout']], key=lambda x: abs(x['price'] - v['price']))[:3]
+        similar = sorted([x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['layout'] == v['layout']], key=lambda x: abs((x['price'] or 0) - (v['price'] or 0)))[:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
         <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="{asrc(img_sm(x['images'][0]))}" alt="{x['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">{'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-sim">' if x['model']=='Solara' else ''}</div>
         <div style="padding:15px">
@@ -334,10 +336,13 @@ def van_page(v):
     schema = json.dumps({"@context": "https://schema.org", "@type": "Product", "name": f"{v['year']} Wonderland RV {name}", "sku": v['chassis'],
         "mpn": v['code'], "brand": {"@type": "Brand", "name": "Wonderland RV"}, "category": "Off-road caravan",
         "image": [u if u.startswith('http') else '/stock/' + u for u in v['images'][:5]],
-        "description": f"{v['year']} Wonderland RV {name}, stock {v['chassis']}, {v['length']} {v['layout'].lower()} off-road caravan, tare {int(v['tare']):,} kg, ATM {int(v['atm']):,} kg, sleeps {v['sleeps']}. Located in {v['state']}, ready for handover now.",
+        "description": f"{v['year']} Wonderland RV {name}, stock {v['chassis']}, {v['length']} {v['layout'].lower()} off-road caravan"
+                       + (f", tare {int(v['tare']):,} kg" if v.get('tare') else '') + (f", ATM {int(v['atm']):,} kg" if v.get('atm') else '')
+                       + f", sleeps {v['sleeps']}. " + (f"Due in {v['eta']}, {v['state']}." if v.get('eta') else f"Located in {v['state']}, ready for handover now."),
         "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
-        "offers": {"@type": "Offer", "url": f"https://wonderlandrv.com.au/stock/{v['chassis'].lower()}/", "price": int(v['price']), "priceCurrency": "AUD",
-                   "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
+        "offers": {"@type": "Offer", "url": f"https://wonderlandrv.com.au/stock/{v['chassis'].lower()}/", "priceCurrency": "AUD",
+                   **({"price": int(v['price'])} if v.get('price') else {}),
+                   "availability": "https://schema.org/PreOrder" if v.get('eta') else "https://schema.org/InStock", "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
                    "seller": {"@type": "Organization", "name": dealer(v['state'])}}}, ensure_ascii=False)
     schema_tag = '<script type="application/ld+json">' + schema.replace('</', '<\\/') + '</script>'
     return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + schema_tag + headerV + f'''
@@ -353,7 +358,7 @@ def van_page(v):
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. {v['chassis']}</span>
     </div>
     <h1 class="av vp-h1" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
-    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">Built in our Campbellfield factory and ready for handover in&nbsp;{v['state'].replace(' ', '&nbsp;')}.</p>
+    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">{(f"Built in our Campbellfield factory, due at {dealer(v['state'])} in {v['eta']}. Put your name on it now and it is yours when it lands." if v.get('eta') else f"Built in our Campbellfield factory and ready for handover in&nbsp;{v['state'].replace(' ', '&nbsp;')}.")}</p>
     {gallery(v)}
     <div class="vp-mobilebuy">
       <div class="vpb-row">
@@ -438,7 +443,7 @@ def index_page():
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" class="pagecard" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
             <img src="{asrc(img_sm(v['images'][0]))}" alt="{v['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
-            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if is_clearance(v) else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else 'Ready now')}</span>
+            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if is_clearance(v) else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else (f"Coming {v['eta'].split()[0]}" if v.get('eta') else 'Ready now'))}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
             {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" style="position:absolute;top:0;right:14px;width:62px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))">' if v['model']=='Solara' else ''}
           </div>

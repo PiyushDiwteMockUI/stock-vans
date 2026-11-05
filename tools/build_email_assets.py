@@ -36,6 +36,8 @@ def build_gif(v):
         except Exception as e:
             print(v['chassis'], 'img fail', str(e)[:60], flush=True)
         if len(frames)==3: break
+    if len(frames)==1:  # 5 Nov 2026: a van with one photo gets a still GIF rather than no email block
+        frames.append(frames[0])
     if len(frames)<2:
         return 'FAILED (photos)'
     seq=[]; dur=[]

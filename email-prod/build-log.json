@@ -80,23 +80,63 @@
   "thumb": "cached"
  },
  "WL1337": {
-  "gif": "923KB",
+  "gif": "cached",
   "lockup": "487x65",
-  "thumb": "ok"
+  "thumb": "cached"
  },
  "WL1155": {
-  "gif": "907KB",
+  "gif": "cached",
   "lockup": "481x66",
-  "thumb": "ok"
+  "thumb": "cached"
  },
  "WL1000": {
-  "gif": "779KB",
+  "gif": "cached",
   "lockup": "516x61",
-  "thumb": "ok"
+  "thumb": "cached"
  },
  "WL1027": {
-  "gif": "922KB",
+  "gif": "cached",
   "lockup": "484x66",
-  "thumb": "ok"
+  "thumb": "cached"
+ },
+ "WL1240": {
+  "gif": "cached",
+  "lockup": "427x78",
+  "thumb": "cached"
+ },
+ "WL1216": {
+  "gif": "cached",
+  "lockup": "484x64",
+  "thumb": "cached"
+ },
+ "WL1329": {
+  "gif": "cached",
+  "lockup": "488x64",
+  "thumb": "cached"
+ },
+ "WL1346": {
+  "gif": "54KB",
+  "lockup": "485x65",
+  "thumb": "cached"
+ },
+ "WL1239": {
+  "gif": "89KB",
+  "lockup": "498x65",
+  "thumb": "cached"
+ },
+ "WL1250": {
+  "gif": "cached",
+  "lockup": "569x61",
+  "thumb": "cached"
+ },
+ "WL1336": {
+  "gif": "cached",
+  "lockup": "496x66",
+  "thumb": "cached"
+ },
+ "WL1249": {
+  "gif": "cached",
+  "lockup": "526x61",
+  "thumb": "cached"
  }
 }

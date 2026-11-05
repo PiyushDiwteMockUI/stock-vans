@@ -135,7 +135,7 @@ fbq('track','PageView');
     <aside class="rail" id="railbox"></aside>
     <main class="list">
       <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:14px;padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:26px">
-        <span aria-live="polite" style="font:400 13px/1 'Gordita';color:var(--body)"><span id="count" style="color:var(--svink);font-weight:500">0</span> vans ready for handover</span>
+        <span aria-live="polite" style="font:400 13px/1 'Gordita';color:var(--body)"><span id="count" style="color:var(--svink);font-weight:500">0</span> vans in stock or on the way</span>
         <span style="display:flex;align-items:center;gap:18px">
         <a class="linkbtn" style="letter-spacing:.14em;text-transform:uppercase;font:500 11px/1 'Gordita',sans-serif" href="/stock/vans/">Browse as pages</a>
         <select aria-label="Sort stock" class="selbox sortsel" data-act="sort">
@@ -594,8 +594,8 @@ fbq('track','PageView');
 <iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 
 <script src="/stock/assets/purify.min.js"></script>
-<script src="/stock/data.js?v=40f3505d"></script>
-<script src="/stock/app.js?v=70a3fe4b"></script><script>/* Stock hub top bar: keep 'Save up to' equal to the biggest current saving (RRP minus price) */(function(){try{var m=0;DATA.vans.forEach(function(v){var s=(v.was&&v.price)?v.was-v.price:0;if(s>m)m=s;});var bar=document.querySelector('.wl-topbar');if(!bar)return;if(m>0){var txt='$'+Math.round(m).toLocaleString('en-AU');bar.querySelectorAll('.js-max-saving').forEach(function(e){e.textContent=txt;});var tk=bar.querySelector('.wl-ticker');tk.setAttribute('aria-label',tk.getAttribute('aria-label').replace(/\$[0-9,]+/,txt));}else{bar.querySelectorAll('.js-max-saving').forEach(function(e){var it=e.closest('.wl-ticker__item');if(it)it.remove();});}}catch(e){}})();</script>
+<script src="/stock/data.js?v=8fca4f55"></script>
+<script src="/stock/app.js?v=c855d7be"></script><script>/* Stock hub top bar: keep 'Save up to' equal to the biggest current saving (RRP minus price) */(function(){try{var m=0;DATA.vans.forEach(function(v){var s=(v.was&&v.price)?v.was-v.price:0;if(s>m)m=s;});var bar=document.querySelector('.wl-topbar');if(!bar)return;if(m>0){var txt='$'+Math.round(m).toLocaleString('en-AU');bar.querySelectorAll('.js-max-saving').forEach(function(e){e.textContent=txt;});var tk=bar.querySelector('.wl-ticker');tk.setAttribute('aria-label',tk.getAttribute('aria-label').replace(/\$[0-9,]+/,txt));}else{bar.querySelectorAll('.js-max-saving').forEach(function(e){var it=e.closest('.wl-ticker__item');if(it)it.remove();});}}catch(e){}})();</script>
 <script src="/stock/assets/ref/js/video.js"></script>
 <script src="/stock/assets/ref/js/reviews.js?v=53de3d86"></script>
 <script src="/stock/assets/ref/js/footer.js"></script>

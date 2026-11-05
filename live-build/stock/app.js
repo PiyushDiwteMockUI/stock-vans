@@ -135,7 +135,7 @@ const SV = {
       <div class="cardimg" data-act="view" data-id="${v.id}" style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);cursor:pointer">
         <img src="${imgSm(v.img)}" ${imgSrcset(v.img) ? 'srcset="' + imgSrcset(v.img) + '" sizes="(max-width:900px) 92vw, 480px"' : ''} alt="${v.name}" loading="lazy" decoding="async" width="430" height="269" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
         <div style="position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
-          ${v.clearance ? '<span class="badge-red">Clearance</span>' : '<span class="badge-dark">Ready now</span>'}
+          ${v.clearance ? '<span class="badge-red">Clearance</span>' : (v.eta ? '<span class="badge-dark">Coming ' + v.eta.split(' ')[0] + '</span>' : '<span class="badge-dark">Ready now</span>')}
           ${v.used ? '<span class="badge-grey">Pre-loved</span>' : ''}
         </div>
         ${v.model === 'Solara' ? '<img src="/stock/assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-card">' : ''}

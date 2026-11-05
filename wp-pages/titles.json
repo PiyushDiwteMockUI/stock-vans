@@ -27,6 +27,10 @@
   "title": "Hornet 2304 Quad Bunk East-West WL1184",
   "slug": "wl1184"
  },
+ "wl1216": {
+  "title": "Hornet 1907 Double Bunk Family WL1216",
+  "slug": "wl1216"
+ },
  "wl1225": {
   "title": "Solara 2006 Composite WL1225",
   "slug": "wl1225"
@@ -46,6 +50,22 @@
  "wl1233": {
   "title": "Amaroo 1709 Rear Lounge Couples WL1233",
   "slug": "wl1233"
+ },
+ "wl1239": {
+  "title": "Amaroo 2107 Triple Bunk Family WL1239",
+  "slug": "wl1239"
+ },
+ "wl1240": {
+  "title": "Solara 1806 Couples WL1240",
+  "slug": "wl1240"
+ },
+ "wl1249": {
+  "title": "Hornet 2111 Quad Bunk Electric Lift Bed WL1249",
+  "slug": "wl1249"
+ },
+ "wl1250": {
+  "title": "Amaroo 2206 East-West Double Bunk Family WL1250",
+  "slug": "wl1250"
  },
  "wl1260": {
   "title": "Amaroo 2107 Quad Bunk East-West WL1260",
@@ -75,9 +95,21 @@
   "title": "Hornet 1806 Rear Entry Door Couples WL1315",
   "slug": "wl1315"
  },
+ "wl1329": {
+  "title": "Amaroo 2110 Double Bunk Family WL1329",
+  "slug": "wl1329"
+ },
+ "wl1336": {
+  "title": "Amaroo 2106 Rear Bunk Family WL1336",
+  "slug": "wl1336"
+ },
  "wl1337": {
   "title": "Amaroo 2100 Rear Club Lounge WL1337",
   "slug": "wl1337"
+ },
+ "wl1346": {
+  "title": "Amaroo 2004 Rear Bunk Family WL1346",
+  "slug": "wl1346"
  },
  "wl901": {
   "title": "XTR 2100 Twin Bunk Family WL901",

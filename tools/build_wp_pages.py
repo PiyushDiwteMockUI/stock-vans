@@ -133,8 +133,11 @@ def _excerpt(name):
     v=_vans.get(name)
     if v:
         used='Pre-loved' if v.get('used') else 'New'
-        return (f"{v['year']} Wonderland RV {v['name']}, stock {v['chassis']}, ${int(v['price']):,} drive away, {v['state']}. "
-                f"{used} {v['length']} {v['layout'].lower()} off-road caravan, tare {int(v['tare']):,} kg, ATM {int(v['atm']):,} kg, sleeps {v['sleeps']}. Ready for handover now.")
+        price=f"${int(v['price']):,} drive away" if v.get('price') else "price on application"
+        wt=(f", tare {int(v['tare']):,} kg" if v.get('tare') else '')+(f", ATM {int(v['atm']):,} kg" if v.get('atm') else '')
+        tail=f"Due in {v['eta']}." if v.get('eta') else "Ready for handover now."
+        return (f"{v['year']} Wonderland RV {v['name']}, stock {v['chassis']}, {price}, {v['state']}. "
+                f"{used} {v['length']} {v['layout'].lower()} off-road caravan{wt}, sleeps {v['sleeps']}. {tail}")
     if name=='stock-vans-index': return "Wonderland RV caravans in stock and ready for handover now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road caravans with drive away prices, photos and specs, in Victoria, New South Wales, Queensland and Western Australia."
     for slug,layout,title,h1,sub in LAYOUT_PAGES:
         if name=='stock-'+slug: return (f"Wonderland RV {layout.lower()} caravans for sale and in stock now: new and pre-loved Amaroo, Hornet, Solara and XTR off-road {layout.lower()} layouts with drive away prices, photos and full specs, ready for handover in Victoria, New South Wales, Queensland and Western Australia.")
