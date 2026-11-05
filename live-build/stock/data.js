@@ -3575,6 +3575,7 @@ const DATA = {
    "used": false,
    "price": 154999.0,
    "images": [
+    "/stock/assets/layouts/2004EW-F2-4_tilt.png",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/1z0xm0en57oysyuyfoghhwt3e.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
    ],
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-amaroo-5-9m-20ft-1906q-m-c/OAG-AD-26461707/",
@@ -3583,9 +3584,12 @@ const DATA = {
    "ball": null,
    "sleeps": 4,
    "axle": "Tandem axle",
-   "floorplan": null,
+   "floorplan": "/stock/assets/layouts/2004EW-F2-4.png",
    "was": null,
-   "floorplans": [],
+   "floorplans": [
+    "/stock/assets/layouts/2004EW-F2-4_tilt.png",
+    "/stock/assets/layouts/2004EW-F2-4_top.png"
+   ],
    "travel": 8.3,
    "spec_override": [
     [
@@ -3695,7 +3699,7 @@ const DATA = {
   {
    "chassis": "WL1239",
    "model": "Amaroo",
-   "code": "2107EW-F4.2",
+   "code": "2107EW-F3.3",
    "name": "Amaroo 2107 Triple Bunk Family",
    "year": "2026",
    "length": "21'07\"",
@@ -3704,6 +3708,7 @@ const DATA = {
    "used": false,
    "price": 164999.0,
    "images": [
+    "/stock/assets/layouts/2107EW-F3-3_tilt.png",
     "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/77qjz7jm7lzhfzx9ia4puzi45.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
    ],
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-amaroo-6-3m-21ft-2006q-r-sc/OAG-AD-26462017/",
@@ -3712,9 +3717,13 @@ const DATA = {
    "ball": 180,
    "sleeps": 5,
    "axle": "Tandem axle",
-   "floorplan": null,
+   "floorplan": "/stock/assets/layouts/2107EW-F3-3.png",
    "was": null,
-   "floorplans": [],
+   "floorplans": [
+    "/stock/assets/layouts/2107EW-F3-3_tilt.png",
+    "/stock/assets/layouts/2107EW-F3-3_top.png",
+    "/stock/assets/layouts/2107EW-F3-3_tag.png"
+   ],
    "travel": 8.9,
    "spec_override": [
     [

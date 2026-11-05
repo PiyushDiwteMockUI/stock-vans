@@ -36,7 +36,7 @@ def spec_from_comments(text):
     return [[SECT[i], out[i]] for i in range(6)]
 
 def layout_assets(code):
-    """No render exists yet for 2004EW-F2.4 and 2107EW-F4.2 (checked 3D LAYOUTS 2025 + 2026, 5 Nov 2026): those vans get no floorplan until Piyush picks one."""
+    """Piyush 5 Nov: WL1239 uses 2107EW-F3.3 (the render on Ana's Autogate ad); WL1346 uses the Autogate CAD drawing saved as 2004EW-F2-4. No render exists for 2004EW-F2.4 or 2107EW-F4.2 (checked 3D LAYOUTS 2025 + 2026, 5 Nov 2026): those vans get no floorplan until Piyush picks one."""
     c = code.replace('.', '-')
     if not os.path.exists(f'assets/layouts/{c}_tilt.png'): return None, []
     tag = f'assets/layouts/{c}_tag.png'
@@ -78,8 +78,8 @@ new = [
      spec=spec_from_comments(A2['WL1329']['comments'])),
  rec('WL1346', 'Amaroo', '2004EW-F2.4', 'Amaroo 2004 Rear Bunk Family', '20\'04"', 'Family', 'Victoria', 154999.0, 4, 'November 2026',
      atm=3500, travel=8.3, images=render_first('WL1346', '2004EW-F2.4'), photos_note=True, spec=spec_from_comments(BY['WL1346']['comments'])),
- rec('WL1239', 'Amaroo', '2107EW-F4.2', 'Amaroo 2107 Triple Bunk Family', '21\'07"', 'Family', 'Victoria', 164999.0, 5, 'December 2026',
-     tare=2900, atm=3500, ball=180, travel=8.9, images=render_first('WL1239', '2107EW-F4.2'), photos_note=True, spec=spec_from_comments(BY['WL1239']['comments'])),
+ rec('WL1239', 'Amaroo', '2107EW-F3.3', 'Amaroo 2107 Triple Bunk Family', '21\'07"', 'Family', 'Victoria', 164999.0, 5, 'December 2026',
+     tare=2900, atm=3500, ball=180, travel=8.9, images=render_first('WL1239', '2107EW-F3.3'), photos_note=True, spec=spec_from_comments(BY['WL1239']['comments'])),
  rec('WL1250', 'Amaroo', '2206EW-F2.2', 'Amaroo 2206 East-West Double Bunk Family', '22\'06"', 'Family', 'Victoria', 164999.0, 4, 'December 2026',
      tare=old['WL1250'].get('tare'), atm=3500, travel=old['WL1250'].get('travel'), images=render_first('WL1250', '2206EW-F2.2'), photos_note=True,
      spec=spec_from_comments(BY['WL1250']['comments'])),

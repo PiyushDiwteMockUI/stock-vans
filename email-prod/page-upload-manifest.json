@@ -3182,5 +3182,53 @@
   "path": "/stock/assets/layouts/2111EWL-F4-6_top_sm.png",
   "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2111EWL-F4-6_top_sm.png",
   "media_id": 16046
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2004EW-F2-4.png",
+  "name": "stockpg-layouts-2004EW-F2-4.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2004EW-F2-4.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2004EW-F2-4.png",
+  "media_id": 16341
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2004EW-F2-4_sm.png",
+  "name": "stockpg-layouts-2004EW-F2-4_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2004EW-F2-4_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2004EW-F2-4_sm.png",
+  "media_id": 16342
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2004EW-F2-4_tilt.png",
+  "name": "stockpg-layouts-2004EW-F2-4_tilt.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2004EW-F2-4_tilt.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2004EW-F2-4_tilt.png",
+  "media_id": 16343
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2004EW-F2-4_tilt_sm.png",
+  "name": "stockpg-layouts-2004EW-F2-4_tilt_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2004EW-F2-4_tilt_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2004EW-F2-4_tilt_sm.png",
+  "media_id": 16344
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2004EW-F2-4_top.png",
+  "name": "stockpg-layouts-2004EW-F2-4_top.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2004EW-F2-4_top.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2004EW-F2-4_top.png",
+  "media_id": 16345
+ },
+ {
+  "url": "https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2004EW-F2-4_top_sm.png",
+  "name": "stockpg-layouts-2004EW-F2-4_top_sm.png",
+  "type": "image/png",
+  "path": "/stock/assets/layouts/2004EW-F2-4_top_sm.png",
+  "wp": "https://wonderlandrv.com.au/wp-content/uploads/2026/11/stockpg-layouts-2004EW-F2-4_top_sm.png",
+  "media_id": 16346
  }
 ]
