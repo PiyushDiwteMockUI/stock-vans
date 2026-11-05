@@ -313,11 +313,11 @@ def van_page(v):
     facts = ''.join(f'''<div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 0;border-top:1px solid var(--line)">
         <span style="font:400 12px/1.4 'Gordita',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)">{k}</span>
         <span style="font:500 13.5px/1.4 'Gordita',sans-serif;color:var(--svink);text-align:right;font-variant-numeric:tabular-nums">{val}</span></div>'''
-        for k, val in [('Stock no', v['chassis']), ('Layout code', v['code']), ('Internal length', v.get('length') or '—'), ('Layout', v['layout']),
-                       ('Sleeps', v.get('sleeps') or '—'),
-                       ('Tare', f"{v['tare']:,} kg" if v.get('tare') else '—'), ('ATM', f"{v['atm']:,} kg" if v.get('atm') else '—'),
-                       ('Ball weight (empty)', f"{v['ball']:,} kg" if v.get('ball') else '—'),
-                       ('Payload', f"{v['atm']-v['tare']:,} kg" if v.get('atm') and v.get('tare') else '—'),
+        for k, val in [('Stock no', v['chassis']), ('Layout code', v['code']), ('Internal length', v.get('length') or 'TBC'), ('Layout', v['layout']),
+                       ('Sleeps', v.get('sleeps') or 'TBC'),
+                       ('Tare', f"{v['tare']:,} kg" if v.get('tare') else 'TBC'), ('ATM', f"{v['atm']:,} kg" if v.get('atm') else 'TBC'),
+                       ('Ball weight (empty)', f"{v['ball']:,} kg" if v.get('ball') else 'TBC'),
+                       ('Payload', f"{v['atm']-v['tare']:,} kg" if v.get('atm') and v.get('tare') else 'TBC'),
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', dealer(v['state']))])
     similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
     if not similar:  # 19 Oct 2026: no other van of this model in stock, fall back to the same layout type, closest price first
