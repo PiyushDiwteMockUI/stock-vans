@@ -227,9 +227,12 @@ def enq_form(v):
     st = st.replace(f'<option value="{sel_state}">', f'<option value="{sel_state}" selected>', 1) if sel_state else st
     st_ph = '<option value="" disabled' + ('' if sel_state and f'value="{sel_state}" selected' in st else ' selected') + '>Select your state</option>'
     ch = v['chassis']
-    chips = (f'<label class="se-chip se-chip-hold"><input type="radio" name="enquiry-type" value="Hold this van" checked><span>Hold it for me, 48 hours, no deposit</span></label>'
+    chips = (f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Call back" checked><span>Call me back</span></label>' if is_sold(v) else
+             f'<label class="se-chip se-chip-hold"><input type="radio" name="enquiry-type" value="Hold this van" checked><span>Hold it for me, 48 hours, no deposit</span></label>'
              f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Call back"><span>Call me back</span></label>'
              f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label>')
+    se_title, se_sub, se_btn = (('Enquire about this layout', SOLD_LINE, 'Send my enquiry') if is_sold(v) else
+        ('Hold this van, no deposit', 'Built and in stock, delivered to any state. Say the word and we hold it for 48 hours.', 'Hold this van for me'))
     def fld(fid, name, label, typ, ac, err, extra='', ph='', hint=''):
         h = f' <span class="se-opt se-hint">{hint}</span>' if hint else ''
         return (f'<div class="se-f"><label for="{fid}">{label}<span class="se-req" aria-hidden="true">*</span>{h}</label>'
@@ -237,8 +240,8 @@ def enq_form(v):
                 f'<span class="se-err" id="{fid}-err">{err}</span></div>')
     return (f'<div class="side-enq" id="enquire-van">'
             f'<div class="se-kick">Stock no. {ch}</div>'
-            f'<h2 class="av se-title">Hold this van, no deposit</h2>'
-            f'<p class="se-sub">Built and in stock, delivered to any state. Say the word and we hold it for 48 hours.</p>'
+            f'<h2 class="av se-title">{se_title}</h2>'
+            f'<p class="se-sub">{se_sub}</p>'
             f'<a class="se-callbtn" href="{CALL_TEL}"><span class="se-callbtn-l">Call about {ch}</span><span class="se-callbtn-n">{CALL_NUM}</span></a>'
             f'<form class="se-form" action="#" method="post" novalidate data-van="{ch}" data-vantxt="{ch} {full_name(v)}" data-or="{OR_TOKEN}">'
             + f'<fieldset class="se-chips"><legend>What would you like us to do</legend><div class="se-chipgrid">{chips}</div></fieldset>'
@@ -254,8 +257,8 @@ def enq_form(v):
             + f'<div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label>'
               f'<textarea id="se-msg" name="message" rows="2" placeholder="Ask us anything about {ch}, finance or delivery"></textarea></div>'
             + f'<label class="se-check"><input type="checkbox" name="subscribe" checked><span>Keep me posted on new stock and exclusive offers</span></label>'
-            + f'<button type="submit" class="se-submit" data-chassis="{ch}">Hold this van for me</button>'
-            + f'<p class="se-fine">We reply the same business day. No deposit, nothing to sign.</p>'
+            + f'<button type="submit" class="se-submit" data-chassis="{ch}">{se_btn}</button>'
+            + f'<p class="se-fine">We reply the same business day.{"" if is_sold(v) else " No deposit, nothing to sign."}</p>'
             + f'<p class="se-disc">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>'
             + f'</form>'
             + f'<div class="se-done" hidden tabindex="-1" data-chassis="{ch}"><div class="se-tick" aria-hidden="true"></div>'
@@ -267,6 +270,15 @@ def is_clearance(v):
     """Clearance badge only when the dealer asked for it (explicit flag); default is the old year rule."""
     return bool(v['clearance']) if v.get('clearance') is not None else int(v.get('year') or 2026) < 2026
 
+def is_sold(v):
+    """Sold van (13 Nov 2026): data.js `sold: true`. Page, card and enquiry form stay; price reads 'Sold'; no hold offer; schema SoldOut."""
+    return bool(v.get('sold'))
+
+SOLD_LINE = 'This van has sold. Enquire and we will help you with this layout or one like it.'
+
+def price_txt(v):
+    return 'Sold' if is_sold(v) else money(v['price'])
+
 def show_was(v):
     """RRP is kept in the data but only shown when it is above the drive-away price."""
     return bool(v.get('was') and v.get('price') and v['was'] > v['price'])
@@ -275,7 +287,7 @@ def van_page(v):
     name = full_name(v)
     clr = is_clearance(v)
     # eta (5 Nov 2026): upcoming stock vans carry eta = "December 2026" and show "Coming December" instead of "Ready now"
-    ready = f'<span class="badge-dark">Coming {v["eta"].split()[0]}</span>' if v.get('eta') else '<span class="badge-dark">Ready now</span>'
+    ready = '<span class="badge-dark">Sold</span>' if is_sold(v) else (f'<span class="badge-dark">Coming {v["eta"].split()[0]}</span>' if v.get('eta') else '<span class="badge-dark">Ready now</span>')
     badge = ('<span class="badge-red">Clearance</span>' if clr else ready) + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
     tow = ''
     if v.get('atm'):
@@ -319,15 +331,15 @@ def van_page(v):
                        ('Ball weight (empty)', f"{v['ball']:,} kg" if v.get('ball') else 'TBC'),
                        ('Payload', f"{v['atm']-v['tare']:,} kg" if v.get('atm') and v.get('tare') else 'TBC'),
                        ('Axle', v['axle']), ('Condition', 'Pre-loved' if v['used'] else 'New'), ('Location', dealer(v['state']))])
-    similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model']][:3]
+    similar = [x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['model'] == v['model'] and not is_sold(x)][:3]
     if not similar:  # 19 Oct 2026: no other van of this model in stock, fall back to the same layout type, closest price first
-        similar = sorted([x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['layout'] == v['layout']], key=lambda x: abs((x['price'] or 0) - (v['price'] or 0)))[:3]
+        similar = sorted([x for x in DATA['vans'] if x['chassis'] != v['chassis'] and x['layout'] == v['layout'] and not is_sold(x)], key=lambda x: abs((x['price'] or 0) - (v['price'] or 0)))[:3]
     sim = ''.join(f'''<a class="simcard" style="text-decoration:none" href="{x['chassis'].lower()}.html">
         <div style="position:relative;aspect-ratio:16/10;background:var(--line)"><img src="{asrc(img_sm(x['images'][0]))}" alt="{x['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">{'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-sim">' if x['model']=='Solara' else ''}</div>
         <div style="padding:15px">
           <div style="font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--olink);margin-bottom:7px">{x['model']} {x['code'].replace(' ()','').strip()}</div>
           <div class="av" style="font-size:14px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:10px">{x['name']}</div>
-          <div style="font:500 15.5px/1 'Gordita',sans-serif;color:var(--svink)">{money(x['price'])}</div>
+          <div style="font:500 15.5px/1 'Gordita',sans-serif;color:var(--svink)">{price_txt(x)}</div>
           <div style="margin-top:8px;font:400 12.5px/1 'Gordita',sans-serif;color:var(--body)">{x['state']}</div>
         </div></a>''' for x in similar)
     enq = f"../?van={v['chassis']}#enquire"
@@ -338,11 +350,11 @@ def van_page(v):
         "image": [u if u.startswith('http') else '/stock/' + u for u in v['images'][:5]],
         "description": f"{v['year']} Wonderland RV {name}, stock {v['chassis']}, {v['length']} {v['layout'].lower()} off-road caravan"
                        + (f", tare {int(v['tare']):,} kg" if v.get('tare') else '') + (f", ATM {int(v['atm']):,} kg" if v.get('atm') else '')
-                       + f", sleeps {v['sleeps']}. " + (f"Due in {v['eta']}, {v['state']}." if v.get('eta') else f"Located in {v['state']}, ready for handover now."),
+                       + f", sleeps {v['sleeps']}. " + ("Sold." if is_sold(v) else f"Due in {v['eta']}, {v['state']}." if v.get('eta') else f"Located in {v['state']}, ready for handover now."),
         "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
         "offers": {"@type": "Offer", "url": f"https://wonderlandrv.com.au/stock/{v['chassis'].lower()}/", "priceCurrency": "AUD",
                    **({"price": int(v['price'])} if v.get('price') else {}),
-                   "availability": "https://schema.org/PreOrder" if v.get('eta') else "https://schema.org/InStock", "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
+                   "availability": "https://schema.org/SoldOut" if is_sold(v) else "https://schema.org/PreOrder" if v.get('eta') else "https://schema.org/InStock", "itemCondition": "https://schema.org/UsedCondition" if v.get('used') else "https://schema.org/NewCondition",
                    "seller": {"@type": "Organization", "name": dealer(v['state'])}}}, ensure_ascii=False)
     schema_tag = '<script type="application/ld+json">' + schema.replace('</', '<\\/') + '</script>'
     return HEAD.format(title=f"{name} {v['chassis']}", ASSET_V=ASSET_V) + schema_tag + headerV + f'''
@@ -358,15 +370,15 @@ def van_page(v):
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. {v['chassis']}</span>
     </div>
     <h1 class="av vp-h1" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">{name}</h1>
-    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">{(f"Built in our Campbellfield factory, due at {dealer(v['state'])} in {v['eta']}. Put your name on it now and it is yours when it lands." if v.get('eta') else f"Built in our Campbellfield factory and ready for handover in&nbsp;{v['state'].replace(' ', '&nbsp;')}.")}</p>
+    <p style="margin:0 0 22px;font:400 17px/1.65 'Gordita',sans-serif;color:var(--body);max-width:62ch">{(SOLD_LINE if is_sold(v) else f"Built in our Campbellfield factory, due at {dealer(v['state'])} in {v['eta']}. Put your name on it now and it is yours when it lands." if v.get('eta') else f"Built in our Campbellfield factory and ready for handover in&nbsp;{v['state'].replace(' ', '&nbsp;')}.")}</p>
     {gallery(v)}
     <div class="vp-mobilebuy">
       <div class="vpb-row">
       <div>
-        <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-bottom:8px">Drive away</div>
+        <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-bottom:8px">{'Availability' if is_sold(v) else 'Drive away'}</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-          <span class="av" style="font-size:26px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</span>
-          {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) else ''}
+          <span class="av" style="font-size:26px;line-height:1;letter-spacing:-.02em">{price_txt(v)}</span>
+          {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) and not is_sold(v) else ''}
         </div>
       </div>
       </div>
@@ -393,10 +405,10 @@ def van_page(v):
         <div style="min-width:0">
           <div style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--olink);margin-bottom:12px">Where it is</div>
           <div class="av" style="font-size:17px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">{dealer(v['state'])}</div>
-          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call. You can also build your own caravan using our <a href="https://wonderlandrv.com.au/build-your-caravan/" style="color:var(--svink);border-bottom:1px solid var(--svorange);text-decoration:none">configurator</a>.</div>
+          <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">{SOLD_LINE if is_sold(v) else f"This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call."} You can also build your own caravan using our <a href="https://wonderlandrv.com.au/build-your-caravan/" style="color:var(--svink);border-bottom:1px solid var(--svorange);text-decoration:none">configurator</a>.</div>
         </div>
         <div class="wi-btns" style="display:flex;flex-wrap:wrap;gap:10px;flex:none;align-items:stretch">
-          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="Book a viewing">Book a viewing</a>
+          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="{'Call back' if is_sold(v) else 'Book a viewing'}">{'Enquire about this layout' if is_sold(v) else 'Book a viewing'}</a>
         </div>
       </div>
     </div>
@@ -404,9 +416,9 @@ def van_page(v):
   <aside class="detailside" style="flex:1 1 300px;max-width:380px;padding:0 0 66px 0;position:sticky;top:20px;align-self:flex-start">
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
       <div class="side-price" style="padding:24px 22px 22px;border-bottom:1px solid var(--line)">
-        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Drive away</div>
-        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{money(v['price'])}</div>
-        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) else ''}
+        <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">{'Availability' if is_sold(v) else 'Drive away'}</div>
+        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{price_txt(v)}</div>
+        {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) and not is_sold(v) else ''}
       </div>
       {enq_form(v)}
       <div class="side-facts"><h3 class="av sf-head">Key details</h3>{facts}</div>
@@ -427,7 +439,7 @@ def van_page(v):
   </div>
 </div>
 ''' + reviewsV + nextV + footerV + f'''
-<div class="vp-bar" id="vp-bar"><a class="vp-bar-call" href="{CALL_TEL}">Call</a><a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Hold this van">Hold it, no deposit</a></div>
+<div class="vp-bar" id="vp-bar"><a class="vp-bar-call" href="{CALL_TEL}">Call</a>{'<a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Call back">Enquire</a>' if is_sold(v) else '<a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Hold this van">Hold it, no deposit</a>'}</div>
 <iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 <script src="../assets/ref/js/reviews.js?v={ASSET_V}"></script>
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
@@ -439,11 +451,12 @@ def index_page():
     out = []
     for key, title in groups:
         vans = [v for v in DATA['vans'] if ('Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else 'Stock van')) == key]
+        vans.sort(key=is_sold)  # stable: sold vans go after the available ones
         if not vans: continue
         cards = ''.join(f'''<a href="{v['chassis'].lower()}.html" class="pagecard" style="text-decoration:none;background:#fff;border:1px solid var(--line2);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;font-family:'Gordita',sans-serif">
           <div style="position:relative;aspect-ratio:16/10;background:var(--line)">
             <img src="{asrc(img_sm(v['images'][0]))}" alt="{v['name']}" loading="lazy" decoding="async" width="420" height="262" style="width:100%;height:100%;object-fit:cover;display:block">
-            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if is_clearance(v) else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else (f"Coming {v['eta'].split()[0]}" if v.get('eta') else 'Ready now'))}</span>
+            <span style="position:absolute;left:10px;top:10px;background:{'#4A5560' if v['used'] else ('#C0392B' if is_clearance(v) else '#12171C')};color:#fff;font:500 9px/1 'Gordita',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 9px;border-radius:2px">{'Sold' if is_sold(v) else 'Pre-loved' if v['used'] else ('Clearance' if is_clearance(v) else (f"Coming {v['eta'].split()[0]}" if v.get('eta') else 'Ready now'))}</span>
             <span style="position:absolute;right:10px;bottom:10px;background:rgba(6,9,12,.74);color:#fff;font:400 10px/1 'Gordita',sans-serif;letter-spacing:.08em;padding:6px 8px;border-radius:2px">{len(v['images'])} photos</span>
             {'<img src="../assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" style="position:absolute;top:0;right:14px;width:62px;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.38))">' if v['model']=='Solara' else ''}
           </div>
@@ -452,7 +465,7 @@ def index_page():
             <div class="av" style="font-size:14.5px;line-height:1.3;letter-spacing:.02em;text-transform:uppercase;color:var(--svink);margin-bottom:12px">{v['name']}</div>
             <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px">{''.join(f'<span style="background:#F2EEE8;color:var(--body2);font:400 12px/1 |Gordita|,sans-serif;padding:7px 9px;border-radius:2px">{t}</span>' for t in [str(v.get('sleeps') or '') and f"{v['sleeps']} sleeps", (f"{v['travel']} m travel" if v.get('travel') else v.get('length')), v['axle'], v['layout']] if t)}</div>
             <div style="margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:13px;border-top:1px solid var(--line)">
-              <span style="font:500 16.5px/1 'Gordita',sans-serif;color:var(--svink);font-variant-numeric:tabular-nums">{money(v['price'])}</span>
+              <span style="font:500 16.5px/1 'Gordita',sans-serif;color:var(--svink);font-variant-numeric:tabular-nums">{price_txt(v)}</span>
               <span style="font:500 11px/1 'Gordita',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--olink)">Open page →</span>
             </div>
           </div>

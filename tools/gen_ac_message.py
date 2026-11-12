@@ -27,7 +27,7 @@ def dealer(v):
     return ("at our Western Australia dealer","at our WA dealer")
 
 def similar(v):
-    others=[o for o in vans if o['chassis']!=v['chassis']]
+    others=[o for o in vans if o['chassis']!=v['chassis'] and not o.get('sold')]
     same=[o for o in others if o['layout']==v['layout'] and o['state']==v['state']]
     pool=same if len(same)>=2 else same+[o for o in others if o['layout']==v['layout'] and o['state']!=v['state']]
     if len(pool)<2: pool=pool+[o for o in others if o not in pool]
@@ -78,13 +78,13 @@ def build(v):
     h=h.replace('alt="Solara Full Composite 2006 Couple Van"', f'alt="{H.escape(v["name"])}"')
     # intro
     h=h.replace('We&rsquo;re glad to know you&rsquo;re interested in the <strong>Solara Full Composite 2006 Couple Van</strong>. This van is currently located at <strong>Aussie Escape Caravans</strong>, our Queensland dealer.',
-                f'We&rsquo;re glad to know you&rsquo;re interested in the <strong>{H.escape(v["name"])}</strong>. This van is currently located {dlr_long}.')
+                f'We&rsquo;re glad to know you&rsquo;re interested in the <strong>{H.escape(v["name"])}</strong>. ' + ('This van has sold, but we can help you with this layout or one like it.' if v.get('sold') else f'This van is currently located {dlr_long}.'))
     # name lockup
     h=h.replace('https://piyushdiwtemockui.github.io/stock-vans/assets/name-wl1223.png', W(f"stockmail-{ch}-name.png"))
     h=h.replace('alt="SOLARA FULL COMPOSITE 2006 COUPLE VAN"', f'alt="{H.escape(v["name"].upper())} {v["code"]}"')
     # meta line
     h=re.sub(r'<strong style="color:#1D1D1B">Stock no\. WL1223</strong>[^<]*</p>',
-             f'<strong style="color:#1D1D1B">Stock no. {ch}</strong> &nbsp;&middot;&nbsp; {dlr_short} &nbsp;&middot;&nbsp; ready to go now</p>', h)
+             f'<strong style="color:#1D1D1B">Stock no. {ch}</strong> &nbsp;&middot;&nbsp; {dlr_short} &nbsp;&middot;&nbsp; {"sold" if v.get("sold") else "ready to go now"}</p>', h)
     # tilt
     if tilt_file:
         h=h.replace('https://piyushdiwtemockui.github.io/stock-vans/assets/layouts/2006Q-R-SC_tilt.png', W(tilt_file))

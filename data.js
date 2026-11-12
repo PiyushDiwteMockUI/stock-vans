@@ -1118,7 +1118,8 @@ const DATA = {
      ]
     ]
    ],
-   "spec_source": "ana"
+   "spec_source": "ana",
+   "sold": true
   },
   {
    "chassis": "WL1233",
@@ -2268,7 +2269,7 @@ const DATA = {
    "year": "2026",
    "length": "21'00\"",
    "layout": "Couples",
-   "state": "Western Australia",
+   "state": "Victoria",
    "used": false,
    "price": 166999.0,
    "images": [
@@ -3058,8 +3059,37 @@ const DATA = {
    "used": false,
    "price": 212042.0,
    "images": [
-    "assets/layouts/1806Q-M-L_tilt.png",
-    "https://caravancampingsales.pxcrush.net/caravancampingsales/cars/dealer/3cyvfyls9muudbp2zbhcqwj5d.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=1600,1067"
+    "assets/vans/WL1240/01.jpg",
+    "assets/vans/WL1240/02.jpg",
+    "assets/vans/WL1240/03.jpg",
+    "assets/vans/WL1240/04.jpg",
+    "assets/vans/WL1240/05.jpg",
+    "assets/vans/WL1240/06.jpg",
+    "assets/vans/WL1240/07.jpg",
+    "assets/vans/WL1240/08.jpg",
+    "assets/vans/WL1240/09.jpg",
+    "assets/vans/WL1240/10.jpg",
+    "assets/vans/WL1240/11.jpg",
+    "assets/vans/WL1240/12.jpg",
+    "assets/vans/WL1240/13.jpg",
+    "assets/vans/WL1240/14.jpg",
+    "assets/vans/WL1240/15.jpg",
+    "assets/vans/WL1240/16.jpg",
+    "assets/vans/WL1240/17.jpg",
+    "assets/vans/WL1240/18.jpg",
+    "assets/vans/WL1240/19.jpg",
+    "assets/vans/WL1240/20.jpg",
+    "assets/vans/WL1240/21.jpg",
+    "assets/vans/WL1240/22.jpg",
+    "assets/vans/WL1240/23.jpg",
+    "assets/vans/WL1240/24.jpg",
+    "assets/vans/WL1240/25.jpg",
+    "assets/vans/WL1240/26.jpg",
+    "assets/vans/WL1240/27.jpg",
+    "assets/vans/WL1240/28.jpg",
+    "assets/vans/WL1240/29.jpg",
+    "assets/vans/WL1240/30.jpg",
+    "assets/vans/WL1240/31.jpg"
    ],
    "listing": "https://www.caravancampingsales.com.au/items/details/2026-wonderland-rv-solara-1806/OAG-AD-26405380/",
    "tare": 2887,
@@ -3188,9 +3218,7 @@ const DATA = {
      []
     ]
    ],
-   "spec_source": "ana",
-   "eta": "November 2026",
-   "photos_note": true
+   "spec_source": "ana"
   },
   {
    "chassis": "WL1216",
