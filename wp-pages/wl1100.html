@@ -500,6 +500,20 @@ html, #wlstock{margin:0;padding:0}
 @media (max-width:420px){#wlstock .side-enq.is-mobile .se-title, #wlstock .side-enq.is-mobile .se-done-t{font-size:clamp(15px,5.4vw,18px);overflow-wrap:anywhere}}
 
 
+
+:root{--sbor:#DB7627}
+#wlstock .ss{position:absolute;z-index:4;top:var(--ssy,14px);left:var(--ssx,14px);box-sizing:border-box;
+  font-family:'aviano-sans','Aviano Sans',sans-serif;font-weight:900;font-size:var(--ssf,26px);line-height:1;text-transform:uppercase;letter-spacing:0;
+  color:#fff;background:var(--ssbg);padding:.34em .52em .3em;border:var(--ssb,4px) solid #fff;border-radius:var(--ssr,2px);
+  transform:rotate(-8deg) translateZ(0);transform-origin:50% 50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  box-shadow:0 3px 9px rgba(0,0,0,.40),0 1px 2px rgba(0,0,0,.28);pointer-events:none;white-space:nowrap;text-align:center;
+  -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;will-change:transform;outline:1px solid transparent}
+#wlstock .ss b{display:block;font-weight:900}
+#wlstock .ss-6{--ssbg:var(--sbor);--ssr:3px;--ssb:5px;--ssf:27px;--ssx:-12px;--ssy:-10px;padding:.3em .55em .26em;box-shadow:0 4px 12px rgba(0,0,0,.42),0 1px 2px rgba(0,0,0,.3)}
+@media (max-width:700px){#wlstock .ss-6{--ssx:-10px}}
+#wlstock .ss-tag{display:inline-block;box-sizing:border-box;font-family:'aviano-sans','Aviano Sans',sans-serif;font-weight:900;font-size:14px;line-height:1;text-transform:uppercase;letter-spacing:0;color:#fff;background:var(--ssbg);padding:8px 13px 7px;border:3px solid var(--ssbg);border-radius:var(--ssr,2px)}
+#wlstock .sb-price-or{color:var(--sbor)!important}
+
 </style>
 <style>
 
@@ -1805,7 +1819,7 @@ html {
 <div class="wrap shell" style="padding:22px 0 0">
   <div style="flex:1 1 560px;min-width:0;padding:0 46px 0 0" class="vp-left">
     <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px">
-      <span class="badge-red">Clearance</span>
+      <span class="ss-tag ss-6">Sold</span>
       <span style="font:400 12.5px/1 'Gordita',sans-serif;color:var(--mut)">Stock no. WL1100</span>
     </div>
     <h1 class="av vp-h1" style="margin:0 0 8px;font-size:42px;line-height:1.04;letter-spacing:.03em;text-transform:uppercase">Amaroo 2100 XL Ensuite Couples</h1>
@@ -1824,7 +1838,7 @@ html {
       <div>
         <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-bottom:8px">Availability</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-          <span class="av" style="font-size:26px;line-height:1;letter-spacing:-.02em">Sold</span>
+          <span class="av sb-price-or" style="font-size:26px;line-height:1;letter-spacing:-.02em">Sold</span>
           
         </div>
       </div>
@@ -2013,7 +2027,7 @@ html {
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
       <div class="side-price" style="padding:24px 22px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">Availability</div>
-        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">Sold</div>
+        <div class="av sb-price-or" style="font-size:30px;line-height:1;letter-spacing:-.02em">Sold</div>
         
       </div>
       <div class="side-enq" id="enquire-van"><div class="se-kick">Stock no. WL1100</div><h2 class="av se-title">Enquire about this layout</h2><p class="se-sub">This van has sold. Enquire and we will help you with this layout or one like it.</p><a class="se-callbtn" href="tel:+61399586708"><span class="se-callbtn-l">Call about WL1100</span><span class="se-callbtn-n">(03) 9958 6708</span></a><form class="se-form" action="#" method="post" novalidate data-van="WL1100" data-vantxt="WL1100 Amaroo 2100 XL Ensuite Couples" data-or="86f68712-ed10-4e64-8760-86ac3026dfc6"><fieldset class="se-chips"><legend>What would you like us to do</legend><div class="se-chipgrid"><label class="se-chip"><input type="radio" name="enquiry-type" value="Call back" checked><span>Call me back</span></label></div></fieldset><div class="se-row"><div class="se-f"><label for="se-fn">First name<span class="se-req" aria-hidden="true">*</span></label><input id="se-fn" name="first-name" type="text" autocomplete="given-name" placeholder="First name" required aria-describedby="se-fn-err"><span class="se-err" id="se-fn-err">Tell us your first name.</span></div><div class="se-f"><label for="se-ln">Last name<span class="se-req" aria-hidden="true">*</span></label><input id="se-ln" name="last-name" type="text" autocomplete="family-name" placeholder="Last name" required aria-describedby="se-ln-err"><span class="se-err" id="se-ln-err">Tell us your last name.</span></div></div><div class="se-f"><label for="se-em">Email<span class="se-req" aria-hidden="true">*</span></label><input id="se-em" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="se-em-err" spellcheck="false"><span class="se-err" id="se-em-err">Add an email we can reply to.</span></div><div class="se-f"><label for="se-ph">Phone<span class="se-req" aria-hidden="true">*</span> <span class="se-opt se-hint">So we can call you back</span></label><input id="se-ph" name="phone" type="tel" autocomplete="tel" placeholder="Phone number" required aria-describedby="se-ph-err" inputmode="numeric"><span class="se-err" id="se-ph-err">Add a phone number so we can call you.</span></div><div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span> <span class="se-opt se-hint">So the right dealer calls you</span></label><select id="se-st" name="state" required aria-describedby="se-st-err"><option value="" disabled>Select your state</option><option value="Victoria">Victoria</option><option value="New South Wales / ACT">New South Wales / ACT</option><option value="Queensland">Queensland</option><option value="South Australia">South Australia</option><option value="Western Australia" selected>Western Australia</option><option value="Tasmania">Tasmania</option><option value="Northern Territory">Northern Territory</option></select><span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div><div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label><textarea id="se-msg" name="message" rows="2" placeholder="Ask us anything about WL1100, finance or delivery"></textarea></div><label class="se-check"><input type="checkbox" name="subscribe" checked><span>Keep me posted on new stock and exclusive offers</span></label><button type="submit" class="se-submit" data-chassis="WL1100">Send my enquiry</button><p class="se-fine">We reply the same business day.</p><p class="se-disc">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p></form><div class="se-done" hidden tabindex="-1" data-chassis="WL1100"><div class="se-tick" aria-hidden="true"></div><div class="av se-done-t">Thanks<span class="se-done-name"></span></div><p class="se-sub se-done-msg"></p></div></div>

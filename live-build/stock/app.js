@@ -131,11 +131,11 @@ const SV = {
   },
 
   cardHTML(v) {
-    return `<article class="card">
-      <div class="cardimg" data-act="view" data-id="${v.id}" style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);cursor:pointer">
+    return `<article class="card"${v.sold ? ' style="position:relative;overflow:visible"' : ''}>
+      <div class="cardimg" data-act="view" data-id="${v.id}" style="position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--line);cursor:pointer${v.sold ? ';border-radius:4px 4px 0 0' : ''}">
         <img src="${imgSm(v.img)}" ${imgSrcset(v.img) ? 'srcset="' + imgSrcset(v.img) + '" sizes="(max-width:900px) 92vw, 480px"' : ''} alt="${v.name}" loading="lazy" decoding="async" width="430" height="269" style="width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(1.06)">
         <div style="position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
-          ${v.sold ? '<span class="badge-dark">Sold</span>' : v.clearance ? '<span class="badge-red">Clearance</span>' : (v.eta ? '<span class="badge-dark">Coming ' + v.eta.split(' ')[0] + '</span>' : '<span class="badge-dark">Ready now</span>')}
+          ${v.sold ? '' : v.clearance ? '<span class="badge-red">Clearance</span>' : (v.eta ? '<span class="badge-dark">Coming ' + v.eta.split(' ')[0] + '</span>' : '<span class="badge-dark">Ready now</span>')}
           ${v.used ? '<span class="badge-grey">Pre-loved</span>' : ''}
         </div>
         ${v.model === 'Solara' ? '<img src="/stock/assets/coty-jca.png" alt="Caravan of the Year 2026 Judges Choice Award" width="526" height="1288" loading="lazy" class="coty-card">' : ''}
@@ -155,7 +155,7 @@ const SV = {
         </div>
         <div style="margin-top:auto">
           <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
-            <span class="av" style="font-size:27px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
+            <span class="av${v.sold ? ' sb-price-or' : ''}" style="font-size:27px;line-height:1;letter-spacing:-.02em">${v.priceTxt}</span>
             ${!v.sold && v.was && v.priceN && v.was > v.priceN ? '<span style="font:400 14px/1 \'Gordita\';color:var(--mut);text-decoration:line-through;font-variant-numeric:tabular-nums">' + money(v.was) + '</span><span style="font:500 12.5px/1 \'Gordita\';color:var(--olink);font-variant-numeric:tabular-nums">Save ' + money(v.was - v.priceN) + '</span>' : ''}
             ${v.priceN && !v.sold ? '<span style="font:400 12px/1 \'Gordita\';color:var(--mut)">drive away · ' + v.state + '</span>' : ''}
           </div>
@@ -165,6 +165,7 @@ const SV = {
           </div>
         </div>
       </div>
+      ${v.sold ? '<span class="ss ss-6"><b>Sold</b></span>' : ''}
     </article>`;
   },
 

@@ -287,8 +287,10 @@ def van_page(v):
     name = full_name(v)
     clr = is_clearance(v)
     # eta (5 Nov 2026): upcoming stock vans carry eta = "December 2026" and show "Coming December" instead of "Ready now"
-    ready = '<span class="badge-dark">Sold</span>' if is_sold(v) else (f'<span class="badge-dark">Coming {v["eta"].split()[0]}</span>' if v.get('eta') else '<span class="badge-dark">Ready now</span>')
-    badge = ('<span class="badge-red">Clearance</span>' if clr else ready) + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
+    ready = f'<span class="badge-dark">Coming {v["eta"].split()[0]}</span>' if v.get('eta') else '<span class="badge-dark">Ready now</span>'
+    # test order (13 Nov 2026): sold wins over clearance and ready (WL1100 showed Clearance while the card said Sold)
+    status = '<span class="ss-tag ss-6">Sold</span>' if is_sold(v) else ('<span class="badge-red">Clearance</span>' if clr else ready)
+    badge = status + ('<span class="badge-grey">Pre-loved</span>' if v['used'] else '')
     tow = ''
     if v.get('atm'):
         note = 'Tows behind most 3.5T-rated dual cab utes.' if v['atm'] <= 3500 else 'Needs a 4.5T-rated tow vehicle.'
@@ -377,7 +379,7 @@ def van_page(v):
       <div>
         <div style="font:400 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-bottom:8px">{'Availability' if is_sold(v) else 'Drive away'}</div>
         <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-          <span class="av" style="font-size:26px;line-height:1;letter-spacing:-.02em">{price_txt(v)}</span>
+          <span class="av{' sb-price-or' if is_sold(v) else ''}" style="font-size:26px;line-height:1;letter-spacing:-.02em">{price_txt(v)}</span>
           {f'<span style="font:400 13px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 12px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) and not is_sold(v) else ''}
         </div>
       </div>
@@ -417,7 +419,7 @@ def van_page(v):
     <div style="border:1px solid var(--line2);border-radius:4px;overflow:hidden;background:#fff">
       <div class="side-price" style="padding:24px 22px 22px;border-bottom:1px solid var(--line)">
         <div style="font:400 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);margin-bottom:12px">{'Availability' if is_sold(v) else 'Drive away'}</div>
-        <div class="av" style="font-size:30px;line-height:1;letter-spacing:-.02em">{price_txt(v)}</div>
+        <div class="av{' sb-price-or' if is_sold(v) else ''}" style="font-size:30px;line-height:1;letter-spacing:-.02em">{price_txt(v)}</div>
         {f'<div style="margin-top:10px;display:flex;align-items:baseline;gap:10px"><span style="font:400 14px/1 |G|,sans-serif;color:var(--mut);text-decoration:line-through">{money(v["was"])}</span><span style="font:500 13px/1 |G|,sans-serif;color:var(--olink)">Save {money(v["was"]-v["price"])}</span></div>'.replace('|G|', chr(39)+'Gordita'+chr(39)) if show_was(v) and not is_sold(v) else ''}
       </div>
       {enq_form(v)}
