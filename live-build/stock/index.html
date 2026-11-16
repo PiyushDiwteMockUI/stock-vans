@@ -42,12 +42,10 @@ fbq('track','PageView');
      keeping the 16.24rem content column inside the viewport. */
   html{font-size:min(100px, max(calc(100vw / 23.76), min(66px, calc(100vw / 17.5))))}
 }
-.field--line input{min-height:44px}
-.field--select select{min-height:48px}
-.chips .chip{min-height:48px}
-.btn-submit{min-height:52px}
-.field--van .chev{left:auto;right:0.26rem}
-@media (max-width:900px){.field-grid > .field--select{grid-column:1 / -1}}
+/* Enquiry form v5 on the hub: the van page form (site.css .side-enq) sits in the reference grid column, on white, no sidebar padding */
+.enquiry .side-enq{padding:0}
+/* Gordita kerning swallows the space after a comma ("spec,the"); brand rule: font-kerning:none on Gordita text */
+.enquiry .lede,.enquiry .reachout{font-kerning:none}
 .consent input{width:20px;height:20px;flex:none}
 
 /* ===== Stock hero, banner style (30 Sep 2026, Ana + Piyush: shorter, no buttons, stock visible without scrolling). Scoped to .hero--top so van pages are untouched. =====
@@ -226,73 +224,23 @@ fbq('track','PageView');
           to you within 24 hours<br>
           on Business days.</p>
       </div>
-      <form class="enquiry-form" id="enqform" action="#" method="post" autocomplete="off" novalidate>
-        <div class="field-grid">
-          <div class="field field--line">
-            <input id="first-name" name="first-name" type="text" placeholder="First Name" required autocomplete="given-name">
-            <span class="req" aria-hidden="true">*</span>
+      <!-- Enquiry form v5 (16 Nov 2026), same markup and classes as the van page form (tools/gen_vans.py enq_form) plus the hub's "Which van?" select -->
+      <div class="enquiry-form side-enq hub-enq">
+        <form class="se-form" id="enqform" action="#" method="post" autocomplete="off" novalidate>
+          <div class="se-row">
+          <div class="se-f"><input id="first-name" name="first-name" type="text" autocomplete="given-name" placeholder="First name*" aria-label="First name" required aria-describedby="first-name-err"><span class="se-err" id="first-name-err">Tell us your first name.</span></div>
+          <div class="se-f"><input id="last-name" name="last-name" type="text" autocomplete="family-name" placeholder="Last name*" aria-label="Last name" required aria-describedby="last-name-err"><span class="se-err" id="last-name-err">Tell us your last name.</span></div>
           </div>
-          <div class="field field--line">
-            <input id="last-name" name="last-name" type="text" placeholder="Last Name" required autocomplete="family-name">
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--line">
-            <input id="email" name="email" type="email" placeholder="Email" required autocomplete="email" spellcheck="false">
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--line">
-            <input id="phone" name="phone" type="tel" placeholder="Phone" required autocomplete="tel">
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--select">
-            <select id="state" name="state" autocomplete="off" required>
-              <option value="" selected disabled>State</option>
-              <option value="Victoria">VIC</option>
-              <option value="New South Wales / ACT">NSW / ACT</option>
-              <option value="Queensland">QLD</option>
-              <option value="South Australia">SA</option>
-              <option value="Western Australia">WA</option>
-              <option value="Tasmania">TAS</option>
-              <option value="Northern Territory">NT</option>
-            </select>
-            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
-            <span class="req" aria-hidden="true">*</span>
-          </div>
-          <div class="field field--select field--van">
-            <select id="vanselect" name="van" autocomplete="off" aria-label="Which van are you asking about?">
-              <option value="">Which van?</option>
-            </select>
-            <svg class="chev" viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg>
-          </div>
-        </div>
-        <fieldset class="chips">
-          <legend class="sr-only">What would you like to do?</legend>
-          <span class="chips-thumb is-init" aria-hidden="true"></span>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Call back" checked>
-            <span>Call back</span>
-          </label>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Book a viewing">
-            <span>Book a<br>viewing</span>
-          </label>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Get a quote">
-            <span>Get a Quote</span>
-          </label>
-          <label class="chip">
-            <input type="radio" name="enquiry-type" value="Hold this van">
-            <span>Hold<br>this van</span>
-          </label>
-        </fieldset>
-        <div class="field field--area">
-          <label class="sr-only" for="message">Something else you want to tell us…</label>
-          <textarea id="message" name="message" placeholder="Something else you want to tell us..."></textarea>
-        </div>
-        <p class="fineprint" style="margin:0 0 4px">We will keep you posted on new stock and runout pricing. Unsubscribe anytime.</p>
-        <button class="btn-submit" type="submit">Submit</button>
-        <p id="enqstatus" role="status" style="margin-top:14px;font:400 13px/1.5 'Gordita',sans-serif;color:#646E76"></p>
-      </form>
+          <div class="se-f"><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Phone*" aria-label="Phone" required aria-describedby="phone-err" inputmode="numeric"><span class="se-err" id="phone-err">Add a phone number so we can call you.</span></div>
+          <div class="se-f"><input id="email" name="email" type="email" autocomplete="email" placeholder="Email*" aria-label="Email" required aria-describedby="email-err" spellcheck="false"><span class="se-err" id="email-err">Add an email we can reply to.</span></div>
+          <div class="se-f se-sel"><div class="se-selw"><select id="state" name="state" required aria-label="State" aria-describedby="state-err"><option value="" disabled selected>Select your state</option><option value="Victoria">Victoria</option><option value="New South Wales / ACT">New South Wales / ACT</option><option value="Queensland">Queensland</option><option value="South Australia">South Australia</option><option value="Western Australia">Western Australia</option><option value="Tasmania">Tasmania</option><option value="Northern Territory">Northern Territory</option></select><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg></div><span class="se-err" id="state-err">Pick your state so the right dealer calls you.</span></div>
+          <div class="se-f se-sel"><div class="se-selw"><select id="vanselect" name="van" aria-label="Which van are you asking about?"><option value="">General stock van enquiry</option></select><svg viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg></div></div>
+          <div class="se-f se-area"><textarea id="message" name="message" rows="4" aria-label="Comments" placeholder="Comments (optional). Ask us anything about a van, finance or delivery."></textarea></div>
+          <label class="se-check"><input type="checkbox" name="subscribe" checked><span>Keep me posted on new stock and exclusive&nbsp;offers</span></label>
+          <button type="submit" class="se-submit">send enquiry</button>
+        </form>
+        <div class="se-done" hidden tabindex="-1"><div class="se-tick" aria-hidden="true"></div><div class="av se-done-t">Thanks<span class="se-done-name"></span></div><p class="se-sub se-done-msg"></p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -595,7 +543,7 @@ fbq('track','PageView');
 
 <script src="/stock/assets/purify.min.js"></script>
 <script src="/stock/data.js?v=3f2fdcd2"></script>
-<script src="/stock/app.js?v=5d62967c"></script><script>/* Stock hub top bar: keep 'Save up to' equal to the biggest current saving (RRP minus price) */(function(){try{var m=0;DATA.vans.forEach(function(v){var s=(v.was&&v.price)?v.was-v.price:0;if(s>m)m=s;});var bar=document.querySelector('.wl-topbar');if(!bar)return;if(m>0){var txt='$'+Math.round(m).toLocaleString('en-AU');bar.querySelectorAll('.js-max-saving').forEach(function(e){e.textContent=txt;});var tk=bar.querySelector('.wl-ticker');tk.setAttribute('aria-label',tk.getAttribute('aria-label').replace(/\$[0-9,]+/,txt));}else{bar.querySelectorAll('.js-max-saving').forEach(function(e){var it=e.closest('.wl-ticker__item');if(it)it.remove();});}}catch(e){}})();</script>
+<script src="/stock/app.js?v=51f1b5a5"></script><script>/* Stock hub top bar: keep 'Save up to' equal to the biggest current saving (RRP minus price) */(function(){try{var m=0;DATA.vans.forEach(function(v){var s=(v.was&&v.price)?v.was-v.price:0;if(s>m)m=s;});var bar=document.querySelector('.wl-topbar');if(!bar)return;if(m>0){var txt='$'+Math.round(m).toLocaleString('en-AU');bar.querySelectorAll('.js-max-saving').forEach(function(e){e.textContent=txt;});var tk=bar.querySelector('.wl-ticker');tk.setAttribute('aria-label',tk.getAttribute('aria-label').replace(/\$[0-9,]+/,txt));}else{bar.querySelectorAll('.js-max-saving').forEach(function(e){var it=e.closest('.wl-ticker__item');if(it)it.remove();});}}catch(e){}})();</script>
 <script src="/stock/assets/ref/js/video.js"></script>
 <script src="/stock/assets/ref/js/reviews.js?v=53de3d86"></script>
 <script src="/stock/assets/ref/js/footer.js"></script>

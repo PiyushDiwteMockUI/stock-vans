@@ -268,7 +268,6 @@ const SV = {
       states.map(st => `<optgroup label="${st}">` + VANS.filter(v => v.state === st).map(vanOpt).join('') + '</optgroup>').join('') +
       '<option value="unsure">Not sure yet, help me choose</option>');
     sel.value = keep;
-    if (window.syncVandrop) window.syncVandrop();
     this.syncMob();
   },
 
@@ -331,8 +330,8 @@ const SV = {
 
   enquire(id) {
     const v = VANS[id];
+    this.reopenForm();
     document.getElementById('vanselect').value = v.chassis;
-    if (window.syncVandrop) window.syncVandrop();
     document.getElementById('enquire').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   },
 
@@ -364,19 +363,20 @@ const SV = {
   },
 
   submit(e) {
+    // Enquiry form v5 (16 Nov 2026): same validation, payload and Thanks swap as the van page form (assets/vanpage.js),
+    // with the van taken from the hub's "Which van?" select. No choice chips any more, so every lead is an 'Enquiry'.
     e.preventDefault();
     const f = document.getElementById('enqform');
     const g = n => f.querySelector('[name="' + n + '"]');
-    const LBL = { 'first-name': 'first name', 'last-name': 'last name', email: 'email', phone: 'phone', state: 'state' };
-    for (const n of ['first-name', 'last-name', 'email', 'phone', 'state']) {
-      if (!g(n).value) {
-        g(n).focus();
-        const st0 = document.getElementById('enqstatus');
-        st0.textContent = 'Please add your ' + LBL[n] + ' and press Submit again.';
-        st0.style.color = '#C0392B';
-        return false;
-      }
+    let first = null;
+    for (const n of ['first-name', 'last-name', 'phone', 'email', 'state']) {
+      const el = g(n), v = (el.value || '').trim();
+      const bad = !v || (n === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) || (n === 'phone' && v.replace(/\D/g, '').length < 8);
+      el.closest('.se-f').classList.toggle('is-err', bad);
+      if (bad) el.setAttribute('aria-invalid', 'true'); else el.removeAttribute('aria-invalid');
+      if (bad && !first) first = el;
     }
+    if (first) { first.focus(); return false; }
     let phone = g('phone').value.replace(/\s+/g, '');
     if (/^0\d{9}$/.test(phone)) phone = '+61' + phone.slice(1);
     // AC field 27 has a combined NSW/ACT option; the visible form keeps the plain state names.
@@ -385,18 +385,19 @@ const SV = {
     const vanSel = g('van').value || 'unspecified';
     const vv = VANS.find(x => x.chassis === vanSel);
     const vanTxt = vanSel === 'unsure' ? 'Not sure yet' : vanSel === 'unspecified' ? 'General stock van enquiry' : vanSel + ' ' + (vv ? fullName(vv) : '');
-    const intentEl = f.querySelector('[name="enquiry-type"]:checked');
-    const intent = intentEl ? intentEl.value : 'Call back';
+    const intent = 'Enquiry';
     const msg = (g('message').value || '').trim();
-    const consent = true; // enquirers are subscribed by default, unsubscribe anytime
+    const subscribed = g('subscribe').checked;
     const ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
-      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (consent ? ' | Newsletter: yes' : '');
+      (msg ? ' | Note: ' + msg.slice(0, 300) : '') + (subscribed ? ' | Newsletter: yes' : ' | Newsletter: no') + ' | Form: stock hub';
     const post = document.createElement('form');
     post.method = 'POST'; post.action = 'https://wonderlandrv.activehosted.com/proc.php';
     post.target = 'ac_sink'; post.style.display = 'none';
     const H = { u: '47', f: '47', s: '', c: '0', m: '0', act: 'sub', v: '2', or: OR_TOKEN,
-      firstname: g('first-name').value, lastname: g('last-name').value, email: g('email').value,
+      firstname: g('first-name').value.trim(), lastname: g('last-name').value.trim(), email: g('email').value.trim(),
       phone: phone, 'field[27]': stateVal, 'field[86]': ad };
+    // Subscribe to Marketing (AC field 24, checkbox): sent only when ticked, as the field's single option label
+    if (subscribed) H['field[24][]'] = 'I would like to receive marketing communications with discounts, updates, new releases and more. I understand I can unsubscribe at anytime.';
     for (const k in H) {
       const i = document.createElement('input');
       i.type = 'hidden'; i.name = k; i.value = H[k];
@@ -404,18 +405,30 @@ const SV = {
     }
     document.body.appendChild(post); post.submit();
     try {
-      if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent });
+      if (typeof gtag === 'function') gtag('event', 'stock_vans_enquiry', { lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent, form_location: 'stock hub' });
       /* GTM-readable event for the Tracklution forwarder (Lead + ContactInfo). No GTM tag listens to it, so GA4 still counts once via gtag above. */
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'stock_vans_enquiry', form_name: 'Stock van enquiry', lead_source: 'Stock Vans page', van: vanTxt || 'Not specified', enquiry_type: intent, page_path: location.pathname,
         user: { email: g('email').value.trim(), phone: phone, firstName: g('first-name').value.trim(), lastName: g('last-name').value.trim() } });
       if (typeof fbq === 'function') fbq('trackCustom', 'Stock Vans Enquiry', { van: vanTxt || 'Not specified', enquiry_type: intent });
     } catch (e) {}
-    const st = document.getElementById('enqstatus');
-    st.textContent = 'Thanks, your enquiry is on its way. We will be in touch within 24 hours on business days.';
-    st.style.color = '#2E7D32';
-    f.reset();
+    const done = f.parentNode.querySelector('.se-done');
+    done.querySelector('.se-done-name').textContent = ' ' + g('first-name').value.trim();
+    done.querySelector('.se-done-msg').textContent = 'Got it. We will be in touch within 24 hours on business days.';
+    f.parentNode.style.minHeight = f.parentNode.offsetHeight + 'px'; // keep the left column's spacing while the shorter Thanks shows
+    f.hidden = true; done.hidden = false;
+    const r = done.getBoundingClientRect();
+    if (r.top < 90 || r.bottom > innerHeight) window.scrollTo({ top: Math.max(0, r.top + scrollY - 110), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    try { done.focus({ preventScroll: true }); } catch (err) { done.focus(); }
     return false;
+  },
+
+  // After a sent enquiry, a card's Enquire button brings the empty form back (newsletter tick on again) for the next van.
+  reopenForm() {
+    const f = document.getElementById('enqform');
+    if (!f.hidden) return;
+    f.reset(); f.hidden = false; f.parentNode.style.minHeight = '';
+    f.parentNode.querySelector('.se-done').hidden = true;
   },
 
   act(el) {
@@ -500,26 +513,9 @@ const SV = {
       }
     });
     document.getElementById('enqform').addEventListener('submit', e => this.submit(e));
-    // Reference chips-thumb: position over the checked chip, squash while travelling.
-    const chips = document.querySelector('.enquiry-form .chips');
-    if (chips) {
-      const thumb = chips.querySelector('.chips-thumb');
-      const cells = [...chips.querySelectorAll('.chip')];
-      const place = () => {
-        const on = cells.find(c => c.querySelector('input').checked) || cells[0];
-        thumb.style.left = on.offsetLeft + 'px';
-        thumb.style.width = on.offsetWidth + 'px';
-      };
-      chips.addEventListener('change', () => {
-        thumb.classList.remove('is-init');
-        thumb.classList.add('is-moving');
-        place();
-        setTimeout(() => thumb.classList.remove('is-moving'), 460);
-      });
-      window.addEventListener('resize', () => { thumb.classList.add('is-init'); place(); requestAnimationFrame(() => thumb.classList.remove('is-init')); });
-      place();
-      requestAnimationFrame(() => thumb.classList.remove('is-init'));
-    }
+    const clearErr = e => { const w = e.target.closest('.se-f'); if (w) { w.classList.remove('is-err'); e.target.removeAttribute('aria-invalid'); } };
+    document.getElementById('enqform').addEventListener('input', clearErr);
+    document.getElementById('enqform').addEventListener('change', clearErr);
     this.render();
     const h = location.hash.match(/^#van\/(WL\d+)/);
     if (h) { location.replace('/stock/vans/' + h[1].toLowerCase() + '.html'); return; }
@@ -528,7 +524,6 @@ const SV = {
     if (q) {
       const v = VANS.find(x => x.chassis.toUpperCase() === q.toUpperCase());
       if (v) { document.getElementById('vanselect').value = v.chassis;
-        if (window.syncVandrop) window.syncVandrop();
         document.getElementById('enquire').scrollIntoView(); }
     }
   }
@@ -550,62 +545,3 @@ SV.boot();
   },3200);
 })();
 
-/* Desktop-only styled dropdowns driving the native selects (native pickers kept on phones). */
-function makeDrop(sel) {
-  if (!sel) return null;
-  var field = sel.closest('.field');
-  field.classList.add('dropified');
-  var wrap = document.createElement('div');
-  wrap.className = 'vandrop';
-  wrap.innerHTML = '<button type="button" class="vandrop-btn" aria-haspopup="listbox" aria-expanded="false"><span class="vandrop-label"></span><svg viewBox="0 0 14 8" width="14" height="8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg></button><div class="vandrop-panel" role="listbox" tabindex="-1"></div>';
-  field.appendChild(wrap);
-  var btn = wrap.querySelector('.vandrop-btn'), lab = wrap.querySelector('.vandrop-label'), panel = wrap.querySelector('.vandrop-panel');
-  function opt(o) {
-    if (o.disabled) return '';
-    return '<button type="button" class="vandrop-opt' + (o.value === sel.value ? ' on' : '') + '" role="option" aria-selected="' + (o.value === sel.value) + '" data-v="' + o.value + '">' + o.textContent + '</button>';
-  }
-  function build() {
-    var html = '';
-    [].forEach.call(sel.children, function (node) {
-      if (node.tagName === 'OPTGROUP') {
-        html += '<div class="vandrop-group">' + node.label + '</div>';
-        [].forEach.call(node.children, function (o) { html += opt(o); });
-      } else html += opt(node);
-    });
-    panel.innerHTML = html;
-    var cur = sel.options[sel.selectedIndex];
-    lab.textContent = cur ? cur.textContent : '';
-    lab.classList.toggle('is-placeholder', !sel.value);
-  }
-  build();
-  function close() { wrap.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
-  btn.addEventListener('click', function () {
-    var open = wrap.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(open));
-    if (open) { build(); var on = panel.querySelector('.on'); if (on) on.scrollIntoView({ block: 'nearest' }); }
-  });
-  panel.addEventListener('click', function (e) {
-    var o = e.target.closest('.vandrop-opt'); if (!o) return;
-    sel.value = o.getAttribute('data-v');
-    sel.dispatchEvent(new Event('change', { bubbles: true }));
-    build(); close(); btn.focus();
-  });
-  document.addEventListener('click', function (e) { if (!wrap.contains(e.target)) close(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-  wrap.addEventListener('keydown', function (e) {
-    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
-    e.preventDefault();
-    if (!wrap.classList.contains('open')) { btn.click(); }
-    var os = [].slice.call(panel.querySelectorAll('.vandrop-opt'));
-    var i = os.indexOf(document.activeElement);
-    var n = e.key === 'ArrowDown' ? Math.min(i + 1, os.length - 1) : Math.max(i - 1, 0);
-    if (i === -1) n = 0;
-    os[n].focus(); os[n].scrollIntoView({ block: 'nearest' });
-  });
-  return { build: build };
-}
-(function () {
-  var vd = makeDrop(document.getElementById('vanselect'));
-  if (vd) window.syncVandrop = vd.build;
-  makeDrop(document.getElementById('state'));
-})();

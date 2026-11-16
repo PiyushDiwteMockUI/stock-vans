@@ -2007,7 +2007,7 @@ html {
           <p style="margin:0 0 16px;font:400 14px/1.65 'Gordita',sans-serif;color:var(--body);max-width:60ch">The 2100Q2-F2 () layout.</p>
           <div class="fp-car" style="border:1px solid var(--line);border-radius:4px;background:#fff;padding:18px;overflow:hidden">
             <div style="position:relative;overflow:hidden">
-              <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)"><figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_tilt_sm.png" srcset="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_tilt_sm.png 640w, https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_tilt.png 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="2100Q2-F2 () 3D view" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">3D view</figcaption></figure><figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_top_sm.png" srcset="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_top_sm.png 640w, https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_top.png 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="2100Q2-F2 () Top down" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">Top down</figcaption></figure></div>
+              <div class="fp-track" style="display:flex;transition:transform .8s cubic-bezier(.23,1,.32,1)"><figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_tilt_sm.png" srcset="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_tilt_sm.png 640w, https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_tilt.png 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="2100Q2-F2 () 3D view" loading="eager" decoding="async" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">3D view</figcaption></figure><figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_top_sm.png" srcset="https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_top_sm.png 640w, https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-layouts-2100Q2-F2-0_top.png 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="2100Q2-F2 () Top down" loading="eager" decoding="async" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">Top down</figcaption></figure></div>
               <button class="galbtn" style="left:10px" data-fpnav="-1" aria-label="Previous floorplan view">&#8249;</button>
               <button class="galbtn" style="right:10px" data-fpnav="1" aria-label="Next floorplan view">&#8250;</button>
             </div>
@@ -2735,20 +2735,48 @@ html {
     if (n > 1) track.appendChild(track.children[0].cloneNode(true));
     var EASE = 'transform 1.1s cubic-bezier(.45,.05,.15,1)';
     track.style.transition = EASE;
+    // Floorplan images load straight away: lazy images in off-screen slides of an
+    // overflow:hidden track can stay unloaded, which showed an empty slide (16 Nov 2026).
+    var fpImgs = Array.prototype.slice.call(track.querySelectorAll('img'));
+    function heal(img) {
+      if (img.complete && img.naturalWidth === 0 && !img.dataset.healed) {
+        img.dataset.healed = '1';
+        var s = img.getAttribute('src');
+        img.removeAttribute('srcset');
+        img.src = s + (s.indexOf('?') < 0 ? '?r=1' : '&r=1');
+      }
+    }
+    fpImgs.forEach(function (img) {
+      img.loading = 'eager';
+      img.addEventListener('error', function () { heal(img); });
+    });
+    window.addEventListener('load', function () { fpImgs.forEach(heal); });
     function paint() {
       dots.forEach(function (d, j) { d.style.background = j === (fi % n) ? 'var(--svink)' : '#fff'; });
     }
     function go(i) {
+      // Never slide past the looping copy: quick clicks during a slide used to skip the
+      // snap back and leave the track on empty space (16 Nov 2026).
+      if (i > n) {
+        track.style.transition = 'none';
+        fi = fi % n;
+        track.style.transform = 'translateX(-' + (fi * 100) + '%)';
+        void track.offsetWidth;
+        track.style.transition = EASE;
+        i = Math.min(fi + 1, n);
+      }
+      if (i < 0) i = n - 1;
       fi = i;
       track.style.transform = 'translateX(-' + (fi * 100) + '%)';
       paint();
     }
-    track.addEventListener('transitionend', function () {
-      if (fi === n) {
+    track.addEventListener('transitionend', function (e) {
+      if (e.target !== track) return;
+      if (fi >= n) {
         snapping = true;
         track.style.transition = 'none';
-        fi = 0;
-        track.style.transform = 'translateX(0%)';
+        fi = fi % n;
+        track.style.transform = 'translateX(-' + (fi * 100) + '%)';
         void track.offsetWidth;
         track.style.transition = EASE;
         snapping = false;

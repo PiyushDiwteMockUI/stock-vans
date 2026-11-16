@@ -296,7 +296,7 @@ def van_page(v):
     if plans:
         CAP = {'tilt': '3D view', 'top': 'Top down'}
         slides = ''.join(
-            f"""<figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="../{img_sm(p)}" srcset="../{img_sm(p)} 640w, ../{p} 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="lazy" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>"""
+            f"""<figure class="fp-slide" style="margin:0;flex:0 0 100%;min-width:0"><img src="../{img_sm(p)}" srcset="../{img_sm(p)} 640w, ../{p} 1400w" sizes="(max-width:900px) 92vw, 1000px" alt="{v['code']} {CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'floorplan')}" loading="eager" decoding="async" width="1400" height="787" style="width:100%;height:auto;display:block"><figcaption style="margin-top:8px;font:500 10.5px/1 |G|,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);text-align:center">{CAP.get(p.rsplit('_',1)[-1].split('.')[0], 'Floorplan')}</figcaption></figure>"""
             for p in plans).replace('|G|', chr(39)+'Gordita'+chr(39))
         floor = f"""<div style="margin-bottom:38px">
           <h2 class="av sec-h2" style="margin:0 0 6px;font-size:24px;letter-spacing:.04em;text-transform:uppercase">Floorplan</h2>
