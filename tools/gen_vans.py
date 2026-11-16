@@ -6,7 +6,7 @@ pages always match the main page. All dynamic strings in data.js are already
 HTML-escaped at harvest time."""
 import json, re, os, subprocess
 import hashlib
-ASSET_V = hashlib.md5(open('assets/site.css','rb').read() + open('assets/vanpage.js','rb').read() + open('assets/ref/js/reviews.js','rb').read()).hexdigest()[:8]
+ASSET_V = hashlib.md5(open('assets/site.css','rb').read() + open('assets/vanpage.js','rb').read() + open('assets/ref/js/reviews.js','rb').read() + open('assets/reviews-data.js','rb').read() + open('assets/reviews-badge.js','rb').read()).hexdigest()[:8]
 
 src = open('data.js').read()
 DATA = json.loads(re.search(r'const DATA = ([\s\S]*?);\s*const OR_TOKEN', src).group(1))
@@ -216,54 +216,47 @@ def spec_sections(v):
     return ''.join(out)
 
 def enq_form(v):
-    """Sidebar enquiry form (15 Oct 2026, Piyush: replace the two buttons with a branded form, specs below it).
+    """Sidebar enquiry form, v5 (16 Nov 2026, Piyush: "need to update our form to like this", "dont need suburb and postcode",
+    "use malhars style, build it"). Malhar's layout-pop-up look: underline text fields with the placeholder inside, boxed state select
+    and message box, round marketing tick, orange button. No choice chips, no hold offer, no suburb/postcode.
     Posts to ActiveCampaign form 47 exactly like the /stock/ form (vanpage.js), with the van fixed to this page.
     data-vantxt matches app.js vanTxt ('WLxxxx ' + fullName) so message 262's in_string('Van: WLxxxx') blocks still fire."""
     st = ''.join(f'<option value="{val}">{lbl}</option>' for val, lbl in [
         ('Victoria', 'Victoria'), ('New South Wales / ACT', 'New South Wales / ACT'), ('Queensland', 'Queensland'),
         ('South Australia', 'South Australia'), ('Western Australia', 'Western Australia'), ('Tasmania', 'Tasmania'),
         ('Northern Territory', 'Northern Territory')])
-    sel_state = {'New South Wales': 'New South Wales / ACT', 'Australian Capital Territory': 'New South Wales / ACT'}.get(v.get('state'), v.get('state'))
-    st = st.replace(f'<option value="{sel_state}">', f'<option value="{sel_state}" selected>', 1) if sel_state else st
-    st_ph = '<option value="" disabled' + ('' if sel_state and f'value="{sel_state}" selected' in st else ' selected') + '>Select your state</option>'
+    # 16 Nov 2026 (Piyush, go-live): no preset. The State select always opens on a disabled "Select your state" placeholder.
+    st_ph = '<option value="" disabled selected>Select your state</option>'
     ch = v['chassis']
-    chips = (f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Call back" checked><span>Call me back</span></label>' if is_sold(v) else
-             f'<label class="se-chip se-chip-hold"><input type="radio" name="enquiry-type" value="Hold this van" checked><span>Hold it for me, 48 hours, no deposit</span></label>'
-             f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Call back"><span>Call me back</span></label>'
-             f'<label class="se-chip"><input type="radio" name="enquiry-type" value="Book a viewing"><span>Book a viewing</span></label>')
-    se_title, se_sub, se_btn = (('Enquire about this layout', SOLD_LINE, 'Send my enquiry') if is_sold(v) else
-        ('Hold this van, no deposit', 'Built and in stock, delivered to any state. Say the word and we hold it for 48 hours.', 'Hold this van for me'))
-    def fld(fid, name, label, typ, ac, err, extra='', ph='', hint=''):
-        h = f' <span class="se-opt se-hint">{hint}</span>' if hint else ''
-        return (f'<div class="se-f"><label for="{fid}">{label}<span class="se-req" aria-hidden="true">*</span>{h}</label>'
-                f'<input id="{fid}" name="{name}" type="{typ}" autocomplete="{ac}" placeholder="{ph or label}" required aria-describedby="{fid}-err"{extra}>'
+    se_title, se_lede = (('Enquire about this layout', SOLD_LINE) if is_sold(v) else
+        ('Enquire about this van', 'Tell us a bit about you and our team will come back to you about this van.'))
+    def fld(fid, name, label, typ, ac, err, extra='', ph=''):
+        return (f'<div class="se-f"><input id="{fid}" name="{name}" type="{typ}" autocomplete="{ac}" placeholder="{ph or label + "*"}" aria-label="{label}" required aria-describedby="{fid}-err"{extra}>'
                 f'<span class="se-err" id="{fid}-err">{err}</span></div>')
     return (f'<div class="side-enq" id="enquire-van">'
-            f'<div class="se-kick">Stock no. {ch}</div>'
             f'<h2 class="av se-title">{se_title}</h2>'
-            f'<p class="se-sub">{se_sub}</p>'
-            f'<a class="se-callbtn" href="{CALL_TEL}"><span class="se-callbtn-l">Call about {ch}</span><span class="se-callbtn-n">{CALL_NUM}</span></a>'
+            f'<p class="se-lede">{se_lede}</p>'
             f'<form class="se-form" action="#" method="post" novalidate data-van="{ch}" data-vantxt="{ch} {full_name(v)}" data-or="{OR_TOKEN}">'
-            + f'<fieldset class="se-chips"><legend>What would you like us to do</legend><div class="se-chipgrid">{chips}</div></fieldset>'
             + f'<div class="se-row">'
             + fld('se-fn', 'first-name', 'First name', 'text', 'given-name', 'Tell us your first name.')
             + fld('se-ln', 'last-name', 'Last name', 'text', 'family-name', 'Tell us your last name.')
             + '</div>'
-            + fld('se-em', 'email', 'Email', 'email', 'email', 'Add an email we can reply to.', ' spellcheck="false"', 'you@example.com')
-            + fld('se-ph', 'phone', 'Phone', 'tel', 'tel', 'Add a phone number so we can call you.', ' inputmode="numeric"', 'Phone number', 'So we can call you back')
-            + f'<div class="se-f se-sel"><label for="se-st">State<span class="se-req" aria-hidden="true">*</span> <span class="se-opt se-hint">So the right dealer calls you</span></label>'
-              f'<select id="se-st" name="state" required aria-describedby="se-st-err">{st_ph}{st}</select>'
+            + fld('se-ph', 'phone', 'Phone', 'tel', 'tel', 'Add a phone number so we can call you.', ' inputmode="numeric"', 'Phone*')
+            + fld('se-em', 'email', 'Email', 'email', 'email', 'Add an email we can reply to.', ' spellcheck="false"', 'Email*')
+            + f'<div class="se-f se-sel"><div class="se-selw"><select id="se-st" name="state" required aria-label="State" aria-describedby="se-st-err">{st_ph}{st}</select>'
+              f'<svg viewBox="0 0 14 8" aria-hidden="true"><path d="M0 0L7 7L14 0" fill="none" stroke="currentColor"/></svg></div>'
               f'<span class="se-err" id="se-st-err">Pick your state so the right dealer calls you.</span></div>'
-            + f'<div class="se-f se-msg"><label for="se-msg">Anything else <span class="se-opt">Optional</span></label>'
-              f'<textarea id="se-msg" name="message" rows="2" placeholder="Ask us anything about {ch}, finance or delivery"></textarea></div>'
+            + f'<div class="se-f se-area"><textarea id="se-msg" name="message" rows="4" aria-label="Comments" placeholder="Comments (optional). Ask us anything about {ch}, finance or delivery."></textarea></div>'
             + f'<label class="se-check"><input type="checkbox" name="subscribe" checked><span>Keep me posted on new stock and exclusive offers</span></label>'
-            + f'<button type="submit" class="se-submit" data-chassis="{ch}">{se_btn}</button>'
-            + f'<p class="se-fine">We reply the same business day.{"" if is_sold(v) else " No deposit, nothing to sign."}</p>'
-            + f'<p class="se-disc">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>'
+            + f'<button type="submit" class="se-submit" data-chassis="{ch}">send enquiry</button>'
+            + f'<p class="se-fine">We reply the same business day.</p>'
             + f'</form>'
             + f'<div class="se-done" hidden tabindex="-1" data-chassis="{ch}"><div class="se-tick" aria-hidden="true"></div>'
               f'<div class="av se-done-t">Thanks<span class="se-done-name"></span></div>'
               f'<p class="se-sub se-done-msg"></p></div>'
+            # call link and disclaimer sit outside the form so they stay on screen under the Thanks message
+            + f'<a class="se-call" href="{CALL_TEL}">Call about {ch} <span>{CALL_NUM}</span></a>'
+            + f'<p class="se-disc">Drive away price, correct at the time of publishing. Prices, specifications and availability can change without notice. E&amp;OE applies.</p>'
             + f'</div>')
 
 def is_clearance(v):
@@ -410,7 +403,7 @@ def van_page(v):
           <div style="font:400 14.5px/1.7 'Gordita',sans-serif;color:var(--body)">{SOLD_LINE if is_sold(v) else f"This van is with our {v['state']} dealer. Enquire and we will set up a walkthrough in person or on a call."} You can also build your own caravan using our <a href="https://wonderlandrv.com.au/build-your-caravan/" style="color:var(--svink);border-bottom:1px solid var(--svorange);text-decoration:none">configurator</a>.</div>
         </div>
         <div class="wi-btns" style="display:flex;flex-wrap:wrap;gap:10px;flex:none;align-items:stretch">
-          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-intent="{'Call back' if is_sold(v) else 'Book a viewing'}">{'Enquire about this layout' if is_sold(v) else 'Book a viewing'}</a>
+          <a class="btn-dark" style="display:flex;align-items:center;justify-content:center;text-decoration:none;padding-left:22px;padding-right:22px" href="#enquire-van" data-enq-go>{'Enquire about this layout' if is_sold(v) else 'Book a viewing'}</a>
         </div>
       </div>
     </div>
@@ -441,10 +434,12 @@ def van_page(v):
   </div>
 </div>
 ''' + reviewsV + nextV + footerV + f'''
-<div class="vp-bar" id="vp-bar"><a class="vp-bar-call" href="{CALL_TEL}">Call</a>{'<a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Call back">Enquire</a>' if is_sold(v) else '<a class="vp-bar-hold" href="#enquire-van" data-enq-intent="Hold this van">Hold it, no deposit</a>'}</div>
+<div class="vp-bar" id="vp-bar"><a class="vp-bar-call" href="{CALL_TEL}">Call</a><a class="vp-bar-hold" href="#enquire-van" data-enq-go>Enquire</a></div>
 <iframe name="ac_sink" title="hidden" style="display:none"></iframe>
 <script src="../assets/ref/js/reviews.js?v={ASSET_V}"></script>
 <script src="../assets/vanpage.js?v={ASSET_V}"></script>
+<script src="../assets/reviews-data.js?v={ASSET_V}"></script>
+<script src="../assets/reviews-badge.js?v={ASSET_V}"></script>
 </body>
 </html>'''
 

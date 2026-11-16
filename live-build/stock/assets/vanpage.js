@@ -221,9 +221,10 @@
   });
 })();
 
-/* Van page enquiry form (15 Oct 2026). Posts to ActiveCampaign form 47 the same way as the /stock/ form in app.js:
-   same fields, same Ad Source pattern ('Stock Vans page | intent | Van: WLxxxx Name ...'), same GA4 / dataLayer / Meta events,
-   with the van fixed to this page. On phones the panel moves directly under the price box, and a Call / Hold bar is fixed to the bottom. */
+/* Van page enquiry form, v5 (16 Nov 2026). Posts to ActiveCampaign form 47 the same way as the /stock/ form in app.js:
+   same fields, same Ad Source pattern ('Stock Vans page | Enquiry | Van: WLxxxx Name ...'), same GA4 / dataLayer / Meta events,
+   with the van fixed to this page. No choice chips and no hold offer any more. On phones the form sits after the Specifications block,
+   and a Call / Enquire bar is fixed to the bottom; Enquire scrolls to the form and puts the cursor in First name. */
 (function () {
   var box = document.querySelector('.side-enq');
   if (!box) return;
@@ -246,26 +247,14 @@
     }, { threshold: 0.25 }).observe(box);
   }
 
-  // Submit button follows the chosen chip (v3, 18 Oct 2026)
-  var sub = f.querySelector('.se-submit'), chassis = sub ? sub.getAttribute('data-chassis') : '';
-  var BTN = { 'Hold this van': 'Hold this van for me', 'Call back': 'Call me back', 'Book a viewing': 'Book my viewing' };
-  function syncBtn() {
-    var c = f.querySelector('input[name="enquiry-type"]:checked');
-    if (sub && c) sub.textContent = BTN[c.value] || BTN['Hold this van'];
-  }
-  syncBtn();
-  f.addEventListener('change', function (e) { if (e.target.name === 'enquiry-type') syncBtn(); });
-
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Enquire / Book a viewing buttons (bottom bar, Where it is box): scroll to the form, then put the cursor in First name
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('[data-enq-intent]');
+    var a = e.target.closest && e.target.closest('[data-enq-go]');
     if (!a) return;
     e.preventDefault();
-    var want = a.getAttribute('data-enq-intent');
-    var r = want ? f.querySelector('input[name="enquiry-type"][value="' + want + '"]') : null;
-    if (r) { r.checked = true; syncBtn(); }
     goTo(box);
-    setTimeout(function () { var fn = f.querySelector('[name="first-name"]'); if (fn) fn.focus(); }, reduce ? 0 : 700);
+    setTimeout(function () { var fn = f.querySelector('[name="first-name"]'); if (fn) fn.focus({ preventScroll: true }); }, reduce ? 0 : 700);
   });
 
   // Scroll so el sits near the top of the screen. On desktop the sidebar is sticky, so measure where el sits
@@ -296,7 +285,7 @@
     e.preventDefault();
     var g = function (n) { return f.querySelector('[name="' + n + '"]'); };
     var first = null;
-    ['first-name', 'last-name', 'email', 'phone', 'state'].forEach(function (n) {
+    ['first-name', 'last-name', 'phone', 'email', 'state'].forEach(function (n) {
       var el = g(n), v = (el.value || '').trim();
       var bad = !v || (n === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) || (n === 'phone' && v.replace(/\D/g, '').length < 8);
       el.closest('.se-f').classList.toggle('is-err', bad);
@@ -310,8 +299,7 @@
     var stateMap = { 'New South Wales': 'New South Wales / ACT', 'Australian Capital Territory': 'New South Wales / ACT' };
     var stateVal = stateMap[g('state').value] || g('state').value;
     var vanTxt = f.getAttribute('data-vantxt');
-    var intentEl = f.querySelector('[name="enquiry-type"]:checked');
-    var intent = intentEl ? intentEl.value : 'Hold this van';
+    var intent = 'Enquiry';
     var msg = (g('message').value || '').trim();
     var subscribed = g('subscribe').checked;
     var ad = 'Stock Vans page | ' + intent + ' | Van: ' + vanTxt +
@@ -341,9 +329,7 @@
     var nm = done.querySelector('.se-done-name');
     if (nm) nm.textContent = ' ' + g('first-name').value.trim();
     var dm = done.querySelector('.se-done-msg'), ch = done.getAttribute('data-chassis');
-    if (dm) dm.textContent = intent === 'Hold this van'
-      ? ch + ' is on hold for you for two business days. We will call you the same business day to confirm.'
-      : 'Got it. We will call you about ' + ch + ' the same business day.';
+    if (dm) dm.textContent = 'Got it. We will call you about ' + ch + ' the same business day.';
     f.hidden = true; done.hidden = false;
     var rect = done.getBoundingClientRect();
     if (rect.top < 90 || rect.bottom > window.innerHeight) goTo(done);

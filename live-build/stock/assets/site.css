@@ -2,6 +2,8 @@ html,body{overflow-x:clip}
 @font-face{font-family:'Gordita';src:url('fonts/Gordita-Light.woff2') format('woff2');font-weight:300;font-display:swap}
 @font-face{font-family:'Gordita';src:url('fonts/Gordita-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
 @font-face{font-family:'Gordita';src:url('fonts/Gordita-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+/* Gordita Bold for the reviews badge rating only (own family name so the page's other 700 text is untouched); same file the WP pages already use */
+@font-face{font-family:'WlrvGorditaBold';src:url('https://wonderlandrv.com.au/wp-content/uploads/2026/09/stockpg-font-Gordita-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 :root{--svink:#12171C;--body:#3D464D;--body2:#2A3238;--mut:#5A646B;--svorange:#DB7627;--olink:#A85F18;--peach:#F0B472;--line:#EDEAE5;--line2:#E4E1DC;--cream:#F7F5F2;--dk:#0C0F12}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -281,7 +283,7 @@ a.btn-line{color:var(--svink)}
 }
 /* hold line under the price, in both price boxes */
 /* price disclaimer, under the form's orange button */
-.side-enq .se-disc{margin:10px 0 22px;font:400 10.5px/1.5 'Gordita',sans-serif;color:#8A939A}
+.side-enq .se-disc{margin:10px 0 22px;font:400 10.5px/1.5 'Gordita',sans-serif;color:#697279}
 /* Where it is: build link is a text link beside Book a viewing */
 /* phone action bar: Call + Hold this van, fixed to the bottom; slides away while the form is on screen */
 .vp-bar{display:none}
@@ -291,7 +293,9 @@ a.btn-line{color:var(--svink)}
   .vp-bar.is-off{transform:translateY(110%)}
   .vp-bar a{display:flex;align-items:center;justify-content:center;min-height:50px;box-sizing:border-box;text-decoration:none;font:400 13.5px/1.1 'aviano-sans',sans-serif;letter-spacing:.04em;text-transform:uppercase;text-align:center;padding:0 12px;border-radius:0}
   .vp-bar a.vp-bar-call{flex:0 0 34%;background:#fff;color:var(--svink);border:1px solid var(--svink)}
-  .vp-bar a.vp-bar-hold{flex:1;background:var(--svorange);color:#fff;border:1px solid var(--svorange)}
+  .vp-bar a.vp-bar-hold{flex:1;background:var(--svorange);color:#fff;border:1px solid var(--svorange);box-shadow:rgb(219,118,39) 0 0 0 2px inset;transition:background .3s ease,color .3s ease}
+  .vp-bar a.vp-bar-hold:focus-visible{background:#fff;color:var(--svorange)}
+  @media (hover:hover){.vp-bar a.vp-bar-hold:hover{background:#fff;color:var(--svorange)}}
 }
 
 /* value tiles: span the page column edge to edge, matching the header ruler */
@@ -416,63 +420,53 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 @media (max-width:900px){.sg{display:none}}
 @media (min-width:901px){.spec-tabs > .spec-acc{display:none}}
 
-/* Van page enquiry form (15 Oct 2026, white per Piyush): sits in the sidebar between the price and the key details; on phones vanpage.js moves it under the price box */
-.side-enq{background:#fff;color:var(--svink);padding:24px 22px 0;margin:0}
-.side-enq .se-kick{font:500 10.5px/1 'Gordita',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--olink);margin:0 0 10px}
+/* Van page enquiry form v5 (16 Nov 2026, Piyush: "use malhars style, build it"). Look copied from Malhar's layout pop-up (popup-malhar.html), his phone sizes in px at every width
+   because the sidebar column is phone-width: underline text fields with the placeholder inside, boxed state select and message box (3px corners), round tick, orange button.
+   Tokens are his: ink #000, orange #DB7627, placeholder #6b6158. Behaviour (auto-open, timers, pill) is not copied. Sits in the sidebar between the price and the key details; on phones vanpage.js moves it under Specifications. */
+.side-enq{--eq-ink:#000;--eq-or:#DB7627;--eq-ph:#6b6158;--eq-red:#C0392B;--eq-bg:#fff;background:var(--eq-bg);display:flow-root;color:var(--eq-ink);padding:24px 22px 0;margin:0}
+.side-enq .se-kick{margin:0 0 10px;font-family:aviano-sans,'Arial Black',sans-serif;font-weight:900;font-size:14px;line-height:1;letter-spacing:0;word-spacing:.09em;text-transform:uppercase;color:var(--eq-ink)}
 .side-enq .se-title{margin:0 0 8px;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
-.side-enq .se-sub{margin:0 0 20px;font:400 13px/1.6 'Gordita',sans-serif;color:var(--body)}
-.side-enq .se-form{margin:0;padding:0}
-.side-enq .se-row{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-.side-enq .se-f{position:relative;margin:0 0 16px}
-.side-enq .se-f label{display:block;margin:0 0 7px;font:500 10.5px/1.2 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
-.side-enq .se-req{color:var(--svorange);margin-left:2px}
-.side-enq .se-opt{margin-left:6px;letter-spacing:.06em;text-transform:none;font-weight:400;color:#8A939A}
-.side-enq .se-f input,.side-enq .se-f select,.side-enq .se-f textarea{display:block;width:100%;box-sizing:border-box;margin:0;padding:12px 14px;min-height:48px;font:400 16px/1.35 'Gordita',sans-serif;color:var(--svink);background:#fff;border:1px solid #C9CED2;border-radius:0;box-shadow:none;outline:none;transition:border-color .18s ease,box-shadow .18s ease}
-.side-enq .se-f textarea{resize:vertical;min-height:88px}
-.side-enq .se-f input::placeholder,.side-enq .se-f textarea::placeholder{color:#9AA2A8;opacity:1}
-.side-enq .se-f input:focus,.side-enq .se-f select:focus,.side-enq .se-f textarea:focus{border-color:var(--svorange);box-shadow:0 0 0 1px var(--svorange)}
-.side-enq .se-f input:-webkit-autofill,.side-enq .se-f input:-webkit-autofill:focus{-webkit-text-fill-color:var(--svink);-webkit-box-shadow:0 0 0 40px #fff inset}
-.side-enq .se-sel select{-webkit-appearance:none;appearance:none;padding-right:38px;cursor:pointer;color:#9AA2A8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 8'%3E%3Cpath d='M0 0L7 7L14 0' fill='none' stroke='%2312171C' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:12px 7px}
-.side-enq .se-sel select:valid{color:var(--svink)}
-.side-enq .se-sel option{color:var(--svink);background:#fff}
-.side-enq .se-err{display:none;margin-top:6px;font:400 12px/1.35 'Gordita',sans-serif;color:#C0392B}
-.side-enq .se-f.is-err input,.side-enq .se-f.is-err select{border-color:#C0392B;box-shadow:0 0 0 1px #C0392B}
+.side-enq .se-lede{margin:0 0 16px;font:400 15px/22px 'Gordita',sans-serif;color:var(--eq-ink);text-wrap:balance}
+.side-enq .se-sub{margin:0 0 16px;font:400 13px/1.6 'Gordita',sans-serif;color:var(--body)}
+.side-enq .se-form{display:grid;gap:12px;align-content:start;margin:0;padding:0}
+.side-enq .se-form[hidden],.side-enq .se-done[hidden]{display:none}
+.side-enq .se-row{display:grid;grid-template-columns:1fr;gap:12px}
+.side-enq .se-f{position:relative;min-width:0;margin:0}
+.side-enq .se-f input,.side-enq .se-f select,.side-enq .se-f textarea{display:block;width:100%;box-sizing:border-box;margin:0;background:transparent;color:var(--eq-ink);font:400 16px/1.35 'Gordita',sans-serif;border-radius:0;box-shadow:none;outline:none;-webkit-appearance:none;appearance:none;transition:border-color .18s ease,box-shadow .18s ease}
+.side-enq .se-f input{height:48px;padding:0 2px;border:0;border-bottom:1px solid var(--eq-ink)}
+.side-enq .se-f select{height:48px;padding:0 38px 0 14px;border:1px solid var(--eq-ink);border-radius:3px;color:var(--eq-ph);cursor:pointer}
+.side-enq .se-f textarea{height:96px;padding:14px;border:1px solid var(--eq-ink);border-radius:3px;resize:vertical}
+.side-enq .se-f input::placeholder,.side-enq .se-f textarea::placeholder{color:var(--eq-ph);opacity:1}
+.side-enq .se-f select,.side-enq .se-f textarea{background:#fff}
+.side-enq .se-f input:focus{border-bottom-color:var(--eq-or);box-shadow:0 1px 0 var(--eq-or)}
+.side-enq .se-f select:focus,.side-enq .se-f textarea:focus{border-color:var(--eq-or);box-shadow:0 0 0 1px var(--eq-or)}
+.side-enq .se-f input:-webkit-autofill,.side-enq .se-f input:-webkit-autofill:focus{-webkit-text-fill-color:var(--eq-ink);-webkit-box-shadow:0 0 0 40px var(--eq-bg) inset}
+.side-enq .se-selw{position:relative}
+.side-enq .se-selw svg{position:absolute;right:16px;top:50%;width:14px;height:8px;margin-top:-4px;color:var(--eq-ink);pointer-events:none}
+.side-enq .se-sel select:valid{color:var(--eq-ink)}
+.side-enq .se-sel option{color:var(--eq-ink);background:#fff}
+.side-enq .se-err{display:none;margin-top:6px;font:400 12px/1.35 'Gordita',sans-serif;color:var(--eq-red)}
+.side-enq .se-f.is-err input{border-bottom-color:var(--eq-red);box-shadow:0 1px 0 var(--eq-red)}
+.side-enq .se-f.is-err select{border-color:var(--eq-red);box-shadow:0 0 0 1px var(--eq-red)}
 .side-enq .se-f.is-err .se-err{display:block}
-.side-enq .se-chips{border:0;margin:4px 0 16px;padding:0;min-width:0}
-.side-enq .se-chips legend{padding:0;margin:0 0 8px;font:500 10.5px/1.2 'Gordita',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
-.side-enq .se-chipgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.side-enq .se-chip{position:relative;display:block;margin:0;cursor:pointer}
-.side-enq .se-chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
-.side-enq .se-chip span{display:flex;align-items:center;justify-content:center;min-height:42px;padding:8px 6px;box-sizing:border-box;text-align:center;font:500 12.5px/1.25 'Gordita',sans-serif;color:var(--svink);background:#fff;border:1px solid #C9CED2;border-radius:0;transition:background .18s ease,color .18s ease,border-color .18s ease}
-.side-enq .se-chip:hover span{border-color:var(--svink)}
-.side-enq .se-chip input:checked + span{background:var(--svink);color:#fff;border-color:var(--svink)}
-.side-enq .se-chip input:focus-visible + span{outline:2px solid var(--svorange);outline-offset:2px}
-.side-enq .se-check{display:flex;align-items:center;gap:10px;margin:0 0 18px;cursor:pointer;font:400 13px/1.4 'Gordita',sans-serif;color:var(--body2)}
-.side-enq .se-check input{-webkit-appearance:none;appearance:none;flex:none;width:18px;height:18px;margin:0;border:1px solid var(--svink);border-radius:0;background:#fff;cursor:pointer}
-.side-enq .se-check input:checked{background:var(--svorange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/70% no-repeat;border-color:var(--svorange)}
-.side-enq .se-check input:focus-visible{outline:2px solid var(--svorange);outline-offset:2px}
-.side-enq .se-submit{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;margin:0;padding:14px 20px;background:var(--svorange);color:#fff;border:1px solid var(--svorange);border-radius:0;box-shadow:none;font:400 15px/1.2 'aviano-sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s ease,color .2s ease,transform .12s cubic-bezier(.23,1,.32,1)}
-@media (hover:hover){.side-enq .se-submit:hover{background:#fff;color:var(--svorange)}}
-.side-enq .se-submit:active{transform:scale(.98)}
-.side-enq .se-submit:focus-visible{outline:2px solid var(--svink);outline-offset:2px}
-.side-enq .se-fine{margin:10px 0 0;font:400 11px/1.5 'Gordita',sans-serif;color:var(--mut)}
-.side-enq .se-done{padding:6px 0 4px;outline:none}
-.side-enq .se-tick{width:44px;height:44px;margin:0 0 16px;border-radius:50%;background:var(--svorange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/56% no-repeat}
-.side-enq .se-done-t{margin:0 0 8px;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
-.side-enq .se-call{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;min-height:44px;margin:6px 0 0;padding:0 0 14px;font:400 13px/1.3 'Gordita',sans-serif;color:var(--body);text-decoration:none}
+.side-enq .se-check{display:flex;align-items:flex-start;gap:12px;margin:4px 0 0;cursor:pointer;font:400 14px/20px 'Gordita',sans-serif;color:var(--eq-ink)}
+.side-enq .se-check input{-webkit-appearance:none;appearance:none;flex:none;width:22px;height:22px;margin:0;border:1px solid var(--eq-ink);border-radius:50%;background:#fff;cursor:pointer}
+.side-enq .se-check input:checked{background:var(--eq-or) center/52% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");border-color:var(--eq-or)}
+.side-enq .se-check input:focus-visible{outline:2px solid var(--eq-or);outline-offset:2px}
+.side-enq .se-submit{display:flex;align-items:center;justify-content:center;width:100%;margin:8px 0 0;padding:20px 40px;background:var(--eq-or);color:#fff;border:0;border-radius:1px;box-shadow:rgb(219,118,39) 0 0 0 2px inset;font:900 18px/1.2 aviano-sans,'Arial Black',sans-serif;letter-spacing:0;text-transform:none;cursor:pointer;transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+.side-enq .se-submit:focus-visible{background:#fff;color:var(--eq-or);outline:none}
+@media (hover:hover){.side-enq .se-submit:hover{background:#fff;color:var(--eq-or)}}
+.side-enq .se-fine{margin:-2px 0 0;font:400 11px/1.5 'Gordita',sans-serif;color:var(--mut)}
+.side-enq .se-call{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;min-height:44px;margin:6px 0 0;font:400 13px/1.3 'Gordita',sans-serif;color:var(--body);text-decoration:none}
 .side-enq .se-call span{font-weight:500;color:var(--svink);border-bottom:1px solid var(--svorange)}
-.side-enq .se-call:hover span{color:var(--olink)}
-/* v3 form (18 Oct 2026): tap-to-call button under the sub-line, choices above the fields, hold chip full width, helper hints */
-.side-enq .se-sub{margin-bottom:16px}
-.side-enq .se-callbtn{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:4px 8px;min-height:50px;margin:0 0 18px;padding:6px 10px;box-sizing:border-box;border:1px solid var(--svink);border-radius:0;color:var(--svink);background:#fff;text-decoration:none;font:500 14px/1.2 'Gordita',sans-serif;text-align:center}
-.side-enq .se-callbtn-l{color:var(--mut);font-weight:400}
-@media (hover:hover){.side-enq .se-callbtn:hover{background:var(--svink)}.side-enq .se-callbtn:hover span{color:#fff}}
-.side-enq .se-chipgrid{gap:8px}
-.side-enq .se-chip-hold{grid-column:1 / -1}
-.side-enq .se-chip span{min-height:46px;font-size:13.5px}
-.side-enq .se-f label .se-hint{margin-left:6px;font-size:11px;color:var(--mut)}
-.side-enq .se-fine{margin-bottom:18px}
-/* phones (Piyush 15 Oct): the form sits below the Where it is box as its own card; the price box keeps Enquire now (jumps here) + Call */
+@media (hover:hover){.side-enq .se-call:hover span{color:var(--olink)}}
+/* Gordita's kerning swallows the space after a comma or full stop; switch it off on every text element in the form (design rules 2.12b) */
+.side-enq .se-lede,.side-enq .se-sub,.side-enq .se-f input,.side-enq .se-f select,.side-enq .se-f textarea,.side-enq .se-err,.side-enq .se-check,.side-enq .se-fine,.side-enq .se-call,.side-enq .se-disc{font-kerning:none}
+.side-enq .se-done{padding:6px 0 4px;outline:none}
+.side-enq .se-tick{width:44px;height:44px;margin:0 0 16px;border-radius:50%;background:var(--eq-or) center/56% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.6 8.4l2.9 2.9 5.9-5.9' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.side-enq .se-done-t{margin:0 0 8px;font-size:21px;line-height:1.1;letter-spacing:.03em;text-transform:uppercase;color:var(--svink)}
+@media (max-width:900px){.side-enq .se-row{grid-template-columns:1fr}}
+/* phones (Piyush 15 Oct): the form sits after the Specifications block as its own card; the bottom bar's Enquire jumps here */
 .side-enq.is-mobile{border:1px solid var(--line2);border-radius:0;padding:22px 20px 2px;margin:0 0 30px;scroll-margin-top:84px}
 /* key details: its own cream block under the form, full-width rule and a heading, so the form and the spec rows read as two sections */
 .detailside .side-facts{background:var(--cream);border-top:1px solid var(--line2);padding:22px 22px 18px}
@@ -503,3 +497,155 @@ section.service .service-quote{display:flex;flex-direction:column;justify-conten
 @media (max-width:700px){.ss-6{--ssx:-10px}}
 .ss-tag{display:inline-block;box-sizing:border-box;font-family:'aviano-sans','Aviano Sans',sans-serif;font-weight:900;font-size:14px;line-height:1;text-transform:uppercase;letter-spacing:0;color:#fff;background:var(--ssbg);padding:8px 13px 7px;border:3px solid var(--ssbg);border-radius:var(--ssr,2px)}
 .sb-price-or{color:var(--sbor)!important}
+
+/* ===== Google reviews badge + panel (16 Nov 2026). Every selector sits under .wlrv, lengths in px, nothing global ===== */
+.wlrv{--wlrv-ink:#12171C;--wlrv-body:#3D464D;--wlrv-mut:#5A646B;--wlrv-line:#E4E1DC;--wlrv-hair:#EDEAE5;--wlrv-or:#DB7627;--wlrv-link:#A85F18;--wlrv-star:#FBBC04;font-family:'Gordita',system-ui,sans-serif;font-size:14px;line-height:1.4;color:var(--wlrv-ink)}
+.wlrv *,.wlrv *::before,.wlrv *::after{box-sizing:border-box}
+.wlrv button{-webkit-appearance:none;appearance:none;background:none;border:0;margin:0;padding:0;border-radius:0;box-shadow:none;color:inherit;font:inherit;letter-spacing:normal;text-transform:none;text-align:left;text-decoration:none;cursor:pointer}
+.wlrv svg{display:block;flex:none}
+.wlrv .wlrv-g{width:30px;height:30px}
+.wlrv .wlrv-stars{display:inline-flex;gap:2px;flex:none}
+.wlrv .wlrv-star{width:17px;height:17px;fill:#DADCE0}
+.wlrv .wlrv-star.is-on{fill:var(--wlrv-star)}
+.wlrv .wlrv-tick{width:16px;height:16px}
+.wlrv :focus-visible{outline:2px solid var(--wlrv-or);outline-offset:2px}
+
+/* badge: copied from the Elfsight reference (Off Track RV, read 16 Nov 2026): fixed bottom-left 20px, white card, 20px radius,
+   no border, stacked and centred (G, rating + stars, count), 0.3s fade in, hover darkens the shadow and the card by 3% */
+.wlrv .wlrv-badge{position:fixed;z-index:9000;left:20px;bottom:20px;opacity:0;animation:wlrv-in .3s ease-out forwards}
+.wlrv .wlrv-badge.is-dismissed{display:none}
+@keyframes wlrv-in{from{opacity:0}to{opacity:1}}
+.wlrv .wlrv-open,.wlrv .wlrv-open:focus,.wlrv .wlrv-open:active{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;width:max-content;margin:0;padding:14px 20px 16px;background:#fff;color:#111;border:0;border-radius:20px;box-shadow:rgba(0,0,0,.1) 0 15px 40px,rgba(0,0,0,.15) 0 10px 30px;text-decoration:none;text-align:center;cursor:pointer;transition:box-shadow .3s,background-color .3s}
+.wlrv .wlrv-open:focus-visible{outline:2px solid var(--wlrv-or);outline-offset:2px;box-shadow:rgba(0,0,0,.1) 0 15px 40px,rgba(0,0,0,.15) 0 10px 30px}
+@media (hover:hover){.wlrv .wlrv-open:hover{background:#F8F8F8;color:#111;text-decoration:none;box-shadow:rgba(0,0,0,.1) 0 15px 40px,rgba(0,0,0,.25) 0 10px 30px}}
+.wlrv .wlrv-bgw{display:block;width:28px;height:28px}
+.wlrv .wlrv-bgw svg{display:block;width:28px;height:28px}
+.wlrv .wlrv-blk{display:flex;flex-direction:column;align-items:center;gap:8px}
+.wlrv .wlrv-row{display:flex;align-items:center;gap:6px}
+.wlrv .wlrv-score{font:700 22px/28px 'WlrvGorditaBold','Gordita',sans-serif;color:#111;letter-spacing:0}
+.wlrv .wlrv-bstars{display:flex;align-items:center}
+.wlrv .wlrv-bstars svg{display:block;width:22px;height:22px;fill:#FCBF02}
+.wlrv .wlrv-cnt-d{font:500 13px/16px 'Gordita',sans-serif;color:#006DFF;text-decoration:none}
+@media (hover:hover){.wlrv .wlrv-open:hover .wlrv-cnt-d{text-decoration:underline}}
+.wlrv .wlrv-cnt-p{display:none}
+.wlrv .wlrv-hide{display:none}
+
+/* panel */
+.wlrv .wlrv-ov{position:fixed;inset:0;z-index:100001;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(6,9,12,.55)}
+.wlrv .wlrv-ov[hidden]{display:none}
+.wlrv .wlrv-panel{position:relative;display:flex;flex-direction:column;width:min(760px,100%);height:min(86vh,820px);background:#fff;border-radius:4px;box-shadow:0 24px 70px rgba(6,9,12,.45);overflow:hidden}
+.wlrv .wlrv-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 14px 0 24px;border-bottom:1px solid var(--wlrv-line);flex:none}
+.wlrv .wlrv-tabs{display:flex;gap:26px;min-width:0;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
+.wlrv .wlrv-tabs::-webkit-scrollbar{display:none}
+.wlrv .wlrv-tab{display:flex;align-items:center;gap:8px;flex:none;padding:14px 0 16px;border-bottom:2px solid transparent;margin-bottom:-1px;font:500 15px/1 'Gordita',sans-serif;color:var(--wlrv-mut);white-space:nowrap;transition:color .15s ease}
+.wlrv .wlrv-tab .wlrv-tab-g{width:18px;height:18px}
+.wlrv .wlrv-tab-r{font-weight:500}
+.wlrv .wlrv-tab.is-on{color:var(--wlrv-ink);border-bottom-color:var(--wlrv-or)}
+@media (hover:hover){.wlrv .wlrv-tab:hover{color:var(--wlrv-ink)}}
+/* close X: same as the gallery lightbox close button */
+.wlrv .wlrv-x{display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;margin:-2px 0 0;border-radius:50%;background:#fff;border:1px solid var(--wlrv-line);font:400 20px/1 'Gordita',sans-serif;color:var(--wlrv-ink);text-align:center;transition:transform .16s cubic-bezier(.23,1,.32,1),background .15s ease,border-color .15s ease,color .15s ease}
+.wlrv .wlrv-x:hover,.wlrv .wlrv-x:focus-visible{background:var(--wlrv-or);border-color:var(--wlrv-or);color:#fff;outline:none}
+.wlrv .wlrv-x:active{transform:scale(.94)}
+.wlrv .wlrv-sum{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px 24px;padding:22px 24px 20px;flex:none;border-bottom:1px solid var(--wlrv-hair)}
+.wlrv .wlrv-kick{font:500 11px/1 'Gordita',sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--wlrv-mut);margin-bottom:12px}
+.wlrv .wlrv-sum-row{display:flex;align-items:center;gap:12px}
+.wlrv .wlrv-big{font-family:aviano-sans,'Arial Black',sans-serif;font-weight:900;font-size:36px;line-height:1;color:var(--wlrv-ink)}
+.wlrv .wlrv-stars-l .wlrv-star{width:20px;height:20px}
+.wlrv .wlrv-sum-n{font:400 15px/1 'Gordita',sans-serif;color:var(--wlrv-mut)}
+/* Write a review: the site's orange button (same values as .se-submit) */
+.wlrv .wlrv-write{display:flex;align-items:center;justify-content:center;flex:none;padding:20px 40px;background:var(--wlrv-or);color:#fff;border:0;border-radius:1px;box-shadow:rgb(219,118,39) 0 0 0 2px inset;font:900 18px/1.2 aviano-sans,'Arial Black',sans-serif;letter-spacing:0;text-transform:none;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background .3s ease,color .3s ease,box-shadow .3s ease}
+.wlrv .wlrv-write:focus-visible{background:#fff;color:var(--wlrv-or);outline:none}
+@media (hover:hover){.wlrv .wlrv-write:hover{background:#fff;color:var(--wlrv-or)}}
+.wlrv .wlrv-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:0 24px 12px}
+.wlrv .wlrv-body:focus-visible{outline-offset:-2px}
+
+/* review card */
+.wlrv .wlrv-card{display:flex;gap:14px;padding:22px 0;border-top:1px solid var(--wlrv-hair)}
+.wlrv .wlrv-card:first-child{border-top:0}
+.wlrv .wlrv-av{position:relative;flex:none;width:44px;height:44px;margin-top:1px}
+.wlrv .wlrv-ini,.wlrv .wlrv-ph{position:absolute;inset:0;width:44px;height:44px;border-radius:50%;object-fit:cover}
+.wlrv .wlrv-ini{display:flex;align-items:center;justify-content:center;color:#fff;font:500 18px/1 'Gordita',sans-serif}
+.wlrv .wlrv-av-g{position:absolute;right:-4px;bottom:-4px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px var(--wlrv-line);display:flex;align-items:center;justify-content:center}
+.wlrv .wlrv-av-g .wlrv-g{width:12px;height:12px}
+.wlrv .wlrv-main{min-width:0;flex:1}
+.wlrv .wlrv-who{display:flex;align-items:center;gap:6px;min-width:0}
+.wlrv .wlrv-name{font:500 15px/1.3 'Gordita',sans-serif;color:var(--wlrv-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wlrv .wlrv-date{font:400 12.5px/1.3 'Gordita',sans-serif;color:var(--wlrv-mut);margin:2px 0 8px}
+.wlrv .wlrv-stars-c .wlrv-star{width:16px;height:16px}
+.wlrv .wlrv-text,.wlrv .wlrv-reply-t{margin:10px 0 0;font:400 14.5px/1.6 'Gordita',sans-serif;color:var(--wlrv-body);white-space:pre-line;overflow-wrap:anywhere;font-kerning:none}
+.wlrv .wlrv-reply-t{margin:8px 0 0;font-size:13.5px;line-height:1.55}
+.wlrv .wlrv-text.is-clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-clamp:3;overflow:hidden}
+.wlrv .wlrv-reply-t.is-clamp{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.wlrv .wlrv-more{display:inline-block;margin:6px 0 0;padding:4px 0;font:500 13px/1.2 'Gordita',sans-serif;color:var(--wlrv-link);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px}
+.wlrv .wlrv-more[hidden]{display:none}
+@media (hover:hover){.wlrv .wlrv-more:hover{text-decoration-color:currentColor}}
+.wlrv .wlrv-imgs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0}
+.wlrv .wlrv-img{display:block;width:72px;height:72px;border-radius:4px;overflow:hidden;background:var(--wlrv-hair)}
+.wlrv .wlrv-img img{display:block;width:72px;height:72px;object-fit:cover}
+.wlrv .wlrv-reply{margin:14px 0 0;padding:14px 16px;background:#F9F8F6;border:1px solid var(--wlrv-hair);border-radius:10px}
+.wlrv .wlrv-reply-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.wlrv .wlrv-reply-av{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;overflow:hidden;background:#fff;box-shadow:0 0 0 1px var(--wlrv-line);font:500 13px/1 'Gordita',sans-serif}
+.wlrv .wlrv-reply-av img{display:block;width:28px;height:28px;object-fit:cover}
+.wlrv .wlrv-reply-n{font:500 13.5px/1.2 'Gordita',sans-serif;color:var(--wlrv-ink)}
+.wlrv .wlrv-reply-tag{font:500 9.5px/1 'Gordita',sans-serif;letter-spacing:.14em;color:var(--wlrv-mut);background:#fff;border:1px solid var(--wlrv-line);border-radius:999px;padding:4px 8px}
+.wlrv .wlrv-view{display:inline-block;margin:12px 0 0;background:none;font:400 12.5px/1.2 'Gordita',sans-serif;color:var(--wlrv-link);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:3px}
+@media (hover:hover){.wlrv .wlrv-view:hover{text-decoration-color:currentColor}}
+html.wlrv-lock,body.wlrv-lock{overflow:hidden}
+
+/* hard reset of every state (hover, focus, focus-visible, active) against the theme's global button and link rules
+   (Hello Elementor reset.css sets button:hover and button:focus to a pink fill with white text, and a white 4px ring plus black outline on :focus-visible).
+   Specificity sits under .wlrv (so under #wlstock on WordPress); no !important needed because the theme does not force it. */
+.wlrv .wlrv-tab,.wlrv .wlrv-tab:focus,.wlrv .wlrv-tab:active{background:transparent;color:var(--wlrv-mut);border-top:0;border-left:0;border-right:0;box-shadow:none;text-decoration:none;outline:none}
+.wlrv .wlrv-tab.is-on,.wlrv .wlrv-tab.is-on:focus,.wlrv .wlrv-tab.is-on:active{color:var(--wlrv-ink);border-bottom-color:var(--wlrv-or)}
+@media (hover:hover){.wlrv .wlrv-tab:hover,.wlrv .wlrv-tab.is-on:hover{background:transparent;color:var(--wlrv-ink);box-shadow:none;text-decoration:none}}
+.wlrv .wlrv-tab:focus-visible{outline:2px solid var(--wlrv-or);outline-offset:2px}
+.wlrv .wlrv-x,.wlrv .wlrv-x:focus,.wlrv .wlrv-x:active:not(:hover){background:#fff;color:var(--wlrv-ink);border-color:var(--wlrv-line);box-shadow:none;text-decoration:none;outline:none}
+.wlrv .wlrv-x:hover,.wlrv .wlrv-x:focus-visible,.wlrv .wlrv-x:active:hover{background:var(--wlrv-or);border-color:var(--wlrv-or);color:#fff;box-shadow:none;text-decoration:none;outline:none}
+.wlrv .wlrv-x:focus-visible{outline:2px solid var(--wlrv-or);outline-offset:2px}
+.wlrv .wlrv-write,.wlrv .wlrv-write:focus,.wlrv .wlrv-write:active{background:var(--wlrv-or);color:#fff;border:0;box-shadow:rgb(219,118,39) 0 0 0 2px inset;text-decoration:none;outline:none}
+.wlrv .wlrv-write:focus-visible{background:#fff;color:var(--wlrv-or);outline:none}
+@media (hover:hover){.wlrv .wlrv-write:hover{background:#fff;color:var(--wlrv-or);text-decoration:none}}
+.wlrv .wlrv-more,.wlrv .wlrv-more:focus,.wlrv .wlrv-more:active{background:none;color:var(--wlrv-link);border:0;box-shadow:none;outline:none}
+.wlrv .wlrv-more:focus-visible,.wlrv .wlrv-view:focus-visible{outline:2px solid var(--wlrv-or);outline-offset:2px}
+.wlrv .wlrv-view,.wlrv .wlrv-view:focus,.wlrv .wlrv-view:active,.wlrv .wlrv-view:hover{background:none;color:var(--wlrv-link);box-shadow:none}
+.wlrv .wlrv-img,.wlrv .wlrv-img:hover,.wlrv .wlrv-img:focus,.wlrv .wlrv-img:active{background:var(--wlrv-hair);box-shadow:none;text-decoration:none}
+.wlrv .wlrv-card,.wlrv .wlrv-card:hover{background:transparent;box-shadow:none;transform:none}
+
+/* phones: pill above the Call + Enquire bar, panel is a full-screen sheet */
+@media (max-width:900px){
+  .wlrv .wlrv-badge{left:0;right:0;width:fit-content;margin:0 auto;bottom:calc(20px + env(safe-area-inset-bottom,0px));transition:bottom .25s ease}
+  .vp-bar + .wlrv .wlrv-badge{bottom:calc(83px + env(safe-area-inset-bottom,0px))}
+  .vp-bar.is-off + .wlrv .wlrv-badge{bottom:calc(20px + env(safe-area-inset-bottom,0px))}
+  .wlrv .wlrv-open,.wlrv .wlrv-open:focus,.wlrv .wlrv-open:active{flex-direction:row;gap:6px;padding:10px 14px}
+  .wlrv .wlrv-bgw,.wlrv .wlrv-bgw svg{width:24px;height:24px}
+  .wlrv .wlrv-blk{flex-direction:row;gap:2px}
+  .wlrv .wlrv-row{gap:2px}
+  .wlrv .wlrv-score{font-size:18px;line-height:24px}
+  .wlrv .wlrv-bstars svg{width:18px;height:18px}
+  .wlrv .wlrv-cnt-d{display:none}
+  .wlrv .wlrv-cnt-p{display:block;font:400 13px/16px 'Gordita',sans-serif;color:rgba(17,17,17,.5)}
+  .wlrv .wlrv-hide,.wlrv .wlrv-hide:hover,.wlrv .wlrv-hide:focus,.wlrv .wlrv-hide:active{position:absolute;top:-5px;right:-5px;display:flex;align-items:center;justify-content:center;width:20px;height:20px;margin:0;padding:0;border:0;border-radius:50%;background:#fff;box-shadow:rgba(0,0,0,.15) 0 0 4px;color:rgba(17,17,17,.5);text-decoration:none}
+  .wlrv .wlrv-hide:hover{color:rgba(17,17,17,.7)}
+  .wlrv .wlrv-hide:focus-visible{outline:2px solid var(--wlrv-or);outline-offset:2px}
+  .wlrv .wlrv-hide::after{content:"";position:absolute;inset:-12px}
+  .wlrv .wlrv-hide svg{width:10px;height:10px}
+  .wlrv .wlrv-hide svg path{stroke-width:2.8}
+  .wlrv .wlrv-ov{padding:0;background:#fff;align-items:stretch}
+  .wlrv .wlrv-panel{width:100%;height:100%;border-radius:0;box-shadow:none;padding-top:env(safe-area-inset-top,0px)}
+  .wlrv .wlrv-head{padding:8px 8px 0 16px;gap:6px}
+  .wlrv .wlrv-tabs{gap:14px}
+  .wlrv .wlrv-tab{gap:5px;font-size:13px;padding:16px 0 14px}
+  .wlrv .wlrv-tab .wlrv-tab-g{width:16px;height:16px}
+  .wlrv .wlrv-x{width:40px;height:40px;margin:0;font-size:18px}
+  .wlrv .wlrv-sum{flex-direction:column;align-items:stretch;gap:16px;padding:18px 16px}
+  .wlrv .wlrv-write{width:100%}
+  .wlrv .wlrv-body{padding:0 16px calc(12px + env(safe-area-inset-bottom,0px))}
+  .wlrv .wlrv-card{gap:12px}
+}
+@media (max-width:420px){
+  .wlrv .wlrv-write{padding:18px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .wlrv .wlrv-badge{animation:none;opacity:1;transition:none}
+  .wlrv .wlrv-open,.wlrv .wlrv-x,.wlrv .wlrv-write,.wlrv .wlrv-tab{transition:none}
+}
